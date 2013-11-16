@@ -54,10 +54,9 @@ XTerm*VT100.translations: #override <Btn1Up>: select-end(PRIMARY, CLIPBOARD, CUT
 
 !!-- urxvt settings
 URxvt*.scrollBar: false
-URxvt*.font: xft:Inconsolata:size=10:antialias=true:hinting=true,xft:DejaVu Sans Mono:size=10:antialias=true:hinting=true
-!URxvt*.boldFont: xft:DejaVu Sans Mono:bold:size=10:antialias=true:hinting=true
+URxvt*.font: xft:Inconsolata:size=8:antialias=true:hinting=true,xft:DejaVu Sans Mono:size=10:antialias=true:hinting=true
 URxvt*.intensityStyles: false
-URxvt*.internalBorder: 4
+URxvt*.internalBorder: 12
 URxvt*.highlightColor: #303030
 !URxvt*.colorBD: white
 !URxvt*.colorIT: green
@@ -66,20 +65,26 @@ URxvt*.highlightColor: #303030
 !URxvt*.depth: 32
 !URxvt*.background: [95]#11191d
 
-URxvt.iso14755: false
-URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select
-URxvt.url-select.launcher:  /home/vixus/bin/www
-URxvt.url-select.underline: true
-URxvt.keysym.M-w: perl:url-select:select_next
-URxvt.keysym.M-a: perl:keyboard-select:activate
-URxvt.keysym.M-s: perl:keyboard-select:search
-URxvt.keysym.C-C: perl:clipboard:copy
-URxvt.keysym.C-V: perl:clipboard:paste
-URxvt.keysym.C-A-V: perl:clipboard:paste escaped
+!URxvt.iso14755: false
+!URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select
+!URxvt.url-select.launcher:  /home/vixus/bin/www
+!URxvt.url-select.underline: true
+!URxvt.keysym.M-w: perl:url-select:select_next
+!URxvt.keysym.M-a: perl:keyboard-select:activate
+!URxvt.keysym.M-s: perl:keyboard-select:search
+!URxvt.keysym.C-C: perl:clipboard:copy
+!URxvt.keysym.C-V: perl:clipboard:paste
+!URxvt.keysym.C-A-V: perl:clipboard:paste escaped
 
 !!-- Other
 dzen2.font: -artwiz-drift-medium-*-*-*-10-*-*-*-*-*-*-*
 dzen2.foreground: #f5f5f5
 dzen2.background: #000000
 
-
+!!-- yeahconsole
+yeahconsole*term: urxvtc
+yeahconsole*consoleHeight: 3
+yeahconsole*aniDelay: 10
+yeahconsole*toggleKey: Win+numbersign
+yeahconsole*keySmaller: Control+minus
+yeahconsole*keyBigger: Control+equal

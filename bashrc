@@ -14,6 +14,11 @@ alias s='ssh -XC $1'
 alias herbc='herbstclient'
 alias wine32='env WINEARCH=win32 WINEPREFIX=~/.wine32 wine'
 
+# functions
+goo() { 
+  dwb "$*" &> /dev/null & 
+}
+
 # Packages
 alias PIns='yaourt -S'
 alias PUnins='sudo pacman -Rc'
@@ -33,7 +38,5 @@ ix() {
 
 # ps1 stuff
 #PS1='[\u@\h \W]\$ '
-
-. ~/.bash_ps1
 
 

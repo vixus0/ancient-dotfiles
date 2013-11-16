@@ -1,0 +1,85 @@
+!!-- Cursors
+Xcursor.theme: Vanilla-DMZ
+
+!!-- Xft settings
+Xft.dpi: 96
+!Xft.hinting: 1
+!Xft.hintstyle: hintfull
+!Xft.antialias: 1 
+!Xft.rgba: rgb
+
+*background:              #11191d
+*foreground:              #a5a9b5
+*fading:                  40
+*fadeColor:               #161616
+*cursorColor:             #dcdccc
+*pointerColorBackground:  #161616
+*pointerColorForeground:  #a5a5a5
+
+*color0:                  #1e2d33
+*color1:                  #802828
+*color2:                  #909737
+*color3:                  #b27d12
+*color4:                  #1e5673
+*color5:                  #642337
+*color6:                  #196271
+*color7:                  #99b3bd
+*color9:                  #334d57
+*color8:                  #8a3232
+*color10:                 #9ca554
+*color11:                 #ddb62b
+*color12:                 #1e6a9a
+*color13:                 #7d2d41
+*color14:                 #197885
+*color15:                 #99b3bd
+
+
+
+!!-- xterm settings
+XTerm*termName: xterm-256color
+XTerm*dynamicColors: true
+!XTerm*utf8: 2
+XTerm*eightBitInput: true
+XTerm*saveLines: 32767
+XTerm*scrollTtyKeypress:true
+XTerm*scrollTtyOutput: false
+XTerm*scrollBar: false
+XTerm*loginShell: true
+XTerm*jumpScroll: true
+XTerm*multiScroll: true
+XTerm*toolBar: false
+XTerm*charClass:        33:48,35-38:48,39:43,42-47:48,58-59:48,61:48,63-64:48,126:48
+XTerm*innerBorder: 0
+XTerm*VT100.translations: #override <Btn1Up>: select-end(PRIMARY, CLIPBOARD, CUT_BUFFER0)
+
+!!-- urxvt settings
+URxvt*.scrollBar: false
+URxvt*.font: xft:Inconsolata:size=10:antialias=true:hinting=true,xft:DejaVu Sans Mono:size=10:antialias=true:hinting=true
+!URxvt*.boldFont: xft:DejaVu Sans Mono:bold:size=10:antialias=true:hinting=true
+URxvt*.intensityStyles: false
+URxvt*.internalBorder: 4
+URxvt*.highlightColor: #303030
+!URxvt*.colorBD: white
+!URxvt*.colorIT: green
+!URxvt*.transparent: true
+!URxvt*.shading:  20
+!URxvt*.depth: 32
+!URxvt*.background: [95]#11191d
+
+URxvt.iso14755: false
+URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select
+URxvt.url-select.launcher:  /home/vixus/bin/www
+URxvt.url-select.underline: true
+URxvt.keysym.M-w: perl:url-select:select_next
+URxvt.keysym.M-a: perl:keyboard-select:activate
+URxvt.keysym.M-s: perl:keyboard-select:search
+URxvt.keysym.C-C: perl:clipboard:copy
+URxvt.keysym.C-V: perl:clipboard:paste
+URxvt.keysym.C-A-V: perl:clipboard:paste escaped
+
+!!-- Other
+dzen2.font: -artwiz-drift-medium-*-*-*-10-*-*-*-*-*-*-*
+dzen2.foreground: #f5f5f5
+dzen2.background: #000000
+
+

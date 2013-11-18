@@ -6,8 +6,8 @@
 
 set font      = fixed
 set geometry  = top
-set colors	  = #68B0E0 #000000 #242424 #48E084 #484848 #64FFAA
-set border    = 0px #BBE0EE
+set colors	  = #a22814 #191919 #323232 #191919 #f0f0f0 #191919
+set border    = 4px #191919
 set bangchar  = :
 set run_hook  = %s
 #set run_hook  = %s || (notify-send "Error: command not found";interrobang)

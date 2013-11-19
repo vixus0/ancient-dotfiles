@@ -5,7 +5,7 @@ hc() {
   cmds="$cmds , $@"
 }
 
-hc set always_show_frame 1
+hc set always_show_frame 0
 hc set default_frame_layout 0
 
 hc detect_monitors
@@ -48,6 +48,11 @@ hc keybind Super+u use_index -1
 hc keybind Super+o use_index +1
 hc keybind Super+Shift+u move_index -1
 hc keybind Super+Shift+o move_index +1
+
+# Appbinds
+hc keybind Super+Return spawn urxvtc
+hc keybind Super+w spawn firefox
+hc keybind Super+numbersign spawn interrobang
 
 dir=("left" "right" "up" "down")
 key=("j" "l" "i" "k")

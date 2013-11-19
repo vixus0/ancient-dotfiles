@@ -1,0 +1,220 @@
+# "Lucid" for pekwm 0.1.6
+# Lucid Visual Style (oneiro.deviantart.com)
+# ported to pekwm by lyrae (http://thrynk.deviantart.com)
+#  Date: April 2, 2008
+
+$font = "XFT#Munro Small:size=8#Left"
+$texsel = "Solid #191919 2x2"
+$texuns = "Solid #141414 2x2"
+$texora = "Solid #a22814 2x2"
+$texdrk = "Solid #101010 2x2"
+$texsep = "Solid #323232 1x1"
+
+Require {
+  Templates = "True"
+}
+
+Define = "BaseDecor" {
+	Height = "18"
+	Pad = "3 5 5 5"
+
+	Focused = "$texsel"
+	Unfocused = "$texuns"
+
+	Tab {
+		Focused = "$texsel"
+		FocusedSelected = "$texsel"
+		Unfocused = "$texuns"
+		UnfocusedSelected = "$texuns"
+	}
+	Separator {
+		Focused = "Empty"
+		Unfocused = "Empty"
+	}
+	Font {
+		Focused = "$font"
+	}
+	FontColor {
+		Focused = "#5e5e5e"
+		FocusedSelected = "#f0f0f0"
+		Unfocused = "#323232"
+		UnfocusedSelected = "#5e5e5e"
+	}
+	Border {
+		Focused {
+			TopLeft = "$texsel"
+			Top = "$texsel"
+			TopRight = "$texsel"
+			Left =  "$texsel"
+			Right = "$texsel"
+			BottomLeft = "$texsel"
+			Bottom = "$texsel"
+			BottomRight = "$texsel"
+		}
+		Unfocused {
+			TopLeft = "$texuns"
+			Top = "$texuns"
+			TopRight = "$texuns"
+			Left =  "$texuns"
+			Right = "$texuns"
+			BottomLeft = "$texuns"
+			Bottom = "$texuns"
+			BottomRight = "$texuns"
+		}
+	}
+}
+
+Define = "BaseButtons" {
+  Buttons {
+    Right = "Close" {
+      Focused = "Image close-focus.png"
+      Unfocused = "Image close-unfocus.png"
+      Hoover = "Image close-focus.png"
+      Pressed = "Image close-press.png"
+      Button = "1" { Actions = "Close" }
+      Button = "3" { Actions = "Kill" }
+    }
+
+    Right = "Maximize" {
+      Focused = "Image max-focus.png"
+      Unfocused = "Image max-unfocus.png"
+      Hoover = "Image max-focus.png"
+      Pressed = "Image max-press.png"
+      Button = "1" { Actions = "Toggle Maximized 1 1" }
+    }
+
+    Left = "Shade" {
+        Focused = "Image min-focus.png"
+        Unfocused = "Image min-unfocus.png"
+        Hoover = "Image min-focus.png"
+        Pressed = "Image min-press.png"
+        Button = "1" { Actions = "Toggle Shaded" }
+    }
+  }
+}
+
+Define = "EmptyDecor" {
+  Focused = "Empty"
+  Unfocused = "Empty"
+
+  Tab {
+    Focused = "Empty"
+    FocusedSelected = "Empty"
+    Unfocused = "Empty"
+    UnfocusedSelected = "Empty"
+  }
+
+  Separator {
+    Focused = "Empty"
+    Unfocused = "Empty"
+  }
+
+  Font {
+    Focused = "Empty"
+  }
+
+  FontColor {
+    Focused = "Empty"
+    FocusedSelected = "Empty"
+    Unfocused = "Empty"
+    UnfocusedSelected = "Empty"
+  }    
+
+  Border {
+    Focused {
+      TopLeft = "Empty"
+      Top = "Empty"
+      TopRight = "Empty"
+      Left =  "Empty"
+      Right = "Empty"
+      BottomLeft = "Empty"
+      Bottom = "Empty"
+      BottomRight = "Empty"
+    }
+    Unfocused {
+      TopLeft = "Empty"
+      Top = "Empty"
+      TopRight = "Empty"
+      Left =  "Empty"
+      Right = "Empty"
+      BottomLeft = "Empty"
+      Bottom = "Empty"
+      BottomRight = "Empty"
+    }
+  }
+}
+
+
+PDecor {
+  Decor = "Default" {
+    Title {
+      @BaseDecor
+      @BaseButtons
+    }
+  }
+
+  Decor = "Menu" {
+    Title {
+      @BaseDecor
+    }
+  }
+
+  Decor = "Titlebarless" {
+    Title {
+      @BaseDecor
+    }
+  }
+
+  Decor = "Statuswindow" {
+    Title {
+      @EmptyDecor
+    }
+  }
+}
+
+Harbour {
+  Texture = "Solid #3c3c3c"
+}
+
+Menu {
+  Pad = "2 1 7 7" 
+
+	Focused {
+    Font = "$font"
+		Background = "$texdrk"
+    Item = "Empty"
+		Text = "#b4b4b4" 
+		Separator = "$texsep"
+    Arrow = "Empty"
+  }
+  Unfocused {
+    Font = "$font"
+    Background = "$texdrk"
+    Item = "Empty"
+		Text = "#b4b4b4"
+		Separator = "$texsep"
+    Arrow = "Empty"
+  }
+  Selected {
+   	Font = "$font"
+    Background = "$texora"
+		Item = "Empty"
+    Text = "#b4b4b4"
+    Arrow = "Empty"
+  }
+}
+
+CmdDialog {
+ 	Font = "$font"
+	Texture = "$texdrk"
+	Text = "#b4b4b4"
+  Pad = "8 8 8 0"
+}
+
+Status {
+	Font = "$font"
+	Texture = "$texdrk"  
+  Text = "#b4b4b4"
+	Pad = "2 2 10 10"
+}
+

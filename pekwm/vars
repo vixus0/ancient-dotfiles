@@ -1,0 +1,3 @@
+$TERM="urxvtc"
+$WWW="firefox"
+$HOME="/home/vixus"

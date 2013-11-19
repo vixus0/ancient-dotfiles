@@ -1,0 +1,36 @@
+# sxhkd reload
+
+super + Escape
+  pkill -USR1 -x sxhkd
+
+# apps ----------------------
+
+super + Return
+  urxvtc
+
+super + shift + Return
+  urxvtc -e vim
+
+super + w
+  ~/bin/www
+
+super + m
+  urxvtc -e ncmpcpp
+
+super + p
+  ~/bin/mpvsel
+
+super + numbersign
+  interrobang
+
+super + {comma,period,less,greater}
+  mpc -q {toggle,stop,prev,next}
+
+super + {bracketleft,bracketright,apostrophe}
+  ~/bin/volctl {down,up,mute}
+#  ~/bin/dvol -{d,i,t} 5
+
+XF86AudioPlay
+  ~/bin/dmenu_mpc
+
+

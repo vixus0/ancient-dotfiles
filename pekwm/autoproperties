@@ -1,0 +1,16 @@
+Require {
+	Templates = "True"
+}
+
+/*
+ Group terminal applications
+ */
+Property = "(term|rxvt),(erm|xvt)" {
+	ApplyOn = "New"
+	Group = "term" {
+		Size = "5"
+		FocusedFirst = "True"
+		Raise = "True"
+	}
+}
+

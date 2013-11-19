@@ -1,0 +1,17 @@
+INCLUDE = "$_PEKWM_ETC_PATH/config_system"
+
+Files {
+    Theme = "~/.pekwm/themes/Lucid"
+}
+
+Screen {
+    Workspaces = "4"
+    WorkspacesPerRow = "2"
+    WorkspaceNames = "01;02;03;04;05;06;07;08;09"
+    EdgeSize = "0 0 0 0"
+    EdgeIndent = "False"
+
+    Placement {
+        Model = "CenteredOnParent Smart MouseNotUnder"
+    }
+}

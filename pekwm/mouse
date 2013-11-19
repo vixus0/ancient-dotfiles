@@ -13,3 +13,10 @@ INCLUDE = "$_PEKWM_ETC_PATH/mouse_sloppy"
 
 # Add configuration overrides here, it possible to add sections,
 # sub-section and values overriding/adding specific values.
+
+# Screen edges
+ScreenEdge {
+  Left {
+    Enter = "Any Any" { Actions = "Exec skippy-xd --activate-window-picker" }
+  }
+}

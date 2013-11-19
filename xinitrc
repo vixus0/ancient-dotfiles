@@ -15,8 +15,7 @@ xrdb -merge ~/.Xresources
 urxvtd &
 feh --bg-center ~/img/wall/busstop.jpg &
 tint2 &
-tidybattery &
-~/dev/netmon/netmon &
+skippy-xd --start-daemon &
 conky -c ~/.conky.conf &
 
 # Window Manager

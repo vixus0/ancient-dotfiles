@@ -72,6 +72,7 @@ Global {
 	KeyPress = "Mod4 Shift W" { Actions = "Exec firefox" }
 	KeyPress = "Mod1 Print" { Actions = "Exec $_PEKWM_SCRIPT_PATH/pekwm_screenshot.sh" }
 	KeyPress = "Mod4 Numbersign" { Actions = "Exec interrobang" }
+	KeyPress = "F11" { Actions = "Exec skippy-xd --activate-window-picker" }
 	# Pekwm control
 	KeyPress = "Ctrl Mod1 Delete" { Actions = "Reload" }
 	KeyPress = "Mod4 D" { Actions = "ShowCmdDialog" }

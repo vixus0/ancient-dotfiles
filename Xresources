@@ -2,7 +2,8 @@
 Xcursor.theme: Vanilla-DMZ
 
 !!-- Xft settings
-Xft.dpi: 96
+! -- now set by .infinality.sh
+!Xft.dpi: 96
 !Xft.hinting: 1
 !Xft.hintstyle: hintfull
 !Xft.antialias: 1 

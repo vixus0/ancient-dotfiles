@@ -3,7 +3,7 @@
 # ported to pekwm by lyrae (http://thrynk.deviantart.com)
 #  Date: April 2, 2008
 
-$font = "XFT#Munro Small:size=8#Left"
+$font = "XFT#Munro Small:size=7.5:antialias=false#Left"
 $texsel = "Solid #191919 2x2"
 $texuns = "Solid #141414 2x2"
 $texora = "Solid #a22814 2x2"

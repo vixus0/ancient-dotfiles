@@ -4,8 +4,10 @@
 INCLUDE = "vars"
 
 RootMenu = "Pekwm" {
-	Entry = "Term" { Actions = "Exec $TERM &" }
-	Entry = "Web" { Actions = "Exec $WWW &" }
+	Entry = "Keyb" { Actions = "Exec xvkbd" }
+	Entry = "Term" { Actions = "Exec $TERM" }
+	Entry = "Web" { Actions = "Exec $WWW" }
+	Entry = "Files" { Actions = "Exec pcmanfm" }
 
 	Separator {}
 
@@ -17,6 +19,7 @@ RootMenu = "Pekwm" {
 	Submenu = "Graphics" {
 		Entry = "gimp" { Actions = "Exec gimp" }
 		Entry = "mypaint" { Actions = "Exec mypaint" }
+		Entry = "krita" { Actions = "Exec krita" }
 		Entry = "blender" { Actions = "Exec blender" }
 		Entry = "inkscape" { Actions = "Exec inkscape" }
 	}

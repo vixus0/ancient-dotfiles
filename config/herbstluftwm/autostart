@@ -53,6 +53,7 @@ hc keybind Super+Shift+o move_index +1
 hc keybind Super+Return spawn urxvtc
 hc keybind Super+w spawn firefox
 hc keybind Super+numbersign spawn interrobang
+hc keybind F11 spawn skippy-xd --activate-window-picker
 
 dir=("left" "right" "up" "down")
 key=("j" "l" "i" "k")

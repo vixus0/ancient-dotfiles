@@ -1,0 +1,82 @@
+/* stylish */
+/* Firefox minimal UI - modified by Vixus
+ *  * http://georgschabel.de 
+ *  * http://lilhom.co.uk 
+ */
+
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+/* hide scrollbars */
+
+scrollbar
+{ visibility: collapse !important
+}
+
+@-moz-document url("chrome://browser/content/browser.xul") {
+
+  /* reset */
+
+  .statuspanel-label, #TabsToolbar *
+  { padding: 0 !important
+    ; margin: 0 !important
+    ; border: 0 !important
+    ; border-radius: 0 !important
+    ; background: -moz-dialog !important
+    ; box-shadow: none !important
+    ; opacity: 1 !important
+    ; -moz-appearance: none !important
+  }
+
+  /* font */
+
+  .statuspanel-label, #TabsToolbar *,
+  .findbar-container, #addon-bar, .autocomplete-richlistitem
+  { font: 8pt Inconsolata !important
+  }
+
+  /* hide stuff */
+
+  #appmenu-toolbar-button, #go-button, #star-button, #nav-bar,
+  .autocomplete-history-dropmarker, .urlbar-history-dropmarker,
+  #alert-plugins-notification-icon, #plugins-notification-icon,
+  #identity-box, .tab-close-button, .tabs-newtab-button
+  { display: none !important
+  }
+
+  /* tabs and urlbar */
+
+  #urlbar
+  { padding: 0 8px !important
+    ;   min-width: 100px !important
+  }
+  #navigator-toolbox .tabbrowser-tab
+  { min-width: 0px !important
+    ; padding: 4px !important
+  }
+  #tabbrowser-tabs
+  { margin: 0 4px !important
+  }
+  #navigator-toolbox .tabbrowser-tab:not([selected="true"]) .tab-icon-image,
+  .tab-throbber:not([selected="true"])
+  { opacity: 0.3 !important
+    ; filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale") !important
+  }
+
+  /* misc */
+
+  .findbar-container *, #addon-bar *
+  { border-radius: 0 !important
+    ; background: -moz-dialog !important
+    ; -moz-appearance: none !important
+    ; box-shadow: none !important
+    ; opacity: 1 !important
+  }
+  .statuspanel-label
+  { padding: 4px 8px !important
+    ; color: -moz-DialogText !important
+    ; background: -moz-dialog !important
+    ; box-shadow: 0 0 4px rgba(0,0,0,0.2) !important;
+  }
+
+}
+

@@ -12,6 +12,8 @@ alias hc='herbstclient'
 alias wine32='env WINEARCH=win32 WINEPREFIX=~/.wine32 wine'
 alias dotstow='stow -d $HOME/stow'
 alias redot='source $HOME/.bashrc'
+alias dusrt='du -hcs * | sort -hr'
+alias fehf='feh -F -d'
 
 # Packages
 alias PIns='yaourt -S'

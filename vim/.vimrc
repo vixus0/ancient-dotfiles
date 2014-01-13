@@ -33,9 +33,8 @@ let g:tex_flavor='latex'
 
 au BufNewFile,BufRead *.src set filetype=fortran
 au BufNewFile,BufRead *.fcm set filetype=fortran
-" au BufNewFile,BufRead *.tex set wrap linebreak nolist textwidth=0 wrapmargin=0
+au BufNewFile,BufRead *.frag,*.vert,*.fp,*.vp,*.glsl set filetype=glsl
 au BufNewFile,BufRead *.tex call WrapOn()
-" au BufNewFile,BufRead *.tex set wrap | set linebreak | set nolist | set whichwrap+=<,>,[,] | noremap <buffer> <silent> <Up>
 
 set nocp
 filetype plugin on
@@ -63,10 +62,4 @@ set grepprg=grep\ -nH\ $*
 
 map <F3> :w !detex \| wc -w <CR>
 map <silent> <F4> :set wrap! linebreak! nolist! <CR> 
-
-" Taglist
-map <silent> <F9> :TlistUpdate<CR>
-map <silent> <F10> :TlistToggle<CR>
-let Tlist_Show_One_File=0
-let Tlist_Exit_OnlyWindow=1
 

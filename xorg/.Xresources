@@ -55,7 +55,8 @@ XTerm*VT100.translations: #override <Btn1Up>: select-end(PRIMARY, CLIPBOARD, CUT
 
 !!-- urxvt settings
 URxvt*.scrollBar: false
-URxvt*.font: xft:Inconsolata:size=8:antialias=true:hinting=true,xft:DejaVu Sans Mono:size=10:antialias=true:hinting=true
+!URxvt*.font: xft:Inconsolata:size=8:antialias=true:hinting=true,xft:DejaVu Sans Mono:size=10:antialias=true:hinting=true
+URxvt*.font: -*-clean-medium-r-normal-*-12-*-*-*-*-*-*-*
 URxvt*.intensityStyles: false
 URxvt*.internalBorder: 4
 URxvt*.highlightColor: #303030

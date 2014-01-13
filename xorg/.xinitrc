@@ -14,9 +14,12 @@ source ~/.infinality.sh
 
 # Autostart
 urxvtd -q -f -o &
-feh --bg-center ~/img/wall/busstop.jpg &
+pcmanfm -d &
+feh --bg-center ~/img/wall/busstop.jpg
 conky -c ~/.conky.conf &
+tint2 &
 skippy-xd --start-daemon &
+~/apps/copy/x86/CopyAgent &
 
 # Window Manager
 exec pekwm 

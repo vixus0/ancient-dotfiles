@@ -1,0 +1,96 @@
+#!/usr/bin/bash
+
+# Settings
+hc() {
+  cmds="$cmds , $@"
+}
+
+hc set always_show_frame 1
+hc set default_frame_layout 0
+
+hc detect_monitors
+hc pad 0 16
+
+# Theme
+hc set frame_gap 0
+hc set frame_padding 6
+hc set frame_border_width 0
+hc set frame_border_active_color "#11191d"
+hc set frame_border_normal_color "#000000"
+hc set frame_bg_active_color "#11191d"
+hc set frame_bg_normal_color "#000000"
+
+hc set window_gap 2
+hc set window_border_width 2
+hc set window_border_inner_width 0
+hc set window_border_active_color "#233536"
+hc set window_border_normal_color "#11191d"
+hc set window_border_inner_color "#e0e0e0"
+hc set window_border_urgent_color "#802828"
+
+hc set snap_gap 8
+hc set smart_frame_surroundings 1
+hc set frame_normal_opacity 30
+hc set frame_active_opacity 85
+
+# Keybinds
+hc keyunbind --all
+hc keybind Super+Shift+q quit
+hc keybind Super+Shift+c close_or_remove
+hc keybind Super+backslash split h 0.5
+hc keybind Super+minus split v 0.5
+hc keybind Super+Tab cycle
+hc keybind Super+Shift+Tab cycle -1
+hc keybind Super+space cycle_layout +1
+hc keybind Super+f floating
+hc keybind Super+equal fullscreen toggle
+hc keybind Super+u use_index -1
+hc keybind Super+o use_index +1
+hc keybind Super+Shift+u move_index -1
+hc keybind Super+Shift+o move_index +1
+
+dir=("left" "right" "up" "down")
+key=("h" "l" "k" "j")
+for i in 0 1 2 3; do
+  hc keybind Super+${key[$i]} focus ${dir[$i]}
+  hc keybind Super+Shift+${key[$i]} shift ${dir[$i]}
+  hc keybind Super+Mod1+${key[$i]} resize ${dir[$i]} +0.05
+done
+
+# Mouse
+hc mouseunbind
+hc mousebind Super+B1 move
+hc mousebind Super+B3 resize
+hc mousebind Super+B2 zoom
+
+# Tags
+hc rename default v
+hc keybind Super+1 use v
+hc keybind Super+Shift+1 move v
+x=2
+for i in i x l a p; do
+  hc add $i
+  hc keybind Super+$x use $i
+  hc keybind Super+Shift+$x move $i
+  x=$(( $x + 1 ))
+done
+
+# Programs
+hc keybind Super+Return spawn ~/bin/dmenu_fav
+hc keybind Super+numbersign spawn interrobang
+hc keybind XF86AudioPlay spawn ~/bin/dmenu_mpc
+hc keybind XF86AudioRaiseVolume spawn ~/bin/volctl up
+hc keybind XF86AudioLowerVolume spawn ~/bin/volctl down
+
+# Rules
+hc unrule --all
+hc rule title=stalonetray manage=off
+hc rule class=Conky manage=off
+hc rule class=hl2_linux focus=on fullscreen=on
+hc rule windowtype=_NET_WM_WINDOW_TYPE_DIALOG focus=on manage=off
+
+# Go go go
+herbstclient chain $cmds &
+
+# Autostart other stuff
+~/bin/autostart &

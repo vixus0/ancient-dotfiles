@@ -6,10 +6,21 @@ Require {
  Group terminal applications
  */
 Property = "(term|rxvt),(erm|xvt)" {
-	ApplyOn = "New"
+	ApplyOn = "Start New Reload"
 	Group = "term" {
 		Size = "5"
 		FocusedFirst = "True"
+		Raise = "True"
+	}
+}
+
+/*
+ Group firefox windows
+ */
+Property = ".*,^Firefox" {
+	ApplyOn = "Start New Reload"
+	Group = "firefox" {
+		Size = "0"
 		Raise = "True"
 	}
 }

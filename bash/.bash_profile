@@ -2,6 +2,7 @@
 # ~/.bash_profile
 #
 
+[[ -f ~/.bash_environment ]] && . ~/.bash_environment
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
 # Start X at login on first TTY

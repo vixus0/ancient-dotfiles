@@ -14,6 +14,7 @@ alias dotstow='stow -d $HOME/stow'
 alias redot='source $HOME/.bashrc'
 alias dusrt='du -hcs * | sort -hr'
 alias fehf='feh -F -d'
+alias suc='su -c'
 
 # Packages
 alias PIns='yaourt -S'

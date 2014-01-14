@@ -1,0 +1,10 @@
+#!/bin/bash
+#
+# Autostart file for host vixlap
+
+# Set preferred window manager
+export WM=herbstluftwm
+
+# rxvt-unicode daemon
+urxvtd -q -f -o &
+

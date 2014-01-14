@@ -2,9 +2,6 @@
 #
 # Autostart file for host vix60
 
-# Set preferred window manager
-export WM=pekwm
-
 # Set correct gamma
 xgamma -gamma 1.25 &
 

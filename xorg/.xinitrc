@@ -11,4 +11,5 @@ source ~/.infinality.sh
 bash ~/.config/`hostname`/xstart
 
 # Window Manager
-exec $WM 
+[[ `hostname` == "vix60" ]] && exec pekwm
+[[ `hostname` == "vixlap" ]] && exec herbstluftwm 

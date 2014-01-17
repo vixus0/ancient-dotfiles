@@ -19,9 +19,9 @@ border_color = #FFFFFF 100
 
 # Panel
 panel_monitor = all
-panel_position = bottom left vertical
-panel_size = 66% 32
-panel_margin = 33 5
+panel_position = top right horizontal
+panel_size = 35% 22
+panel_margin = 1 1
 panel_padding = 0 0 20
 panel_dock = 0
 wm_menu = 0

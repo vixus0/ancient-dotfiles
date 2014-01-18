@@ -16,7 +16,10 @@ INCLUDE = "$_PEKWM_ETC_PATH/mouse_sloppy"
 
 # Screen edges
 ScreenEdge {
-  Left {
-    Enter = "Any Any" { Actions = "Exec skippy-xd --activate-window-picker" }
+  #Left {
+  #  Enter = "Any Any" { Actions = "Exec skippy-xd --activate-window-picker" }
+  #}
+  Up {
+     Enter = "Any Any" { Actions = "Exec /home/vixus/bin/conky_toggle.sh" }
   }
 }

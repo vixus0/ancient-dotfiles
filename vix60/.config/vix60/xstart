@@ -18,14 +18,8 @@ pcmanfm -d &
 # set wallpaper with feh
 feh --bg-center ~/img/wall/busstop.jpg
 
-# conky sys info
-conky -c ~/.conky.conf &
-
 # tint2 taskbar
 tint2 &
-
-# skippy expose style window selector
-skippy-xd --start-daemon &
 
 # Copy (qt app) for syncing
 ~/apps/copy/x86/CopyAgent &

@@ -8,31 +8,31 @@
 # ID 1
 rounded = 0
 border_width = 0
-background_color = #000000 0
+background_color = #191919 100
 border_color = #FFFFFF 100
 
 # ID 2
 rounded = 0
 border_width = 0
-background_color = #191919 100
+background_color = #303030 100
 border_color = #FFFFFF 100
 
 # Panel
 panel_monitor = all
-panel_position = top right horizontal
-panel_size = 35% 22
-panel_margin = 1 1
-panel_padding = 0 0 20
+panel_position = top left vertical
+panel_size = 100% 32
+panel_margin = 0 0
+panel_padding = 5 5 20
 panel_dock = 0
 wm_menu = 0
-panel_layer = bottom
-panel_background_id = 0
+panel_layer = top
+panel_background_id = 1
 
 # Panel Autohide
-autohide = 0
+autohide = 1
 autohide_show_timeout = 0.0
 autohide_hide_timeout = 0.0
-autohide_height = 0
+autohide_height = 4
 strut_policy = none
 
 # Taskbar

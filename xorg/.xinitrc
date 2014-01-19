@@ -7,9 +7,8 @@ xrdb -merge ~/.Xresources
 # For Infinality font package
 source ~/.infinality.sh
 
-# Host-specific autostart
-bash ~/.config/`hostname`/xstart
+# Autostart X apps
+bash ~/.xstart
 
 # Window Manager
-[[ `hostname` == "vix60" ]] && exec pekwm
-[[ `hostname` == "vixlap" ]] && exec herbstluftwm 
+exec herbstluftwm 

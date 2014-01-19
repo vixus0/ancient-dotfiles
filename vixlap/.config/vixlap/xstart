@@ -1,7 +1,0 @@
-#!/bin/bash
-#
-# Autostart file for host vixlap
-
-# rxvt-unicode daemon
-urxvtd -q -f -o &
-

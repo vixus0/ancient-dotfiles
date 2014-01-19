@@ -1,16 +1,17 @@
 #!/bin/bash
 #
-# Autostart file for host vix60
+# Autostart file for X server 
 
 # Set correct gamma
-xgamma -gamma 1.25 &
+case `hostname` in
+  vix60)
+    xgamma -gamma 1.25 &
+    ;;
+esac
 
 # rxvt-unicode daemon
 urxvtd -q -f -o &
 
-# pcmanfm daemon
-pcmanfm -d &
-
 # set wallpaper with feh
-feh --bg-center ~/img/wall/busstop.jpg
+feh --bg-center ~/.wallpaper
 

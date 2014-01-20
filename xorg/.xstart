@@ -2,15 +2,21 @@
 #
 # Autostart file for X server 
 
-# Set correct gamma
+# Host specific stuff
 case `hostname` in
   vix60)
+    # Set gamma correction
     xgamma -gamma 1.25 &
+    # Assign tablet buttons
+    setkeycodes 67 42 6c 29 68 125 6b 56 71 103 6f 108 6e 105 6d 106 69 28 &
     ;;
 esac
 
 # rxvt-unicode daemon
 urxvtd -q -f -o &
+
+# dzen applets
+~/scripts/statdzen &
 
 # set wallpaper with feh
 feh --bg-center ~/.wallpaper

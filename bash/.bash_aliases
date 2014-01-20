@@ -3,15 +3,15 @@
 ## ALIASES
 
 # Utilities
-alias ls='ls --group-directories-first --color=auto --classify -h'
+alias ls='echo; ls --group-directories-first --color=auto --classify -h'
 alias cp='cp -i'
 alias mv='mv -i'
-alias df='df -h'
-alias du='du -h'
-alias la='ls -lA'
+alias df='echo; df -h'
+alias du='echo; du -h'
+alias la='echo; ls -lA'
 alias s='ssh -XC'
 alias suc='su -c'
-alias dusrt='du -hcs * | sort -hr'
+alias dusrt='echo; du -hcs * | sort -hr'
 alias redot='source $HOME/.bashrc'
 alias lastj="journalctl --since=today | tac | sed -n '/-- Reboot --/{n;:r;/-- Reboot --/q;p;n;b r}' | tac"
 

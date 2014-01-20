@@ -2,9 +2,9 @@
 Xcursor.theme: Vanilla-DMZ
 
 !!-- Colours
-*background:              #191919
+*background:              #121317
 *foreground:              #a5a9b5
-*fading:                  40
+*fading:                  0
 *fadeColor:               #0d0d0d
 *cursorColor:             #dcdccc
 *pointerColorBackground:  #161616
@@ -28,11 +28,11 @@ Xcursor.theme: Vanilla-DMZ
 *color15:                 #99b3bd
 
 !!-- urxvt
-URxvt*.scrollBar: false
-URxvt*.font: -*-clean-medium-r-normal-*-12-*-*-*-*-*-*-*
-URxvt*.intensityStyles: false
-URxvt*.internalBorder: 4
-URxvt*.highlightColor: #303030
+URxvt*scrollBar: false
+URxvt*font: xft:lemon:antialias=false:pixelsize=10
+URxvt*boldFont: xft:lemon:antialias=false:pixelsize=10
+URxvt*internalBorder: 8
+URxvt*highlightColor: #303030
 
 !!-- urxvt perl select
 URxvt.iso14755: false
@@ -47,7 +47,7 @@ URxvt.keysym.C-V: perl:clipboard:paste
 URxvt.keysym.C-A-V: perl:clipboard:paste escaped
 
 !!-- Other
-dzen2.font: -artwiz-drift-medium-*-*-*-10-*-*-*-*-*-*-*
+dzen2.font: -*-lemon-*-*-*-*-10-*-*-*-*-*-*-*
 dzen2.foreground: #f5f5f5
 dzen2.background: #000000
 

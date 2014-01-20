@@ -5,8 +5,10 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# Simple prompt
-PS1="$(if [[ ${EUID} == 0 ]]; then echo '\[\033[01;31m\]root@\h\[\033[01;34m\] \W'; else echo '\[\033[01;34m\]\w'; fi) \$(if [[ \$? != 0 ]]; then echo \"\[\033[01;31m\]\"; else echo \"\[\033[01;32m\]\"; fi)\\$\[\033[00m\] "
+# Fancy prompt for bash (uses lemon powerline from phallus)
+# This makes sure the first prompt won't have a newline, but subsequent ones will
+export PROMPT_COMMAND="export PROMPT_COMMAND=echo"
+PS1="\e[40m \t \$(if [[ \$? != 0 ]]; then echo \"\e[41m\e[30m⮀ \\W \e[0;31m⮀\"; else echo \"\e[42m\e[30m⮀ \\W \e[0;32m⮀\"; fi)\e[0m "
 
 . $HOME/.bash_environment
 . $HOME/.bash_aliases

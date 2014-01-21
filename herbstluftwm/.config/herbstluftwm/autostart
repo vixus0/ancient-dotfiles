@@ -91,3 +91,8 @@ hc rule windowtype=_NET_WM_WINDOW_TYPE_DIALOG focus=on manage=off
 # Go go go
 herbstclient chain $cmds &
 
+# Tray icon manager
+stalonetray &
+
+# Gesture manager
+easystroke &

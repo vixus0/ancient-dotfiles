@@ -15,9 +15,9 @@ esac
 # rxvt-unicode daemon
 urxvtd -q -f -o &
 
-# dzen applets
-~/scripts/statdzen &
-
 # set wallpaper with feh
 feh --bg-center ~/.wallpaper
+
+# dzen applets
+~/scripts/statdzen &
 

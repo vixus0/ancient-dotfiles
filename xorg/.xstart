@@ -8,7 +8,7 @@ case `hostname` in
     # Set gamma correction
     xgamma -gamma 1.25 &
     # Assign tablet buttons
-    setkeycodes 67 42 6c 29 68 125 6b 56 71 103 6f 108 6e 105 6d 106 69 28 &
+    sudo setkeycodes 67 42 6c 29 68 125 6b 56 71 103 6f 108 6e 105 6d 106 69 28 &
     ;;
 esac
 
@@ -21,3 +21,5 @@ feh --bg-center ~/.wallpaper
 # dzen applets
 ~/scripts/statdzen &
 
+# composite manager
+xcompmgr &

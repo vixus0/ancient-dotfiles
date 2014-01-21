@@ -1,11 +1,15 @@
 #!/usr/bin/bash
 
+. ~/.bash_aliases
+
 hc() {
   cmds="$cmds , $@"
 }
 
+hc lock
+
 # Settings
-hc set always_show_frame 0
+hc set always_show_frame 1
 hc set smart_frame_surroundings 0
 hc set frame_bg_transparent 0
 hc set default_frame_layout 2
@@ -25,7 +29,7 @@ hc set frame_border_normal_color "#000000"
 hc set frame_bg_active_color "#121317"
 hc set frame_bg_normal_color "#121317"
 hc set frame_active_opacity 80
-hc set frame_normal_opacity 20
+hc set frame_normal_opacity 50
 
 hc set window_gap 0
 hc set window_border_width 2
@@ -80,6 +84,7 @@ done
 
 # Programs
 hc keybind Super+Return spawn ~/scripts/dmenu_fav
+hc keybind Super+r spawn ~/scripts/herbstrec
 
 # Rules
 hc unrule --all
@@ -87,12 +92,14 @@ hc rule title=stalonetray manage=off
 hc rule class=Conky manage=off
 hc rule class~".*kbd" pseudotile=on
 hc rule windowtype=_NET_WM_WINDOW_TYPE_DIALOG focus=on manage=off
+hc rule class~.* focus=on
 
 # Go go go
+hc unlock
 herbstclient chain $cmds &
 
 # Tray icon manager
-stalonetray &
+astart stalonetray &
 
 # Gesture manager
-easystroke &
+astart easystroke &

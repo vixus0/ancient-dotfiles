@@ -97,6 +97,7 @@ hc rule windowtype=_NET_WM_WINDOW_TYPE_DIALOG focus=on manage=off
 hc rule class~.* focus=on
 
 # Go go go
+hc set_layout 2
 hc unlock
 herbstclient chain $cmds &
 
@@ -105,3 +106,6 @@ astart stalonetray &
 
 # Gesture manager
 astart easystroke &
+
+# CopyAgent syncer
+astart CopyAgent &

@@ -195,7 +195,17 @@ settings = {
     nick = "vixus";
     timestamp_format = "%H:%M.%S";
   };
-  "fe-text" = { actlist_sort = "refnum"; };
-  "fe-common/core" = { theme = "vixus"; };
+  "fe-text" = { actlist_sort = "refnum"; indent = "28"; };
+  "fe-common/core" = {
+    theme = "vixus";
+    show_nickmode_empty = "yes";
+    show_nickmode = "no";
+  };
+  "perl/core/scripts" = {
+    neat_colorize = "yes";
+    neat_left_messages = "no";
+    neat_allow_shrinking = "no";
+    neat_right_mode = "no";
+  };
 };
 ignores = ( { level = "JOINS QUITS"; } );

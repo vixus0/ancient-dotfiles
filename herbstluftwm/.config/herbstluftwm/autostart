@@ -8,12 +8,14 @@ hc() {
 
 hc lock
 
+GAP=2
+
 # Settings
 hc set always_show_frame 1
 hc set smart_frame_surroundings 0
 hc set frame_bg_transparent 0
 hc set default_frame_layout 2
-hc set snap_gap 2
+hc set snap_gap $GAP
 hc set focus_follows_mouse 1
 
 # Set up monitors
@@ -21,8 +23,8 @@ hc detect_monitors
 hc pad 0 0 0 0 16
 
 # Theme
-hc set frame_gap 0
-hc set frame_padding 4
+hc set frame_gap $GAP
+hc set frame_padding 0
 hc set frame_border_width 0
 hc set frame_border_active_color "#191919"
 hc set frame_border_normal_color "#000000"
@@ -32,7 +34,7 @@ hc set frame_active_opacity 80
 hc set frame_normal_opacity 50
 
 hc set window_gap 0
-hc set window_border_width 2
+hc set window_border_width 0
 hc set window_border_inner_width 0
 hc set window_border_active_color "#232323"
 hc set window_border_normal_color "#121317"
@@ -47,13 +49,15 @@ hc keybind Super+b split h 0.5            #i │ # Horizontal split
 hc keybind Super+v split v 0.5            #i ─ # Vertical split
 hc keybind Super+i cycle                  #i ❯ # Cycle forward in frame
 hc keybind Super+u cycle -1               #i ❮ #       backward
-hc keybind Super+Left cycle                  #i ❯ # Cycle forward in frame
-hc keybind Super+Right cycle -1               #i ❮ #       backward
+hc keybind Super+Left cycle               #i ❯ # Cycle forward in frame
+hc keybind Super+Right cycle -1           #i ❮ #       backward
 #hc keybind Super+space cycle_layout +1    #i ⮥ # Change layout type
 hc keybind Super+f floating               #i ⮛ # Switch to floating mode
 hc keybind Super+g fullscreen toggle      #i ⮩ # Make window fullscreen
 hc keybind Super+y use_index -1           #i ◁ # Prev tag
 hc keybind Super+o use_index +1           #i ▷ # Next 
+hc keybind Super+Down use_index -1        #i ◁ # Prev tag
+hc keybind Super+Up use_index +1          #i ▷ # Next 
 hc keybind Super+Shift+y move_index -1    #i ◀ # Move to prev tag
 hc keybind Super+Shift+o move_index +1    #i ▶ #         next
 hc keybind Super+Escape reload            #i ◙ # Reload config

@@ -29,8 +29,8 @@ Xcursor.theme: Vanilla-DMZ
 
 !!-- urxvt
 URxvt*scrollBar: false
-URxvt*font: xft:lemon:antialias=false:pixelsize=10
-URxvt*boldFont: xft:lemon:antialias=false:pixelsize=10
+URxvt*font: xft:lemon:style=Regular:pixelsize=10
+URxvt*boldFont: xft:lemon:style=Regular:pixelsize=10
 URxvt*internalBorder: 8
 URxvt*highlightColor: #303030
 URxvt*urgentOnBell: true

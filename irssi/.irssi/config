@@ -24,7 +24,6 @@ channels = (
   },
   { name = "#anapnea"; chatnet = "freenode"; autojoin = "Yes"; },
   { name = "#herbstluftwm"; chatnet = "freenode"; autojoin = "Yes"; },
-  { name = "#lad"; chatnet = "freenode"; autojoin = "Yes"; }
 );
 
 aliases = {
@@ -75,6 +74,7 @@ aliases = {
   ATAG = "WINDOW SERVER";
   UNSET = "set -clear";
   RESET = "set -default";
+  NI = "msg nickserv identify";
 };
 
 statusbar = {
@@ -209,3 +209,4 @@ settings = {
   };
 };
 ignores = ( { level = "JOINS QUITS"; } );
+hilights = ( { text = "vixus"; nick = "yes"; word = "yes"; } );

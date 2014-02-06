@@ -23,7 +23,7 @@ channels = (
     autojoin = "Yes";
   },
   { name = "#anapnea"; chatnet = "freenode"; autojoin = "Yes"; },
-  { name = "#herbstluftwm"; chatnet = "freenode"; autojoin = "Yes"; },
+  { name = "#herbstluftwm"; chatnet = "freenode"; autojoin = "Yes"; }
 );
 
 aliases = {
@@ -206,6 +206,7 @@ settings = {
     neat_left_messages = "no";
     neat_allow_shrinking = "no";
     neat_right_mode = "no";
+    openurl_app_http = "firefox \"$1\"";
   };
 };
 ignores = ( { level = "JOINS QUITS"; } );

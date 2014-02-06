@@ -16,4 +16,5 @@ export  XDG_CACHE_HOME="$HOME/.cache"
 export   XDG_DATA_HOME="$HOME/.local/share"
 
 # Misc
-FAVPROGS="$XDG_DATA_HOME/favprogs"
+export FAVPROGS="$XDG_DATA_HOME/favprogs"
+export CPLUS_INCLUDE_PATH="$HOME/.local/include"

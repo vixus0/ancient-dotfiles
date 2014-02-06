@@ -96,7 +96,7 @@ hc keybind Super+r spawn ~/scripts/herbstrec
 hc unrule --all
 hc rule title=stalonetray manage=off
 hc rule class=Conky manage=off
-hc rule class~".*kbd" pseudotile=on
+hc rule class~".*nboard" manage=off
 hc rule windowtype=_NET_WM_WINDOW_TYPE_DIALOG focus=on manage=off
 hc rule class~.* focus=on
 

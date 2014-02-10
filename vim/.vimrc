@@ -1,11 +1,23 @@
-syntax on
-filetype on
+set nocompatible
 
-" set background=dark
+" -- vundle
+filetype off
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+Bundle 'Rykka/colorv.vim'
+" -- /vundle
+
+" -- colours
+syntax on
 colorscheme peachpuff
 hi LineNr ctermfg=23
 hi ColorColumn ctermbg=0
+let &colorcolumn=join(range(81,999),",")
+" -- /colours
 
+" -- latex
 function WrapOn()
   setlocal cc=-1
   setlocal textwidth=0
@@ -22,24 +34,19 @@ function WrapOn()
   inoremap <buffer> <silent> <Down> <C-o>gj
   inoremap <buffer> <silent> <Home> <C-o>g<Home>
   inoremap <buffer> <silent> <End>  <C-o>g<End>
-  "au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
-  "augroup vimrc_autocmds
-  "   autocmd BufEnter * highlight OverLength ctermbg=darkred ctermfg=white guibg=#592929
-  "   autocmd BufEnter * match OverLength /\%>80v.*/
-  "augroup END
 endfunction
-
 let g:tex_flavor='latex'
+" -- /latex
 
+" -- filetype specific
+au BufNewFile,BufRead *.tex call WrapOn()
 au BufNewFile,BufRead *.src set filetype=fortran
 au BufNewFile,BufRead *.fcm set filetype=fortran
 au BufNewFile,BufRead *.frag,*.vert,*.fp,*.vp,*.glsl set filetype=glsl
-au BufNewFile,BufRead *.tex call WrapOn()
+" -- /filetype specific
 
-set nocp
-filetype plugin on
-filetype indent on
-
+" -- general
+filetype plugin indent on
 set incsearch
 set scrolloff=2
 set ignorecase
@@ -53,13 +60,10 @@ set number
 set modeline
 set clipboard+=unnamed
 set backspace+=start,eol,indent
+" -- /general
 
-" color column
-let &colorcolumn=join(range(81,999),",")
-
-" vim-latex
-set grepprg=grep\ -nH\ $*
-
+" -- bindings
 map <F3> :w !detex \| wc -w <CR>
 map <silent> <F4> :set wrap! linebreak! nolist! <CR> 
+" -- /bindings
 

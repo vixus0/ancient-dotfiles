@@ -4,8 +4,8 @@ Xcursor.theme: Vanilla-DMZ
 !!-- Colours
 *background:              #121317
 *foreground:              #a5a9b5
-*fading:                  0
-*fadeColor:               #0d0d0d
+*fading:                  20
+*fadeColor:               #121317
 *cursorColor:             #dcdccc
 *pointerColorBackground:  #161616
 *pointerColorForeground:  #a5a5a5
@@ -30,7 +30,7 @@ Xcursor.theme: Vanilla-DMZ
 !!-- urxvt
 URxvt*scrollBar: false
 URxvt*font: xft:lemon:style=Regular:pixelsize=10
-URxvt*boldFont: xft:lemon:style=Regular:pixelsize=10
+URxvt*boldFont:
 URxvt*internalBorder: 8
 URxvt*highlightColor: #252020
 URxvt*urgentOnBell: true

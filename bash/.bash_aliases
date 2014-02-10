@@ -21,6 +21,7 @@ alias dotstow='stow -d $HOME/dots'
 alias fehf='feh -F -d'
 alias hc='herbstclient'
 alias vg='valgrind --db-attach=yes --leak-check=yes --tool=memcheck --num-callers=16 --leak-resolution=high --track-origins=yes'
+alias bigterm='urxvtc -fn "xft:standard 07_55:size=11"'
 
 # Pacman
 alias PIns='yaourt -S'

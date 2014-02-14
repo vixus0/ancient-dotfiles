@@ -4,7 +4,7 @@ Xcursor.theme: Vanilla-DMZ
 !!-- Colours
 *background:              #121317
 *foreground:              #a5a9b5
-*fading:                  20
+*fading:                  40
 *fadeColor:               #121317
 *cursorColor:             #dcdccc
 *pointerColorBackground:  #161616

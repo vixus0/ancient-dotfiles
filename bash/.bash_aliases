@@ -2,6 +2,8 @@
 
 ## ALIASES
 
+[[ -e /usr/bin/yaourt ]] && pacman="yaourt" || pacman="pacman"
+
 # Utilities
 alias ls='echo; ls --group-directories-first --color=auto --classify -h'
 alias cp='cp -i'
@@ -24,16 +26,16 @@ alias vg='valgrind --db-attach=yes --leak-check=yes --tool=memcheck --num-caller
 alias bigterm='urxvtc -fn "xft:standard 07_55:size=11"'
 
 # Pacman
-alias PIns='yaourt -S'
+alias PIns="$pacman -S"
 alias PUnins='sudo pacman -Rc'
-alias PInfo='yaourt -Qi'
-alias PGetInfo='yaourt -Si'
-alias POwn='yaourt -Qo'
-alias PStat='yaourt -Qs'
-alias PList='yaourt -Ql'
-alias PFind='yaourt'
-alias PPUpd='sudo pacman -Syyu'
-alias PAUpd='yaourt -Syua'
+alias PInfo="$pacman -Qi"
+alias PGetInfo="$pacman -Si"
+alias POwn="$pacman -Qo"
+alias PStat="$pacman -Qs"
+alias PList="$pacman -Ql"
+alias PFind="yaourt"
+alias PPUpd="sudo pacman -Syyu"
+alias PAUpd="yaourt -Syua"
 
 
 ## FUNCTIONS

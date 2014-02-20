@@ -2,7 +2,7 @@
 
 ## ALIASES
 
-[[ -e /usr/bin/yaourt ]] && pacman="yaourt" || pacman="pacman"
+[[ -e /usr/bin/yaourt ]] && pacman="yaourt" || pacman="sudo pacman"
 
 # Utilities
 alias ls='echo; ls --group-directories-first --color=auto --classify -h'

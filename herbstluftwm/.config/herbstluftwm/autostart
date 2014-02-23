@@ -2,6 +2,8 @@
 
 . ~/.bash_aliases
 
+host="`hostname`"
+
 hc() {
   cmds="$cmds , $@"
 }
@@ -97,7 +99,7 @@ hc unrule --all
 hc rule title=stalonetray manage=off
 hc rule class=Conky manage=off
 hc rule class~".*nboard" manage=off
-hc rule windowtype=_NET_WM_WINDOW_TYPE_DIALOG focus=on manage=off
+hc rule windowtype=_NET_WM_WINDOW_TYPE_DIALOG focus=on pseudotile=on
 hc rule class~.* focus=on
 
 # Go go go
@@ -105,11 +107,24 @@ hc set_layout 2
 hc unlock
 herbstclient chain $cmds &
 
+# Lock tag 4 to external monitor
+hc="herbstclient"
+nm="`herbstclient list_monitors | wc -l`"
+if [[ $nm -gt 1 ]]; then
+  $hc focus_monitor 1
+  $hc use 4
+  $hc lock_tag 1
+  $hc focus_monitor 0
+  $hc use 1
+  $hc keybind Super+m cycle_monitor
+fi
+
 # Tray icon manager
 astart stalonetray &
 
-# Gesture manager
-astart easystroke &
-
 # CopyAgent syncer
 astart CopyAgent &
+
+# Gesture manager for tablet
+[[ $host == "vix60" ]] && astart easystroke &
+

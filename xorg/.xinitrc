@@ -11,8 +11,11 @@ xrdb -merge ~/.Xresources
 # For Infinality font package
 source ~/.infinality.sh
 
+# HD TV Dual screen
+~/.screenlayout/vixlap-lgtv.sh
+
 # Autostart X apps
 bash ~/.xstart
 
 # Window Manager
-exec herbstluftwm 
+exec herbstluftwm

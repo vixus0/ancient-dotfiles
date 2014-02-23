@@ -16,7 +16,7 @@ esac
 urxvtd -q -f -o &
 
 # set wallpaper with feh
-feh --bg-center ~/.wallpaper
+feh --bg-tile ~/.wallpaper
 
 # dzen applets
 ~/scripts/statdzen &

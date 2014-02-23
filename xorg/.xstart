@@ -10,6 +10,9 @@ case `hostname` in
     # Assign tablet buttons
     sudo setkeycodes 67 42 6c 29 68 125 6b 56 71 103 6f 108 6e 105 6d 106 69 28 &
     ;;
+  vixlap)
+    xgamma -gamma 1.1 &
+    ;;
 esac
 
 # rxvt-unicode daemon

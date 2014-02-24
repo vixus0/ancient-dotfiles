@@ -70,3 +70,9 @@ man() {
 lns() {
   ln -s `realpath $1` $2
 }
+
+mpctv() {
+  arg="${1:-`xclip -o -selection clipboard`}"
+  herbstclient reload
+  mpv --really-quiet --ao=alsa:device=hdmi --title=playontv $arg
+} 

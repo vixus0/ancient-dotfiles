@@ -24,6 +24,9 @@ case `hostname` in
     ;;
 esac
 
+# redshift for night viewing (kdy)
+redshift -l 56.1107:3.1674 -t 6500:4800 &
+
 # rxvt-unicode daemon
 urxvtd -q -f -o &
 

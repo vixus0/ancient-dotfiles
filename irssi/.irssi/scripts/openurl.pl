@@ -26,10 +26,11 @@ use vars qw(@urls %urltypes $recent);
 $recent = 1;
 
 # RegExp & defaultcommands
-%urltypes = ( http => { regexp => qr#((?:https?://[^\s<>"]+|www\.[-a-z0-9.]+)[^\s.,;<">\):])#, cmd => 'w3m "$1"' },
+%urltypes = ( yt   => { regexp => qr#((?:https?://www\.youtube\.com)[^\s.,;<">\):])#, cmd => 'mpv "$1"' },
+              http => { regexp => qr#((?:https?://[^\s<>"]+|www\.[-a-z0-9.]+)[^\s.,;<">\):])#, cmd => 'w3m "$1"' },
               ftp  => { regexp => qr#((?:ftp://[^\s<>"]+|ftp\.[-a-z0-9.]+)[^\s.,;<">\):])#, cmd => 'ncftp "$1"' },
-	      mail => { regexp => qr#([-_a-z0-9.]+\@[-a-z0-9.]+\.[-a-z0-9.]+)#, cmd => 'mutt "$1" -s "$2"' },
-	    );
+      	      mail => { regexp => qr#([-_a-z0-9.]+\@[-a-z0-9.]+\.[-a-z0-9.]+)#, cmd => 'mutt "$1" -s "$2"' },
+	          );
 
 sub draw_box ($$$$) {
     my ($title, $text, $footer, $colour) = @_;
@@ -123,7 +124,7 @@ sub get_url ($) {
 sub url_type ($) {
     my ($url) = @_;
     foreach (keys %urltypes) {
-	return $_ if ($url =~ /$urltypes{$_}->{regexp}/);
+	    return $_ if ($url =~ /$urltypes{$_}->{regexp}/);
     }
 }
 
@@ -248,7 +249,7 @@ sub cmd_openurl ($$$) {
 }
 
 foreach (keys %urltypes) {
-    Irssi::settings_add_str($IRSSI{'name'}, 'openurl_app_'.$_, "screen ".$urltypes{$_}->{cmd});
+    Irssi::settings_add_str($IRSSI{'name'}, 'openurl_app_'.$_, "urxvtc -e ".$urltypes{$_}->{cmd});
     Irssi::settings_add_bool($IRSSI{'name'}, 'openurl_watch_'.$_, 1);
 }
 Irssi::settings_add_int($IRSSI{'name'}, 'openurl_max_urls', 20);

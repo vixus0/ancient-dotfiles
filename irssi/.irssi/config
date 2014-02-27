@@ -206,7 +206,7 @@ settings = {
     neat_left_messages = "no";
     neat_allow_shrinking = "no";
     neat_right_mode = "no";
-    openurl_app_http = "firefox \"$1\"";
+    openurl_app_http = "firefox \"$1\" &>/dev/null";
   };
 };
 ignores = ( { level = "JOINS QUITS"; } );

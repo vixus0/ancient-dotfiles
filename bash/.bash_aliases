@@ -36,7 +36,6 @@ alias PList="$pacman -Ql"
 alias PFind="yaourt"
 alias PPUpd="sudo pacman -Syyu"
 alias PAUpd="yaourt -Syua"
-alias mpvp="mpv `xclip -o -selection clipboard`"
 
 ## FUNCTIONS
 
@@ -71,8 +70,14 @@ lns() {
   ln -s `realpath $1` $2
 }
 
-mpctv() {
-  arg="${1:-`xclip -o -selection clipboard`}"
-  herbstclient reload
-  mpv --really-quiet --ao=alsa:device=hdmi --title=playontv $arg
+mpvp() {
+  if [[ $1 == "tv" ]]; then
+    url="${2:-`xclip -o -selection clipboard`}"
+    herbstclient reload
+    args="--ao=alsa:device=hdmi --title=playontv $url"
+  else
+    args="${1:-`xclip -o -selection clipboard`}"
+  fi
+  mpv $args
 } 
+

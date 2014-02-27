@@ -18,7 +18,7 @@ hc set smart_frame_surroundings 0
 hc set frame_bg_transparent 0
 hc set default_frame_layout 2
 hc set snap_gap $GAP
-hc set focus_follows_mouse 1
+hc set focus_follows_mouse 0
 
 # Set up monitors
 hc detect_monitors
@@ -53,7 +53,7 @@ hc keybind Super+i cycle                  #i ❯ # Cycle forward in frame
 hc keybind Super+u cycle -1               #i ❮ #       backward
 hc keybind Super+Left cycle               #i ❯ # Cycle forward in frame
 hc keybind Super+Right cycle -1           #i ❮ #       backward
-#hc keybind Super+space cycle_layout +1    #i ⮥ # Change layout type
+hc keybind Super+space cycle_layout +1    #i ⮥ # Change layout type
 hc keybind Super+f floating               #i ⮛ # Switch to floating mode
 hc keybind Super+g fullscreen toggle      #i ⮩ # Make window fullscreen
 hc keybind Super+y use_index -1           #i ◁ # Prev tag
@@ -93,6 +93,8 @@ done
 # Programs
 hc keybind Super+Return spawn ~/scripts/dmenu_fav
 hc keybind Super+r spawn ~/scripts/herbstrec
+hc keybind Super+9 spawn ~/scripts/volctl down
+hc keybind Super+0 spawn ~/scripts/volctl up
 
 # Rules
 hc unrule --all

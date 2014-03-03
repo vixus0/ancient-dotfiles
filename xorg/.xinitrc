@@ -1,12 +1,17 @@
+## Set up Xorg
+#
+
 # Set correct keymap and specify compose key
 setxkbmap gb && setxkbmap -option compose:ralt
 
 # Process PCF fonts
-xset +fp ~/.fonts/PCF
-xset fp rehash
+xset +fp ~/.fonts/PCF && xset fp rehash &
 
 # Merge Xresources
-xrdb -merge ~/.Xresources
+xrdb -merge ~/.Xresources &
+
+# Xmodmap
+xmodmap ~/.Xmodmap &
 
 # Host specific stuff
 case `hostname` in
@@ -24,14 +29,17 @@ case `hostname` in
     ;;
 esac
 
+## Start Programs
+#
+
+# set wallpaper with feh
+feh --bg-tile ~/.wallpaper
+
 # redshift for night viewing (kdy)
 redshift -l 56.1107:3.1674 -t 6500:4800 &
 
 # rxvt-unicode daemon
 urxvtd -q -f -o &
-
-# set wallpaper with feh
-feh --bg-tile ~/.wallpaper
 
 # dzen applets
 ~/scripts/statdzen &

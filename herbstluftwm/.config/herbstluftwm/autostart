@@ -3,6 +3,7 @@
 . ~/.bash_aliases
 
 host="`hostname`"
+cmds=""
 
 hc() {
   cmds="$cmds , $@"
@@ -13,6 +14,7 @@ hc lock
 GAP=2
 
 # Settings
+hc set wmname LG3D
 hc set always_show_frame 1
 hc set smart_frame_surroundings 0
 hc set frame_bg_transparent 0
@@ -111,15 +113,17 @@ hc unlock
 herbstclient chain $cmds &
 
 # Lock tag 4 to external monitor
-hc="herbstclient"
+hc() {
+  herbstclient $@
+}
 nm="`herbstclient list_monitors | wc -l`"
 if [[ $nm -gt 1 ]]; then
-  $hc focus_monitor 1
-  $hc use 4
-  $hc lock_tag 1
-  $hc focus_monitor 0
-  $hc use 1
-  $hc keybind Super+m cycle_monitor
+  hc focus_monitor 1
+  hc use 4
+  hc lock_tag 1
+  hc focus_monitor 0
+  hc use 1
+  hc keybind Super+m cycle_monitor
 fi
 
 # Tray icon manager

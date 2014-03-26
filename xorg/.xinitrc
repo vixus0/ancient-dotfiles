@@ -1,6 +1,14 @@
 ## Set up Xorg
 #
 
+# Execute global scripts
+if [ -d /etc/X11/xinit/xinitrc.d ]; then
+  for f in /etc/X11/xinit/xinitrc.d/*; do
+    [ -x "$f" ] && . "$f"
+  done
+  unset f
+fi
+
 # Set correct keymap and specify compose key
 setxkbmap gb && setxkbmap -option compose:ralt
 

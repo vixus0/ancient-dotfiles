@@ -16,14 +16,16 @@ alias suc='su -c'
 alias dusrt='echo; du -hcs * | sort -hr'
 alias redot='source $HOME/.bashrc'
 alias lastj="journalctl --since=today | tac | sed -n '/-- Reboot --/{n;:r;/-- Reboot --/q;p;n;b r}' | tac"
+alias xloc="DISPLAY=:0"
+alias po="sudo poweroff"
+alias re="sudo reboot"
 
 # Programs 
 alias wine32='env WINEARCH=win32 WINEPREFIX=~/.wine32 wine'
 alias dotstow='stow -d $HOME/dots'
 alias fehf='feh -F -d'
-alias hc='herbstclient'
-alias vg='valgrind --db-attach=yes --leak-check=yes --tool=memcheck --num-callers=16 --leak-resolution=high --track-origins=yes'
-alias bigterm='urxvtc -fn "xft:standard 07_55:size=11"'
+alias herbc='herbstclient'
+alias valgr='valgrind --db-attach=yes --leak-check=yes --tool=memcheck --num-callers=16 --leak-resolution=high --track-origins=yes'
 
 # Pacman
 alias PIns="$pacman -S"
@@ -36,6 +38,11 @@ alias PList="$pacman -Ql"
 alias PFind="yaourt"
 alias PPUpd="sudo pacman -Syyu"
 alias PAUpd="yaourt -Syua"
+
+# Clipboard
+alias CPr="xclip -o -selection PRIMARY"
+alias CSe="xclip -o -selection SECONDARY"
+alias CCl="xclip -o -selection CLIPBOARD"
 
 ## FUNCTIONS
 
@@ -74,7 +81,7 @@ mpvp() {
   if [[ $1 == "tv" ]]; then
     url="${2:-`xclip -o -selection clipboard`}"
     herbstclient reload
-    args="--ao=alsa:device=hdmi --title=playontv $url"
+    args="--no-cache --ao=alsa:device=hdmi --title=playontv $url"
   else
     args="${1:-`xclip -o -selection clipboard`}"
   fi

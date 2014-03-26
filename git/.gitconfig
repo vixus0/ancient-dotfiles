@@ -3,3 +3,10 @@
 	name = vixus0
 [push]
 	default = simple
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
+[alias]
+	df = diff
+	dt = difftool

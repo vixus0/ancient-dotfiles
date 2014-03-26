@@ -14,3 +14,6 @@ eval "`dircolors ~/.dircolors`"
 
 # Aliases
 . $HOME/.bash_aliases
+
+# settings
+shopt -s globstar

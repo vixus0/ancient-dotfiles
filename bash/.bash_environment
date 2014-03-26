@@ -18,3 +18,4 @@ export   XDG_DATA_HOME="$HOME/.local/share"
 # Misc
 export FAVPROGS="$XDG_DATA_HOME/favprogs"
 export CPLUS_INCLUDE_PATH="$HOME/.local/include"
+export ANDROID_HOME="$HOME/devel/adt/sdk"

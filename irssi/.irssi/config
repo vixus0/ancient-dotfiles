@@ -22,7 +22,6 @@ channels = (
     chatnet = "freenode";
     autojoin = "Yes";
   },
-  { name = "#anapnea"; chatnet = "freenode"; autojoin = "Yes"; },
   { name = "#herbstluftwm"; chatnet = "freenode"; autojoin = "Yes"; }
 );
 

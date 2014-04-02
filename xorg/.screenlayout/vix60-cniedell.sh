@@ -1,2 +1,5 @@
 #!/bin/sh
-xrandr --output VIRTUAL1 --off --output LVDS1 --mode 1024x768 --pos 0x0 --rotate normal --output VGA1 --mode 1280x1024 --pos 1024x0 --rotate normal
+xrandr \
+  --output LVDS1 --primary --mode 1024x768 --pos 0x0 --rotate normal \
+  --output VGA1 --mode 1280x1024 --rotate normal --right-of LVDS1 \
+  --output VIRTUAL1 --off 

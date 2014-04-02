@@ -24,6 +24,8 @@ xmodmap ~/.Xmodmap &
 # Host specific stuff
 case `hostname` in
   vix60)
+    # Dual monitor
+    ~/.screenlayout/vix60-cniedell.sh
     # Set gamma correction
     xgamma -gamma 1.25 &
     # Assign tablet buttons

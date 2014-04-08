@@ -4,23 +4,27 @@
 
 [[ -e /usr/bin/yaourt ]] && pacman="yaourt" || pacman="sudo pacman"
 
-# Utilities
+# Shell commands
 alias ls='echo; ls --group-directories-first --color=auto --classify -h'
 alias cp='cp -i'
 alias mv='mv -i'
 alias df='echo; df -h'
 alias du='echo; du -h'
+alias dud='echo; du -hcs * | sort -hr'
 alias la='echo; ls -lA'
+alias grep='grep --color=auto'
+alias dmesg='dmesg --color'
 alias s='ssh -XC'
-alias suc='su -c'
-alias dusrt='echo; du -hcs * | sort -hr'
+alias ocd='cd -'
+
+# Actions
 alias redot='source $HOME/.bashrc'
 alias lastj="journalctl --since=today | tac | sed -n '/-- Reboot --/{n;:r;/-- Reboot --/q;p;n;b r}' | tac"
 alias xloc="DISPLAY=:0"
 alias po="sudo poweroff"
 alias re="sudo reboot"
 
-# Programs 
+# Launchers
 alias wine32='env WINEARCH=win32 WINEPREFIX=~/.wine32 wine'
 alias dotstow='stow -d $HOME/dots'
 alias fehf='feh -F -d'

@@ -26,6 +26,8 @@ case `hostname` in
   vix60)
     # Dual monitor
     ~/.screenlayout/vix60-cniedell.sh
+    # Mouse acceleration
+    xset m 4 0 &
     # Set gamma correction
     xgamma -gamma 1.25 &
     # Assign tablet buttons

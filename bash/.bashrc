@@ -17,3 +17,5 @@ eval "`dircolors ~/.dircolors`"
 
 # settings
 shopt -s globstar
+shopt -s checkwinsize
+shopt -s histappend

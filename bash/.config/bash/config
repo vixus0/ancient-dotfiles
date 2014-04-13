@@ -1,0 +1,9 @@
+# settings
+shopt -s globstar
+shopt -s checkwinsize
+shopt -s histappend
+shopt -s autocd
+
+# ls colors
+eval "`dircolors $XDG_CONFIG_HOME/bash/dircolors`"
+

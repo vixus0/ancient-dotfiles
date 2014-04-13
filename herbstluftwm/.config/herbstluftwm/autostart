@@ -1,33 +1,31 @@
 #!/usr/bin/bash
 
-. ~/.bash_aliases
+herbstclient emit_hook reload
 
-host="`hostname`"
 cmds=""
-
 hc() {
   cmds="$cmds , $@"
 }
 
 hc lock
+hc keyunbind --all
 
-GAP=2
-
-# Settings
+# -- settings
 hc set wmname LG3D
-hc set always_show_frame 1
+hc set always_show_frame 0
 hc set smart_frame_surroundings 0
 hc set frame_bg_transparent 0
 hc set default_frame_layout 2
 hc set snap_gap $GAP
 hc set focus_follows_mouse 0
+# -- /settings
 
-# Set up monitors
+# -- monitors
 hc detect_monitors
-hc pad 0 0 0 0 16
+# -- /monitors
 
-# Theme
-hc set frame_gap $GAP
+# -- theme
+hc set frame_gap 0
 hc set frame_padding 0
 hc set frame_border_width 0
 hc set frame_border_active_color "#191919"
@@ -44,29 +42,34 @@ hc set window_border_active_color "#232323"
 hc set window_border_normal_color "#121317"
 hc set window_border_inner_color "#e0e0e0"
 hc set window_border_urgent_color "#802828"
+# -- /theme
 
-# Keybinds
-hc keyunbind --all
-hc keybind Super+Shift+Escape quit        #i ▩ # Quit
-hc keybind Super+q close_or_remove        #i × # Close window
-hc keybind Super+b split h 0.5            #i │ # Horizontal split
-hc keybind Super+v split v 0.5            #i ─ # Vertical split
-hc keybind Super+i cycle                  #i ❯ # Cycle forward in frame
-hc keybind Super+u cycle -1               #i ❮ #       backward
-hc keybind Super+Left cycle               #i ❯ # Cycle forward in frame
-hc keybind Super+Right cycle -1           #i ❮ #       backward
-hc keybind Super+space cycle_layout +1    #i ⮥ # Change layout type
-hc keybind Super+f floating               #i ⮛ # Switch to floating mode
-hc keybind Super+g fullscreen toggle      #i ⮩ # Make window fullscreen
-hc keybind Super+y use_index -1           #i ◁ # Prev tag
-hc keybind Super+o use_index +1           #i ▷ # Next 
-hc keybind Super+Down use_index -1        #i ◁ # Prev tag
-hc keybind Super+Up use_index +1          #i ▷ # Next 
-hc keybind Super+Shift+y move_index -1    #i ◀ # Move to prev tag
-hc keybind Super+Shift+o move_index +1    #i ▶ #         next
-hc keybind Super+Escape reload            #i ◙ # Reload config
+# -- launchers
+hc keybind Super+Return spawn ~/scripts/dmenu_fav
+hc keybind Super+r spawn ~/scripts/herbstrec
+hc keybind Super+9 spawn ~/scripts/volctl down
+hc keybind Super+0 spawn ~/scripts/volctl up
+# -- /launchers
 
-#i ⮧ ←→↑↓
+# -- controls
+hc keybind Super+Shift+Escape quit        
+hc keybind Super+q close_or_remove        
+hc keybind Super+b split h 0.5            
+hc keybind Super+v split v 0.5            
+hc keybind Super+i cycle                  
+hc keybind Super+u cycle -1               
+hc keybind Super+Left cycle               
+hc keybind Super+Right cycle -1           
+hc keybind Super+space cycle_layout +1    
+hc keybind Super+f floating               
+hc keybind Super+g fullscreen toggle      
+hc keybind Super+y use_index -1           
+hc keybind Super+o use_index +1           
+hc keybind Super+Down use_index -1        
+hc keybind Super+Up use_index +1          
+hc keybind Super+Shift+y move_index -1    
+hc keybind Super+Shift+o move_index +1    
+hc keybind Super+Escape reload            
 
 dir=("left" "right" "up" "down")
 key=("h" "l" "k" "j")
@@ -75,14 +78,9 @@ for i in 0 1 2 3; do
   hc keybind Super+Shift+${key[$i]} shift ${dir[$i]}
   hc keybind Super+Mod1+${key[$i]} resize ${dir[$i]} +0.05
 done
+# -- /controls
 
-# Mouse
-hc mouseunbind
-hc mousebind Super+B1 move
-hc mousebind Super+B3 resize
-hc mousebind Super+B2 zoom
-
-# Tags
+# -- tags
 hc rename default 1
 hc keybind Super+1 use 1
 hc keybind Super+Shift+1 move 1
@@ -91,28 +89,32 @@ for i in `seq 2 4`; do
   hc keybind Super+$i use $i
   hc keybind Super+Shift+$i move $i
 done
+# -- /tags
 
-# Programs
-hc keybind Super+Return spawn ~/scripts/dmenu_fav
-hc keybind Super+r spawn ~/scripts/herbstrec
-hc keybind Super+9 spawn ~/scripts/volctl down
-hc keybind Super+0 spawn ~/scripts/volctl up
+# -- mouse
+hc mouseunbind
+hc mousebind Super+B1 move
+hc mousebind Super+B3 resize
+hc mousebind Super+B2 zoom
+# -- /mouse
 
-# Rules
+# -- rules
 hc unrule --all
 hc rule title=stalonetray manage=off
 hc rule title=playontv tag=4 fullscreen=on
 hc rule class=Conky manage=off
 hc rule class~".*nboard" manage=off
-hc rule windowtype=_NET_WM_WINDOW_TYPE_DIALOG focus=on pseudotile=on
 hc rule class~.* focus=on
+hc rule windowtype=_NET_WM_WINDOW_TYPE_DIALOG focus=on pseudotile=on
+# -- /rules
 
-# Go go go
-hc set_layout 2
+# -- ACTIVATE
+hc set_layout max
 hc unlock
 herbstclient chain $cmds &
+# -- /ACTIVATE
 
-# Lock tag 4 to external monitor
+# -- dual monitor
 hc() {
   herbstclient $@
 }
@@ -125,13 +127,6 @@ if [[ $nm -gt 1 ]]; then
   hc use 1
   hc keybind Super+m cycle_monitor
 fi
+# -- /dual
 
-# Tray icon manager
-astart stalonetray &
-
-# CopyAgent syncer
-astart CopyAgent &
-
-# Gesture manager for tablet
-[[ $host == "vix60" ]] && astart easystroke &
-
+unset -f hc

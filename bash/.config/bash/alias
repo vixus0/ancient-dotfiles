@@ -14,7 +14,7 @@ alias dud='echo; du -hcs * | sort -hr'
 alias la='echo; ls -lA'
 alias grep='grep --color=auto'
 alias dmesg='dmesg --color'
-alias s='ssh -XC'
+alias s='ssh -XC -F $XDG_CONFIG_HOME/ssh/config'
 alias ocd='cd -'
 
 # Actions
@@ -26,10 +26,19 @@ alias re="sudo reboot"
 
 # Launchers
 alias wine32='env WINEARCH=win32 WINEPREFIX=~/.wine32 wine'
-alias dotstow='stow -d $HOME/dots'
 alias fehf='feh -F -d'
 alias herbc='herbstclient'
 alias valgr='valgrind --db-attach=yes --leak-check=yes --tool=memcheck --num-callers=16 --leak-resolution=high --track-origins=yes'
+
+# Force stuff to obey XDG
+alias tmux='tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf'
+alias irssi='irssi --home=$XDG_CONFIG_HOME/irssi'
+alias rtorrent="rtorrent -n -o import=${XDG_CONFIG_HOME}/rtorrent/config.rc"
+alias stalonetray="stalonetray -c $XDG_CONFIG_HOME/stalonetray/config.rc"
+alias weechat="weechat -d $XDG_CONFIG_HOME/weechat"
+alias skype="skype --dbpath=$XDG_CONFIG_HOME/skype"
+alias easystroke="easystroke -c $XDG_CONFIG_HOME/easystroke"
+alias mypaint="mypaint -c $XDG_CONFIG_HOME/mypaint"
 
 # Pacman
 alias PIns="$pacman -S"
@@ -38,10 +47,12 @@ alias PInfo="$pacman -Qi"
 alias PGetInfo="$pacman -Si"
 alias POwn="$pacman -Qo"
 alias PStat="$pacman -Qs"
-alias PList="$pacman -Ql"
+alias PFiles="$pacman -Ql"
 alias PFind="yaourt"
 alias PPUpd="sudo pacman -Syyu"
 alias PAUpd="yaourt -Syua"
+alias PList="$pacman -Qqe"
+alias PAList="$pacman -Qqm"
 
 # Clipboard
 alias CPr="xclip -o -selection PRIMARY"

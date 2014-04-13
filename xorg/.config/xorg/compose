@@ -27,27 +27,9 @@ include "%L"
 <Multi_key> <p> <3>         : "³" U00B3
 <Multi_key> <p> <4>         : "⁴" U2074
 
-# quotation marks
-
-<Multi_key> <bracketleft> <less>  : "〈"  U3008 # LEFT ANGLE BRACKET
-<Multi_key> <bracketright> <greater>  : "〉"  U3009 # RIGHT ANGLE BRACKET
-
-<Multi_key> <bracketleft> <apostrophe>  : "「"  U300C # LEFT CORNER BRACKET
-<Multi_key> <bracketright> <apostrophe> : "」"  U300D # RIGHT CORNER BRACKET
-
-<Multi_key> <bracketleft> <parenleft> : "〔"  U3014 # LEFT TORTOISE SHELL BRACKET
-<Multi_key> <bracketright> <parenright> : "〕"  U3015 # RIGHT TORTOISE SHELL BRACKET
-
-<Multi_key> <bracketleft> <quotedbl>  : "『"
-<Multi_key> <bracketright> <quotedbl> : "』"
-
 # various glyphs
 
-<Multi_key> <equal> <equal>   : "–" # ndash - - .
-<Multi_key> <l> <d> <a>     : "—————" # 3x mdash
-<Multi_key> <equal> <asciitilde>  : "≈" # almost equal
 <Multi_key> <asciitilde> <asciitilde> : "≈"
-<Multi_key> <zcaron> <zcaron>   : "–" # ndash - - .
 <Multi_key> <s> <h> : "♥" # heart
 <Multi_key> <s> <s> : "☻" # smile
 <Multi_key> <s> <m> : "♫" # notes
@@ -55,11 +37,6 @@ include "%L"
 <Multi_key> <s> <g> : "(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧" # sparkles/gratz
 <Multi_key> <s> <r> : "(╯°□°）╯︵ ┻━┻" # rage
 <Multi_key> <s> <l> : "(͡° ͜ʖ ͡°)" # lenny
-
-<Multi_key> <n> <o>     : "№" # numero N O
-
-<Multi_key> <exclam> <2>    : "‼"
-<Multi_key> <2> <exclam>    : "‼"
 
 # arrows
 

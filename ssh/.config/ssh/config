@@ -2,6 +2,7 @@ Host *
   ServerAliveCountMax 600
   ServerAliveInterval 10
   ForwardX11Trusted yes
+  IdentityFile ~/.local/share/ssh/id_rsa
 
 Host vixlap
   User vixus

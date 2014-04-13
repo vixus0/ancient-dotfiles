@@ -1,0 +1,17 @@
+#!/usr/bin/bash
+
+# Dual-monitor
+xrandr \
+  --output LVDS1 --primary --mode 1024x768 --pos 0x0 --rotate normal \
+  --output VGA1 --mode 1280x1024 --rotate normal --right-of LVDS1 \
+  --output VIRTUAL1 --off 
+
+# Mouse acceleration
+xset m 4 0 &
+
+# Set gamma correction
+xgamma -gamma 1.25 &
+
+# Assign tablet buttons
+sudo setkeycodes 67 42 6c 29 68 125 6b 56 71 103 6f 108 6e 105 6d 106 69 28 &
+

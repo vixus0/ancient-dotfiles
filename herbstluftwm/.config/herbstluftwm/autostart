@@ -44,13 +44,6 @@ hc set window_border_inner_color "#e0e0e0"
 hc set window_border_urgent_color "#802828"
 # -- /theme
 
-# -- launchers
-hc keybind Super+Return spawn ~/scripts/dmenu_fav
-hc keybind Super+r spawn ~/scripts/herbstrec
-hc keybind Super+9 spawn ~/scripts/volctl down
-hc keybind Super+0 spawn ~/scripts/volctl up
-# -- /launchers
-
 # -- controls
 hc keybind Super+Shift+Escape quit        
 hc keybind Super+q close_or_remove        
@@ -70,6 +63,7 @@ hc keybind Super+Up use_index +1
 hc keybind Super+Shift+y move_index -1    
 hc keybind Super+Shift+o move_index +1    
 hc keybind Super+Escape reload            
+hc keybind Super+Return spawn sh-dmenufav           
 
 dir=("left" "right" "up" "down")
 key=("h" "l" "k" "j")
@@ -116,7 +110,7 @@ herbstclient chain $cmds &
 
 # -- dual monitor
 hc() {
-  herbstclient $@
+  herbstclient "$@"
 }
 nm="`herbstclient list_monitors | wc -l`"
 if [[ $nm -gt 1 ]]; then
@@ -130,3 +124,9 @@ fi
 # -- /dual
 
 unset -f hc
+
+# -- notifications
+. $XDG_CONFIG_HOME/herbstluftwm/herbd
+
+herbd_restart
+

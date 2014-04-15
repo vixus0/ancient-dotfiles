@@ -12,18 +12,18 @@ ns() {
 vol_change() {
   chars=50
   sh-volctl $1
-  amixer sget Master,0 | awk '
-  /^  Front Left/ {
-    sub(/\[/,"",$5); 
-    sub(/%\]/,"",$5);
-    lvl=int( $5/100.0 * nch );
-  }
+  amix="`amixer get Master | egrep '^  (Mono|Front Left)'`"
+  amtk=( ${amix#*:} )
+  vol="${amtk[2]/[}"
+  vol="${vol/\%]}" 
+  echo | awk '
   END {
     i=0;
+    lvl = int( v/100.0 * nch );
     for (;i<lvl;i++) {printf "■"};
     for (;i<nch;i++) {printf " "};
     print "";
-  }' nch=$chars 
+  }' v=$vol nch=$chars 
 }
 
 herbd_start() {

@@ -14,7 +14,7 @@ alias dud='echo; du -hcs * | sort -hr'
 alias la='echo; ls -lA'
 alias grep='grep --color=auto'
 alias dmesg='dmesg --color'
-alias s='ssh -XC -F $XDG_CONFIG_HOME/ssh/config'
+alias s='ssh -XC'
 alias ocd='cd -'
 
 # Actions

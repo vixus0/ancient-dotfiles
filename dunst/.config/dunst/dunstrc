@@ -29,7 +29,7 @@
 
     # alignment of message text.
     # Possible values are "left", "center" and "right"
-    alignment = left
+    alignment = center
 
     # The frequency with wich text that is longer than the notification
     # window allows bounces back and forth.
@@ -45,7 +45,7 @@
     word_wrap = yes
 
     # ignore newlines '\n' in notifications
-    ignore_newline = no
+    ignore_newline = yes
 
 
     # the geometry of the window
@@ -59,7 +59,7 @@
     # right side of the screen.  Y is measured from the top and down respectevly.
     # The width can be negative. In this case the actual width is the
     # screen width minus the width defined in within the geometry option.
-    geometry = "x5"
+    geometry = "800x1+560+8"
 
     # The transparency of the window. range: [0; 100]
     # This option will only work if a compositing windowmanager is present (e.g. xcompmgr, compiz, etc..)
@@ -99,7 +99,7 @@
     separator_height = 1
 
     # padding between text and separator
-    padding = 8
+    padding = 3
 
     # horizontal padding
     horizontal_padding = 8
@@ -124,7 +124,7 @@
     browser = /usr/bin/firefox -new-tab
 
 [frame]
-    width = 2
+    width = 0
     color = "#121317"
 
 [shortcuts]
@@ -149,18 +149,18 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the '#' and following  would be interpreted as a comment.
-    background = "#1e2d33"
+    background = "#121317"
     foreground = "#334d57"
     timeout = 1
 
 [urgency_normal]
-    background = "#1e2d33"
+    background = "#121317"
     foreground = "#a5a9b5"
     timeout = 2
 
 [urgency_critical]
-    background = "#802828"
-    foreground = "#a5a9b5"
+    background = "#121317"
+    foreground = "#802828"
     timeout = 0
 
 

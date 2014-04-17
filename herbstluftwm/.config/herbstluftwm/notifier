@@ -1,0 +1,77 @@
+#!/usr/bin/bash
+
+vol_change() {
+  sh-volctl $1
+  chars=${2:-50}
+  amix="`amixer get Master | egrep '^  (Mono|Front Left)'`"
+  amtk=( ${amix#*:} )
+  vol="${amtk[2]/[}"
+  vol="${vol/\%]}" 
+  [[ $vol == "0" ]] && return
+  [[ $vol == "100" ]] && return
+  echo $vol
+  #echo | awk '
+  #END {
+  #  i=0;
+  #  lvl = int( v/100.0 * nch );
+  #  for (;i<lvl;i++) {printf "■"};
+  #  for (;i<nch;i++) {printf " "};
+  #  print "";
+  #}' v=$vol nch=$chars 
+}
+
+ns() {
+  #notify-send "$@"
+  dunstify "$@"
+}
+
+hlwm_id=101
+vol_id=102
+
+# -- monitor daemons
+herbstclient --wait reload &
+wait_pid=$!
+## package updates
+while kill -0 $wait_pid >/dev/null 2>&1
+do
+  upd=`checkupdates | wc -l`
+  [[ $upd -gt 0 ]] && ns -u critical -a pacman '⮢' "$upd updates available"
+  sleep 1h
+done & 
+# -- /monitor daemons
+
+# -- notify daemon
+herbstclient --idle | while read line; do
+  cmds=($line)
+  case ${cmds[0]} in
+
+    "urgent")
+      [[ ${cmds[1]} == "on" ]] && ns -u critical -a hlwm -r $hlwm_id '<b>!</b>' "`herbstclient attr clients.${cmds[2]}.title`"
+      ;;
+
+    "vol_up")
+      out="`vol_change up`"
+      [[ -n $out ]] && ns -u normal -t 1 -a vol -r $vol_id '⮟' $out         
+      ;;
+
+    "vol_down")
+      out="`vol_change down`"
+      [[ -n $out ]] && ns -u normal -t 1 -a vol -r $vol_id '⮟' $out         
+      ;;
+
+    "vol_mute")
+      sh-volctl mute
+      ns -u normal -t 1 -a vol -r $vol_id '⮝' "mute"
+      ;;
+
+    "reload")
+      exit
+      ;;
+
+    *)
+      continue
+      ;;
+
+  esac
+done
+# -- /notify daemon

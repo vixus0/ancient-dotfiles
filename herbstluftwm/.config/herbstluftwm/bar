@@ -1,0 +1,95 @@
+#!/usr/bin/bash
+
+## COLORS
+cb='#121317'
+cf='#a5a9b5'
+c0='#1e2d33'
+c1='#802828'
+c2='#909737'
+c3='#b27d12'
+c4='#1e5673'
+c5='#642337'
+c6='#196271'
+c7='#99b3bd'
+c9='#334d57'
+c8='#8a3232'
+cr='^bg()^fg()'
+
+## FONT
+fn="lemon:size=10"
+
+## RESOLUTION
+xr="`xrandr | awk '/*+/ {print $1}'`"
+res="${xr%x*}"
+
+sep="^fg($c0)|^fg()" 
+
+batt() {
+  cf="`cat /sys/class/power_supply/BAT*/charge_full`" 
+  cn="`cat /sys/class/power_supply/BAT*/charge_now`" 
+  cs="`cat /sys/class/power_supply/BAT*/status`" 
+  cp="`echo $cf $cn | awk '{print int($2/$1 * 100.0)}'`"
+
+  ico="^fg($c4)⮏^fg() ${cp}%"
+  [[ $cs == "Charging" ]] && ico="^fg($c3)⮒^fg() ${cp}%"
+  [[ $cs == "Full" ]]     && ico="^fg($c2)⮎^fg()"
+
+  echo "$ico"
+}
+
+wifi() {
+  lq="`awk '/^wl/ {print int($3)}' /proc/net/wireless`"
+  id="`connmanctl services | awk '/^*/ {print $2}'`"
+  echo $id $lq
+}
+
+eth() {
+  link="`ip link | awk '/: e/ && /UP/ {sub(/:/,\"\",$2);print $2}'`"
+  cat /sys/class/net/$link/operstate
+}
+
+net() {
+  if [[ `eth` == "up" ]]; then
+    echo "^fg($c2)⮷^fg() eth"
+    return
+  fi
+  wi=( `wifi` )
+  if [[ -n ${wi[0]} ]]; then
+    echo "^fg($c2)⮷ ${wi[1]}^fg() ${wi[0]}"
+  else
+    echo "^fg($c0)⮹ disconnected^fg()"
+  fi
+}
+
+
+day() {
+  date +"%a %d %b ^bg($c0) ^fg($c6)⮖^fg() %H:%M"
+}
+
+tags() {
+  t="`herbstclient tag_status`"
+  t="${t//\#/${cr}^fg($c4)}"
+  t="${t//:/${cr}}"
+  t="${t//./${cr}^fg($c0)}"
+  t="${t//!/${cr}^fg($c1)}${cr}"
+  echo $t
+}
+
+focus() {
+  herbstclient get_attr clients.focus.title
+}
+
+herbstclient --wait reload &
+wpid=$!
+while kill -0 $wpid >/dev/null 2>&1; do
+   left=" `tags` $sep  `focus`"
+  right="`net`  $sep  `batt`  $sep  `day` "
+  clean="`echo ${right} | sed -e "s/\^[fb]g([\#a-f0-9]*)//g"`"
+     tw=`xftwidth $fn "${clean}"`
+
+     echo -e "${left}^p(_RIGHT)^p(-$tw)^p(-3)${right}"
+  sleep 0.5s
+done | dzen2 \
+  -w $(( $res - 2 * $HLWM_GAP )) -h 16 -x $HLWM_GAP -y $HLWM_GAP \
+  -bg $cb -fg $cf \
+  -ta l

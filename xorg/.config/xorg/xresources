@@ -34,6 +34,7 @@ URxvt*boldFont:
 URxvt*internalBorder: 8
 URxvt*highlightColor: #252020
 URxvt*urgentOnBell: true
+URxvt*cursorUnderline: true
 
 !!-- urxvt perl select
 !URxvt.iso14755: false

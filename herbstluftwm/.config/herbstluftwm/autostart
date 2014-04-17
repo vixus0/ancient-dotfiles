@@ -7,10 +7,15 @@ hc() {
   cmds="$cmds , $@"
 }
 
+gap=8
+
 hc lock
 hc keyunbind --all
 
 # -- settings
+export HLWM_GAP=$gap
+export HLWM_HOME=$XDG_CONFIG_HOME/herbstluftwm
+
 hc set wmname LG3D
 hc set always_show_frame 0
 hc set smart_frame_surroundings 0
@@ -22,10 +27,11 @@ hc set focus_follows_mouse 0
 
 # -- monitors
 hc detect_monitors
+hc pad 0 24
 # -- /monitors
 
 # -- theme
-hc set frame_gap 0
+hc set frame_gap $gap
 hc set frame_padding 0
 hc set frame_border_width 0
 hc set frame_border_active_color "#191919"
@@ -64,6 +70,9 @@ hc keybind Super+Shift+y move_index -1
 hc keybind Super+Shift+o move_index +1    
 hc keybind Super+Escape reload            
 hc keybind Super+Return spawn sh-dmenufav           
+hc keybind Super+9 emit_hook vol_down
+hc keybind Super+0 emit_hook vol_up
+hc keybind Super+8 emit_hook vol_mute
 
 dir=("left" "right" "up" "down")
 key=("h" "l" "k" "j")
@@ -125,8 +134,8 @@ fi
 
 unset -f hc
 
-# -- notifications
-. $XDG_CONFIG_HOME/herbstluftwm/herbd
+# -- bars and notifications
+$HLWM_HOME/bar &
+$HLWM_HOME/notifier &
 
-herbd_restart
-
+[[ -z `pgrep dunst` ]] && dunst &

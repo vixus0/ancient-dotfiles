@@ -3,10 +3,8 @@
 vol_change() {
   sh-volctl $1
   chars=${2:-50}
-  amix="`amixer get Master | egrep '^  (Mono|Front Left)'`"
-  amtk=( ${amix#*:} )
-  vol="${amtk[2]/[}"
-  vol="${vol/\%]}" 
+  amix="`amixer get Master | tail -n1 | cut -d'[' -f2`"
+  vol="${amix/\%]}" 
   [[ $vol == "0" ]] && return
   [[ $vol == "100" ]] && return
   echo $vol

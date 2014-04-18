@@ -26,20 +26,21 @@ sep="^fg($c0)|^fg()"
 asep="^fg($c0)⮁^fg()" 
 
 batt() {
-  cf="`cat /sys/class/power_supply/BAT*/charge_full`" 
-  cn="`cat /sys/class/power_supply/BAT*/charge_now`" 
+  cf="`cat /sys/class/power_supply/BAT*/{energy,charge}_full`" 
+  cn="`cat /sys/class/power_supply/BAT*/{energy,charge}_now`" 
   cs="`cat /sys/class/power_supply/BAT*/status`" 
   cp="`echo $cf $cn | awk '{print int($2/$1 * 100.0)}'`"
 
   ico="^fg($c4)⮏^fg() ${cp}%"
-  [[ $cs == "Charging" ]] && ico="^fg($c3)⮒^fg() ${cp}%"
+  [[ $cp -lt 20 ]]        && ico="^fg($c1)⮑ ${cp}%^fg()"
+  [[ $cs == "Charging" ]] && ico="^fg($c3)⮒ ${cp}%^fg()"
   [[ $cs == "Full" ]]     && ico="^fg($c2)⮎^fg()"
 
   echo "$ico"
 }
 
 wifi() {
-  lq="`awk '/^wl/ {print int($3)}' /proc/net/wireless`"
+  lq="`awk '/wl/ {print int($3)}' /proc/net/wireless`"
   id="`connmanctl services | awk '/^*/ {print $2}'`"
   echo $id $lq
 }

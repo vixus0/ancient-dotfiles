@@ -84,7 +84,7 @@ focus() {
 herbstclient --wait reload &
 wpid=$!
 while kill -0 $wpid >/dev/null 2>&1; do
-   left=" `tags` $asep  `focus`"
+   left=" `tags` $asep  "
   right="`net`  $sep  `batt`  $sep  `day` "
   clean="`echo ${right} | sed -e "s/\^[fb]g([\#a-f0-9]*)//g"`"
      tw=`xftwidth $fn "${clean}"`

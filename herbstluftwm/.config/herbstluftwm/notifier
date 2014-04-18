@@ -64,6 +64,10 @@ herbstclient --idle | while read line; do
       ns -u normal -t 1 -a vol -r $vol_id '⮝' "mute"
       ;;
 
+    "focus_changed")
+      [[ -n ${cmds[2]} ]] && ns -u normal -t 1 -a vol -r $hlwm_id '⮛' "${cmds[2]}"
+      ;;
+
     "reload")
       exit
       ;;

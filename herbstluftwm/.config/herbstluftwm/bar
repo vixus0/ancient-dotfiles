@@ -23,6 +23,7 @@ xr="`xrandr | awk '/*+/ {print $1}'`"
 res="${xr%x*}"
 
 sep="^fg($c0)|^fg()" 
+asep="^fg($c0)⮁^fg()" 
 
 batt() {
   cf="`cat /sys/class/power_supply/BAT*/charge_full`" 
@@ -63,7 +64,7 @@ net() {
 
 
 day() {
-  date +"%a %d %b ^bg($c0) ^fg($c6)⮖^fg() %H:%M"
+  date +"%a %d %b  ^bg($c0) %H:%M"
 }
 
 tags() {
@@ -82,12 +83,12 @@ focus() {
 herbstclient --wait reload &
 wpid=$!
 while kill -0 $wpid >/dev/null 2>&1; do
-   left=" `tags` $sep  `focus`"
+   left=" `tags` $asep  `focus`"
   right="`net`  $sep  `batt`  $sep  `day` "
   clean="`echo ${right} | sed -e "s/\^[fb]g([\#a-f0-9]*)//g"`"
      tw=`xftwidth $fn "${clean}"`
 
-     echo -e "${left}^p(_RIGHT)^p(-$tw)^p(-3)${right}"
+     echo -e "${left}^p(_RIGHT)^p(-$tw)^p(-17)${right}"
   sleep 0.5s
 done | dzen2 \
   -w $(( $res - 2 * $HLWM_GAP )) -h 16 -x $HLWM_GAP -y $HLWM_GAP \

@@ -21,7 +21,7 @@ hc set always_show_frame 0
 hc set smart_frame_surroundings 0
 hc set frame_bg_transparent 0
 hc set default_frame_layout 2
-hc set snap_gap $GAP
+hc set snap_gap $gap
 hc set focus_follows_mouse 0
 # -- /settings
 

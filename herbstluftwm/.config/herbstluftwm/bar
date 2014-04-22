@@ -56,8 +56,9 @@ net() {
     return
   fi
   wi=( `wifi` )
+  [[ -z ${wi[1]} ]] && ico="^fg($c1)⮹^fg()" || ico="^fg($c2)⮷ ${wi[1]}^fg()"  
   if [[ -n ${wi[0]} ]]; then
-    echo "^fg($c2)⮷ ${wi[1]}^fg() ${wi[0]}"
+    echo "$ico ${wi[0]}"
   else
     echo "^fg($c0)⮹ disconnected^fg()"
   fi

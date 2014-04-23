@@ -29,6 +29,7 @@ alias wine32='env WINEARCH=win32 WINEPREFIX=~/.wine32 wine'
 alias fehf='feh -F -d'
 alias herbc='herbstclient'
 alias valgr='valgrind --db-attach=yes --leak-check=yes --tool=memcheck --num-callers=16 --leak-resolution=high --track-origins=yes'
+alias clock='tty-clock -c -C4 -f"%a %d %b, %Y"'
 
 # Force stuff to obey XDG
 alias tmux='tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf'

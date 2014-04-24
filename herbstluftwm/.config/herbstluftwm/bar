@@ -26,6 +26,11 @@ sep="^fg($c0)|^fg()"
 asep="^fg($c0)⮁^fg()" 
 
 batt() {
+  if [[ -z "`ls /sys/class/power_supply/BAT*`" ]]; then
+    echo "^fg($c0)⮎^fg()"
+    return
+  fi
+
   cf="`cat /sys/class/power_supply/BAT*/{energy,charge}_full`" 
   cn="`cat /sys/class/power_supply/BAT*/{energy,charge}_now`" 
   cs="`cat /sys/class/power_supply/BAT*/status`" 

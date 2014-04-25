@@ -7,15 +7,12 @@ hc() {
   cmds="$cmds , $@"
 }
 
-gap=8
+gap=$HLWM_GAP
 
 hc lock
 hc keyunbind --all
 
 # -- settings
-export HLWM_GAP=$gap
-export HLWM_HOME=$XDG_CONFIG_HOME/herbstluftwm
-
 hc set wmname LG3D
 hc set always_show_frame 0
 hc set smart_frame_surroundings 0

@@ -21,6 +21,7 @@ fn="lemon:size=10"
 ## RESOLUTION
 xr="`xrandr | awk '/*+/ {print $1}'`"
 res="${xr%x*}"
+gap="${HLWM_GAP:-8}"
 
 sep="^fg($c0)|^fg()" 
 asep="^fg($c0)⮁^fg()" 
@@ -31,8 +32,8 @@ batt() {
     return
   fi
 
-  cf="`cat /sys/class/power_supply/BAT*/{energy,charge}_full`" 
-  cn="`cat /sys/class/power_supply/BAT*/{energy,charge}_now`" 
+  cf="`cat /sys/class/power_supply/BAT*/{energy,charge}_full 2>/dev/null`" 
+  cn="`cat /sys/class/power_supply/BAT*/{energy,charge}_now 2>/dev/null`" 
   cs="`cat /sys/class/power_supply/BAT*/status`" 
   cp="`echo $cf $cn | awk '{print int($2/$1 * 100.0)}'`"
 
@@ -98,6 +99,6 @@ while kill -0 $wpid >/dev/null 2>&1; do
      echo -e "${left}^p(_RIGHT)^p(-$tw)^p(-17)${right}"
   sleep 0.5s
 done | dzen2 \
-  -w $(( $res - 2 * $HLWM_GAP )) -h 16 -x $HLWM_GAP -y $HLWM_GAP \
+  -w $(( $res - 2 * $gap )) -h 16 -x $gap -y $gap \
   -bg $cb -fg $cf \
   -ta l

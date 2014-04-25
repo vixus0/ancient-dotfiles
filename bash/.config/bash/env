@@ -9,6 +9,10 @@ export   XDG_DATA_HOME="$HOME/.local/share"
 export XINITRC="$XDG_CONFIG_HOME/xorg/xinitrc"
 export XAUTHORITY="$XDG_CACHE_HOME/Xauthority"
 
+# Herbstluftwm
+export HLWM_GAP=8
+export HLWM_HOME=$XDG_CONFIG_HOME/herbstluftwm
+
 # Get vim into .config
 export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
 

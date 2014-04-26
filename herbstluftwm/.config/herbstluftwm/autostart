@@ -7,7 +7,9 @@ hc() {
   cmds="$cmds , $@"
 }
 
-gap=$HLWM_GAP
+gap=8
+mypath=`realpath $0`
+mydir=`dirname $mypath`
 
 hc lock
 hc keyunbind --all
@@ -132,7 +134,11 @@ fi
 unset -f hc
 
 # -- bars and notifications
-$HLWM_HOME/bar &
-$HLWM_HOME/notifier &
+$mydir/bar $gap &
+$mydir/notifier &
 
-[[ -z `pgrep dunst` ]] && dunst &
+dunst_cfg="${XDG_CONFIG_HOME}/dunst/dunstrc"
+if [[ -z `pgrep dunst` ]]; then
+  sed "s/::gap::/${gap}/g" $dunst_cfg > /tmp/dunstrc
+  dunst -config /tmp/dunstrc &
+fi

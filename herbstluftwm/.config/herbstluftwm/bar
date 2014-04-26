@@ -21,7 +21,7 @@ fn="lemon:size=10"
 ## RESOLUTION
 xr="`xrandr | awk '/*+/ {print $1}'`"
 res="${xr%x*}"
-gap="${HLWM_GAP:-8}"
+gap="${1:-8}"
 
 sep="^fg($c0)|^fg()" 
 asep="^fg($c0)⮁^fg()" 

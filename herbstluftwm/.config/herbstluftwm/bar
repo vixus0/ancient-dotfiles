@@ -23,7 +23,7 @@ xr="`xrandr | awk '/*+/ {print $1}'`"
 res="${xr%x*}"
 gap="${1:-8}"
 
-sep="^fg($c0)|^fg()" 
+sep="^fg($c0)·^fg()" 
 asep="^fg($c0)⮁^fg()" 
 
 batt() {
@@ -37,10 +37,10 @@ batt() {
   cs="`cat /sys/class/power_supply/BAT*/status`" 
   cp="`echo $cf $cn | awk '{print int($2/$1 * 100.0)}'`"
 
-  ico="^fg($c4)⮏^fg() ${cp}%"
+  ico="^fg($cf)⮏^fg() ${cp}%"
   [[ $cp -lt 20 ]]        && ico="^fg($c1)⮑ ${cp}%^fg()"
-  [[ $cs == "Charging" ]] && ico="^fg($c3)⮒ ${cp}%^fg()"
-  [[ $cs == "Full" ]]     && ico="^fg($c2)⮎^fg()"
+  [[ $cs == "Charging" ]] && ico="^fg($cf)⮒ ${cp}%^fg()"
+  [[ $cs == "Full" ]]     && ico="^fg($cf)⮎^fg()"
 
   echo "$ico"
 }
@@ -62,7 +62,7 @@ net() {
     return
   fi
   wi=( `wifi` )
-  [[ -z ${wi[1]} ]] && ico="^fg($c1)⮹^fg()" || ico="^fg($c2)⮷ ${wi[1]}^fg()"  
+  [[ -z ${wi[1]} ]] && ico="^fg($c1)⮹^fg()" || ico="^fg($c4)⮷ ${wi[1]}^fg()"  
   if [[ -n ${wi[0]} ]]; then
     echo "$ico ${wi[0]}"
   else
@@ -72,7 +72,7 @@ net() {
 
 
 day() {
-  date +"%a %d %b  ^bg($c0) %H:%M"
+  date +"%a %d %b  ^fg($c4)%H:%M"
 }
 
 tags() {
@@ -96,7 +96,7 @@ while kill -0 $wpid >/dev/null 2>&1; do
   clean="`echo ${right} | sed -e "s/\^[fb]g([\#a-f0-9]*)//g"`"
      tw=`xftwidth $fn "${clean}"`
 
-     echo -e "${left}^p(_RIGHT)^p(-$tw)^p(-17)${right}"
+     echo -e "${left}^p(_RIGHT)^p(-$tw)^p(-8)${right}"
   sleep 0.5s
 done | dzen2 \
   -w $(( $res - 2 * $gap )) -h 16 -x $gap -y $gap \

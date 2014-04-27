@@ -94,9 +94,9 @@ while kill -0 $wpid >/dev/null 2>&1; do
    left=" `tags` $asep  "
   right="`net`  $sep  `batt`  $sep  `day` "
   clean="`echo ${right} | sed -e "s/\^[fb]g([\#a-f0-9]*)//g"`"
-     tw=`xftwidth $fn "${clean}"`
+     tw=`xftwidth $fn "${clean}   "`
 
-     echo -e "${left}^p(_RIGHT)^p(-$tw)^p(-8)${right}"
+     echo -e "${left}^p(_RIGHT)^p(-$tw)${right}"
   sleep 0.5s
 done | dzen2 \
   -w $(( $res - 2 * $gap )) -h 16 -x $gap -y $gap \

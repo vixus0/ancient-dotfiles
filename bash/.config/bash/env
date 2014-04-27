@@ -31,7 +31,7 @@ export CPLUS_INCLUDE_PATH="$HOME/.local/include"
 export ANDROID_HOME="$HOME/devel/adt/sdk"
 
 # Path
-export PATH=$HOME/.local/scripts:$HOME/.local/bin:$PATH
+export PATH=$HOME/scripts:$HOME/.local/bin:$PATH
 
 # Tell git and others my favourite editor
 export EDITOR=vim

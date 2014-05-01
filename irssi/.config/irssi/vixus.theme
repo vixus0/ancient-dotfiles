@@ -137,7 +137,7 @@ abstracts = {
   #  privmsgnick = "%K{msgnick  %R$*%K}%n";
 
   # $0 = nick mode, $1 = nick
-  ownmsgnick = "{msgnick $0 $1-%G}%g";
+  ownmsgnick = "{msgnick $0 $1-%G}%w";
   ownnick = "$*%n";
 
   # public message in channel, $0 = nick mode, $1 = nick
@@ -271,7 +271,7 @@ abstracts = {
   topicsbstart = "{sbstart $*}";
   topicsbend = "{sbend $*}";
 
-  prompt = "%2%k $* %n%g⮀ ";
+  prompt = " %r»  ";
 
   sb = " %R $* %n";
   sbmode = "(%c+%n$*)";

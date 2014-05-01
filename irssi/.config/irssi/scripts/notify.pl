@@ -42,7 +42,7 @@ sub notify {
     $message = sanitize($message);
 
     my $cmd = "EXEC - " .
-    "dunstify -a irssi -u normal -r 105 -t 3 '⮮ ".$summary."' '".$message."'";
+    "dunstify -a irssi -u normal -r 105 -t 3 '⮮ irssi' '".$message."'";
     $server->command($cmd);
 
     my $remote = Irssi::settings_get_str('notify_remote');
@@ -53,10 +53,7 @@ sub notify {
     }
     if ($remote ne '') {
 	my $cmd = "EXEC " . $nodebugstr . "ssh -q " . $remote . " \"".
-	    " ~/bin/irssi-notifier.sh".
-	    " dbus-send --session /org/irssi/Irssi org.irssi.Irssi.IrssiNotify" .
-	    " string:'" . $summary . "'" .
-	    " string:'" . $message . "'\"";
+      "dunstify -a irssi -u normal -r 105 -t 3 '⮮ irssi' '".$message."'\"";
 	#print $cmd;
 	$server->command($cmd);
     }

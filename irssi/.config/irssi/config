@@ -116,12 +116,11 @@ statusbar = {
     # the "default statusbar" to be displayed at the bottom of the window.
     # contains all the normal items.
     window = {
-      disabled = "no";
 
       # window, root
       type = "window";
       # top, bottom
-      placement = "bottom";
+      placement = "top";
       # number
       position = "1";
       # active, inactive, always
@@ -135,7 +134,7 @@ statusbar = {
         window = { };
         window_empty = { };
         lag = { priority = "-1"; };
-        act = { priority = "10"; };
+        act = { priority = "10"; alignment = "right"; };
         more = { priority = "-1"; alignment = "right"; };
         barend = { priority = "100"; alignment = "right"; };
       };
@@ -184,6 +183,7 @@ statusbar = {
         topic_empty = { };
         topicbarend = { priority = "100"; alignment = "right"; };
       };
+      disabled = "yes";
     };
   };
 };
@@ -199,6 +199,7 @@ settings = {
     theme = "vixus";
     show_nickmode_empty = "yes";
     show_nickmode = "no";
+    timestamps = "no";
   };
   "perl/core/scripts" = {
     neat_colorize = "yes";
@@ -206,6 +207,7 @@ settings = {
     neat_allow_shrinking = "no";
     neat_right_mode = "no";
     openurl_app_http = "firefox \"$1\" &>/dev/null";
+    neat_colors = "rgGyYbBmMcC";
   };
 };
 ignores = ( { level = "JOINS QUITS"; } );

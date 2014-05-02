@@ -198,7 +198,7 @@ sub add_note ($$$) {
 	$witem = Irssi::window_item_find($target);
     }
     if (defined $witem) {
-	$witem->print("%R>>%n OpenURL ".$num, MSGLEVEL_CLIENTCRAP);
+	$witem->print("%R>>%n ".$num, MSGLEVEL_CLIENTCRAP);
 	# create a unique ID for the mark
 	my $foo = time().'-'.int(rand()*1000);
 	$witem->window()->view()->set_bookmark_bottom("openurl_".$num.'-'.$foo);

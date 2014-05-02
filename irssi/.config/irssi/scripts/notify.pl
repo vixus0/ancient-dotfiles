@@ -52,8 +52,8 @@ sub notify {
 	$nodebugstr = '';
     }
     if ($remote ne '') {
-	my $cmd = "EXEC " . $nodebugstr . "ssh -q " . $remote . " \"".
-      "dunstify -a irssi -u normal -r 105 -t 3 '⮮ irssi' '".$message."'\"";
+	my $cmd = "EXEC " . $nodebugstr . "ssh -q " . $remote .
+      "dunstify -a irssi -u normal -r 105 -t 3 '⮮ irssi' '".$message."' ";
 	#print $cmd;
 	$server->command($cmd);
     }

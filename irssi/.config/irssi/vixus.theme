@@ -137,7 +137,7 @@ abstracts = {
   #  privmsgnick = "%K{msgnick  %R$*%K}%n";
 
   # $0 = nick mode, $1 = nick
-  ownmsgnick = "{msgnick $0 $1-%G}%w";
+  ownmsgnick = "{msgnick $0 $1-%c}%R";
   ownnick = "$*%n";
 
   # public message in channel, $0 = nick mode, $1 = nick
@@ -145,12 +145,12 @@ abstracts = {
   pubnick = "$*%n";
 
   # public message in channel meant for me, $0 = nick mode, $1 = nick
-  pubmsgmenick = "{msgnick $0 $1-%Y}%y";
+  pubmsgmenick = "{msgnick $0 $1-%K}%w";
   menick = "$*%n";
 
   # public highlighted message in channel
   # $0 = highlight color, $1 = nick mode, $2 = nick
-  pubmsghinick = "{msgnick $1 $0$2-%R}%r";
+  pubmsghinick = "{msgnick $1 $0$2-%K}%w";
 
   # channel name is printed with message
   msgchannel = "%K:%c$*%n";
@@ -162,11 +162,11 @@ abstracts = {
   ownprivmsg = "[%r$0%K(%R$1-%K)%n] ";
 
   # own private message in query
-  ownprivmsgnick = "{msgnick  $*}";
+  ownprivmsgnick = "{msgnick  $*%G}%w";
   ownprivnick = "%_$*%n";
 
   # private message in query
-  privmsgnick = "{msgnick  %R$*%n}";
+  privmsgnick = "{msgnick  %R$*%k}%n";
 
   ##
   ## Actions (/ME stuff)
@@ -310,8 +310,8 @@ formats = {
     pubmsg_me_channel = "{pubmsgmenick $3 {menick $[-16]0}{msgchannel $1}}$2";
     pubmsg_hilight = "{pubmsghinick $0 $3 $[-16]1%n}$2";
     pubmsg_hilight_channel = "{pubmsghinick $0 $4 $[-16]1{msgchannel $2}}$3";
-    pubmsg = "{pubmsgnick $2 {pubnick %w$[-16]0}}$1";
-    pubmsg_channel = "{pubmsgnick $2 {pubnick %w$[-16]0}}$1";
+    pubmsg = "{pubmsgnick $2 {pubnick %B$[-16]0}}$1";
+    pubmsg_channel = "{pubmsgnick $2 {pubnick %B$[-16]0}}$1";
     msg_private_query = "{privmsgnick $[-16]0}$2";
   };
   "fe-common/irc" = {

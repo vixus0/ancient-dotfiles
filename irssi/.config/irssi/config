@@ -15,16 +15,6 @@ chatnets = {
   };
 };
 
-channels = (
-  { name = "#archlinux"; chatnet = "freenode"; autojoin = "Yes"; },
-  {
-    name = "#archlinux-offtopic";
-    chatnet = "freenode";
-    autojoin = "Yes";
-  },
-  { name = "#herbstluftwm"; chatnet = "freenode"; autojoin = "Yes"; }
-);
-
 aliases = {
   J = "join";
   WJOIN = "join -window";
@@ -73,7 +63,7 @@ aliases = {
   ATAG = "WINDOW SERVER";
   UNSET = "set -clear";
   RESET = "set -default";
-  NI = "msg nickserv identify";
+  NI = "msg nickserv identify $0; join #archlinux-offtopic; join #archlinux-fr; join #archlinux";
 };
 
 statusbar = {
@@ -200,6 +190,7 @@ settings = {
     show_nickmode_empty = "yes";
     show_nickmode = "no";
     timestamps = "no";
+    show_names_on_join = "no";
   };
   "perl/core/scripts" = {
     neat_colorize = "yes";
@@ -208,6 +199,7 @@ settings = {
     neat_right_mode = "no";
     openurl_app_http = "firefox \"$1\" &>/dev/null";
     neat_colors = "rgGyYbBmMcC";
+    notify_remote = "";
   };
 };
 ignores = ( { level = "JOINS QUITS"; } );

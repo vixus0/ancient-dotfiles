@@ -59,6 +59,7 @@ alias PAList="$pacman -Qqm"
 alias CPr="xclip -o -selection PRIMARY"
 alias CSe="xclip -o -selection SECONDARY"
 alias CCl="xclip -o -selection CLIPBOARD"
+alias Cc="xclip -i -selection PRIMARY"
 
 ## FUNCTIONS
 

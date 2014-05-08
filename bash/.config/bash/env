@@ -27,7 +27,7 @@ export KDEHOME="$XDG_CACHE_HOME/kde"
 # Misc
 export FAVPROGS="$XDG_DATA_HOME/favourites"
 export CPLUS_INCLUDE_PATH="$HOME/.local/include"
-export ANDROID_HOME="$HOME/devel/adt/sdk"
+export ANDROID_HOME="$XDG_DATA_HOME/android_sdk"
 
 # Path
 export PATH=$HOME/scripts:$HOME/.local/bin:$PATH

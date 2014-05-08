@@ -191,6 +191,7 @@ settings = {
     show_nickmode = "no";
     timestamps = "no";
     show_names_on_join = "no";
+    activity_hide_level = " parts joins modes nicks quits";
   };
   "perl/core/scripts" = {
     neat_colorize = "yes";
@@ -202,5 +203,5 @@ settings = {
     notify_remote = "";
   };
 };
-ignores = ( { level = "JOINS QUITS"; } );
+ignores = ( { level = "JOINS PARTS QUITS KICKS MODES NICKS"; } );
 hilights = ( { text = "vixus"; nick = "yes"; word = "yes"; } );

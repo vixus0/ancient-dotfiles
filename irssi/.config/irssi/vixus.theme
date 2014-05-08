@@ -310,8 +310,8 @@ formats = {
     pubmsg_me_channel = "{pubmsgmenick $3 {menick $[-16]0}{msgchannel $1}}$2";
     pubmsg_hilight = "{pubmsghinick $0 $3 $[-16]1%n}$2";
     pubmsg_hilight_channel = "{pubmsghinick $0 $4 $[-16]1{msgchannel $2}}$3";
-    pubmsg = "{pubmsgnick $2 {pubnick %C$[-16]0}}$1";
-    pubmsg_channel = "{pubmsgnick $2 {pubnick %C$[-16]0}}$1";
+    pubmsg = "{pubmsgnick $2 {pubnick %B$[-16]0}}$1";
+    pubmsg_channel = "{pubmsgnick $2 {pubnick %B$[-16]0}}$1";
     msg_private_query = "{privmsgnick $[-16]0}$2";
   };
   "fe-common/irc" = {

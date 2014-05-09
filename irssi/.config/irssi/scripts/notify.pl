@@ -29,6 +29,7 @@ sub sanitize {
   my $aposenc = "\&apos;";
   $text =~ s/$apos/$aposenc/g;
   $text =~ s/"/\\"/g;
+  $text =~ s/'//g;
   $text =~ s/\$/\\\$/g;
   $text =~ s/`/\\"/g;
   return $text;
@@ -42,20 +43,20 @@ sub notify {
     $message = sanitize($message);
 
     my $cmd = "EXEC - " .
-    "dunstify -a irssi -u normal -r 105 -t 3 '⮮ irssi' '".$message."'";
+      "notify-send -a irssi -u normal -t 3 '⮮ irssi' '".$message."'";
     $server->command($cmd);
 
     my $remote = Irssi::settings_get_str('notify_remote');
     my $debug = Irssi::settings_get_str('notify_debug');
     my $nodebugstr = '- ';
     if ($debug ne '') {
-	$nodebugstr = '';
+	    $nodebugstr = '';
     }
     if ($remote ne '') {
-	my $cmd = "EXEC " . $nodebugstr . "ssh -q " . $remote .
-      "dunstify -a irssi -u normal -r 105 -t 3 '⮮ irssi' '".$message."' ";
-	#print $cmd;
-	$server->command($cmd);
+      my $cmd = "EXEC " . $nodebugstr . "ssh -q " . $remote .
+        "notify-send -a irssi -u normal -t 3 '⮮ irssi' '".$message."' ";
+      #print $cmd;
+      $server->command($cmd);
     }
 
 }

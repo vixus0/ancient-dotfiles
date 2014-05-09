@@ -1,0 +1,35 @@
+"1.1
+
+loadplugins '\.(js|penta)$'
+group user
+highlight Boolean color: #ffa0a0;
+highlight CompDesc color: #c6c6c6; width: 50%; font-weight: normal !important;
+highlight CompItem[selected] color: #f0e685; background: #6b8e23; 
+highlight CompTitle color: #78cee4 !important; background: #000000 !important;
+highlight Disabled color: #bb493b;
+highlight Enabled color: #6b8e23;
+highlight Function color: #ffffff;
+highlight GradientLeft background-color: white;
+highlight GradientRight background-color: black;
+highlight Indicator color: #c6c6c6; width: 1.5em; text-align: center;
+highlight InfoMsg color: #ffffff !important; background: #333333 !important;
+highlight LineNr color: #78cee4 !important; background: #333333 !important;
+highlight ModeMsg color: #ffffff !important; background: #333333 !important;
+highlight MoreMsg color: #6b8e23 !important; background: #333333 !important;
+highlight NonText color: #add8e6; background: #4d4d4d; min-height: 16px; padding-left: 2px;
+highlight Normal color: #ffffff; background: #333333; font-weight: bold !important;
+highlight Null color: #ffa0a0;
+highlight Number color: #ffa0a0;
+highlight Object color: #ffffff;
+highlight Question color: #6b8e23 !important; background: #333333 !important; font-weight: bold !important;
+highlight -link=FontFixed StatusLine color: #ffffff !important; background-color: #000000 !important; font-weight: bold !important;
+highlight StatusQuestion color: #6b8e23 !important; background: inherit !important;
+highlight String color: #ffa0a0; white-space: pre;
+highlight Title color: #78cee4; background: #333333; font-weight: bold;
+highlight URL text-decoration: none; color: #78cee4; background: inherit;
+highlight WarningMsg color: #ffa0a0 !important; background: #333333 !important;
+map -count -modes=n,v J <count>gT
+map -count -modes=n,v K <count>gt
+set hintkeys=asdfghjkl
+
+" vim: set ft=pentadactyl:

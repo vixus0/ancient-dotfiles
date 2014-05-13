@@ -67,6 +67,7 @@ hc keybind Super+Down use_index -1
 hc keybind Super+Up use_index +1          
 hc keybind Super+Shift+y move_index -1    
 hc keybind Super+Shift+o move_index +1    
+hc keybind Super+r chain - lock - rotate - rotate - unlock
 hc keybind Super+Escape reload            
 hc keybind Super+Return spawn sh-dmenufav           
 hc keybind Super+9 emit_hook vol_down

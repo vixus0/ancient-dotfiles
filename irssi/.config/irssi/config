@@ -3,6 +3,13 @@ servers = (
     address = "irc.freenode.net";
     chatnet = "freenode";
     port = "6667";
+  },
+  {
+    address = "localhost";
+    chatnet = "bitlbee";
+    port = "6667";
+    use_ssl = "no";
+    ssl_verify = "no";
   }
 );
 
@@ -13,6 +20,7 @@ chatnets = {
     max_msgs = "3";
     max_whois = "30";
   };
+  bitlbee = { type = "IRC"; };
 };
 
 aliases = {
@@ -205,3 +213,6 @@ settings = {
 };
 ignores = ( { level = "JOINS PARTS QUITS KICKS MODES NICKS"; } );
 hilights = ( { text = "vixus"; nick = "yes"; word = "yes"; } );
+channels = (
+  { name = "&bitlbee"; chatnet = "bitlbee"; autojoin = "yes"; }
+);

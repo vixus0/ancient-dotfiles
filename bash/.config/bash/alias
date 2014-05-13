@@ -19,7 +19,7 @@ alias ocd='cd -'
 
 # Actions
 alias redot='source $HOME/.bashrc'
-alias lastj="journalctl --since=today | tac | sed -n '/-- Reboot --/{n;:r;/-- Reboot --/q;p;n;b r}' | tac"
+alias lastj="sudo journalctl --since=today | tac | sed -n '/-- Reboot --/{n;:r;/-- Reboot --/q;p;n;b r}' | tac"
 alias xloc="DISPLAY=:0"
 alias po="sudo poweroff"
 alias re="sudo reboot"

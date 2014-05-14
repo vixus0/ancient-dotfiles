@@ -14,7 +14,7 @@ alias dud='echo; du -hcs * | sort -hr'
 alias la='echo; ls -lA'
 alias grep='grep --color=auto'
 alias dmesg='dmesg --color'
-alias s='ssh -XC'
+alias s='ssh -C'
 alias ocd='cd -'
 
 # Actions

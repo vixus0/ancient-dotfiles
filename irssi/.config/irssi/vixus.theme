@@ -162,8 +162,8 @@ abstracts = {
   ownprivmsg = "[%r$0%K(%R$1-%K)%n] ";
 
   # own private message in query
-  ownprivmsgnick = "{msgnick  $*%G}%w";
-  ownprivnick = "%_$*%n";
+  ownprivmsgnick = "{msgnick  $*%C}%w";
+  ownprivnick = "%c$*%n";
 
   # private message in query
   privmsgnick = "{msgnick  %R$*%k}%n";

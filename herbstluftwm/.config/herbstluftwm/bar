@@ -88,17 +88,47 @@ focus() {
   herbstclient get_attr clients.focus.title
 }
 
-herbstclient --wait reload &
-wpid=$!
-while kill -0 $wpid >/dev/null 2>&1; do
-   left=" `tags` $asep  "
-  right="`net`  $sep  `batt`  $sep  `day` "
-  clean="`echo ${right} | sed -e "s/\^[fb]g([\#a-f0-9]*)//g"`"
-     tw=`xftwidth $fn "${clean}   "`
+strip_dzen() {
+  sed -e "s/\^[fb]g([\#a-f0-9]*)//g"
+}
 
-     echo -e "${left}^p(_RIGHT)^p(-$tw)${right}"
-  sleep 0.5s
-done | dzen2 \
-  -w $(( $res - 2 * $gap )) -h 16 -x $gap -y $gap \
-  -bg $cb -fg $cf \
-  -ta l
+bar() {
+  herbstclient --wait reload &
+  wpid=$!
+  while kill -0 $wpid >/dev/null 2>&1; do
+     left=" `tags` $asep  "
+    right="`net`  $sep  `batt`  $sep  `day` "
+    clean="`echo ${right} | strip_dzen`"
+       tw=`xftwidth $fn "${clean}   "`
+
+       echo -e "${left}^p(_RIGHT)^p(-$tw)${right}"
+    sleep 0.5s
+  done | dzen2 \
+    -w $(( $res - 2 * $gap )) -h 16 -x $gap -y $gap \
+    -bg $cb -fg $cf \
+    -ta l
+}
+
+case "$1" in
+  "batt")
+    batt | strip_dzen
+    ;;
+  "wifi")
+    wifi | strip_dzen
+    ;;
+  "eth")
+    eth | strip_dzen
+    ;;
+  "day")
+    day | strip_dzen
+    ;;
+  "tags")
+    tags | strip_dzen
+    ;;
+  "focus")
+    focus
+    ;;
+  *)
+    bar
+    ;;
+esac

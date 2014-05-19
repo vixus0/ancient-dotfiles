@@ -9,5 +9,5 @@ RC="$HOME/.bashrc"
 [[ -f $RC ]] && . $RC
 
 # Start X at login on first TTY
-[[ -z "$TMUX" && -z "$DISPLAY" && "$XDG_VTNR" -eq 1 ]] && exec startx $XINITRC
+[[ -z "$SSH_CLIENT" && -z "$TMUX" && -z "$DISPLAY" && "$XDG_VTNR" -eq 1 ]] && exec startx $XINITRC
 

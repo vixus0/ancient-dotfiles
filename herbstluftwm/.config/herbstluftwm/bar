@@ -27,7 +27,7 @@ sep="^fg($c0)·^fg()"
 asep="^fg($c0)⮁^fg()" 
 
 batt() {
-  if [[ -z "`ls /sys/class/power_supply/BAT*`" ]]; then
+  if [[ -z "`ls /sys/class/power_supply/BAT* 2>/dev/null`" ]]; then
     echo "^fg($c0)⮎^fg()"
     return
   fi

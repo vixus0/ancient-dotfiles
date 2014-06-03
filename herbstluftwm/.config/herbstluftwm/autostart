@@ -7,7 +7,7 @@ hc() {
   cmds="$cmds , $@"
 }
 
-gap=8
+gap=0
 mypath=`realpath $0`
 mydir=`dirname $mypath`
 
@@ -26,7 +26,7 @@ hc set focus_follows_mouse 0
 
 # -- monitors
 hc detect_monitors
-hc pad 0 24
+hc pad 0 $(( 16 + $gap ))
 # -- /monitors
 
 # -- theme

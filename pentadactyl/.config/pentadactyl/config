@@ -20,4 +20,12 @@ let mpv = function(e) dactyl.execute("!urxvtc -e mpv '"+e.href+"'")
 hints.addMode("m", "Open link in mpv", mpv, null, tags);
 EOF
 
+"open urls in mpv over ssh
+js <<EOF
+let remote = "vixlap-lan";
+let tags = ["a"];
+let mpvr = function(e) dactyl.execute("!urxvtc -e ssh "+remote+" -t DISPLAY=:0 mpv '"+e.href+"'")
+hints.addMode("M", "Open link in mpv remotely", mpvr, null, tags);
+EOF
+
 " vim: set ft=pentadactyl:

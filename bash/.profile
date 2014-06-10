@@ -2,12 +2,19 @@
 # ~/.profile
 #
 
-ENV="$HOME/.config/bash/env"
+EV="$HOME/.config/bash/env"
 RC="$HOME/.bashrc"
 
-[[ -f $ENV ]] && . $ENV
+[[ -f $EV ]] && . $EV
 [[ -f $RC ]] && . $RC
 
-# Start X at login on first TTY
-[[ -z "$TMUX" && -z "$DISPLAY" && "$XDG_VTNR" -eq 1 ]] && exec startx $XINITRC
+# Ignore all this if running from tmux
+if [[ -z "$TMUX" ]]; then
 
+  # Start SSH agent
+  eval $(ssh-agent)
+
+  # Start X at login on first TTY
+  [[ -z "$DISPLAY" && "$XDG_VTNR" -eq 1 ]] && exec startx $XINITRC
+
+fi

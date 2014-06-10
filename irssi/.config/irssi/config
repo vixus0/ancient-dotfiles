@@ -1,26 +1,32 @@
 servers = (
-  { 
-    address = "irc.freenode.net";
-    chatnet = "freenode";
-    port = "6667";
-  },
   {
     address = "localhost";
     chatnet = "bitlbee";
     port = "6667";
     use_ssl = "no";
     ssl_verify = "no";
+  },
+  {
+    address = "chat.freenode.net";
+    chatnet = "freenode";
+    port = "6697";
+    use_ssl = "yes";
+    ssl_cert = "~/.config/irssi/vixus.pem";
+    ssl_verify = "yes";
+    ssl_cafile = "~/.config/irssi/UTN-USERFirst-Hardware.pem";
   }
 );
 
 chatnets = {
+  bitlbee = { type = "IRC"; };
   freenode = {
     type = "IRC";
+    nick = "vixus";
     max_kicks = "1";
-    max_msgs = "3";
-    max_whois = "30";
+    max_msgs = "4";
+    max_modes = "4";
+    max_whois = "1";
   };
-  bitlbee = { type = "IRC"; };
 };
 
 aliases = {
@@ -71,7 +77,7 @@ aliases = {
   ATAG = "WINDOW SERVER";
   UNSET = "set -clear";
   RESET = "set -default";
-  NI = "msg nickserv identify $0; join #archlinux-offtopic; join #archlinux-fr; join #archlinux";
+  NI = "msg nickserv identify";
 };
 
 statusbar = {
@@ -214,5 +220,12 @@ settings = {
 ignores = ( { level = "JOINS PARTS QUITS KICKS MODES NICKS"; } );
 hilights = ( { text = "vixus"; nick = "yes"; word = "yes"; } );
 channels = (
-  { name = "&bitlbee"; chatnet = "bitlbee"; autojoin = "yes"; }
+  { name = "&bitlbee"; chatnet = "bitlbee"; autojoin = "yes"; },
+  { name = "#archlinux"; chatnet = "freenode"; autojoin = "yes"; },
+  {
+    name = "#archlinux-offtopic";
+    chatnet = "freenode";
+    autojoin = "yes";
+  },
+  { name = "#edmproduction"; chatnet = "freenode"; autojoin = "yes"; }
 );

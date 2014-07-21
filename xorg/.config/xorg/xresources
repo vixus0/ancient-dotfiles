@@ -1,7 +1,23 @@
-!!-- Cursors
+!        ,_    _   ,   __          ,_    __   _   ,  
+!  /\/  /  |  |/  / \_/  \_|   |  /  |  /    |/  / \_
+!   /\_/   |_/|__/ \/ \__/  \_/|_/   |_/\___/|__/ \/ 
+!                                                    
+                                                  
+! Cursors
 Xcursor.theme: Vanilla-DMZ
 
-!!-- Colours
+
+! Xft - make external (machine specific) and include
+Xft.autohint: 0
+Xft.lcdfilter:  lcddefault
+Xft.hintstyle:  hintslight
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.dpi: 84
+Xft.rgba: rgb
+
+
+! Colours - make external and include
 *background:              #121317
 *foreground:              #a5a9b5
 *fading:                  40
@@ -18,8 +34,8 @@ Xcursor.theme: Vanilla-DMZ
 *color5:                  #642337
 *color6:                  #196271
 *color7:                  #99b3bd
-*color9:                  #334d57
-*color8:                  #8a3232
+*color8:                  #334d57
+*color9:                  #8a3232
 *color10:                 #9ca554
 *color11:                 #ddb62b
 *color12:                 #1e6a9a
@@ -27,7 +43,8 @@ Xcursor.theme: Vanilla-DMZ
 *color14:                 #197885
 *color15:                 #99b3bd
 
-!!-- urxvt
+
+! urxvt
 URxvt*scrollBar: false
 URxvt*font: xft:lemon:style=Regular:pixelsize=10
 URxvt*boldFont:
@@ -36,7 +53,8 @@ URxvt*highlightColor: #252020
 URxvt*urgentOnBell: true
 URxvt*cursorUnderline: true
 
-!!-- urxvt perl select
+
+! urxvt perl select
 !URxvt.iso14755: false
 !URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select
 !URxvt.url-select.launcher:  /home/vixus/bin/www
@@ -48,12 +66,14 @@ URxvt*cursorUnderline: true
 !URxvt.keysym.C-V: perl:clipboard:paste
 !URxvt.keysym.C-A-V: perl:clipboard:paste escaped
 
-!!-- dzen2 
+
+! dzen2 
 dzen2*font: -*-lemon-*-*-*-*-10-*-*-*-*-*-*-*
 dzen2*foreground: #f5f5f5
 dzen2*background: #000000
 
-!!-- dmenu
+
+! dmenu
 dmenu.font: -*-lemon-*-*-*-*-10-*-*-*-*-*-*-*
 dmenu.foreground: #f5f5f5
 dmenu.background: #000000

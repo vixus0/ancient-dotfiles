@@ -25,9 +25,9 @@ eval "`dircolors $XDG_CONFIG_HOME/bash/dircolors`"
 export PROMPT_COMMAND="export PROMPT_COMMAND=echo"
 if [[ -n "$SSH_CLIENT" ]]; then
   # SSH prompt
-  PS1="(s) \e[1;31m\] \W \e[32m\]· \e[0m\]"
+  PS1="(s) \e[1;31m \W \e[32m· \e[0m"
 else
   # normal prompt
-  PS1="\e[1;31m\] \W \e[32m\]· \e[0m\]"
+  PS1="\e[1;30m \W \e[32m· \e[0m"
 fi
 

@@ -1,4 +1,12 @@
+"         o             
+"   _  _  _   
+"   |  |_|  / |/ |/ |  
+"    \/  |_/  |  |  |_/
+"  
+
+
 set nocompatible
+
 
 " -- Environment
 set directory=$XDG_CACHE_HOME/vim,~/,/tmp
@@ -7,6 +15,7 @@ set viminfo+=n$XDG_CACHE_HOME/vim/viminfo
 set runtimepath=$XDG_CONFIG_HOME/vim,$XDG_CONFIG_HOME/vim/after,$VIM,$VIMRUNTIME
 let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc"
 " -- /Environment
+"
 
 " -- vundle
 filetype off
@@ -16,13 +25,14 @@ silent! Bundle 'gmarik/vundle'
 silent! Bundle 'Rykka/colorv.vim'
 " -- /vundle
 
+
 " -- colours
 syntax on
-colorscheme peachpuff
-hi LineNr ctermfg=23
-hi ColorColumn ctermbg=0
-let &colorcolumn=join(range(81,999),",")
+let base16colorspace=256
+set background=dark
+colorscheme base16-default
 " -- /colours
+
 
 " -- latex
 function WrapOn()
@@ -45,12 +55,14 @@ endfunction
 let g:tex_flavor='latex'
 " -- /latex
 
+
 " -- filetype specific
 au BufNewFile,BufRead *.tex call WrapOn()
 au BufNewFile,BufRead *.src set filetype=fortran
 au BufNewFile,BufRead *.fcm set filetype=fortran
 au BufNewFile,BufRead *.frag,*.vert,*.fp,*.vp,*.glsl set filetype=glsl
 " -- /filetype specific
+
 
 " -- general
 filetype plugin indent on
@@ -68,6 +80,7 @@ set modeline
 set clipboard+=unnamed
 set backspace+=start,eol,indent
 " -- /general
+
 
 " -- bindings
 map <F3> :w !detex \| wc -w <CR>

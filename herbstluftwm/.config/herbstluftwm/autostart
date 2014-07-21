@@ -1,4 +1,10 @@
 #!/usr/bin/bash
+#  | |     _   ,_  | |   , _|_ | |        | |_|_          _  _  _   
+#  |/ \   |/  /  | |/ \_/ \_|  |/  |   |  |/  |  |  |  |_/ |/ |/ |  
+#  |   |_/|__/   |_/\_/  \/ |_/|__/ \_/|_/|__/|_/ \/ \/    |  |  |_/
+#                                         |\                        
+#                                         |/
+
 
 herbstclient emit_hook reload
 
@@ -7,7 +13,7 @@ hc() {
   cmds="$cmds , $@"
 }
 
-gap=0
+gap=8
 mypath=`realpath $0`
 mydir=`dirname $mypath`
 

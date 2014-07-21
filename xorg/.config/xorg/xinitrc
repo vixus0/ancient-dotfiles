@@ -34,8 +34,8 @@ fi
 ## Start Programs
 #
 
-# set wallpaper with feh
-. ~/.fehbg
+# set wallpaper
+. ~/.wall
 
 # redshift for night viewing (kdy)
 redshift -l 56.1107:3.1674 -t 6500:4800 &
@@ -44,7 +44,7 @@ redshift -l 56.1107:3.1674 -t 6500:4800 &
 urxvtd -q -f -o &
 
 # composite manager
-xcompmgr -c -C -t-5 -l-5 -r3.8 -o.30 &
+xcompmgr -c -C -t-5 -l-5 -r3.8 -o.50 &
 
 # Window Manager
 exec herbstluftwm

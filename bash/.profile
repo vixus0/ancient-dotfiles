@@ -18,3 +18,6 @@ if [[ -z "$TMUX" ]]; then
   [[ -z "$DISPLAY" && "$XDG_VTNR" -eq 1 ]] && exec startx $XINITRC
 
 fi
+
+# Fix XDG directories
+sed "s|\$HOME|${HOME}|g" $XDG_CONFIG_HOME/user-dirs.tmp > $XDG_CONFIG_HOME/user-dirs.dirs

@@ -1,3 +1,10 @@
+#  o                o  
+#      ,_    ,   ,     
+#  |  /  |  / \_/ \_|  
+#  |_/   |_/ \/  \/ |_/
+#                      
+                    
+
 servers = (
   {
     address = "localhost";
@@ -78,6 +85,8 @@ aliases = {
   UNSET = "set -clear";
   RESET = "set -default";
   NI = "msg nickserv identify";
+  grab = "say !grab $;";
+  wg = "window goto";
 };
 
 statusbar = {
@@ -221,11 +230,16 @@ ignores = ( { level = "JOINS PARTS QUITS KICKS MODES NICKS"; } );
 hilights = ( { text = "vixus"; nick = "yes"; word = "yes"; } );
 channels = (
   { name = "&bitlbee"; chatnet = "bitlbee"; autojoin = "yes"; },
-  { name = "#archlinux"; chatnet = "freenode"; autojoin = "yes"; },
   {
     name = "#archlinux-offtopic";
     chatnet = "freenode";
     autojoin = "yes";
   },
   { name = "#edmproduction"; chatnet = "freenode"; autojoin = "yes"; }
+);
+keyboard = (
+  { key = "meta-g"; id = "command"; data = "GRAB "; },
+  { key = "meta-h"; id = "previous_window"; data = ""; },
+  { key = "meta-l"; id = "next_window"; data = ""; },
+  { key = "meta-j"; id = "command"; data = "window last"; }
 );

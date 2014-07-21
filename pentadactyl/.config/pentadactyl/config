@@ -1,31 +1,32 @@
-"1.1
+"                                |                      | | 
+"     _   _   _  _  _|_  __,   __|   __,   __ _|_       | | 
+"   |/ \_|/  / |/ |  |  /  |  /  |  /  |  /    |  |   | |/  
+"   |__/ |__/  |  |_/|_/\_/|_/\_/|_/\_/|_/\___/|_/ \_/|/|__/
+"  /|                                                /|     
+"  \|                                                \|     
+"  
+
+
+"settings
+set runtimepath=~/.config/pentadactyl
+set hintkeys=asdfghjkl
+set defsearch=d
+set guioptions=Csn
+set hlfind
 
 loadplugins '\.(js|penta)$'
 group user
 
-"settings
-set hintkeys=asdfghjkl
 
 "colors
 colorscheme desert
+
 
 "binds
 map -count -modes=n,v J <count>gT
 map -count -modes=n,v K <count>gt
 
-"open urls in mpv
-js <<EOF
-let tags = ["a"];
-let mpv = function(e) dactyl.execute("!urxvtc -e mpv '"+e.href+"'")
-hints.addMode("m", "Open link in mpv", mpv, null, tags);
-EOF
 
-"open urls in mpv over ssh
-js <<EOF
-let remote = "vixlap-lan";
-let tags = ["a"];
-let mpvr = function(e) dactyl.execute("!urxvtc -e ssh "+remote+" -t DISPLAY=:0 mpv '"+e.href+"'")
-hints.addMode("M", "Open link in mpv remotely", mpvr, null, tags);
-EOF
-
-" vim: set ft=pentadactyl:
+" Require websites preform safe ssl negotiation
+set! security.ssl.require_safe_negotiation=true
+set! security.ssl.treat_unsafe_negotiation_as_broken=true

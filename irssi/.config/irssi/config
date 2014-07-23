@@ -3,7 +3,7 @@
 #  |  /  |  / \_/ \_|  
 #  |_/   |_/ \/  \/ |_/
 #                      
-                    
+
 
 servers = (
   {
@@ -222,7 +222,7 @@ settings = {
     neat_allow_shrinking = "no";
     neat_right_mode = "no";
     openurl_app_http = "firefox \"$1\" &>/dev/null";
-    neat_colors = "rgGyYbBmMcC";
+    neat_colors = "rRgGyYbBmMcC";
     notify_remote = "";
   };
 };

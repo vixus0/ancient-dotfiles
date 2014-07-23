@@ -18,6 +18,10 @@ loadplugins '\.(js|penta)$'
 group user
 
 
+" Firefox Chrome
+source '~/.config/pentadactyl/chrome.css'
+
+
 "colors
 colorscheme desert
 

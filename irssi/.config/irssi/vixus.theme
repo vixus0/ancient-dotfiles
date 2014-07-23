@@ -118,7 +118,7 @@ abstracts = {
   ##
 
   # the basic styling of how to print message, $0 = nick mode, $1 = nick
-  msgnick = "%n$0$1 | %|";
+  msgnick = "%n$0$1 · %|";
 
   # message from you is printed. "msgownnick" specifies the styling of the
   # nick ($0 part in msgnick) and "ownmsgnick" specifies the styling of the
@@ -137,20 +137,20 @@ abstracts = {
   #  privmsgnick = "%K{msgnick  %R$*%K}%n";
 
   # $0 = nick mode, $1 = nick
-  ownmsgnick = "{msgnick $0 $1-%c}%R";
+  ownmsgnick = "{msgnick $0 $1-%y}%n";
   ownnick = "$*%n";
 
   # public message in channel, $0 = nick mode, $1 = nick
-  pubmsgnick = "{msgnick $0 $1-%k}%R";
+  pubmsgnick = "{msgnick $0 $1-%K}%n";
   pubnick = "$*%n";
 
   # public message in channel meant for me, $0 = nick mode, $1 = nick
-  pubmsgmenick = "{msgnick $0 $1-%K}%w";
+  pubmsgmenick = "{msgnick $0 $1-%r}%W";
   menick = "$*%n";
 
   # public highlighted message in channel
   # $0 = highlight color, $1 = nick mode, $2 = nick
-  pubmsghinick = "{msgnick $1 $0$2-%K}%w";
+  pubmsghinick = "{msgnick $1 $0$2-%r}%y";
 
   # channel name is printed with message
   msgchannel = "%K:%c$*%n";
@@ -250,7 +250,7 @@ abstracts = {
 
   # default background for all statusbars. You can also give
   # the default foreground color for statusbar items.
-  sb_background = "%0%R";
+  sb_background = "%0%n";
 
   # default backround for "default" statusbar group
   sb_default_bg = "%0";
@@ -271,24 +271,24 @@ abstracts = {
   topicsbstart = "{sbstart $*}";
   topicsbend = "{sbend $*}";
 
-  prompt = " %r»  ";
+  prompt = "%m· ";
 
-  sb = " %R $* %n";
-  sbmode = "(%c+%n$*)";
-  sbaway = " (%GzZzZ%n)";
-  sbservertag = ":$0 (change with ^X)";
+  sb = " %K $* %n";
+  sbmode = " %w$*%n";
+  sbaway = " %rAWAY%n";
+  sbservertag = " %b$0%n";
   sbnickmode = "$0";
 
   # activity in statusbar
 
   # ',' separator
-  sb_act_sep = "%c$*";
+  sb_act_sep = "%K$*";
   # normal text
-  sb_act_text = "%c$*";
+  sb_act_text = "%K$*";
   # public message
   sb_act_msg = "%W$*";
   # hilight
-  sb_act_hilight = "%M$*";
+  sb_act_hilight = "%r$*";
   # hilight with specified color, $0 = color, $1 = text
   sb_act_hilight_color = "$0$1-%n";
 };
@@ -310,8 +310,8 @@ formats = {
     pubmsg_me_channel = "{pubmsgmenick $3 {menick $[-16]0}{msgchannel $1}}$2";
     pubmsg_hilight = "{pubmsghinick $0 $3 $[-16]1%n}$2";
     pubmsg_hilight_channel = "{pubmsghinick $0 $4 $[-16]1{msgchannel $2}}$3";
-    pubmsg = "{pubmsgnick $2 {pubnick %r$[-16]0}}$1";
-    pubmsg_channel = "{pubmsgnick $2 {pubnick %r$[-16]0}}$1";
+    pubmsg = "{pubmsgnick $2 {pubnick %w$[-16]0}}$1";
+    pubmsg_channel = "{pubmsgnick $2 {pubnick %w$[-16]0}}$1";
     msg_private_query = "{privmsgnick $[-16]0}$2";
   };
   "fe-common/irc" = {

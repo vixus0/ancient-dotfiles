@@ -5,7 +5,7 @@
 [[ -e /usr/bin/yaourt ]] && pacman="yaourt" || pacman="sudo pacman"
 
 # Shell commands
-alias ls='echo; ls --group-directories-first --color=auto --classify -h'
+alias ls='echo; ls --group-directories-first --color=always --classify -h'
 alias cp='cp -i'
 alias mv='mv -i'
 alias df='echo; df -h'

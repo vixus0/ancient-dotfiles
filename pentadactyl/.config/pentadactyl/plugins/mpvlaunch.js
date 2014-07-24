@@ -2,8 +2,7 @@
  * Opens URLs in mpv or whatever
  */
 
-let tags = ["a"];
-let mpv = "mpv --no-terminal";
+let cmd = "mpv --no-terminal";
 let remote = "vixlap-lan";
 
 function clean(str) {
@@ -11,12 +10,12 @@ function clean(str) {
 }
 
 function mpv(e) {
-  io.launcher(mpv+" '"+clean(e.href)+"'");
+  return io.system(cmd+" '"+clean(e.href)+"'");
 }
 
-function mpvr(e) { 
-  io.launcher("ssh "+remote+" -t DISPLAY=:0"+mpv+" '"+clean(e.href)+"'");
+function mpvr(e) {
+  return io.system("ssh "+remote+" -t DISPLAY=:0"+cmd+" '"+clean(e.href)+"'");
 }
 
-hints.addMode("M", "Open link in mpv remotely", mpvr, null, tags);
-hints.addMode("m", "Open link in mpv", mpv, null, tags);
+hints.addMode("m", "Open link in mpv", mpv);
+hints.addMode("M", "Open link in mpv remotely", mpvr);

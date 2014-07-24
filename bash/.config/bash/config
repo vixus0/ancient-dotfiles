@@ -20,6 +20,10 @@ export HISTIGNORE='history*'
 eval "`TERM=screen-256color dircolors $XDG_CONFIG_HOME/bash/dircolors`"
 
 
+# base16
+. $XDG_CONFIG_HOME/xorg/base16-def.sh
+
+
 # prompt
 # make sure the first prompt won't have a newline, but subsequent ones will
 export PROMPT_COMMAND="export PROMPT_COMMAND=echo"

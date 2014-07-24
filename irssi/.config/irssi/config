@@ -235,7 +235,9 @@ channels = (
     chatnet = "freenode";
     autojoin = "yes";
   },
-  { name = "#edmproduction"; chatnet = "freenode"; autojoin = "yes"; }
+  { name = "#edmproduction"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#herbstluftwm"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#bspwm"; chatnet = "freenode"; autojoin = "yes"; }
 );
 keyboard = (
   { key = "meta-g"; id = "command"; data = "GRAB "; },

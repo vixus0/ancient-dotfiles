@@ -10,8 +10,13 @@
 @namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 
 /* Get rid of the bottom border */
-#TabsToolbar:after {
-    border-bottom: 0px solid #000000 !important;
+#TabsToolbar {
+    height: 24px !important;
+    overflow: hide !important;
+}
+
+#TabsToolbar::after {
+    border-bottom: 0px!important;
 }
 
 /* Hide the new curved tab edges */
@@ -19,8 +24,15 @@
     opacity: 0 !important;
 }
 
-/* Hide tab icons */
-.tabbrowser-tabs .tab-icon-image {
+/* Decrease font size */
+.tabbrowser-tabs .tab-content {
+    padding: 0 5px !important;  /* That's Numberwang! */
+    color: inherit !important;
+    font-size: 8pt !important;
+}
+
+/* Hide tab close button */
+.tabbrowser-tabs .tab-close-button {
     display: none !important;
 }
 
@@ -58,6 +70,7 @@
 }
 
 .tabbrowser-tab[selected] {
-    background: #303030 !important;
-    color: #90a959 !important;
+    background: Highlight !important;
+    color: HighlightText !important;
 }
+

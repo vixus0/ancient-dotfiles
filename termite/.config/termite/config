@@ -6,7 +6,7 @@
 
 
 [options]
-font                = Hermit 8
+font                = Source Code Pro 8
 allow_bold          = false
 cursor_blink        = on
 cursor_shape        = underline

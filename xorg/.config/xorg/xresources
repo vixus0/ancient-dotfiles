@@ -23,8 +23,8 @@ Xft.rgba: rgb
 
 ! urxvt
 URxvt*scrollBar: false
-URxvt*font: xft:lemon:style=Regular:pixelsize=10
-URxvt*boldFont:
+URxvt*font: xft:Source Code Pro:style=Regular:pixelsize=10
+URxvt*boldFont: xft:Source Code Pro:style=Bold:pixelsize=10
 URxvt*internalBorder: 8
 URxvt*highlightColor: #252020
 URxvt*urgentOnBell: true

@@ -1,0 +1,8 @@
+#!/bin/bash
+
+prog="hsetroot"
+args="$@"
+
+$prog $args
+
+echo "$prog $args" > ~/.wall

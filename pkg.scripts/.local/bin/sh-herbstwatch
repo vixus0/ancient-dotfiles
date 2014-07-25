@@ -1,0 +1,32 @@
+#!/bin/bash
+
+pipe=`herbstclient getenv HLWM_PIPE`
+
+trap "rm -f $pipe" EXIT
+
+[[ ! -p $pipe ]] && mkfifo $pipe
+
+while true; do
+  if read line <$pipe; then
+    cmds=($line)
+    case ${cmds[0]} in
+      "quit")
+        break
+        ;;
+      "focus_changed")
+        #echo ${cmds[@]:2} | dzen2 -p 1 -x 16 -y 4 -w 1008 &
+        ;;
+      "tag_changed")
+        echo "${cmds[1]}" | dzen2 -p 1 -x 0 -y 4 -w 16 &
+        ;;
+      "urgent")
+        [[ ${cmds[1]} == "on" ]] && echo "^bg(#cc0000)URGENT: $(herbstclient attr clients.${cmds[2]}.title)" | dzen2 -p 1 -ta l -x 20 -y 4 -w 800 &
+        ;;
+      *)
+        echo $line
+        ;;
+    esac
+  fi
+done
+
+echo "Exiting"

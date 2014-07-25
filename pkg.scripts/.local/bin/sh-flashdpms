@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# Disables screensaver while flash is running
+
+while true; do
+    PIDS=`pgrep -f libflashplayer`
+    for pid in $PIDS ;
+    do
+        cpu=`top -p $pid -n1 -b | grep -w $pid | awk '{print $9}'`
+        if [ -n $cpu -a $cpu -gt 5 ] ; then
+            xset s reset
+        fi
+    done
+    sleep 60;
+done

@@ -1,0 +1,42 @@
+#!/usr/bin/python2
+# -*- coding: utf-8 -*-
+
+##
+# Control herbstluftwm with the mouse via dzen2
+##
+
+import subprocess as sub
+import os, codecs
+
+HERBST_CONFIG = os.environ['XDG_CONFIG_HOME']+"/herbstluftwm/autostart"
+
+def main():
+    f = codecs.open(HERBST_CONFIG, mode='r', encoding='utf-8')
+    keybinds = filter(lambda l: l.startswith(u'hc keybind'), f)
+
+    print u'HERBSTDZEN'
+
+    for bind in keybinds:
+        sub = u' '.join( bind.split()[3:] )
+        subsplit = sub.split(u'#i')
+        
+        if len(subsplit) < 2:
+            break
+
+        cmd = subsplit[0].strip()
+        ico = subsplit[1].split(u'#')[0].strip()
+        
+        print u'^ca(1,herbstclient '+cmd+u') '+ico+u' ca()'
+
+    # Add movement commands
+    dirns  = [u'left', u'right', u'up', u'down']
+    dicons = [u'←', u'→', u'↑', u'↓']
+    for move in [u'focus', u'shift', u'resize']:
+        print move,
+        for dirn,ico in zip(dirns,dicons):
+            print u'^ca(1,herbstclient '+move+u' '+dirn+u' +0.05) '+ico+u' ca()',
+        print
+
+if __name__ == "__main__":
+    main()
+

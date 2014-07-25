@@ -1,0 +1,19 @@
+#!/bin/bash
+
+who="Master,0"
+amt="5%"
+
+case "$1" in
+  up)
+    amixer -q sset ${who} ${amt}+
+    ;;
+  down)
+    amixer -q sset ${who} ${amt}-
+    ;;
+  mute)
+    amixer -q sset ${who} toggle
+    ;;
+  *)
+    exit 0
+esac
+

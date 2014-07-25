@@ -1,0 +1,188 @@
+#!/usr/bin/python2 -u
+
+import sys, time, threading, psutil, datetime, os, math
+import subprocess as sub
+import platform
+
+bar = "bar"
+ff  = sys.argv[1]
+#ffread = open(ff, "r+")
+ffread = os.open(ff, os.O_RDONLY | os.O_NONBLOCK)
+
+rel = platform.release()
+
+# Layouts
+modes     = { 0:"T", 1:"M", 2:"B", 3:"G", 4:"F" }
+mode_i    = { "T":u'\ue002',
+              "M":u'\ue001',
+              "B":u'\ue003',
+              "G":u'\ue005',
+              "F":u'\ue006',
+            }
+
+icons     = { "clock" :u'\ue015',
+              "arch"  :u'\ue00e',
+              "cpu"   :u'\ue027',
+              "mem"   :u'\ue028',
+              "temp"  :u'\ue01d',
+              "bat0"  :u'\ue030',
+              "bat1"  :u'\ue031',
+              "bat2"  :u'\ue032',
+              "bat3"  :u'\ue033',
+              "plug"  :u'\ue042',
+              "wifi"  :u'\ue04b',
+              "eth"   :u'\ue19e',
+              "headp" :u'\ue04d',
+              "mute"  :u'\ue04f',
+              "speak" :u'\ue05d',
+              "stop"  :u'\ue057',
+              "play"  :u'\ue058',
+              "pause" :u'\ue059',
+              "disk"  :u'\ue0ab',
+              "home"  :u'\ue0bf',
+              "mail"  :u'\ue070',
+            }
+
+MONSTERWM="0:0:0:1:0 1:0:0:0:0 2:0:0:0:0 3:0:0:0:0"
+TIME=u''
+AC_STATUS=True
+BATT_AMOUNT=0
+CPU_TEMP=0
+CPU_PERC=0.0
+MEM_PERC=0.0
+VOL_PERC=0
+MUTE=False
+DU = { "disk":"0%", "home":"0%" }
+
+# Update ACPI events
+def ps_update():
+  global CPU_PERC
+  global MEM_PERC
+  CPU_PERC = psutil.cpu_percent()
+  MEM_PERC = psutil.virtual_memory().percent
+  threading.Timer(1.0, ps_update).start()
+
+def acpi_update():
+  global AC_STATUS
+  global BATT_AMOUNT
+  global CPU_TEMP
+  pacpi = sub.Popen(["/home/vixus/bin/acpinf"], stdout=sub.PIPE)
+  tk = pacpi.stdout.readline().split()
+  BATT_AMOUNT = int(tk[0])
+  AC_STATUS = (tk[1] == '1')
+  CPU_TEMP = int(tk[2])
+  threading.Timer(2.0, acpi_update).start()
+
+def time_update():
+  global TIME
+  TIME = datetime.datetime.now().strftime("%H:%M %Y-%m-%d")
+  threading.Timer(1.0, time_update).start()
+
+def vol_update():
+  global VOL_PERC
+  global MUTE
+  pamix = sub.Popen(["amixer", "get", "Master,0"], stdout=sub.PIPE)
+  for l in pamix.stdout.readlines():
+    ll = l.strip()
+    if ll.startswith("Mono:"):
+      VOL_PERC = int(ll.split()[3][1:-2])
+      MUTE = True if ll.find("[off]")>0 else False
+  threading.Timer(0.5, vol_update).start()
+
+def du_update():
+  global DU
+  pdu = sub.Popen(["/home/vixus/bin/disku"], stdout=sub.PIPE)
+  line = pdu.stdout.readline().split()
+  DU["disk"] = line[0]
+  DU["home"] = line[1]
+  threading.Timer(5.0, du_update).start()
+
+# Process monsterwm's output
+def monsterwm_parse(line):
+  sys.stderr.write(line+"\n")
+  out = u''
+  scr = [map(int,x.split(":")) for x in line.split(" ")]
+  for s in scr:
+    tmp = u''
+    if s[1] > 0:
+      tmp += u'\\f3'
+    elif s[4] > 0:
+      tmp += u'\\f4'
+    else:
+      tmp += u'\\f1'
+    tmp += u'\\f0\\u6\\b3' if s[3] > 0 else u'\\ur\\br'  # background active window
+    tmp += u' '+mode_i[modes[s[2]]]                      # layout icon
+    out += tmp+u' \\ur\\ur\\br'                          # space between icon
+  return out
+
+# Constantly read from monsterwm's pipe
+def monsterwm_update():
+  global MONSTERWM
+  #l = ffread.readline()
+  #MONSTERWM = MONSTERWM if l=="" else l
+  l = os.read(ffread, 128).split("\n")[-2]
+  MONSTERWM = l
+  threading.Timer(0.1, monsterwm_update).start()
+
+# Update function
+def update():
+  ## Desktop section
+  out = u'\\l'
+  out += monsterwm_parse(MONSTERWM)
+  out += u'  \\u2\\b2\\f6 %s \\f3%s \\ur\\br\\fr'%(icons["arch"], rel)
+  out += u'\\r'
+
+  ## MPD Section
+
+
+  ## Info section
+  # Volume
+  if MUTE:
+    out += u'\\u2\\b2\\f0 %s \\ur\\br ----  \\fr'%(icons["mute"])
+  else:
+    out += u'\\u2\\b2\\f3 %s \\ur\\br\\f3 %3d%%  \\fr'%(icons["speak"], VOL_PERC)
+
+  # Battery/AC
+  if AC_STATUS:
+    out += "\\u2\\b2\\f3 %s \\ur\\br"%(icons["plug"])
+  else:
+    if BATT_AMOUNT >= 70:
+      out += "\\u2\\b6\\f8 %s \\ur\\br"%(icons["bat3"])
+    elif BATT_AMOUNT < 70 and BATT_AMOUNT >= 50:
+      out += "\\u2\\b5\\f8 %s \\ur\\br"%(icons["bat2"])
+    elif BATT_AMOUNT < 50 and BATT_AMOUNT >= 30:
+      out += "\\u2\\b5\\f8 %s \\ur\\br"%(icons["bat1"])
+    else:
+      out += "\\u2\\b4\\f8 %s \\ur\\br"%(icons["bat0"])
+  out += u'\\fr %3d%%  '%(BATT_AMOUNT)
+
+  # Disk usage
+  for key,val in DU.items():
+    out += u'\\u2\\b2\\f3 %s \\ur\\br\\fr %3s  '%(icons[key],val)
+
+  # CPU  
+  #out += u'\\u2\\b2\\f3 %s \\ur\\br\\fr %4.1f%%  \\u2\\b2\\f3 %s \\ur\\br\\fr %4.1f  ' % (icons["cpu"], CPU_PERC, icons["temp"], CPU_TEMP)
+
+  # Memory
+  #out += u'\\u2\\b2\\f3 %s \\ur\\br\\fr %4.1f%%  '%(icons["mem"], MEM_PERC)
+
+  # Clock
+  out += u'\\u2\\b2\\f6 %s\\f3 %s \\fr\\ur\\br'%(icons["clock"],TIME)
+
+  # Send output to bar
+  out += u'\n'
+  sys.stdout.write(out.encode('utf-8'))
+  sys.stdout.flush()
+
+  # Execute update every updt
+  threading.Timer(0.05, update).start()
+  
+
+if __name__ == "__main__":
+  monsterwm_update()
+  time_update()
+  vol_update()
+  acpi_update()
+  du_update()
+  update()
+

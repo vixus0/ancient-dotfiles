@@ -1,0 +1,69 @@
+#!/bin/bash
+#   _                                        
+#  | |                                       
+#  | |   __   __ _|_  , _|_  ,_    __,    _  
+#  |/ \_/  \_/  \_|  / \_|  /  |  /  |  |/ \_
+#   \_/ \__/ \__/ |_/ \/ |_/   |_/\_/|_/|__/ 
+#                                      /|    
+#  Doing the work so I don't have to.  \|    
+#  
+
+
+# My packages
+packages=(\
+  "bash-completion"
+  "vim"
+  "tmux"
+  "weechat"
+  "xorg-server"
+  "xorg-apps"
+  "herbstluftwm"
+  "xcompmgr"
+  "sxhkd"
+  "tint2"
+  "firefox"
+  "termite"
+  )
+
+
+# Perform an update
+pacman -Syu
+
+
+# Base setup
+if [[ -z `pacman -Q git` ]]; then
+  pacman -S git
+fi
+
+
+# Pull my dotfiles repository
+if [[ ! -d ~/dots ]]; then
+  git clone https://github.com/vixus0/dotfiles.git dots
+fi
+cd dots
+
+# Install package-query and yaourt
+if [[ -z `pacman -Q yaourt` ]]; then
+  pushd
+  
+  cd abs/package-query
+  makepkg --syncdeps --install --clean
+
+  cd ../yaourt
+  makepkg --syncdeps --install --needed --clean
+
+  popd
+fi
+
+
+# Install the essential packages
+yaourt -S --needed "${packages[@]}"
+
+
+# Install configs for aforementioned packages
+mkdir -p .config .local/{bin,include,lib,share} .cache .ssh
+
+for p in "${packages[@]}"; do
+  local cfgd=`find . -maxdepth 1 -name "cfg.$p" -type d`
+done
+

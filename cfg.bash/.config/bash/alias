@@ -19,14 +19,14 @@ alias ocd='cd -'
 
 # Actions
 alias redot='source $HOME/.bashrc'
+alias rex='xrdb -merge $XDG_CONFIG_HOME/xorg/xresources'
 alias lastj="sudo journalctl --since=today | tac | sed -n '/-- Reboot --/{n;:r;/-- Reboot --/q;p;n;b r}' | tac"
 alias xloc="DISPLAY=:0"
 alias po="sudo poweroff"
 alias re="sudo reboot"
 
 # Launchers
-alias wine32='env WINEARCH=win32 WINEPREFIX=~/.wine32 wine'
-alias herbc='herbstclient'
+alias hc='herbstclient'
 alias valgr='valgrind --db-attach=yes --leak-check=yes --tool=memcheck --num-callers=16 --leak-resolution=high --track-origins=yes'
 alias clock='tty-clock -c -C4 -f"%a %d %b, %Y"'
 alias o='xdg-open'
@@ -35,7 +35,6 @@ alias o='xdg-open'
 alias tmux='tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf'
 alias irssi='irssi --home=$XDG_CONFIG_HOME/irssi'
 alias rtorrent="rtorrent -n -o import=${XDG_CONFIG_HOME}/rtorrent/config.rc"
-alias stalonetray="stalonetray -c $XDG_CONFIG_HOME/stalonetray/config.rc"
 alias weechat="weechat -d $XDG_CONFIG_HOME/weechat"
 alias skype="skype --dbpath=$XDG_CONFIG_HOME/skype"
 alias easystroke="easystroke -c $XDG_CONFIG_HOME/easystroke"

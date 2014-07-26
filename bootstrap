@@ -9,14 +9,25 @@
 #  
 
 
-# My packages
-packages=(\
+# Headless packages
+cpackages=(\
   "bash-completion"
+  "openssh"
+  "stow"
   "vim"
   "tmux"
   "weechat"
+  )
+
+# GUI packages
+xpackages=(\
   "xorg-server"
-  "xorg-apps"
+  "xorg-xrdb"
+  "xorg-setxkbmap"
+  "xorg-xset"
+  "xorg-xmodmap"
+  "hsetroot"
+  "sxiv"
   "herbstluftwm"
   "xcompmgr"
   "sxhkd"
@@ -26,44 +37,64 @@ packages=(\
   )
 
 
+# Check we have sudo
+if [[ -z `which sudo` ]]; then
+  echo "Install sudo first!"
+  exit
+fi
+
+
 # Perform an update
-pacman -Syu
+sudo pacman -Syu
 
 
 # Base setup
 if [[ -z `pacman -Q git` ]]; then
-  pacman -S git
+  sudo pacman -S git
 fi
 
 
 # Pull my dotfiles repository
-if [[ ! -d ~/dots ]]; then
+if [[ ! -d "$HOME/dots" ]]; then
   git clone https://github.com/vixus0/dotfiles.git dots
 fi
-cd dots
+cd "$HOME/dots"
+
 
 # Install package-query and yaourt
 if [[ -z `pacman -Q yaourt` ]]; then
   pushd
   
   cd abs/package-query
-  makepkg --syncdeps --install --clean
+  makepkg --syncdeps --clean
+  sudo makepkg --install
 
   cd ../yaourt
-  makepkg --syncdeps --install --needed --clean
+  makepkg --syncdeps --clean
+  sudo makepkg --install
 
   popd
 fi
 
 
 # Install the essential packages
-yaourt -S --needed "${packages[@]}"
+yaourt -S --needed "${cpackages[@]}"
+
+
+# Install GUI packages
+[[ $1 == "gui" ]] && yaourt -S --needed "${xpackages[@]}"
 
 
 # Install configs for aforementioned packages
 mkdir -p .config .local/{bin,include,lib,share} .cache .ssh
 
-for p in "${packages[@]}"; do
-  local cfgd=`find . -maxdepth 1 -name "cfg.$p" -type d`
+allpackages="${cpackages[@]} ${xpackages[@]}"
+
+for p in "$allpackages"; do
+  cfgd=`find . -maxdepth 1 -name "cfg.$p" -type d`
+  if [[ -n "$cfgd" ]]; then
+    echo "Installing config for $p..."
+    stow -S "$cfgd" 
+  fi
 done
 

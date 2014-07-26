@@ -8,19 +8,26 @@
 
 herbstclient emit_hook reload
 
+
+# -- const
+mypath=`realpath $0`
+mydir=`dirname $mypath`
+gap=8
+
+
+# -- chain
 cmds=""
 hc() {
   cmds="$cmds , $@"
 }
 
-gap=8
-mypath=`realpath $0`
-mydir=`dirname $mypath`
 
+# -- keep it quiet
 hc lock
 hc keyunbind --all
 
-# -- settings
+
+# -- wm settings
 hc set wmname LG3D
 hc set always_show_frame 0
 hc set smart_frame_surroundings 0
@@ -32,7 +39,6 @@ hc set focus_follows_mouse 0
 
 # -- monitors
 hc detect_monitors
-hc pad 0 $(( 16 + $gap ))
 # -- /monitors
 
 # -- theme
@@ -49,7 +55,7 @@ hc set frame_normal_opacity 50
 hc set window_gap 0
 hc set window_border_width 0
 hc set window_border_inner_width 0
-hc set window_border_active_color "#232323"
+hc set window_border_active_color "#ffffff"
 hc set window_border_normal_color "#121317"
 hc set window_border_inner_color "#e0e0e0"
 hc set window_border_urgent_color "#802828"
@@ -123,29 +129,4 @@ hc unlock
 herbstclient chain $cmds &
 # -- /ACTIVATE
 
-# -- dual monitor
-hc() {
-  herbstclient "$@"
-}
-nm="`herbstclient list_monitors | wc -l`"
-if [[ $nm -gt 1 ]]; then
-  hc focus_monitor 1
-  hc use 4
-  hc lock_tag 1
-  hc focus_monitor 0
-  hc use 1
-  hc keybind Super+m cycle_monitor
-fi
-# -- /dual
-
 unset -f hc
-
-# -- bars and notifications
-$mydir/bar $gap &
-$mydir/notifier &
-
-dunst_cfg="${XDG_CONFIG_HOME}/dunst/dunstrc"
-if [[ -z `pgrep dunst` ]]; then
-  sed "s/::gap::/${gap}/g" $dunst_cfg > /tmp/dunstrc
-  dunst -config /tmp/dunstrc &
-fi

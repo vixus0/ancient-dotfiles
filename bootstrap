@@ -34,6 +34,7 @@ xpackages=(\
   "tint2"
   "firefox"
   "termite"
+  "adobe-source-code-pro-fonts"
   )
 
 
@@ -86,7 +87,7 @@ yaourt -S --needed "${cpackages[@]}"
 
 
 # Install configs for aforementioned packages
-mkdir -p .config .local/{bin,include,lib,share} .cache .ssh
+mkdir -p .config .local/{bin,include,lib,share/applications} .cache .ssh
 
 allpackages="${cpackages[@]} ${xpackages[@]}"
 

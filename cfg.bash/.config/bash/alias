@@ -8,6 +8,7 @@
 alias ls='echo; ls --group-directories-first --color=always --classify -h'
 alias cp='cp -i'
 alias mv='mv -i'
+alias rmrf='rm -rfI'
 alias df='echo; df -h'
 alias du='echo; du -h'
 alias dud='echo; du -hcs * | sort -hr'

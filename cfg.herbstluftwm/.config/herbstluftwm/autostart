@@ -39,6 +39,7 @@ hc set focus_follows_mouse 0
 
 # -- monitors
 hc detect_monitors
+hc pad 0 24
 
 
 # -- theme
@@ -47,18 +48,18 @@ hc set frame_padding 0
 hc set frame_border_width 0
 hc set frame_border_active_color "#191919"
 hc set frame_border_normal_color "#000000"
-hc set frame_bg_active_color "#121317"
-hc set frame_bg_normal_color "#121317"
+hc set frame_bg_active_color "#90a959"
+hc set frame_bg_normal_color "#101010"
 hc set frame_active_opacity 80
 hc set frame_normal_opacity 50
 
 hc set window_gap 0
-hc set window_border_width 4
-hc set window_border_inner_width 0
-hc set window_border_active_color "#202020"
-hc set window_border_normal_color "#151515"
-hc set window_border_inner_color "#e0e0e0"
-hc set window_border_urgent_color "#802828"
+hc set window_border_width 5
+hc set window_border_inner_width 4
+hc set window_border_active_color "#90a959"
+hc set window_border_normal_color "#101010"
+hc set window_border_inner_color "#101010"
+hc set window_border_urgent_color "#ac4142"
 
 
 # -- tags
@@ -77,9 +78,7 @@ hc mousebind Super+B2 zoom
 
 # -- rules
 hc unrule --all
-hc rule title=stalonetray manage=off
-hc rule title=playontv tag=4 fullscreen=on
-hc rule class=Conky manage=off
+hc rule class="Tint2" manage=off
 hc rule class~".*nboard" manage=off
 hc rule class~.* focus=on
 hc rule windowtype=_NET_WM_WINDOW_TYPE_DIALOG focus=on pseudotile=on
@@ -91,3 +90,8 @@ hc unlock
 herbstclient chain $cmds &
 
 unset -f hc
+
+
+# -- panel
+killall tint2
+tint2 &

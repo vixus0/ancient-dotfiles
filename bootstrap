@@ -87,7 +87,9 @@ yaourt -S --needed "${cpackages[@]}"
 
 
 # Install configs for aforementioned packages
+cd $HOME
 mkdir -p .config .local/{bin,include,lib,share/applications} .cache .ssh
+cd dots
 
 allpackages="${cpackages[@]} ${xpackages[@]}"
 

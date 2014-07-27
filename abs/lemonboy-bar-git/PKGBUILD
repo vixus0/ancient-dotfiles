@@ -1,0 +1,28 @@
+_gitname="bar"
+pkgname="lemonboy-bar-git"
+pkgver=1.0.r23.g69e8ac6
+pkgrel=1
+pkgdesc="bar is a lightweight bar entirely based on XCB"
+url="https://github.com/LemonBoy/bar"
+arch=('i686' 'x86_64')
+depends=('libxcb')
+makedepends=('git')
+provides=('lemonboy-bar')
+conflicts=('bar-aint-recursive')
+source=('git+https://github.com/lemonboy/bar')
+md5sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/$_gitname"
+  git describe --tags| sed -r 's/([^-]*-g)/r\1/;s/-/./g;s/v//g'
+}
+
+build() {
+  cd "$srcdir/$_gitname"
+  make
+}
+
+package() {
+  cd "$srcdir/$_gitname"
+  make DESTDIR="$pkgdir" BINDIR="/usr/bin" install
+}

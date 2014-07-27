@@ -5,11 +5,11 @@
 #                             
 
 # hlwm
-super + w; shift + {q,r}
-  herbstclient {quit,reload}
+super + w; shift + q
+  herbstclient quit
 
-super + w; q
-  herbstclient close_or_remove
+super + w; {q,r}
+  herbstclient {close_or_remove,reload}
 
 super + w; {_,shift} + s
   herbstclient split {h,v} 0.5

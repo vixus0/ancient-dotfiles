@@ -46,5 +46,8 @@ urxvtd -q -f -o &
 # composite manager
 xcompmgr -c -C -t-5 -l-5 -r3.8 -o.50 &
 
+# hotkey daemon
+sxhkd &
+
 # Window Manager
 exec herbstluftwm

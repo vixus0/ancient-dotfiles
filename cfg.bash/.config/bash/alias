@@ -27,7 +27,6 @@ alias po="sudo poweroff"
 alias re="sudo reboot"
 
 # Launchers
-alias hc='herbstclient'
 alias valgr='valgrind --db-attach=yes --leak-check=yes --tool=memcheck --num-callers=16 --leak-resolution=high --track-origins=yes'
 alias clock='tty-clock -c -C4 -f"%a %d %b, %Y"'
 alias o='xdg-open'

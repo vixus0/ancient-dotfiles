@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+#   , _|_  __, _|_         ,  
+#  / \_|  /  |  |  |   |  / \_
+#   \/ |_/\_/|_/|_/ \_/|_/ \/ 
+#                             
+
+
+
+batt_perc() {
+  [[ -z "`ls /sys/class/power_supply/BAT* 2>/dev/null`" ]] && return 1
+
+  local cf="`cat /sys/class/power_supply/BAT*/{energy,charge}_full 2>/dev/null`" 
+  local cn="`cat /sys/class/power_supply/BAT*/{energy,charge}_now 2>/dev/null`" 
+  local cs="`cat /sys/class/power_supply/BAT*/status`" 
+  local cp="`echo $cf $cn | awk '{print int($2/$1 * 100.0)}'`"
+
+  echo $cp
+  return 0
+}
+
+wifi_qual() {
+  [[ ! -f /proc/net/wireless ]] && return 1
+
+  local lq="`awk '/wl/ {print int($3)}' /proc/net/wireless`"
+
+  echo $lq
+  return 0
+}
+
+wifi_connm_ssid() {
+  [[ -z "`pidof connmand`" ]] && return 1
+
+  local id="`connmanctl services | awk '/^*/ {print $2}'`"
+ 
+  echo $id
+  return 0
+}
+
+eth_state() {
+  local link="`ip link | awk '/: e/ && /UP/ {sub(/:/,\"\",$2);print $2}'`"
+  local state="`cat /sys/class/net/$link/operstate`"
+
+  echo $state
+  [[ $state == "up" ]] && return 0 || return 1
+}
+
+today() {
+  date +"%a %d %b"
+}
+
+now() { 
+  date +"%H:%M"
+}
+
+
+[[ -n "$1" ]] && $1

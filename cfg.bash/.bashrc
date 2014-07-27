@@ -9,3 +9,5 @@
 
 . $XDG_CONFIG_HOME/bash/config
 . $XDG_CONFIG_HOME/bash/alias
+
+[[ -z "$TMUX" ]] && tmux

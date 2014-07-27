@@ -1,0 +1,36 @@
+#           | |    | |     |  
+#   ,       | |    | |   __|  
+#  / \_/\/  |/ \   |/_) /  |  
+#   \/  /\_/|   |_/| \_/\_/|_/
+#                             
+
+# hlwm
+super + w; shift + {q,r}
+  herbstclient {quit,reload}
+
+super + w; q
+  herbstclient close_or_remove
+
+super + w; {_,shift} + s
+  herbstclient split {h,v} 0.5
+
+super + w; {_,shift} + w
+  herbstclient cycle {_,-1}
+
+super + w; {_,shift} + f
+  herbstclient {fullscreen toggle,floating}
+ 
+super + w; {_,shift} + t
+  herbstclient use_index {+1,-1}
+
+super + w; {_,shift,alt} + {h,j,k,l}
+  herbstclient {focus,shift,resize} {left,down,up,right} +0.05
+
+super + w; {_,shift} + {1,2,3,4}
+  herbstclient {use,move} {1,2,3,4}
+
+
+# applications
+super + a; {a,w}
+  {termite,firefox}
+

@@ -3,6 +3,7 @@
 prompt="\e[0;33m\e[m" 
 
 printf "%b " $prompt
-read cmd
+cd /usr/bin
+read -e cmd
 
 nohup $cmd &> /dev/null

@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-printf "\e[0;33m\e[m "
-read arg
-[[ -n `which $arg` ]] && $arg &
-exit
+prompt="\e[0;33m\e[m" 
+
+printf "%b " $prompt
+read cmd
+
+nohup $cmd &> /dev/null

@@ -20,6 +20,7 @@ cpackages=(\
   )
 
 # GUI packages
+# AUR packages must be at the end?
 xpackages=(\
   "xorg-server"
   "xorg-xrdb"
@@ -27,14 +28,14 @@ xpackages=(\
   "xorg-xset"
   "xorg-xmodmap"
   "hsetroot"
-  "sxiv"
   "herbstluftwm"
   "xcompmgr"
-  "sxhkd"
   "tint2"
   "firefox"
-  "termite"
   "adobe-source-code-pro-fonts"
+  "sxiv"
+  "termite-git"
+  "sxhkd"
   )
 
 
@@ -93,10 +94,14 @@ cd dots
 
 allpackages="${cpackages[@]} ${xpackages[@]}"
 
-for p in "$allpackages"; do
+for p in $allpackages; do
+  echo "Searching config for $p..."
+  [[ -z `pacman -Q $p` ]] && continue
   cfgd=`find . -maxdepth 1 -name "cfg.$p" -type d`
   if [[ -n "$cfgd" ]]; then
     echo "Installing config for $p..."
+    cfgd=${cfgd/\//}
+    cfgd=${cfgd##.}
     stow -S "$cfgd" 
   fi
 done

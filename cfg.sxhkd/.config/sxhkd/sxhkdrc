@@ -44,3 +44,5 @@ super + {8,9,0}
 super + a; {a,w}
   {termite,firefox}
 
+super + Escape
+  termite --exec=sh-launch --role=LAUNCHER --geometry=400x8

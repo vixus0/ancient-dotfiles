@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+printf "\e[0;33m\e[m "
+read arg
+[[ -n `which $arg` ]] && $arg &
+exit

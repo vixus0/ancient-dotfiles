@@ -65,7 +65,7 @@
 }
 
 .tabbrowser-tab[selected] {
-    background: Highlight !important;
+    background: #90a959 !important;
     color: HighlightText !important;
 }
 

@@ -2,19 +2,22 @@
  * Opens URLs in mpv or whatever
  */
 
-let cmd = "mpv --no-terminal";
 let remote = "vixlap-lan";
 
 function clean(str) {
   return str.replace(/([$`"\\])/g, "\\$1");
 }
 
+function cmd(str) {
+  return "mpv --no-terminal `youtube-dl -g '"+clean(str)+"'`";
+}
+
 function mpv(e) {
-  return io.system(cmd+" '"+clean(e.href)+"'");
+  return io.system(cmd(e.href));
 }
 
 function mpvr(e) {
-  return io.system("ssh "+remote+" -t DISPLAY=:0"+cmd+" '"+clean(e.href)+"'");
+  return io.system("ssh "+remote+" -t DISPLAY=:0 "+cmd(e.href));
 }
 
 hints.addMode("m", "Open link in mpv", mpv);

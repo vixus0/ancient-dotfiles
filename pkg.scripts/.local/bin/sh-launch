@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-prompt="\e[0;33m\e[m" 
-
-printf "%b " $prompt
-cd /usr/bin
-read -e cmd
-
-nohup $cmd &> /dev/null

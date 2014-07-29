@@ -13,7 +13,7 @@ fmt = {
     'normal' : '%{B#FF101010}%{F#FFe0e0e0}%{U#FF101010}',
     'active' : '%{B#FFe0e0e0}%{F#FF101010}%{U#FFe0e0e0}',
     'urgent' : '%{B#FFac4142}%{F#FFe0e0e0}%{U#FFac4142}',
-    'end'    : '%{B-}%{F-}%{-o}'
+    'end'    : '%{B-}%{F-}'
     }
 
 
@@ -30,13 +30,14 @@ icons = {
     'wifi' : '⮸'
     }
 
+spacer = 2
 
 def stat_cmd(x): 
     return ['sh-stats', x]
 
 
 def item(s, style='normal'):
-    return '{} {} {}'.format(fmt[style], s, fmt['end'])
+    return ('{} {} {}'+' '*spacer).format(fmt[style], s, fmt['end'])
 
 
 def run(args):
@@ -70,7 +71,7 @@ class Printer(object):
     def clients(self):
         out = run(['herbstclient', 'get_attr', 'clients.focus.title'])
         if out:
-            return item(out, style='active')
+            return item(out[:50], style='active')
         else:
             return ''
 
@@ -110,8 +111,8 @@ class Printer(object):
         out = run(['amixer', 'sget', 'Master,0'])
         out = out.split('\n')
         line = out[-1].strip().split()
-        vol = line[4].strip('[]%')
-        if 'off' in line[6]:
+        vol = line[-3].strip('[]%')
+        if 'off' in line[-1]:
             return item(icons['vol_mute'], style='urgent')
         else:
             return item(icons['vol_on']+' '+vol)
@@ -127,11 +128,11 @@ if __name__ == "__main__":
             func = getattr(prn, thing)
             if not func:
                 continue
-            rtn += func()+' '
+            rtn += func()
         return rtn
 
     while True:
-        bigstr = '%{l}'+add_items(left_items)+'%{r}'+add_items(right_items)[:-1]
+        bigstr = '%{l}'+add_items(left_items)+'%{r}'+add_items(right_items)[:-spacer]
         print(bigstr)
         sys.stdout.flush()
         time.sleep(0.2)

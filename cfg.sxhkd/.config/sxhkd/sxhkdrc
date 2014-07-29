@@ -41,8 +41,11 @@ super + {8,9,0}
 
 
 # applications
-super + a; {a,w}
-  {termite,firefox}
+super + Return 
+  termite
+
+super + a; {w}
+  {firefox}
 
 super + Escape
-  termite --exec=sh-launch --role=LAUNCHER --geometry=400x8
+  termite --role=LAUNCHER --geometry=400x8

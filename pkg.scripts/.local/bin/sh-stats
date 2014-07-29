@@ -31,7 +31,8 @@ wifi_connm_ssid() {
   [[ -z "`pidof connmand`" ]] && return 1
 
   local id="`connmanctl services | awk '/^*/ {print $2}'`"
- 
+
+  [[ -z "$id" ]] && return 1
   echo $id
   return 0
 }

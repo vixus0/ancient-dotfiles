@@ -1,134 +1,115 @@
-#!/usr/bin/bash
+#!/usr/bin/env python
 
-## COLORS
-cb='#121317'
-cf='#a5a9b5'
-c0='#1e2d33'
-c1='#802828'
-c2='#909737'
-c3='#b27d12'
-c4='#1e5673'
-c5='#642337'
-c6='#196271'
-c7='#99b3bd'
-c9='#334d57'
-c8='#8a3232'
-cr='^bg()^fg()'
+from subprocess import check_output, CalledProcessError
+import time
 
-## FONT
-fn="lemon:size=10"
+left_items = ['tags', 'clients']
+centre_items = []
+right_items = ['pacman', 'battery', 'wifi', 'clock']
 
-## RESOLUTION
-xr="`xrandr | awk '/*+/ {print $1}'`"
-res="${xr%x*}"
-gap="${1:-8}"
+fmt = {
+    'normal' : '%{B#FF101010}%{F#FFe0e0e0}%{U#FF101010}',
+    'active' : '%{B#FFe0e0e0}%{F#FF101010}%{U#FFe0e0e0}',
+    'urgent' : '%{B#FFac4142}%{F#FFe0e0e0}%{U#FFac4142}',
+    'end'    : '%{B-}%{F-}%{-o}'
+    }
 
-sep="^fg($c0)·^fg()" 
-asep="^fg($c0)⮁^fg()" 
+icons = {
+    'tag_empty' : '○',
+    'tag_act' : '●',
+    'tag_fill': '◎',
+    'pacman' : '⮢',
+    'vol_on' : '⮞',
+    'vol_mute' : '⮝',
+    'batt' : '⮒',
+    'clock' : '⮖',
+    'wins' : '⮛',
+    'wifi' : '⮸'
+    }
 
-batt() {
-  if [[ -z "`ls /sys/class/power_supply/BAT* 2>/dev/null`" ]]; then
-    echo "^fg($c0)⮎^fg()"
-    return
-  fi
+def stat_cmd(x): 
+    return ['sh-stats', x]
 
-  cf="`cat /sys/class/power_supply/BAT*/{energy,charge}_full 2>/dev/null`" 
-  cn="`cat /sys/class/power_supply/BAT*/{energy,charge}_now 2>/dev/null`" 
-  cs="`cat /sys/class/power_supply/BAT*/status`" 
-  cp="`echo $cf $cn | awk '{print int($2/$1 * 100.0)}'`"
+def item(s, style='normal'):
+    return '{} {} {}'.format(fmt[style], s, fmt['end'])
 
-  ico="^fg($cf)⮏^fg() ${cp}%"
-  [[ $cp -lt 20 ]]        && ico="^fg($c1)⮑ ${cp}%^fg()"
-  [[ $cs == "Charging" ]] && ico="^fg($cf)⮒ ${cp}%^fg()"
-  [[ $cs == "Full" ]]     && ico="^fg($cf)⮎^fg()"
+def run(args):
+    try:
+        out = check_output(args, timeout=None)
+    except CalledProcessError:
+        return None
+    return out.decode().strip()
 
-  echo "$ico"
-}
+class Printer(object):
+    def tags(self):
+        out = run(['herbstclient', 'tag_status'])
+        tags = out.split()
+        rtn = ''
+        for t in tags:
+            if t.startswith('#'):
+                rtn += ' %{F#FFe0e0e0}'+icons['tag_act']
+            elif t.startswith(':'):
+                rtn += ' %{F#FFe0e0e0}'+icons['tag_fill']
+            elif t.startswith('!'):
+                rtn += ' %{F#FFac4142}'+icons['tag_fill']
+            else:
+                rtn += ' %{F#FFe0e0e0}'+icons['tag_empty']
+        return item(rtn[1:])
 
-wifi() {
-  lq="`awk '/wl/ {print int($3)}' /proc/net/wireless`"
-  id="`connmanctl services | awk '/^*/ {print $2}'`"
-  echo $id $lq
-}
+    def clients(self):
+        out = run(['herbstclient', 'get_attr', 'clients.focus.title'])
+        if out:
+            return item(out, style='active')
+        else:
+            return ''
 
-eth() {
-  link="`ip link | awk '/: e/ && /UP/ {sub(/:/,\"\",$2);print $2}'`"
-  cat /sys/class/net/$link/operstate
-}
+    def pacman(self):
+        try:
+            items = open('/tmp/pacupd', 'r').readlines()
+        except OSError:
+            out = run(['checkupdates'])
+            items = [x+'\n' for x in out.split('\n')[:-1]]
+            open('/tmp/pacupd', 'w').writelines(items)
 
-net() {
-  if [[ `eth` == "up" ]]; then
-    echo "^fg($c2)⮷^fg() eth"
-    return
-  fi
-  wi=( `wifi` )
-  [[ -z ${wi[1]} ]] && ico="^fg($c1)⮹^fg()" || ico="^fg($c4)⮷ ${wi[1]}^fg()"  
-  if [[ -n ${wi[0]} ]]; then
-    echo "$ico ${wi[0]}"
-  else
-    echo "^fg($c0)⮹ disconnected^fg()"
-  fi
-}
+        if len(items) > 0:
+            return item(icons['pacman']+' '+str(len(items)), style='urgent')
+        else:
+            return ''
+
+    def battery(self):
+        out = run(stat_cmd('batt_perc'))
+        if not out:
+            return ''
+        if int(out) > 20:
+            return item(icons['batt']+' '+out)
+        else:
+            return item(icons['batt']+' '+out, style='urgent')
+
+    def wifi(self):
+        out = run(stat_cmd('wifi_connm_ssid'))
+        if not out:
+            return item(icons['wifi'], style='urgent')
+        return item(icons['wifi']+' '+out)
+
+    def clock(self):
+        out = time.strftime('%a %d %b %H:%M')
+        return item(icons['clock']+' '+out)
+
+if __name__ == "__main__":
+
+    prn = Printer()
+
+    def add_items(ls):
+        rtn = ''
+        for thing in ls:
+            func = getattr(prn, thing)
+            if not func:
+                continue
+            rtn += func()+' '
+        return rtn
+
+    bigstr = '%{l}'+add_items(left_items)+'%{r}'+add_items(right_items)[:-1]
+
+    print(bigstr)
 
 
-day() {
-  date +"%a %d %b  ^fg($c4)%H:%M"
-}
-
-tags() {
-  t="`herbstclient tag_status`"
-  t="${t//\#/${cr}^fg($c4)}"
-  t="${t//:/${cr}}"
-  t="${t//./${cr}^fg($c0)}"
-  t="${t//!/${cr}^fg($c1)}${cr}"
-  echo $t
-}
-
-focus() {
-  herbstclient get_attr clients.focus.title
-}
-
-strip_dzen() {
-  sed -e "s/\^[fb]g([\#a-f0-9]*)//g"
-}
-
-bar() {
-  herbstclient --wait reload &
-  wpid=$!
-  while kill -0 $wpid >/dev/null 2>&1; do
-     left=" `tags` $asep  "
-    right="`net`  $sep  `batt`  $sep  `day` "
-    clean="`echo ${right} | strip_dzen`"
-       tw=`xftwidth $fn "${clean}   "`
-
-       echo -e "${left}^p(_RIGHT)^p(-$tw)${right}"
-    sleep 0.5s
-  done | dzen2 \
-    -w $(( $res - 2 * $gap )) -h 16 -x $gap -y $gap \
-    -bg $cb -fg $cf \
-    -ta l
-}
-
-case "$1" in
-  "batt")
-    batt | strip_dzen
-    ;;
-  "wifi")
-    wifi | strip_dzen
-    ;;
-  "eth")
-    eth | strip_dzen
-    ;;
-  "day")
-    day | strip_dzen
-    ;;
-  "tags")
-    tags | strip_dzen
-    ;;
-  "focus")
-    focus
-    ;;
-  *)
-    bar
-    ;;
-esac

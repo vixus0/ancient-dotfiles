@@ -1,11 +1,13 @@
 #!/usr/bin/env python
 
 from subprocess import check_output, CalledProcessError
-import time
+import time, sys
+
 
 left_items = ['tags', 'clients']
 centre_items = []
-right_items = ['pacman', 'battery', 'wifi', 'clock']
+right_items = ['pacman', 'volume', 'battery', 'wifi', 'clock']
+
 
 fmt = {
     'normal' : '%{B#FF101010}%{F#FFe0e0e0}%{U#FF101010}',
@@ -13,6 +15,7 @@ fmt = {
     'urgent' : '%{B#FFac4142}%{F#FFe0e0e0}%{U#FFac4142}',
     'end'    : '%{B-}%{F-}%{-o}'
     }
+
 
 icons = {
     'tag_empty' : '○',
@@ -27,11 +30,14 @@ icons = {
     'wifi' : '⮸'
     }
 
+
 def stat_cmd(x): 
     return ['sh-stats', x]
 
+
 def item(s, style='normal'):
     return '{} {} {}'.format(fmt[style], s, fmt['end'])
+
 
 def run(args):
     try:
@@ -40,7 +46,12 @@ def run(args):
         return None
     return out.decode().strip()
 
+
 class Printer(object):
+
+    def __init__(self):
+        self.last_run = 0
+
     def tags(self):
         out = run(['herbstclient', 'tag_status'])
         tags = out.split()
@@ -64,15 +75,15 @@ class Printer(object):
             return ''
 
     def pacman(self):
-        try:
-            items = open('/tmp/pacupd', 'r').readlines()
-        except OSError:
-            out = run(['checkupdates'])
-            items = [x+'\n' for x in out.split('\n')[:-1]]
-            open('/tmp/pacupd', 'w').writelines(items)
+        this_time = time.time()
+        self.pkgs = None
+        if this_time - self.last_run > 60:
+           out = run(['checkupdates'])
+           self.pkgs = out.split('\n')
+           self.last_run = this_time
 
-        if len(items) > 0:
-            return item(icons['pacman']+' '+str(len(items)), style='urgent')
+        if self.pkgs:
+            return item(icons['pacman']+' '+str(len(self.pkgs)), style='urgent')
         else:
             return ''
 
@@ -95,6 +106,17 @@ class Printer(object):
         out = time.strftime('%a %d %b %H:%M')
         return item(icons['clock']+' '+out)
 
+    def volume(self):
+        out = run(['amixer', 'sget', 'Master,0'])
+        out = out.split('\n')
+        line = out[-1].strip().split()
+        vol = line[4].strip('[]%')
+        if 'off' in line[6]:
+            return item(icons['vol_mute'], style='urgent')
+        else:
+            return item(icons['vol_on']+' '+vol)
+
+
 if __name__ == "__main__":
 
     prn = Printer()
@@ -108,8 +130,8 @@ if __name__ == "__main__":
             rtn += func()+' '
         return rtn
 
-    bigstr = '%{l}'+add_items(left_items)+'%{r}'+add_items(right_items)[:-1]
-
-    print(bigstr)
-
-
+    while True:
+        bigstr = '%{l}'+add_items(left_items)+'%{r}'+add_items(right_items)[:-1]
+        print(bigstr)
+        sys.stdout.flush()
+        time.sleep(0.2)

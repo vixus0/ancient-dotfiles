@@ -108,9 +108,12 @@ bar_cmd=(\
   "-F #FFe0e0e0"
   )
 
-herbstclient -w reload &
-bar_pid=$!
-(while ps -p $bar_pid >/dev/null 2>&1; do
-   $mydir/bar
-   sleep 0.3
- done) | ${bar_cmd[@]}
+#herbstclient -w reload &
+#barpid=$!
+#(while ps -p $barpid &>/dev/null; do $mydir/bar; sleep 0.2; done) | ${bar_cmd[@]} &
+
+pkill pybar
+pkill bar
+$mydir/pybar | ${bar_cmd[@]} &
+
+

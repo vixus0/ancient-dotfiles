@@ -45,6 +45,11 @@ eth_state() {
   [[ $state == "up" ]] && return 0 || return 1
 }
 
+vol_perc() {
+  local vol="`amixer sget Master,0 | awk '/  Front/ {print gensub(/\[(.+)%\]/, \"\\\\1\", \"g\", $5);exit}'`"
+  [[ -n $vol ]] && echo $vol || return 1
+}
+
 today() {
   date +"%a %d %b"
 }

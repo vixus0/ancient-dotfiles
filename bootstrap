@@ -16,7 +16,6 @@ cpackages=(\
   "stow"
   "vim"
   "tmux"
-  "weechat"
   )
 
 # GUI packages

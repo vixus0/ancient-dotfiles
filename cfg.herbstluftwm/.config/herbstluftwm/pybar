@@ -52,6 +52,7 @@ class Printer(object):
 
     def __init__(self):
         self.last_run = 0
+        self.pkgs = None
 
     def tags(self):
         out = run(['herbstclient', 'tag_status'])
@@ -77,14 +78,13 @@ class Printer(object):
 
     def pacman(self):
         this_time = time.time()
-        self.pkgs = None
         if this_time - self.last_run > 60:
-           out = run(['checkupdates'])
-           self.pkgs = out.split('\n')
+           self.pkgs = run(['checkupdates'])
            self.last_run = this_time
 
         if self.pkgs:
-            return item(icons['pacman']+' '+str(len(self.pkgs)), style='urgent')
+            n = len(self.pkgs.split('\n'))
+            return item(icons['pacman']+' '+str(n), style='urgent')
         else:
             return ''
 

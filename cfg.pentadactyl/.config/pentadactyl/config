@@ -29,6 +29,10 @@ colorscheme desert
 "binds
 map -count -modes=n,v J <count>gT
 map -count -modes=n,v K <count>gt
+nmap -b h 5h
+nmap -b j 5j
+nmap -b k 5k
+nmap -b l 5l
 
 
 " Require websites preform safe ssl negotiation

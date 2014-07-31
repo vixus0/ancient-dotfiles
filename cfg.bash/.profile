@@ -14,10 +14,6 @@ RC="$HOME/.bashrc"
 [[ -f $RC ]] && . $RC
 
 
-# Fix the TERM if we're SSH'd
-[[ -n "$SSH_CLIENT" ]] && export TERM=xterm-256color
-
-
 # Fix XDG directories to map to correct $HOME
 sed "s|\$HOME|${HOME}|g" $XDG_CONFIG_HOME/user-dirs.tmp > $XDG_CONFIG_HOME/user-dirs.dirs
 

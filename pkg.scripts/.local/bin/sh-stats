@@ -18,6 +18,14 @@ batt_perc() {
   return 0
 }
 
+batt_state() {
+  [[ -z "`ls /sys/class/power_supply/BAT* 2>/dev/null`" ]] && return 1
+
+  cut -c1 /sys/class/power_supply/BAT*/status
+  return 0
+}
+  
+
 wifi_qual() {
   [[ ! -f /proc/net/wireless ]] && return 1
 

@@ -92,6 +92,9 @@ class Printer(object):
         out = run(stat_cmd('batt_perc'))
         if not out:
             return ''
+        state = run(stat_cmd('batt_state'))
+        if out and state == "C":
+            return item(icons['batt']+' '+out, style='active')
         if int(out) > 20:
             return item(icons['batt']+' '+out)
         else:

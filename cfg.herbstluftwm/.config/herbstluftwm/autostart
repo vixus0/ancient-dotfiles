@@ -95,9 +95,6 @@ unset -f hc
 
 
 # -- panel
-killall tint2
-#tint2 &
-
 scrw=`xrandr | grep '*' | cut -dx -f1`
 bar_cmd=(\
   "bar"
@@ -107,10 +104,6 @@ bar_cmd=(\
   "-B #00000000"
   "-F #FFe0e0e0"
   )
-
-#herbstclient -w reload &
-#barpid=$!
-#(while ps -p $barpid &>/dev/null; do $mydir/bar; sleep 0.2; done) | ${bar_cmd[@]} &
 
 pkill pybar
 pkill bar

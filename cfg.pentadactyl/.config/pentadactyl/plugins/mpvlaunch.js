@@ -9,7 +9,7 @@ function clean(str) {
 }
 
 function cmd(str) {
-  return "mpv --no-terminal `youtube-dl -g '"+clean(str)+"'`";
+  return "mpv --no-terminal --playlist=<(youtube-dl -i -g '"+clean(str)+"')";
 }
 
 function mpv(e) {

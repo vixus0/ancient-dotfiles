@@ -54,6 +54,10 @@ alias PAUpd="yaourt -Syua"
 alias PList="$pacman -Qqe"
 alias PAList="$pacman -Qqm"
 
+# Herbstluftwm
+alias jj="$XDG_CONFIG_HOME/herbstluftwm/jump j"
+alias jb="$XDG_CONFIG_HOME/herbstluftwm/jump b"
+
 # Clipboard
 alias CPr="xclip -o -selection PRIMARY"
 alias CSe="xclip -o -selection SECONDARY"
@@ -64,7 +68,7 @@ alias Cc="xclip -i -selection PRIMARY"
 
 # Pastebin
 ix() {
-  curl -n -F 'f:1=<-' http://ix.io
+  curl -n -F 'f:1=<-' http://ix.io | xclip -i -selection PRIMARY
 }
 
 astart() {

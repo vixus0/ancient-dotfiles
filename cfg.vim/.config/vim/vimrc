@@ -23,6 +23,8 @@ set rtp+=$XDG_CONFIG_HOME/vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'szw/vim-tags'
+Plugin 'tpope/vim-surround'
+Plugin 'ervandew/supertab'
 call vundle#end()
 " -- /vundle
 
@@ -80,7 +82,13 @@ set number
 set modeline
 set clipboard+=unnamed
 set backspace+=start,eol,indent
+set omnifunc=syntaxcomplete#Complete
 " -- /general
+
+
+" -- plugins
+let g:SuperTabDefaultCompletionType = "context"
+" -- /plugins
 
 
 " -- bindings

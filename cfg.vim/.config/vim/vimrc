@@ -19,10 +19,11 @@ let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc"
 
 " -- vundle
 filetype off
-silent! set rtp+=$XDG_CONFIG_HOME/vim/bundle/vundle/
-silent! call vundle#rc()
-silent! Bundle 'gmarik/vundle'
-silent! Bundle 'Rykka/colorv.vim'
+set rtp+=$XDG_CONFIG_HOME/vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'gmarik/Vundle.vim'
+Plugin 'szw/vim-tags'
+call vundle#end()
 " -- /vundle
 
 

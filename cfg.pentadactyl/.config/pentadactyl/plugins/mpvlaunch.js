@@ -22,3 +22,6 @@ function mpvr(e) {
 
 hints.addMode("m", "Open link in mpv", mpv);
 hints.addMode("M", "Open link in mpv remotely", mpvr);
+group.commands.add(["mpv"], "Open current URL in mpv",
+    function(args) { io.system(cmd(buffer.URL)); }
+    );

@@ -87,7 +87,8 @@ set omnifunc=syntaxcomplete#Complete
 
 
 " -- plugins
-let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+let g:SuperTabContextDefaultCompletionType = "context"
 " -- /plugins
 
 

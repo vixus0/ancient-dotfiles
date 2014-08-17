@@ -70,6 +70,7 @@ au BufNewFile,BufRead *.frag,*.vert,*.fp,*.vp,*.glsl set filetype=glsl
 " -- general
 filetype plugin indent on
 set incsearch
+set hlsearch
 set scrolloff=2
 set ignorecase
 set smartcase
@@ -87,7 +88,7 @@ set omnifunc=syntaxcomplete#Complete
 
 
 " -- plugins
-let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+let g:SuperTabDefaultCompletionType = "<c-p>"
 let g:SuperTabContextDefaultCompletionType = "context"
 " -- /plugins
 

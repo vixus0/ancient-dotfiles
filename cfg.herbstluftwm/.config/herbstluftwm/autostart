@@ -99,5 +99,3 @@ unset -f hc
 scrw=`xrandr | grep '*' | cut -dx -f1`
 pkill -f pybar
 $mydir/pybar $scrw $gap $bar_height $bar_offs
-
-

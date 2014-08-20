@@ -145,12 +145,14 @@ if __name__ == "__main__":
         return rtn
 
     bar_proc = Popen(bar_cmd, stdout=PIPE, stderr=None, stdin=PIPE)
+    bar_proc.poll()
 
-    while True:
+    while bar_proc.returncode == None:
         out = '%{l}'+add_items(left_items)+'%{r}'+add_items(right_items)[:-spacer]+'\n'
         b = bytes(out, 'UTF-8')
         bar_proc.stdin.write(b)
         bar_proc.stdin.flush()
+        bar_proc.poll()
         time.sleep(0.2)
 
 

@@ -98,7 +98,7 @@ unset -f hc
 # -- panel
 scrw=`xrandr | grep '*' | cut -dx -f1`
 bar_cmd=(\
-  "$HOME/git/bar/bar"
+  "bar"
   "-d" 
   "-g $(( $scrw - 2*$gap ))x${bar_height}+$gap+$bar_offs"
   "-f -benis-lemon-medium-r-normal--10-110-75-75-m-50-iso8859-1" 

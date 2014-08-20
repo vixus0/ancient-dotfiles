@@ -1,8 +1,9 @@
 #!/usr/bin/env python
 
-from subprocess import check_output, CalledProcessError
+from subprocess import check_output, CalledProcessError, Popen, PIPE
 import time, sys
 
+SCRW, GAP, BARH, BARO = map(int, sys.argv[1:5])
 
 left_items = ['tags', 'clients']
 centre_items = []
@@ -29,6 +30,15 @@ icons = {
     'wins' : '⮛',
     'wifi' : '⮸'
     }
+
+bar_cmd = [
+    'bar', '-d',
+    '-g', '{}x{}+{}+{}'.format(SCRW-2*GAP, BARH, GAP, BARO),
+    '-f', '-benis-lemon-medium-r-normal--10-110-75-75-m-50-iso8859-1',
+    '-B', '#00101010',
+    '-F', '#FFe0e0e0'
+    ]
+
 
 spacer = 2
 
@@ -134,8 +144,13 @@ if __name__ == "__main__":
             rtn += func()
         return rtn
 
+    bar_proc = Popen(bar_cmd, stdout=PIPE, stderr=None, stdin=PIPE)
+
     while True:
-        bigstr = '%{l}'+add_items(left_items)+'%{r}'+add_items(right_items)[:-spacer]
-        print(bigstr)
-        sys.stdout.flush()
+        out = '%{l}'+add_items(left_items)+'%{r}'+add_items(right_items)[:-spacer]+'\n'
+        b = bytes(out, 'UTF-8')
+        bar_proc.stdin.write(b)
+        bar_proc.stdin.flush()
         time.sleep(0.2)
+
+

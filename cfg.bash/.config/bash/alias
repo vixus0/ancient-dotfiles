@@ -41,27 +41,27 @@ alias easystroke="easystroke -c $XDG_CONFIG_HOME/easystroke"
 alias mypaint="mypaint -c $XDG_CONFIG_HOME/mypaint"
 
 # Pacman
-alias PIns="$pacman -S"
-alias PUnins='sudo pacman -Rc'
-alias PInfo="$pacman -Qi"
-alias PGetInfo="$pacman -Si"
-alias POwn="$pacman -Qo"
-alias PStat="$pacman -Qs"
-alias PFiles="$pacman -Ql"
-alias PFind="yaourt"
-alias PPUpd="sudo pacman -Syyu"
-alias PAUpd="yaourt -Syua"
-alias PList="$pacman -Qqe"
-alias PAList="$pacman -Qqm"
+alias Pins="$pacman -S"
+alias Punins='sudo pacman -Rc'
+alias Pinfo="$pacman -Qi"
+alias PgetInfo="$pacman -Si"
+alias Pown="$pacman -Qo"
+alias Pstat="$pacman -Qs"
+alias Pfiles="$pacman -Ql"
+alias Pfind="yaourt"
+alias Ppupd="sudo pacman -Syyu"
+alias Paupd="yaourt -Syua"
+alias Plist="$pacman -Qqe"
+alias Palist="$pacman -Qqm"
 
 # Herbstluftwm
 alias jj="$XDG_CONFIG_HOME/herbstluftwm/jump j"
 alias jb="$XDG_CONFIG_HOME/herbstluftwm/jump b"
 
 # Clipboard
-alias CPr="xclip -o -selection PRIMARY"
-alias CSe="xclip -o -selection SECONDARY"
-alias CCl="xclip -o -selection CLIPBOARD"
+alias Cpr="xclip -o -selection PRIMARY"
+alias Cse="xclip -o -selection SECONDARY"
+alias Ccl="xclip -o -selection CLIPBOARD"
 alias Cc="xclip -i -selection PRIMARY"
 
 ## FUNCTIONS

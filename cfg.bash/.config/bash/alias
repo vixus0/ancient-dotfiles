@@ -42,9 +42,9 @@ alias mypaint="mypaint -c $XDG_CONFIG_HOME/mypaint"
 
 # Pacman
 alias Pins="$pacman -S"
-alias Punins='sudo pacman -Rc'
+alias Punins='sudo pacman -Rnssc'
 alias Pinfo="$pacman -Qi"
-alias PgetInfo="$pacman -Si"
+alias Pgetinfo="$pacman -Si"
 alias Pown="$pacman -Qo"
 alias Pstat="$pacman -Qs"
 alias Pfiles="$pacman -Ql"

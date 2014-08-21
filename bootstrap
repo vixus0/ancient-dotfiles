@@ -33,6 +33,7 @@ xpackages=(\
   "adobe-source-code-pro-fonts"
   "sxiv"
   "nitrogen"
+  "mpv"
   )
 
 
@@ -95,6 +96,11 @@ if [[ $1 == "gui" ]]; then
   yaourt -S "${apackages[@]}"
   stow -S cfg.{herbstluftwm,xorg,pentadactyl,sxhkd,termite}
   stow -S pkg.fonts
+  popd
+
+  pushd $HOME/dots/abs/lemonboy-bar-git
+  makepkg --syncdeps --clean
+  sudo makepkg --install
   popd
 fi
 

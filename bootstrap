@@ -11,6 +11,7 @@
 
 # Headless packages
 cpackages=(\
+  "git"
   "bash-completion"
   "openssh"
   "stow"
@@ -18,24 +19,32 @@ cpackages=(\
   "tmux"
   )
 
+
 # GUI packages
-# AUR packages must be at the end?
 xpackages=(\
   "xorg-server"
   "xorg-xrdb"
   "xorg-setxkbmap"
   "xorg-xset"
   "xorg-xmodmap"
-  "hsetroot"
   "herbstluftwm"
   "xcompmgr"
-  "tint2"
   "firefox"
   "adobe-source-code-pro-fonts"
   "sxiv"
+  "nitrogen"
+  )
+
+
+# AUR packages
+apackages=(\
   "termite-git"
   "sxhkd"
   )
+
+
+# Set cwd to ~
+cd ~
 
 
 # Check we have sudo
@@ -50,58 +59,43 @@ sudo pacman -Syu
 
 
 # Base setup
-if [[ -z `pacman -Q git` ]]; then
-  sudo pacman -S git
-fi
+sudo pacman -S --needed ${cpackages[@]}
 
 
 # Pull my dotfiles repository
 if [[ ! -d "$HOME/dots" ]]; then
-  git clone https://github.com/vixus0/dotfiles.git dots
+  echo "Cloning dotfiles repo..."
+  git clone https://github.com/vixus0/dotfiles.git dots >/dev/null
 fi
-cd "$HOME/dots"
 
 
 # Install package-query and yaourt
 if [[ -z `pacman -Q yaourt` ]]; then
-  pushd
-  
-  cd abs/package-query
+  pushd $HOME/dots/abs/package-query
   makepkg --syncdeps --clean
   sudo makepkg --install
+  popd
 
-  cd ../yaourt
+  pushd $HOME/dots/abs/yaourt
   makepkg --syncdeps --clean
   sudo makepkg --install
-
   popd
 fi
 
 
-# Install the essential packages
-yaourt -S --needed "${cpackages[@]}"
+# Install configs for aforementioned packages
+mkdir -p .config .local/{bin,include,lib,share/applications} .cache .ssh
+stow -S cfg.{bash,git,ssh,tmux,vim} pkg.scripts
 
 
 # Install GUI packages
-[[ $1 == "gui" ]] && yaourt -S --needed "${xpackages[@]}"
+if [[ $1 == "gui" ]]; then
+  pushd $HOME/dots
+  sudo pacman -S --needed "${xpackages[@]}"
+  yaourt -S "${apackages[@]}"
+  stow -S cfg.{herbstluftwm,xorg,pentadactyl,sxhkd,termite}
+  stow -S pkg.fonts
+  popd
+fi
 
-
-# Install configs for aforementioned packages
-cd $HOME
-mkdir -p .config .local/{bin,include,lib,share/applications} .cache .ssh
-cd dots
-
-allpackages="${cpackages[@]} ${xpackages[@]}"
-
-for p in $allpackages; do
-  echo "Searching config for $p..."
-  [[ -z `pacman -Q $p` ]] && continue
-  cfgd=`find . -maxdepth 1 -name "cfg.$p" -type d`
-  if [[ -n "$cfgd" ]]; then
-    echo "Installing config for $p..."
-    cfgd=${cfgd/\//}
-    cfgd=${cfgd##.}
-    stow -S "$cfgd" 
-  fi
-done
 

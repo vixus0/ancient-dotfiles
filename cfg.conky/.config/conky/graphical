@@ -75,18 +75,18 @@ ${voffset  0}${color3}${font FontAwesome:size=8}  \
 ${voffset -2}${color }${font}${uptime}\
     \
 ${voffset  1}${color2}${font FontAwesome:size=8}  \
-${voffset -3}${color }${font}${desktop} ${color8}${exec herbstclient get_attr clients.focus.title | cut -c1-100}\
+${voffset -3}${color }${font}${desktop} ${color8}${exec herbstclient get_attr clients.focus.class}: ${exec herbstclient get_attr clients.focus.title | cut -c1-50}\
 \
-${alignr}\
+${alignr -20}\
 \
-${voffset  1}${color1}${font FontAwesome:size=8}  \
-${voffset -3}${color }${font}${execi 1800 checkupdates | wc -l}\
+${voffset  0}${color1}${font FontAwesome:size=8}  \
+${voffset -2}${color }${font}${execi 60 checkupdates | wc -l}\
     \
-${voffset  1}${color5}${font FontAwesome:size=8}  \
-${voffset -3}${color }${font}${exec connmanctl services | awk '/^*/ {print $2}'}\
+${voffset  0}${color5}${font FontAwesome:size=8}  \
+${voffset -2}${color }${font}${exec connmanctl services | awk '/^*/ {print $2}'}\
     \
-${voffset  1}${color3}${font FontAwesome:size=8}  \
-${voffset -3}${color }${font}${battery_percent BAT0}%\
+${voffset  0}${color3}${font FontAwesome:size=8}  \
+${voffset -2}${color }${font}${battery_percent BAT0}%\
     \
-${voffset  1}${color6}${font FontAwesome:size=8}  \
-${voffset -3}${color }${font}${color8}${time %A %d %B} ${color}${time %H:%M}\
+${voffset  0}${color6}${font FontAwesome:size=8}  \
+${voffset -2}${color }${font}${color8}${time %A %d %B} ${color}${time %H:%M}\

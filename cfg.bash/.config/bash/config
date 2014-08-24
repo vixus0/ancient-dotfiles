@@ -26,7 +26,7 @@ eval "`TERM=screen-256color dircolors $XDG_CONFIG_HOME/bash/dircolors`"
 
 # prompt
 # make sure the first prompt won't have a newline, but subsequent ones will
-export PROMPT_COMMAND="export PROMPT_COMMAND=echo"
+export PROMPT_COMMAND="export PROMPT_COMMAND=echo;__vte_prompt_command"
 if [[ -n "$SSH_CLIENT" ]]; then
   # SSH prompt
   PS1="\[\e[0;33m\]\h\[\e[m\] \[\e[1;30m\]\w\[\e[m\] \[\e[0;32m\]·\[\e[m\] "

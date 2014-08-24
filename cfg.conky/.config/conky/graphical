@@ -76,7 +76,9 @@ ${voffset -2}${color }${font}${uptime}\
     \
 ${voffset  1}${color2}${font FontAwesome:size=8}  \
 ${voffset -3}${color }${font}${desktop} ${color8}${exec herbstclient get_attr clients.focus.title | cut -c1-100}\
-  ${alignr}  \
+\
+${alignr}\
+\
 ${voffset  1}${color1}${font FontAwesome:size=8}  \
 ${voffset -3}${color }${font}${execi 1800 checkupdates | wc -l}\
     \
@@ -88,4 +90,3 @@ ${voffset -3}${color }${font}${battery_percent BAT0}%\
     \
 ${voffset  1}${color6}${font FontAwesome:size=8}  \
 ${voffset -3}${color }${font}${color8}${time %A %d %B} ${color}${time %H:%M}\
- \

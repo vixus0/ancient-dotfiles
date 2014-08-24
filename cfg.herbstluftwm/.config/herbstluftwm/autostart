@@ -97,4 +97,6 @@ unset -f hc
 
 # -- panel
 scrw=`xrandr | grep '*' | cut -dx -f1`
-conky -c $XDG_CONFIG_HOME/conky/graphical
+killall conky
+conky -c $XDG_CONFIG_HOME/conky/graphical &
+conky -c $XDG_CONFIG_HOME/conky/calendar &

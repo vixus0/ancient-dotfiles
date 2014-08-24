@@ -34,6 +34,7 @@ xpackages=(\
   "sxiv"
   "nitrogen"
   "mpv"
+  "conky"
   )
 
 
@@ -94,7 +95,7 @@ if [[ $1 == "gui" ]]; then
   pushd $HOME/dots
   sudo pacman -S --needed "${xpackages[@]}"
   yaourt -S "${apackages[@]}"
-  stow -S cfg.{herbstluftwm,xorg,pentadactyl,sxhkd,termite}
+  stow -S cfg.{herbstluftwm,xorg,pentadactyl,sxhkd,termite,conky}
   stow -S pkg.fonts
   popd
 

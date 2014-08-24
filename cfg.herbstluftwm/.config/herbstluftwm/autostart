@@ -12,9 +12,9 @@ herbstclient emit_hook reload
 # -- const
 mypath=`realpath $0`
 mydir=`dirname $mypath`
-gap=8
+gap=4
 bar_offs=0
-bar_height=16
+bar_height=24
 
 
 # -- chain
@@ -97,5 +97,4 @@ unset -f hc
 
 # -- panel
 scrw=`xrandr | grep '*' | cut -dx -f1`
-pkill -f pybar
-$mydir/pybar $scrw $gap $bar_height $bar_offs
+conky -c $XDG_CONFIG_HOME/conky/graphical

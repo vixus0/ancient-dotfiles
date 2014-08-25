@@ -12,8 +12,9 @@ id_titles() {
     id=`echo $line | awk '/0x/ {print $1}'`
     [[ -z "$id" ]] && continue
     title=`hc get_attr clients.${id}.title`
+    class=`hc get_attr clients.${id}.class`
 
-    echo $id ${title,,}
+    echo $id ${title,,} ${class,,}
   done
 }
 

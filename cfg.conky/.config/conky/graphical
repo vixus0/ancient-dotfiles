@@ -11,6 +11,8 @@ update_interval 0.5
 cpu_avg_samples 2
 net_avg_samples 2
 no_buffers yes
+if_up_strictness address
+double_buffer yes
 
 
 # output
@@ -44,7 +46,7 @@ color4 6a9fb5
 color5 aa759f
 color6 75b5aa
 color7 d0d0d0
-color8 505050
+color8 808080
 color9 ac4142
 
 
@@ -71,22 +73,30 @@ ${offset 4}${voffset 4} \
 ${voffset  0}${color4}${font FontAwesome:size=8}  \
 ${voffset -3}${color }${font}${nodename_short} ${color8}${kernel}\
     \
-${voffset  0}${color3}${font FontAwesome:size=8}  \
-${voffset -2}${color }${font}${uptime}\
-    \
 ${voffset  1}${color2}${font FontAwesome:size=8}  \
-${voffset -3}${color }${font}${desktop} ${color8}${exec herbstclient get_attr clients.focus.class}: ${exec herbstclient get_attr clients.focus.title | cut -c1-50}\
+${voffset -3}${color }${font}${desktop} ${color8}${exec herbstclient get_attr clients.focus.class}: ${exec herbstclient get_attr clients.focus.title | cut -c1-45}\
 \
 ${alignr -20}\
 \
 ${voffset  0}${color1}${font FontAwesome:size=8}  \
 ${voffset -2}${color }${font}${execi 60 checkupdates | wc -l}\
     \
+${if_up wls3}\
 ${voffset  0}${color5}${font FontAwesome:size=8}  \
-${voffset -2}${color }${font}${exec connmanctl services | awk '/^*/ {print $2}'}\
+${voffset -2}${color }${font}${execi 10 connmanctl services | awk '/^*/ {print $2}'}\
     \
+${endif}\
 ${voffset  0}${color3}${font FontAwesome:size=8}  \
+${if_match ${battery_percent} != ""}\
+${if_match ${battery_percent} > 20}\
 ${voffset -2}${color }${font}${battery_percent BAT0}%\
+${else}\
+${voffset -2}${color1}${font}${battery_percent BAT0}%\
+${endif}\
+${endif}\
+    \
+${voffset  0}${color2}${font FontAwesome:size=8}  \
+${voffset -2}${color }${font}${execi 1 amixer get Master -M | awk '/^  Front Left/ {print $5, $7}'}\
     \
 ${voffset  0}${color6}${font FontAwesome:size=8}  \
 ${voffset -2}${color }${font}${color8}${time %A %d %B} ${color}${time %H:%M}\

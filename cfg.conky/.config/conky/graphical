@@ -86,12 +86,13 @@ ${voffset  0}${color5}${font FontAwesome:size=8}  \
 ${voffset -2}${color }${font}${execi 10 connmanctl services | awk '/^*/ {print $2}'}\
     \
 ${endif}\
-${voffset  0}${color3}${font FontAwesome:size=8}  \
 ${if_match ${battery_percent} != ""}\
+${voffset  0}${color3}${font FontAwesome:size=8}  \
+${voffset -2}${color8}${font}${execi 5 cut -c1 /sys/class/power_supply/BAT0/status} \
 ${if_match ${battery_percent} > 20}\
-${voffset -2}${color }${font}${battery_percent BAT0}%\
+${color }${font}${battery_percent BAT0}%\
 ${else}\
-${voffset -2}${color1}${font}${battery_percent BAT0}%\
+${color1}${font}${battery_percent BAT0}%\
 ${endif}\
 ${endif}\
     \

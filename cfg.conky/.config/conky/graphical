@@ -71,13 +71,12 @@ own_window_colour 101010
 TEXT
 ${offset 4}${voffset 4} \
 ${voffset  0}${color4}${font FontAwesome:size=8}  \
-${voffset -3}${color }${font}${nodename_short} ${color8}${kernel}\
+${voffset -2}${color }${font}${nodename_short} ${color8}${kernel}\
     \
-${voffset  1}${color2}${font FontAwesome:size=8}  \
-${voffset -3}${font}${desktop} ${color}${exec herbstclient get_attr clients.focus.class} ${color8}${exec herbstclient get_attr clients.focus.title | cut -c1-45}\
-\
-${alignr -20}\
-\
+${voffset  0}${color2}${font FontAwesome:size=8}  \
+${voffset -2}${font}${desktop} ${color}${exec herbstclient get_attr clients.focus.class} ${color8}${exec herbstclient get_attr clients.focus.title | awk '{printf("%-45s", substr($0, 0, 45))}'}\
+    \
+${alignr -25}\
 ${voffset  0}${color1}${font FontAwesome:size=8}  \
 ${voffset -2}${color }${font}${execi 60 checkupdates | wc -l}\
     \
@@ -90,9 +89,9 @@ ${if_match ${battery_percent} != ""}\
 ${voffset  0}${color3}${font FontAwesome:size=8}  \
 ${voffset -2} \
 ${if_match ${battery_percent} > 20}\
-${color }${font}${battery_short}%\
+${color }${font}${battery_short}\
 ${else}\
-${color1}${font}${battery_short}%\
+${color1}${font}${battery_short}\
 ${endif}\
 ${endif}\
     \

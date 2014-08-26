@@ -75,9 +75,9 @@ ${color}${execpi 3600 cal | awk 'NR>1 {print "${alignc}"$0}'}
 ${color5}${hr}
 ${color5}${pre_exec figlet -f smscript Agenda}
 
-${color}${execi 600 ssh unseen-local 'calcurse -d 7'}
+${color}${execi 60 ssh unseen-local 'calcurse -d 7'}
 
 ${color5}${hr}
 ${color5}${pre_exec figlet -f smscript Todo}
 
-${color}${execi 600 ssh unseen-local 'calcurse -t' | tail -n+2}
+${color}${execi 60 ssh unseen-local 'calcurse -t' | tail -n+2}

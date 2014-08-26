@@ -74,7 +74,7 @@ ${voffset  0}${color4}${font FontAwesome:size=8}  \
 ${voffset -3}${color }${font}${nodename_short} ${color8}${kernel}\
     \
 ${voffset  1}${color2}${font FontAwesome:size=8}  \
-${voffset -3}${color }${font}${desktop} ${color8}${exec herbstclient get_attr clients.focus.class}: ${exec herbstclient get_attr clients.focus.title | cut -c1-45}\
+${voffset -3}${font}${desktop} ${color}${exec herbstclient get_attr clients.focus.class} ${color8}${exec herbstclient get_attr clients.focus.title | cut -c1-45}\
 \
 ${alignr -20}\
 \
@@ -88,16 +88,16 @@ ${voffset -2}${color }${font}${execi 10 connmanctl services | awk '/^*/ {print $
 ${endif}\
 ${if_match ${battery_percent} != ""}\
 ${voffset  0}${color3}${font FontAwesome:size=8}  \
-${voffset -2}${color8}${font}${execi 5 cut -c1 /sys/class/power_supply/BAT0/status} \
+${voffset -2} \
 ${if_match ${battery_percent} > 20}\
-${color }${font}${battery_percent BAT0}%\
+${color }${font}${battery_short}%\
 ${else}\
-${color1}${font}${battery_percent BAT0}%\
+${color1}${font}${battery_short}%\
 ${endif}\
 ${endif}\
     \
 ${voffset  0}${color2}${font FontAwesome:size=8}  \
-${voffset -2}${color }${font}${execi 1 amixer get Master -M | awk '/^  Front Left/ {print $5, $7}'}\
+${voffset -2}${color }${font}${execi 1 amixer get Master -M | awk '/^  Front Left/ {print $5$7}'}\
     \
 ${voffset  0}${color6}${font FontAwesome:size=8}  \
-${voffset -2}${color }${font}${color8}${time %A %d %B} ${color}${time %H:%M}\
+${voffset -2}${color }${font}${color8}${time %a %d %b} ${color}${time %H:%M}\

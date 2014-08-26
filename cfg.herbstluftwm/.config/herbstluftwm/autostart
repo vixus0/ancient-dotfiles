@@ -81,8 +81,9 @@ hc mousebind Super+B2 zoom
 # -- rules
 hc unrule --all
 hc rule class~.* focus=on
-hc rule windowtype=_NET_WM_WINDOW_TYPE_DIALOG focus=on pseudotile=on
-hc rule windowrole=LAUNCHER focus=on pseudotile=on
+hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK)' manage=off
+hc rule windowtype='_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)' focus=on pseudotile=on
+hc rule windowrole='LAUNCHER' focus=on pseudotile=on
 
 
 # -- ACTIVATE
@@ -95,6 +96,8 @@ unset -f hc
 
 # -- panel
 scrw=`xrandr | grep '*' | cut -dx -f1`
+conky_tmp="/tmp/hlwm_conky.rc"
 killall conky
-conky -c $XDG_CONFIG_HOME/conky/graphical &
+sed "s/%scrw%/$scrw/g" $XDG_CONFIG_HOME/conky/graphical > ${conky_tmp} 
+conky -c ${conky_tmp} &
 conky -c $XDG_CONFIG_HOME/conky/calendar &

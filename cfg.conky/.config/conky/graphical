@@ -77,7 +77,7 @@ ${voffset -2}${color }${font}${nodename_short} ${color8}${kernel}\
 ${voffset  0}${color2}${font FontAwesome:size=8}  \
 ${voffset -2}${font}${desktop} ${color}${exec herbstclient get_attr clients.focus.class} ${color8}${exec herbstclient get_attr clients.focus.title | awk '{printf("%-45s", substr($0, 0, 45))}'}\
     \
-${alignr -25}\
+${alignr}\
 ${voffset  0}${color1}${font FontAwesome:size=8}  \
 ${voffset -2}${color }${font}${execi 60 checkupdates | wc -l}\
     \
@@ -97,7 +97,7 @@ ${endif}\
     \
 ${endif}\
 ${voffset  0}${color2}${font FontAwesome:size=8}  \
-${voffset -2}${color }${font}${execi 1 amixer get Master -M | awk '/dB]/ {print $(NF-2)$NF}'}\
+${voffset -2}${color }${font}${execi 1 amixer get Master -M | awk '/dB]/ {print $(NF-2)$NF; exit}'}\
     \
 ${voffset  0}${color6}${font FontAwesome:size=8}  \
-${voffset -2}${color }${font}${color8}${time %a %d %b} ${color}${time %H:%M} \
+${voffset -2}${color }${font}${color8}${time %a %d %b} ${color}${time %H:%M}\

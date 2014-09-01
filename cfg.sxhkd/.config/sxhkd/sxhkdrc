@@ -14,8 +14,8 @@ super + {q,r}
 super + {_,shift} + s
   herbstclient split {h,v} 0.5
 
-super + {_,shift} + w
-  herbstclient cycle {-1,_}
+super + {w,space} + {_,shift}
+  herbstclient {cycle,cycle_layout} {-1,+1}
 
 super + f
   herbstclient fullscreen toggle

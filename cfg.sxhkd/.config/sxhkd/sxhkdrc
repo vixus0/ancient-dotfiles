@@ -51,7 +51,7 @@ super + a; {w}
   {firefox}
 
 super + Escape
-  termite --role=LAUNCHER --geometry=400x8 -e 'bash --rcfile ~/.config/bash/launchrc'
+  termite --role=LAUNCHER --geometry=500x0+8+32 -e 'bash --rcfile ~/.config/bash/launchrc'
 
 super + F5
   scrot -e 'mv $f ~/shots/'

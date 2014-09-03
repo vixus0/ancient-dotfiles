@@ -47,9 +47,6 @@ super + {8,9,0}
 super + Return 
   termite
 
-super + a; {w}
-  {firefox}
-
 super + Escape
   termite --role=LAUNCHER --geometry=500x0+8+32 -e 'bash --rcfile ~/.config/bash/launchrc'
 

@@ -25,6 +25,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'szw/vim-tags'
 Plugin 'tpope/vim-surround'
 Plugin 'ervandew/supertab'
+Plugin 'scrooloose/syntastic'
 call vundle#end()
 " -- /vundle
 

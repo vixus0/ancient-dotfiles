@@ -14,6 +14,8 @@ set defsearch=d
 set guioptions=Csn
 set hlfind
 
+
+"plugins
 loadplugins '\.(js|penta)$'
 
 
@@ -32,7 +34,6 @@ colorscheme desert
 "binds
 map -count -modes=n,v J <count>gT
 map -count -modes=n,v K <count>gt
-map -ex gl :open readable
 nmap -b h 5h
 nmap -b j 5j
 nmap -b k 5k

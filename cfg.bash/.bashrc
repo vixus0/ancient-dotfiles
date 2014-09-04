@@ -9,12 +9,6 @@
 [[ $- != *i* ]] && return
 
 
-# Source VTE functions 
-if [[ $TERM == "xterm-termite" && -f /etc/profile.d/vte.sh ]]; then
-  . /etc/profile.d/vte.sh
-fi
-
-
 # Bash stuff
 . ~/.config/bash/env
 . $XDG_CONFIG_HOME/bash/config

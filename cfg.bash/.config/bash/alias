@@ -68,7 +68,7 @@ alias Cc="xclip -i -selection PRIMARY"
 
 # Pastebin
 ix() {
-  curl -n -F 'f:1=<-' http://ix.io | xclip -i -selection PRIMARY
+  curl -n -F 'f:1=<-' http://ix.io | tee | xclip -i -selection PRIMARY
 }
 
 astart() {

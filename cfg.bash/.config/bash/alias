@@ -68,7 +68,11 @@ alias Cc="xclip -i -selection PRIMARY"
 
 # Pastebin
 ix() {
-  curl -n -F 'f:1=<-' http://ix.io | tee | xclip -i -selection PRIMARY
+  local lang="?"$2
+  local out=`curl -nsS -F 'sprunge=<-' http://sprunge.us`
+  echo -n $out \
+    | tee - \
+    | xclip -i -selection PRIMARY 2>/dev/null
 }
 
 astart() {

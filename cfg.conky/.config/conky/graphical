@@ -83,7 +83,7 @@ ${voffset -2}${color }${font}${execi 60 checkupdates | wc -l}\
     \
 ${if_up wls3}\
 ${voffset  0}${color5}${font FontAwesome:size=8}  \
-${voffset -2}${color }${font}${execi 10 connmanctl services | awk '/^*/ {print $2}'}\
+${voffset -2}${color }${font}${execi 10 connmanctl services | awk '/^*/ && NR==1 {print $2}'}\
     \
 ${endif}\
 ${if_existing /sys/class/power_supply/BAT0}\

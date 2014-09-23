@@ -77,7 +77,7 @@ ${voffset -2}${color }${font}${nodename_short} ${color8}${kernel}\
 ${voffset  0}${color2}${font FontAwesome:size=8}  \
 ${voffset -2}${font}${desktop} ${color}${exec herbstclient get_attr clients.focus.class} ${color8}${exec herbstclient get_attr clients.focus.title | awk '{printf("%-45s", substr($0, 0, 45))}'}\
     \
-${alignr}\
+${alignr -8}\
 ${voffset  0}${color1}${font FontAwesome:size=8}  \
 ${voffset -2}${color }${font}${execi 60 checkupdates | wc -l}\
     \

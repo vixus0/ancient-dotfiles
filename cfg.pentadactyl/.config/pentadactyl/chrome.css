@@ -9,26 +9,14 @@
 
 @namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 
-/* Get rid of the bottom border */
+/* God damn it */
 #TabsToolbar {
-    height: 24px !important;
-    overflow: hide !important;
-}
-
-#TabsToolbar::after {
-    border-bottom: 0px!important;
+  margin-bottom: 20px !important;
 }
 
 /* Hide the new curved tab edges */
 .tab-background {
     opacity: 0 !important;
-}
-
-/* Decrease font size */
-.tabbrowser-tabs .tab-content {
-    padding: 0 5px !important;  /* That's Numberwang! */
-    color: inherit !important;
-    font-size: 8pt !important;
 }
 
 /* Hide tab close button */
@@ -42,30 +30,8 @@
     visibility: hidden !important;
 }
 
-/* Reduce the padding around the contents of a tab */
-.tabbrowser-tab .tab-content,
-.tabbrowser-tab[selected] .tab-content {
-    padding: 0 2px 2px 4px !important;
-}
-
-#TabsToolbar {
-    -moz-appearance: none !important;
-    background: #151515 !important;  
-    color: #d0d0d0 !important;
-}
-
-/* Mostly hacks to try deal with tab overflow, it's not pretty */
-#tabbrowser-tabs {
-    margin-left: -15px !important;
-    margin-right: -15px !important;
-}
-
-#tabbrowser-tabs ~ #alltabs-button {
-    padding-left: 15px !important;
-}
-
 .tabbrowser-tab[selected] {
-    background: #90a959 !important;
     color: HighlightText !important;
+    background: #101010 !important;
 }
 

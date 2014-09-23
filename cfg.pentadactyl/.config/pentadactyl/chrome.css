@@ -24,6 +24,11 @@
     display: none !important;
 }
 
+/* Hide new tab button */
+.tabs-newtab-button {
+  display: none !important;
+}
+
 /* Hide the little graphic seperator between inactive tabs */
 .tabbrowser-tab:before,
 .tabbrowser-tab:after {

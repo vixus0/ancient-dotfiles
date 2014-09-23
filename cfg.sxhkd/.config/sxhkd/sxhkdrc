@@ -24,7 +24,7 @@ super + ctrl + {l,h}
   herbstclient use_index {+1,-1}
 
 super + {_,shift,alt} + {h,j,k,l}
-  herbstclient {focus,shift,resize} {left,down,up,right} +0.05
+  herbstclient {focus,shift,resize} {left,down,up,right} +0.02
 
 super + {_,shift} + {1,2,3,4}
   herbstclient {use,move} {1,2,3,4}

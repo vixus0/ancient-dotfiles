@@ -11,7 +11,8 @@
 
 /* God damn it */
 #TabsToolbar {
-  margin-bottom: 20px !important;
+  margin-top: -2px !important;
+  margin-bottom: 0px !important;
 }
 
 /* Hide the new curved tab edges */

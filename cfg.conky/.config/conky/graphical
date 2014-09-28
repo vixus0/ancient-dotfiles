@@ -24,9 +24,8 @@ extra_newline no
 # position
 alignment top_middle
 minimum_size %scrw% 18
-maximum_width %scrw%
 gap_x 0
-gap_y 1
+gap_y 0
 
 
 # background / borders
@@ -77,7 +76,7 @@ ${voffset -2}${color }${font}${nodename_short} ${color8}${kernel}\
 ${voffset  0}${color2}${font FontAwesome:size=8}  \
 ${voffset -2}${font}${desktop} ${color}${exec herbstclient get_attr clients.focus.class} ${color8}${exec herbstclient get_attr clients.focus.title | awk '{printf("%-45s", substr($0, 0, 45))}'}\
     \
-${alignr -8}\
+${alignr}\
 ${voffset  0}${color1}${font FontAwesome:size=8}  \
 ${voffset -2}${color }${font}${execi 60 checkupdates | wc -l}\
     \
@@ -100,4 +99,4 @@ ${voffset  0}${color2}${font FontAwesome:size=8}  \
 ${voffset -2}${color }${font}${execi 1 amixer get Master -M | awk '/dB]/ {print $(NF-2)$NF; exit}'}\
     \
 ${voffset  0}${color6}${font FontAwesome:size=8}  \
-${voffset -2}${color }${font}${color8}${time %a %d %b} ${color}${time %H:%M}\
+${voffset -2}${color }${font}${color8}${time %a %d %b} ${color}${time %H:%M}

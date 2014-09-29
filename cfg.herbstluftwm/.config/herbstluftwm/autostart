@@ -34,7 +34,7 @@ hc set wmname LG3D
 hc set always_show_frame 0
 hc set smart_frame_surroundings 0
 hc set frame_bg_transparent 0
-hc set default_frame_layout 3
+hc set default_frame_layout 2
 hc set snap_gap $gap
 hc set focus_follows_mouse 0
 hc set focus_crosses_monitor_boundaries 0
@@ -88,7 +88,7 @@ hc rule windowrole='LAUNCHER' focus=on pseudotile=on
 
 
 # -- ACTIVATE
-hc set_layout grid
+hc set_layout max
 hc unlock
 herbstclient chain $cmds &
 

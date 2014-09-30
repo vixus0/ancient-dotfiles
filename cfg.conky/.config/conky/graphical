@@ -74,16 +74,18 @@ ${voffset  0}${color4}${font FontAwesome:size=8}  \
 ${voffset -2}${color }${font}${nodename_short} ${color8}${kernel}\
     \
 ${voffset  0}${color2}${font FontAwesome:size=8}  \
-${voffset -2}${font}${desktop} ${color}${exec herbstclient get_attr clients.focus.class} ${color8}${exec herbstclient get_attr clients.focus.title | awk '{printf("%-45s", substr($0, 0, 45))}'}\
+${voffset -2}${font}${desktop} ${color}${exec herbstclient get_attr clients.focus.class} ${color8}${exec herbstclient get_attr clients.focus.title | awk '{printf("%s", substr($0, 0, 45))}'}\
     \
 ${alignr}\
 ${voffset  0}${color1}${font FontAwesome:size=8}  \
 ${voffset -2}${color }${font}${execi 60 checkupdates | wc -l}\
     \
+${alignr}\
 ${if_up wls3}\
 ${voffset  0}${color5}${font FontAwesome:size=8}  \
 ${voffset -2}${color }${font}${execi 10 connmanctl services | awk '/^*/ && NR==1 {print $2}'}\
     \
+${alignr}\
 ${endif}\
 ${if_existing /sys/class/power_supply/BAT0}\
 ${voffset  0}${color3}${font FontAwesome:size=8}  \
@@ -95,8 +97,11 @@ ${color1}${font}${battery_short}\
 ${endif}\
     \
 ${endif}\
+${alignr}\
 ${voffset  0}${color2}${font FontAwesome:size=8}  \
 ${voffset -2}${color }${font}${execi 1 amixer get Master -M | awk '/dB]/ {print $(NF-2)$NF; exit}'}\
     \
+${alignr}\
+${offset -4}\
 ${voffset  0}${color6}${font FontAwesome:size=8}  \
 ${voffset -2}${color }${font}${color8}${time %a %d %b} ${color}${time %H:%M}

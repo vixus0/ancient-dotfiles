@@ -1,27 +1,31 @@
 /*
- * Opens URLs in mpv or whatever
+ * Opens URLs in mpv with youtube-dl
  */
 
-let remote = "vixlap-lan";
+let mpv_args = "mpv --no-terminal";
+let ytdl_args = "youtube-dl -i -g";
 
 function clean(str) {
   return str.replace(/([$`"\\])/g, "\\$1");
 }
 
-function cmd(str) {
-  return "mpv --no-terminal --playlist=<(youtube-dl -i -g '"+clean(str)+"')";
+function cmd(str, extra_args) {
+  return mpv_args+" --playlist=<("+ytdl_args+" "+extra_args+" '"+clean(str)+"')";
 }
 
 function mpv(e) {
+  return io.system(cmd(e.href), "--no-playlist");
+}
+
+function mpvp(e) {
   return io.system(cmd(e.href));
 }
 
-function mpvr(e) {
-  return io.system("ssh "+remote+" -t DISPLAY=:0 "+cmd(e.href));
-}
-
 hints.addMode("m", "Open link in mpv", mpv);
-hints.addMode("M", "Open link in mpv remotely", mpvr);
+hints.addMode("M", "Open playlist in mpv", mpvp);
 group.commands.add(["mpv"], "Open current URL in mpv",
+    function(args) { io.system(cmd(buffer.URL, "--no-playlist")); }
+    );
+group.commands.add(["mpvp"], "Open current URL in mpv as playlist",
     function(args) { io.system(cmd(buffer.URL)); }
     );

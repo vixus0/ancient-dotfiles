@@ -5,10 +5,14 @@
 
 
 # settings
+set -o noclobber
+set -o physical
 shopt -s globstar
 shopt -s checkwinsize
-shopt -s histappend
 shopt -s autocd
+shopt -s histappend
+shopt -s histreedit
+shopt -s cmdhist
 
 
 # history

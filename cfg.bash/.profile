@@ -6,14 +6,11 @@
 #
 
 
-# Source environment variables and bashrc, just in case
+# Only source env vars if not in tmux instance
 EV="$HOME/.config/bash/env"
 RC="$HOME/.bashrc"
-
-
-# Only source env vars if not in tmux instance
-[ -f $EV -a -z "$TMUX" ] && . $EV
-[ -f $RC ] && . $RC
+[[ -f $EV && -z "$TMUX" ]] && . $EV
+[[ -f $RC ]] && . $RC
 
 
 # Fix XDG directories to map to correct $HOME
@@ -22,6 +19,6 @@ sed "s|\$HOME|${HOME}|g" $XDG_CONFIG_HOME/user-dirs.tmp > $XDG_CONFIG_HOME/user-
 
 
 # Start X at login on first TTY provided we're not SSH'd in
-if [ -z "$SSH_CLIENT" -a -z "$DISPLAY" -a "$XDG_VTNR" -eq 1 ]; then
+if [[ -z "$SSH_CLIENT" && -z "$DISPLAY" && "$XDG_VTNR" == 1 ]]; then
   exec startx $XINITRC
 fi

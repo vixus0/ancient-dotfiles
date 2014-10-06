@@ -2,7 +2,7 @@
  * Opens URLs in mpv with youtube-dl
  */
 
-let mpv_args = "mpv --no-terminal";
+let mpv_args = "mpv --no-terminal --vo=vdpau --hwdec=vdpau";
 let ytdl_args = "youtube-dl -i -g";
 
 function clean(str) {

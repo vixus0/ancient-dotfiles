@@ -25,7 +25,7 @@ extra_newline no
 alignment top_middle
 minimum_size %scrw% 18
 gap_x 0
-gap_y 1
+gap_y 0
 
 
 # background / borders

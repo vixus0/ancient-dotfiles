@@ -42,6 +42,13 @@ nmap -b k 5k
 nmap -b l 5l
 
 
+"performance tweaks
+set! network.http.pipelining=true
+set! network.http.proxy.pipelining=true
+set! browser.sessionstore.interval=300000
+set! nglayout.initialpaint.delay=0
+
+
 "no iframes
 set! browser.frames.enabled=false
 

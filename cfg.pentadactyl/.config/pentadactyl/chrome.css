@@ -15,14 +15,23 @@
   margin-bottom: 0px !important;
 }
 
+.tabbrowser-tabs {
+  background: #101010 !important;
+}
+
 /* Hide the new curved tab edges */
 .tab-background {
-    opacity: 0 !important;
+  opacity: 0 !important;
 }
 
 /* Hide tab close button */
 .tabbrowser-tabs .tab-close-button {
-    display: none !important;
+  display: none !important;
+}
+
+/* Hide tab icons */
+.tabbrowser-tabs .tab-icon-image {
+  display: none !important;
 }
 
 /* Hide new tab button */
@@ -33,11 +42,11 @@
 /* Hide the little graphic seperator between inactive tabs */
 .tabbrowser-tab:before,
 .tabbrowser-tab:after {
-    visibility: hidden !important;
+  visibility: hidden !important;
 }
 
 .tabbrowser-tab[selected] {
-    color: HighlightText !important;
-    background: #101010 !important;
+  color: #f4bf75 !important;
+  background: #101010 !important;
 }
 

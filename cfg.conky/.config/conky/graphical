@@ -23,7 +23,7 @@ extra_newline no
 
 # position
 alignment top_middle
-minimum_size %scrw% 18
+minimum_size %scrw% 10
 gap_x 0
 gap_y 0
 
@@ -33,11 +33,13 @@ background no
 draw_borders no
 draw_graph_borders yes
 draw_outline no
-draw_shades no
+draw_shades yes
 
 
 # colours
 default_color d0d0d0
+default_outline_color 000000
+default_shade_color 000000
 color0 151515
 color1 ac4142
 color2 90a959
@@ -72,7 +74,7 @@ TEXT
   \
 ${color4}${font}${nodename_short} ${color8}${kernel}\
     \
-${color2}${font}${desktop} ${color}${exec herbstclient get_attr clients.focus.class} ${color8}${exec herbstclient get_attr clients.focus.title | awk '{printf("%s", substr($0, 0, 45))}'}\
+${color2}${font}${desktop} ${color}${exec herbstclient get_attr clients.focus.class} ${color8}${scroll 60 2 ${exec herbstclient get_attr clients.focus.title}}\
     \
 ${alignr}\
 ${color1}${font}${execi 60 checkupdates | wc -l}\

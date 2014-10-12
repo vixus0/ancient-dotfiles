@@ -14,7 +14,7 @@ function cmd(str, extra_args) {
 }
 
 function mpv(e) {
-  return io.system(cmd(e.href), "--no-playlist");
+  return io.system(cmd(e.href, "--no-playlist"));
 }
 
 function mpvp(e) {

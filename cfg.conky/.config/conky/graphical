@@ -80,8 +80,8 @@ ${alignr}\
 ${color1}${font}${execi 60 checkupdates | wc -l}\
     \
 ${alignr}\
-${if_up wls3}\
-${color5}${font}${execi 10 connmanctl services | awk '/^*/ && NR==1 {print $2}'}\
+${if_up wlan0}\
+${color5}${font}${execi 10 connmanctl services | awk '/^*/ {print $2;exit}'}\
     \
 ${endif}\
 ${alignr}\

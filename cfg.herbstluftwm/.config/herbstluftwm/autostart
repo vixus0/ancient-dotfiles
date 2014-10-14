@@ -14,7 +14,7 @@ mypath=`realpath $0`
 mydir=`dirname $mypath`
 gap=4
 bar_offs=0
-bar_height=12
+bar_height=16
 
 
 # -- chain

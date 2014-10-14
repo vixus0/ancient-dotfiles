@@ -9,6 +9,12 @@
 
 @namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 
+/* Font */
+#TabsToolbar * {
+  font-family: "uni 05_63";
+  font-size: 6pt;
+}
+
 /* God damn it */
 #TabsToolbar {
   margin-top: -2px !important;
@@ -34,9 +40,13 @@
   display: none !important;
 }
 
-/* Hide new tab button */
-.tabs-newtab-button {
-  display: none !important;
+/* Hide other buttons */
+.tabbrowser-tabs *[class^="scrollbutton"] {
+    display: none !important;
+}
+
+.tabbrowser-tabs *[class^="tabs-newtab-button"] {
+    display: none !important;
 }
 
 /* Hide the little graphic seperator between inactive tabs */

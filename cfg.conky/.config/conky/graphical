@@ -84,6 +84,10 @@ ${if_up wlan0}\
 ${color5}${font}${execi 10 connmanctl services | awk '/^*/ {print $2;exit}'}\
     \
 ${endif}\
+${if_up wls3}\
+${color5}${font}${execi 10 connmanctl services | awk '/^*/ {print $2;exit}'}\
+    \
+${endif}\
 ${alignr}\
 ${if_existing /sys/class/power_supply/BAT0}\
 ${if_match ${battery_percent} > 20}\

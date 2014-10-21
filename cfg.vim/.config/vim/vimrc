@@ -25,7 +25,6 @@ set nocompatible
   Plugin 'szw/vim-tags'
   Plugin 'tpope/vim-surround'
   Plugin 'ervandew/supertab'
-  Plugin 'scrooloose/syntastic'
   call vundle#end()
 " -- /vundle
 
@@ -49,6 +48,8 @@ set nocompatible
     let &showbreak="| "
     noremap  <buffer> <silent> <Up>   gk
     noremap  <buffer> <silent> <Down> gj
+    noremap  <buffer> <silent> k      gk
+    noremap  <buffer> <silent> j      gj
     noremap  <buffer> <silent> <Home> g<Home>
     noremap  <buffer> <silent> <End>  g<End>
     inoremap <buffer> <silent> <Up>   <C-o>gk

@@ -49,9 +49,10 @@ set! browser.frames.enabled=false
 "safe ssl negotiation
 set! security.ssl.require_safe_negotiation=true
 set! security.ssl.treat_unsafe_negotiation_as_broken=true
+set! security.tls.version.min=1
 
 
 "except for shit websites
-group badssl -description "Websites using outdated software" -locations akamaihd.net
-set! security.ssl.require_safe_negotiation=false
-set! security.ssl.treat_unsafe_negotiation_as_broken=false
+"group badssl -description "Websites using outdated software" -locations akamaihd.net
+"set! security.ssl.require_safe_negotiation=false
+"set! security.ssl.treat_unsafe_negotiation_as_broken=false

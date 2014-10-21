@@ -11,13 +11,11 @@
 
 /* Font */
 #TabsToolbar * {
-  font-family: "uni 05_63";
-  font-size: 6pt;
 }
 
 /* God damn it */
 #TabsToolbar {
-  margin-top: -2px !important;
+  margin-top: -3px !important;
   margin-bottom: 0px !important;
 }
 
@@ -32,11 +30,6 @@
 
 /* Hide tab close button */
 .tabbrowser-tabs .tab-close-button {
-  display: none !important;
-}
-
-/* Hide tab icons */
-.tabbrowser-tabs .tab-icon-image {
   display: none !important;
 }
 
@@ -57,6 +50,6 @@
 
 .tabbrowser-tab[selected] {
   color: #f4bf75 !important;
-  background: #101010 !important;
+  background: #202025 !important;
 }
 

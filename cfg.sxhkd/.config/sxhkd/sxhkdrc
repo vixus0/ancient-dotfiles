@@ -48,7 +48,7 @@ super + Return
   termite
 
 super + Escape
-  termite --role=LAUNCHER --geometry=500x0+8+32 -e 'bash --rcfile ~/.config/bash/launchrc'
+  termite --role=LAUNCHER --title="Launcher" --geometry=500x0+8+32 -e 'bash --rcfile ~/.config/bash/launchrc'
 
 super + F5
   scrot -e 'mv $f ~/shots/'

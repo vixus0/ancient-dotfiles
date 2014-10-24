@@ -1,6 +1,6 @@
 _gitname="bar"
 pkgname="lemonboy-bar-git"
-pkgver=1.0.r23.g69e8ac6
+pkgver=1.0.r28.ge9cdee9
 pkgrel=1
 pkgdesc="bar is a lightweight bar entirely based on XCB"
 url="https://github.com/LemonBoy/bar"

@@ -23,6 +23,7 @@ cpackages=(\
 # GUI packages
 xpackages=(\
   "xorg-server"
+  "xorg-xinit"
   "xorg-xrdb"
   "xorg-setxkbmap"
   "xorg-xset"
@@ -74,19 +75,19 @@ fi
 # Install package-query and yaourt
 if [[ -z `pacman -Q yaourt` ]]; then
   pushd $HOME/dots/abs/package-query
-  makepkg --syncdeps --clean
-  sudo makepkg --install
+  makepkg --syncdeps --clean --install
   popd
 
   pushd $HOME/dots/abs/yaourt
-  makepkg --syncdeps --clean
-  sudo makepkg --install
+  makepkg --syncdeps --clean --install
   popd
 fi
 
 
 # Install configs for aforementioned packages
 mkdir -p .config .local/{bin,include,lib,share/applications} .cache .ssh
+rm .bash{_profile,rc}
+pushd $HOME/dots
 stow -S cfg.{bash,git,ssh,tmux,vim} pkg.scripts
 
 
@@ -97,11 +98,6 @@ if [[ $1 == "gui" ]]; then
   yaourt -S "${apackages[@]}"
   stow -S cfg.{herbstluftwm,xorg,pentadactyl,sxhkd,termite,conky}
   stow -S pkg.fonts
-  popd
-
-  pushd $HOME/dots/abs/lemonboy-bar-git
-  makepkg --syncdeps --clean
-  sudo makepkg --install
   popd
 fi
 

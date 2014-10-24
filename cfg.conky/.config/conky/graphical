@@ -33,7 +33,7 @@ background no
 draw_borders no
 draw_graph_borders yes
 draw_outline no
-draw_shades yes
+draw_shades no
 
 
 # colours
@@ -66,7 +66,7 @@ own_window_class Conky
 own_window_type panel
 own_window_argb_visual yes
 own_window_argb_value 255
-own_window_colour 000000
+own_window_colour 101010
 
 
 # -------------------------------------------------------------------
@@ -74,7 +74,7 @@ TEXT
   \
 ${color4}${font}${nodename_short} ${color8}${kernel}\
     \
-${color2}${font}${desktop} ${color}${exec herbstclient get_attr clients.focus.class} ${color8}${scroll 60 2 ${exec herbstclient get_attr clients.focus.title}}\
+${color2}${font}${desktop}    ${color}${exec herbstclient get_attr clients.focus.class} ${color8}${scroll 60 2 ${exec herbstclient get_attr clients.focus.title}}\
     \
 ${alignr}\
 ${color1}${font}${execi 60 checkupdates | wc -l}\
@@ -98,8 +98,8 @@ ${endif}\
     \
 ${endif}\
 ${alignr}\
-${color2}${font}${execi 1 amixer get Master -M | awk '/dB]/ {print $(NF-2)$NF; exit}'}\
+${color4}${font}${execi 1 amixer get Master -M | awk '/dB]/ {print $(NF-2)$NF; exit}'}\
     \
 ${alignr}\
 ${offset -8}\
-${color6}${font}${time %a %d %b} ${color}${time %H:%M}
+${color8}${font}${time %a %d %b} ${color}${time %H:%M}

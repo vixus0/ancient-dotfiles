@@ -29,6 +29,8 @@ include "%L"
 
 # various glyphs
 
+<Multi_key> <d> <d> : "°"
+<Multi_key> <t> <m> : "™"
 <Multi_key> <asciitilde> <asciitilde> : "≈"
 <Multi_key> <s> <h> : "♥" # heart
 <Multi_key> <s> <s> : "☻" # smile
@@ -37,6 +39,7 @@ include "%L"
 <Multi_key> <s> <g> : "(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧" # sparkles/gratz
 <Multi_key> <s> <r> : "(╯°□°）╯︵ ┻━┻" # rage
 <Multi_key> <s> <l> : "(͡° ͜ʖ ͡°)" # lenny
+<Multi_key> <s> <u> : "¯\_(ツ)_/¯" # shrug
 
 # arrows
 

@@ -7,7 +7,7 @@
 
 [options]
 font                = Source Code Pro 8
-allow_bold          = false
+allow_bold          = true
 cursor_blink        = on
 cursor_shape        = underline
 

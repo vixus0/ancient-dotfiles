@@ -83,6 +83,7 @@ set nocompatible
   set nowrap
   set number
   set modeline
+  set cursorline
   set clipboard+=unnamed
   set backspace+=start,eol,indent
   set omnifunc=syntaxcomplete#Complete

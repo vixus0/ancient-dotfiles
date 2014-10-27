@@ -13,8 +13,7 @@ herbstclient emit_hook reload
 mypath=`realpath $0`
 mydir=`dirname $mypath`
 gap=4
-bar_offs=0
-bar_height=16
+bar_height=30
 
 
 # -- chain
@@ -42,7 +41,7 @@ hc set focus_crosses_monitor_boundaries 0
 
 # -- monitors
 hc detect_monitors
-hc pad 0 $(( $bar_offs + $bar_height ))
+hc pad 0 0 0 $(( $bar_height )) 0
 
 
 # -- theme

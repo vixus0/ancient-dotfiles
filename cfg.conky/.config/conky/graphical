@@ -22,10 +22,10 @@ extra_newline no
 
 
 # position
-alignment top_middle
-minimum_size %scrw% 10
+alignment bottom_middle
+minimum_size %scrw% 16
 gap_x 0
-gap_y 0
+gap_y 9
 
 
 # background / borders

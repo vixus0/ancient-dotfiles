@@ -33,7 +33,6 @@ xmodmap $XORG_DIR/xmodmap &
 # -- autostart
 nitrogen --restore &
 redshift -l 56.1107:3.1674 -t 6500:4800 &
-xcompmgr -c -C -t-5 -l-5 -r3.8 -o.50 &
 sxhkd &
 
 

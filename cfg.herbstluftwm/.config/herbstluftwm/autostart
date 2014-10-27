@@ -95,13 +95,16 @@ herbstclient chain $cmds &
 unset -f hc
 
 
+# -- compositing
+[[ -z `pidof xcompmgr` ]] && xcompmgr -c -C -t-5 -l-5 -r3.8 -o.50 &
+
+
 # -- panel
 scrw=`xrandr | grep '*' | cut -dx -f1`
 conky_tmp="/tmp/hlwm_conky.rc"
-killall conky
 sed "s/%scrw%/$scrw/g" $XDG_CONFIG_HOME/conky/graphical > ${conky_tmp} 
+killall conky
 conky -c ${conky_tmp} &
-#conky -c $XDG_CONFIG_HOME/conky/calendar &
 
 
 # -- floatmon

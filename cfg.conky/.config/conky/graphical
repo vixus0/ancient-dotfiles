@@ -54,7 +54,7 @@ color9 ac4142
 
 # font
 use_xft yes
-xftfont uni 05_63:size=7
+xftfont uni 05_63:pixelsize=8
 uppercase no
 use_spacer none
 override_utf8_locale yes

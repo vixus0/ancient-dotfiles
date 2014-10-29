@@ -12,8 +12,9 @@ herbstclient emit_hook reload
 # -- const
 mypath=`realpath $0`
 mydir=`dirname $mypath`
-gap=4
-bar_height=24
+scrw=`xrandr | grep '*' | cut -dx -f1`
+[[ $scrw -gt 1024 ]] && gap=8 || gap=0
+bar_height=25
 
 
 # -- chain
@@ -99,7 +100,6 @@ unset -f hc
 
 
 # -- panel
-scrw=`xrandr | grep '*' | cut -dx -f1`
 conky_tmp="/tmp/hlwm_conky.rc"
 sed "s/%scrw%/$scrw/g" $XDG_CONFIG_HOME/conky/graphical > ${conky_tmp} 
 killall conky

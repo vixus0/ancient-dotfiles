@@ -8,8 +8,8 @@
 [options]
 font                = Source Code Pro 8
 allow_bold          = true
-cursor_blink        = on
-cursor_shape        = underline
+cursor_blink        = system
+cursor_shape        = ibeam
 
 size_hints          = false
 resize_grip         = false
@@ -32,7 +32,7 @@ browser = firefox
 foreground      = #d0d0d0
 foreground_bold = #d3d0d8
 background      = #151515
-cursor          = #d0d0d0
+cursor          = #90a959
 
 color0 = 	#151515
 color1 = 	#ac4142

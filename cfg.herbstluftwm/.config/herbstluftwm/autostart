@@ -13,7 +13,7 @@ herbstclient emit_hook reload
 mypath=`realpath $0`
 mydir=`dirname $mypath`
 gap=4
-bar_height=30
+bar_height=24
 
 
 # -- chain

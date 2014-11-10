@@ -22,7 +22,7 @@ extra_newline no
 
 
 # position
-alignment bottom_middle
+alignment top_middle
 minimum_size %scrw% 16
 gap_x 0
 gap_y 4
@@ -54,7 +54,7 @@ color9 ac4142
 
 # font
 use_xft yes
-xftfont uni 05_63:pixelsize=8
+xftfont Fantasque Sans Mono:style=Bold:size=10
 uppercase no
 use_spacer none
 override_utf8_locale yes
@@ -71,6 +71,7 @@ own_window_colour 101010
 
 # -------------------------------------------------------------------
 TEXT
+${voffset 1}\
   \
 ${color4}${font}${nodename_short} ${color8}${kernel}\
     \
@@ -101,5 +102,5 @@ ${alignr}\
 ${color4}${font}${execi 1 amixer get Master -M | awk '/dB]/ {print $(NF-2)$NF; exit}'}\
     \
 ${alignr}\
-${offset -8}\
+${offset -14}\
 ${color8}${font}${time %a %d %b} ${color}${time %H:%M}

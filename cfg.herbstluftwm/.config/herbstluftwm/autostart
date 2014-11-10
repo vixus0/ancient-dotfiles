@@ -42,7 +42,7 @@ hc set focus_crosses_monitor_boundaries 0
 
 # -- monitors
 hc detect_monitors
-hc pad 0 0 0 $(( $bar_height )) 0
+hc pad 0 $(( $bar_height )) 0 0 0
 
 
 # -- theme

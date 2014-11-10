@@ -36,6 +36,7 @@ xpackages=(\
   "nitrogen"
   "mpv"
   "conky"
+  "uim"
   )
 
 

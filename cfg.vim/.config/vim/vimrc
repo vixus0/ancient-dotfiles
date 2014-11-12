@@ -8,23 +8,22 @@
 set nocompatible
 
 
-" -- Environment
+" -- env
   set directory=$XDG_CACHE_HOME/vim,~/,/tmp
   set backupdir=$XDG_CACHE_HOME/vim,~/,/tmp
-  set viminfo+=n$XDG_CACHE_HOME/vim/viminfo
-  set runtimepath=$XDG_CONFIG_HOME/vim,$XDG_CONFIG_HOME/vim/after,$VIM,$VIMRUNTIME
+  set viminfo+=n~/.cache/vim/viminfo
+  set runtimepath=$XDG_CONFIG_HOME/vim,$VIM,$VIMRUNTIME
   let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc"
-" -- /Environment
+" -- /env
 "
 
 " -- vundle
   filetype off
-  set rtp+=$XDG_CONFIG_HOME/vim/bundle/Vundle.vim
-  call vundle#begin()
+  set runtimepath+=$XDG_CONFIG_HOME/vim/bundle/Vundle.vim
+  call vundle#begin('~/.config/vim/bundle')
   Plugin 'gmarik/Vundle.vim'
-  Plugin 'szw/vim-tags'
   Plugin 'tpope/vim-surround'
-  Plugin 'ervandew/supertab'
+  Plugin 'Valloric/YouCompleteMe'
   call vundle#end()
 " -- /vundle
 

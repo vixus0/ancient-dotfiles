@@ -40,6 +40,7 @@ export PATH="$HOME"/.local/bin:"$PATH"
 
 # Tell git and others my favourite editor
 export EDITOR=vim
+export BROWSER=firefox
 
 # GPG Agent
 export GPG_TTY="`tty`"

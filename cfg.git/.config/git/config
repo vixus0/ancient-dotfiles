@@ -10,3 +10,5 @@
 [alias]
 	df = diff
 	dt = difftool
+[core]
+	autocrlf = input

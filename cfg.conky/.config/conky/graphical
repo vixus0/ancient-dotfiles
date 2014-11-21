@@ -23,17 +23,14 @@ extra_newline no
 
 # position
 alignment top_middle
-minimum_size %scrw% 16
+minimum_size %scrw% 12
 gap_x 0
-gap_y 8
+gap_y 3
 
 
 # background / borders
-border_inner_margin 2
-border_outer_margin 3
-border_width 2
 background no
-draw_borders yes
+draw_borders no
 draw_graph_borders yes
 draw_outline no
 draw_shades no
@@ -57,7 +54,7 @@ color9 ac4142
 
 # font
 use_xft yes
-xftfont Fantasque Sans Mono:style=Bold:size=10
+xftfont Fantasque Sans Mono:style=Bold:size=9
 uppercase no
 use_spacer none
 override_utf8_locale yes

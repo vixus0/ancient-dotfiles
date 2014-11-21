@@ -13,8 +13,8 @@ herbstclient emit_hook reload
 mypath=`realpath $0`
 mydir=`dirname $mypath`
 scrw=`xrandr | grep '*' | cut -dx -f1`
-gap=1
-pad=31
+[[ $scrw -gt 1024 ]] && gap=8 || gap=0
+pad=20
 
 
 # -- chain

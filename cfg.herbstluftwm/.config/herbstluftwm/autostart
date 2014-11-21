@@ -13,8 +13,8 @@ herbstclient emit_hook reload
 mypath=`realpath $0`
 mydir=`dirname $mypath`
 scrw=`xrandr | grep '*' | cut -dx -f1`
-[[ $scrw -gt 1024 ]] && gap=8 || gap=0
-bar_height=25
+[[ $scrw -gt 1024 ]] && gap=1 || gap=0
+pad=31
 
 
 # -- chain
@@ -42,7 +42,7 @@ hc set focus_crosses_monitor_boundaries 0
 
 # -- monitors
 hc detect_monitors
-hc pad 0 $(( $bar_height )) 0 0 0
+hc pad 0 $(( $pad )) 0 0 0
 
 
 # -- theme

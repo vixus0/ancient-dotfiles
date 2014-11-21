@@ -25,19 +25,22 @@ extra_newline no
 alignment top_middle
 minimum_size %scrw% 16
 gap_x 0
-gap_y 4
+gap_y 8
 
 
 # background / borders
+border_inner_margin 2
+border_outer_margin 3
+border_width 2
 background no
-draw_borders no
+draw_borders yes
 draw_graph_borders yes
 draw_outline no
 draw_shades no
 
 
 # colours
-default_color d0d0d0
+default_color 303030
 default_outline_color 000000
 default_shade_color 000000
 color0 151515
@@ -75,7 +78,7 @@ ${voffset 1}\
   \
 ${color4}${font}${nodename_short} ${color8}${kernel}\
     \
-${color2}${font}${desktop}    ${color}${exec herbstclient get_attr clients.focus.class} ${color8}${scroll 60 2 ${exec herbstclient get_attr clients.focus.title}}\
+${color2}${font}${desktop}    ${color7}${exec herbstclient get_attr clients.focus.class} ${color8}${scroll 60 2 ${exec herbstclient get_attr clients.focus.title}}\
     \
 ${alignr}\
 ${color1}${font}${execi 60 checkupdates | wc -l}\
@@ -103,4 +106,4 @@ ${color4}${font}${execi 1 amixer get Master -M | awk '/dB]/ {print $(NF-2)$NF; e
     \
 ${alignr}\
 ${offset -14}\
-${color8}${font}${time %a %d %b} ${color}${time %H:%M}
+${color8}${font}${time %a %d %b} ${color7}${time %H:%M}

@@ -48,17 +48,17 @@ hc pad 0 $(( $bar_height )) 0 0 0
 # -- theme
 hc set frame_gap $gap
 hc set frame_padding 0
-hc set frame_border_width 0
-hc set frame_border_active_color "#191919"
-hc set frame_border_normal_color "#000000"
-hc set frame_bg_active_color "#90a959"
+hc set frame_border_width 2
+hc set frame_border_active_color "#151515"
+hc set frame_border_normal_color "#151515"
+hc set frame_bg_active_color "#151515"
 hc set frame_bg_normal_color "#151515"
 hc set frame_active_opacity 100
 hc set frame_normal_opacity 100
 
 hc set window_gap 0
-hc set window_border_width 4
-hc set window_border_inner_width 3
+hc set window_border_width 2
+hc set window_border_inner_width 0
 hc set window_border_active_color "#d0d0d0"
 hc set window_border_normal_color "#303030"
 hc set window_border_inner_color "#050505"

@@ -77,3 +77,15 @@
 .tabbrowser-tab:not([selected]) .tab-text {
   display: none !important;
 }
+
+/* Restore default tab icon image */
+.tabbrowser-tab .tab-throbber:not([busy="true"]) + .tab-icon-image:not([src]) {
+  display: -moz-box !important;
+}
+
+#tabbrowser-tabs .tab-icon-image:not(src),
+.sidebar-placesTreechildren::-moz-tree-image(leaf),
+.bookmark-item:not(src):not([container]):not([type]){
+  list-style-image: url("chrome://global/skin/icons/folder-item.png") !important;
+  -moz-image-region: rect(0px,16px,16px,0px) !important;
+}

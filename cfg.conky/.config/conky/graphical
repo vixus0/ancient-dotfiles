@@ -73,35 +73,35 @@ own_window_colour 101010
 TEXT
 ${voffset 1}\
   \
-${color7}${font}${nodename_short} ${color8}${kernel}\
+${color7}${nodename_short} ${color8}${kernel}\
     \
 ${color7}${exec herbstclient get_attr clients.focus.class} ${color8}${scroll 60 2 ${exec herbstclient get_attr clients.focus.title}}\
 ${alignc}\
 ${execp ~/.config/herbstluftwm/prettytags}\
 ${alignr}\
-${color1}${font}${execi 60 checkupdates | wc -l}\
+${color1}${execi 60 checkupdates | wc -l}\
     \
 ${alignr}\
 ${if_up wlan0}\
-${color7}${font}${execi 10 connmanctl services | awk '/^*/ {print $2;exit}'}\
+${color7}${execi 10 connmanctl services | awk '/^*/ {print $2;exit}'}\
     \
 ${endif}\
 ${if_up wls3}\
-${color7}${font}${execi 10 connmanctl services | awk '/^*/ {print $2;exit}'}\
+${color7}${execi 10 connmanctl services | awk '/^*/ {print $2;exit}'}\
     \
 ${endif}\
 ${alignr}\
 ${if_existing /sys/class/power_supply/BAT0}\
 ${if_match ${battery_percent} > 20}\
-${color3}${font}${battery_short}\
+${color3}${battery_short}\
 ${else}\
-${color1}${font}${battery_short}\
+${color1}${battery_short}\
 ${endif}\
     \
 ${endif}\
 ${alignr}\
-${color7}${font}${execi 1 amixer get Master -M | awk '/dB]/ {print $(NF-2)$NF; exit}'}\
+${color7}${execpi 1 amixer get Master -M | awk '/dB]/ {gsub("\\[on\\]", "", $NF); gsub("\\[off\\]", "${color1}", $NF); print $NF$(NF-2); exit}'}\
     \
 ${alignr}\
 ${offset -14}\
-${color8}${font}${time %a %d %b} ${color7}${time %H:%M}
+${color8}${time %a %d %b} ${color7}${time %H:%M}

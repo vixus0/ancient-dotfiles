@@ -11,16 +11,27 @@
 
 /* Font */
 #TabsToolbar * {
+  font-family: "Fantasque Sans Mono" !important;
+  font-size: 9pt !important;
 }
 
 /* God damn it */
 #TabsToolbar {
-  margin-top: -3px !important;
-  margin-bottom: 0px !important;
+  margin: 0px !important;
 }
 
 .tabbrowser-tabs {
-  background: #101010 !important;
+  margin-top: -1px !important;
+  background-color: #151515 !important;
+  color: #e0e0e0 !important;
+}
+
+.tabbrowser-tab {
+  border-right: 1px dashed #505050 !important;
+}
+
+.tabbrowser-tab:last-child {
+  border: none !important;
 }
 
 /* Hide the new curved tab edges */
@@ -33,13 +44,21 @@
   display: none !important;
 }
 
+.tabbrowser-tabs .tab-icon-image {
+  display: none !important;
+}
+
 /* Hide other buttons */
 .tabbrowser-tabs *[class^="scrollbutton"] {
-    display: none !important;
+  display: none !important;
 }
 
 .tabbrowser-tabs *[class^="tabs-newtab-button"] {
-    display: none !important;
+  display: none !important;
+}
+
+.tab-throbber {
+  display: none !important;
 }
 
 /* Hide the little graphic seperator between inactive tabs */
@@ -49,7 +68,6 @@
 }
 
 .tabbrowser-tab[selected] {
-  color: #f4bf75 !important;
-  background: #202025 !important;
+  color: #6a9fb5 !important;
 }
 

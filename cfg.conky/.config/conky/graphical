@@ -73,13 +73,10 @@ own_window_colour 101010
 TEXT
 ${voffset 1}\
   \
-${color7}${nodename_short} ${color8}${kernel}\
-    \
-${color7}${exec herbstclient get_attr clients.focus.class} ${color8}${scroll 60 2 ${exec herbstclient get_attr clients.focus.title}}\
-${alignc}\
 ${execp ~/.config/herbstluftwm/prettytags}\
+    \
 ${alignr}\
-${color1}${execi 60 checkupdates | wc -l}\
+${color4}${execi 60 checkupdates | wc -l}\
     \
 ${alignr}\
 ${if_up wlan0}\
@@ -93,7 +90,7 @@ ${endif}\
 ${alignr}\
 ${if_existing /sys/class/power_supply/BAT0}\
 ${if_match ${battery_percent} > 20}\
-${color3}${battery_short}\
+${color4}${battery_short}\
 ${else}\
 ${color1}${battery_short}\
 ${endif}\

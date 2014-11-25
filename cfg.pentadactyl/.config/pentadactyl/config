@@ -39,6 +39,7 @@ nmap -b h 5h
 nmap -b j 5j
 nmap -b k 5k
 nmap -b l 5l
+nmap -b d dJ
 
 
 "no iframes

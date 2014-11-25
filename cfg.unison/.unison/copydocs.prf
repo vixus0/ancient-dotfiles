@@ -1,0 +1,7 @@
+root = /home/vixus/docs
+root = ssh://unseen//mnt/seag_2tb/copy/docs
+
+diff = vimdiff
+auto = true
+batch = true
+times = true

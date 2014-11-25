@@ -64,8 +64,8 @@
 }
 
 .tabbrowser-tab[selected] {
-  color: #e0e0e0 !important;
-  background-color: Highlight !important;
+  color: #6a9fb5 !important;
+  background-color: #000000 !important;
   min-width: 400px !important;
 }
 

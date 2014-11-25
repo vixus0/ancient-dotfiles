@@ -17,21 +17,14 @@
 
 /* God damn it */
 #TabsToolbar {
-  margin: 0px !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 .tabbrowser-tabs {
-  margin-top: -1px !important;
+  padding: 0 !important;
   background-color: #151515 !important;
   color: #e0e0e0 !important;
-}
-
-.tabbrowser-tab {
-  border-right: 1px dashed #505050 !important;
-}
-
-.tabbrowser-tab:last-child {
-  border: none !important;
 }
 
 /* Hide the new curved tab edges */
@@ -44,8 +37,9 @@
   display: none !important;
 }
 
-.tabbrowser-tabs .tab-icon-image {
-  display: none !important;
+.tabbrowser-tabs .tab-icon-image ,
+.tabbrowser-tabs .tab-throbber {
+  margin-top: -1px !important;
 }
 
 /* Hide other buttons */
@@ -57,17 +51,29 @@
   display: none !important;
 }
 
-.tab-throbber {
-  display: none !important;
-}
-
 /* Hide the little graphic seperator between inactive tabs */
 .tabbrowser-tab:before,
 .tabbrowser-tab:after {
-  visibility: hidden !important;
+  display: none !important;
+}
+
+.tabbrowser-tab {
+  padding: 0 !important;
+  margin: 0 !important;
+  text-align: left !important;
 }
 
 .tabbrowser-tab[selected] {
-  color: #6a9fb5 !important;
+  color: #e0e0e0 !important;
+  background-color: Highlight !important;
+  min-width: 400px !important;
 }
 
+.tabbrowser-tab:not([selected]) {
+  max-width: 10px !important;
+  min-width: 0px !important;
+}
+
+.tabbrowser-tab:not([selected]) .tab-text {
+  display: none !important;
+}

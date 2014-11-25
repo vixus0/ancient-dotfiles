@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+tags="`herbstclient tag_status`"
+
+echo $tags | sed \
+  's/ +/ /g;s/#./${color4}•/g;s/:./${color7}•/g;s/!./${color2}•/g;s/\../${color}•/g;s/\-.*//g'

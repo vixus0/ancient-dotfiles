@@ -73,20 +73,21 @@ own_window_colour 101010
 TEXT
 ${voffset 1}\
   \
-${color4}${font}${nodename_short} ${color8}${kernel}\
+${color7}${font}${nodename_short} ${color8}${kernel}\
     \
-${color2}${font}${desktop}    ${color7}${exec herbstclient get_attr clients.focus.class} ${color8}${scroll 60 2 ${exec herbstclient get_attr clients.focus.title}}\
-    \
+${color7}${exec herbstclient get_attr clients.focus.class} ${color8}${scroll 60 2 ${exec herbstclient get_attr clients.focus.title}}\
+${alignc}\
+${execp ~/.config/herbstluftwm/prettytags}\
 ${alignr}\
 ${color1}${font}${execi 60 checkupdates | wc -l}\
     \
 ${alignr}\
 ${if_up wlan0}\
-${color5}${font}${execi 10 connmanctl services | awk '/^*/ {print $2;exit}'}\
+${color7}${font}${execi 10 connmanctl services | awk '/^*/ {print $2;exit}'}\
     \
 ${endif}\
 ${if_up wls3}\
-${color5}${font}${execi 10 connmanctl services | awk '/^*/ {print $2;exit}'}\
+${color7}${font}${execi 10 connmanctl services | awk '/^*/ {print $2;exit}'}\
     \
 ${endif}\
 ${alignr}\
@@ -99,7 +100,7 @@ ${endif}\
     \
 ${endif}\
 ${alignr}\
-${color4}${font}${execi 1 amixer get Master -M | awk '/dB]/ {print $(NF-2)$NF; exit}'}\
+${color7}${font}${execi 1 amixer get Master -M | awk '/dB]/ {print $(NF-2)$NF; exit}'}\
     \
 ${alignr}\
 ${offset -14}\

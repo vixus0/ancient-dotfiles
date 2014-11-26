@@ -39,11 +39,14 @@ nmap -b h 5h
 nmap -b j 5j
 nmap -b k 5k
 nmap -b l 5l
-nmap -b d dgT
 
 
 "no iframes
 set! browser.frames.enabled=false
+
+
+"tab closing
+set! browser.tabs.selectOwnerOnClose=true
 
 
 "safe ssl negotiation

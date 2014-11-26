@@ -2,5 +2,14 @@
 
 tags="`herbstclient tag_status`"
 
-echo $tags | sed \
-  's/ +/ /g;s/#./${color4}•/g;s/:./${color7}•/g;s/!./${color1}•/g;s/\../${color}•/g;s/\-.*//g'
+echo $tags | awk \
+  '/#fl/ {print("${color4}FLOATMON");exit}
+   {
+     gsub(/\#[0-9]/, "${color4}•");
+     gsub(/\![0-9]/, "${color1}•");
+     gsub(/\:[0-9]/, "${color7}•");
+     gsub(/\.[0-9]/, "${color}•");
+     gsub(/-[0-9a-z]+/, "");
+     print
+   }
+  '

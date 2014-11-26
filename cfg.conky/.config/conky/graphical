@@ -101,4 +101,4 @@ ${color7}${execpi 1 amixer get Master -M | awk '/dB]/ {gsub("\\[on\\]", "", $NF)
     \
 ${alignr}\
 ${offset -14}\
-${color8}${time %a %d %b} ${color7}${time %H:%M}
+${color4}${time %a %d %b} ${color7}${time %H:%M}

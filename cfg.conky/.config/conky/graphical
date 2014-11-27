@@ -74,7 +74,8 @@ TEXT
 ${voffset 1}\
   \
 ${execp ~/.config/herbstluftwm/prettytags}\
-    \
+${alignc}\
+${color7}${execi 1 herbstclient get_attr clients.focus.title | awk '{ l=80; if(length()>l) {print substr($0, 1, l)"..."} else {print $0} }'}\
 ${alignr}\
 ${color4}${execi 60 checkupdates | wc -l}\
     \

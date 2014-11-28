@@ -28,7 +28,7 @@ source '~/.config/pentadactyl/chrome.css'
 
 
 "colors
-colorscheme desert
+colorscheme base16
 
 
 "binds

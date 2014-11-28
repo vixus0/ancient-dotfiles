@@ -39,6 +39,8 @@
 
 .tabbrowser-tabs .tab-icon-image ,
 .tabbrowser-tabs .tab-throbber {
+  margin: 0 !important;
+  padding: 0 !important;
   margin-top: -1px !important;
 }
 
@@ -60,21 +62,18 @@
 .tabbrowser-tab {
   padding: 0 !important;
   margin: 0 !important;
-  text-align: left !important;
+  text-align: center !important;
+  max-width: 10px !important;
+  min-width: 0px !important;
 }
 
 .tabbrowser-tab[selected] {
   color: #6a9fb5 !important;
   background-color: #000000 !important;
-  min-width: 400px !important;
+  /* min-width: 400px !important; */
 }
 
-.tabbrowser-tab:not([selected]) {
-  max-width: 10px !important;
-  min-width: 0px !important;
-}
-
-.tabbrowser-tab:not([selected]) .tab-text {
+.tabbrowser-tab .tab-text {
   display: none !important;
 }
 

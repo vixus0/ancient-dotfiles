@@ -69,7 +69,7 @@
 
 .tabbrowser-tab[selected] {
   color: #6a9fb5 !important;
-  background-color: #000000 !important;
+  background-color: #6a9fb5 !important;
   /* min-width: 400px !important; */
 }
 

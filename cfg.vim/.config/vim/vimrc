@@ -107,9 +107,5 @@ set nocompatible
 " -- bindings
   map <F3> :w !detex \| wc -w <CR>
   map <silent> <F4> :set wrap! linebreak! nolist! <CR> 
-  nmap YY :.!tee >(xclip -i)<CR>
-  vmap YY :!tee >(xclip -i)<CR>
-  nmap YP :.-1r!xclip -o<CR>
-  nmap Yp :r!xclip -o<CR>
 " -- /bindings
 

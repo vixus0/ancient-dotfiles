@@ -1,5 +1,64 @@
 #!/bin/bash
 
+## FUNCTIONS
+# Pastebin
+pb() {
+  local lang="?"$2
+  local out=`curl -nsS -F 'sprunge=<-' http://sprunge.us`
+  echo -n $out \
+    | tee - \
+    | xclip -i -selection PRIMARY 2>/dev/null
+}
+
+astart() {
+  [[ -z `pidof $1` ]] && $@
+}
+
+cstart() {
+  while [[ -z `pidof $1` ]]; do
+    sleep .5
+  done
+  astart ${@:2}
+}
+
+man() {
+    env LESS_TERMCAP_mb=$'\E[01;31m' \
+    LESS_TERMCAP_md=$'\E[01;38;5;74m' \
+    LESS_TERMCAP_me=$'\E[0m' \
+    LESS_TERMCAP_se=$'\E[0m' \
+    LESS_TERMCAP_so=$'\E[38;5;246m' \
+    LESS_TERMCAP_ue=$'\E[0m' \
+    LESS_TERMCAP_us=$'\E[04;38;5;146m' \
+    man "$@"
+}
+
+lns() {
+  ln -s `realpath $1` $2
+}
+
+mpvp() {
+  if [[ $1 == "tv" ]]; then
+    url="${2:-`xclip -o -selection clipboard`}"
+    herbstclient reload
+    args="--no-cache --ao=alsa:device=hdmi --title=playontv $url"
+  else
+    args="${1:-`xclip -o -selection clipboard`}"
+  fi
+  mpv $args
+} 
+
+calc() {
+  python -c "from math import *; print($@)"
+}
+
+t() {
+  local lcfg="$XDG_CONFIG_HOME/tmux/local.conf"
+  local rcfg="$XDG_CONFIG_HOME/tmux/remote.conf"
+
+  [[ -z "$SSH_CLIENT" ]] && tmux -f $lcfg || tmux -f $rcfg
+}
+
+
 ## ALIASES
 
 [ -e /usr/bin/yaourt ] && pacman="yaourt" || pacman="sudo pacman"
@@ -35,7 +94,6 @@ alias valgr='valgrind --db-attach=yes --leak-check=yes --tool=memcheck --num-cal
 alias clock='tty-clock -c -C4 -f"%a %d %b, %Y"'
 
 # Force stuff to obey XDG
-alias tmux='tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf'
 alias irssi='irssi --home=$XDG_CONFIG_HOME/irssi'
 alias rtorrent="rtorrent -n -o import=${XDG_CONFIG_HOME}/rtorrent/config.rc"
 alias weechat="weechat -d $XDG_CONFIG_HOME/weechat"
@@ -68,7 +126,6 @@ alias Ccl="xclip -o -selection CLIPBOARD"
 alias Cc="xclip -i -selection PRIMARY"
 
 ## FUNCTIONS
-
 # Pastebin
 pb() {
   local lang="?"$2

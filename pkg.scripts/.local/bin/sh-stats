@@ -9,10 +9,8 @@
 batt_perc() {
   [ -z "`ls /sys/class/power_supply/BAT* 2>/dev/null`" ] && return 1
 
-  local cf="`cat /sys/class/power_supply/BAT*/{energy,charge}_full 2>/dev/null`" 
-  local cn="`cat /sys/class/power_supply/BAT*/{energy,charge}_now 2>/dev/null`" 
   local cs="`cat /sys/class/power_supply/BAT*/status`" 
-  local cp="`echo $cf $cn | awk '{print int($2/$1 * 100.0)}'`"
+  local cp="`cat /sys/class/power_supply/BAT*/capacity 2>/dev/null`" 
 
   echo $cp
   return 0

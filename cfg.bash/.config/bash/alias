@@ -55,7 +55,11 @@ t() {
   local lcfg="$XDG_CONFIG_HOME/tmux/local.conf"
   local rcfg="$XDG_CONFIG_HOME/tmux/remote.conf"
 
-  [[ -z "$SSH_CLIENT" ]] && tmux -f $lcfg || tmux -f $rcfg
+  local cfg="$lcfg"
+
+  [[ -n "$SSH_CLIENT" ]] && cfg="$rcfg"
+
+  tmux -f "$cfg" $@
 }
 
 

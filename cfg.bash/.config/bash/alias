@@ -15,21 +15,24 @@ alias dud='echo; du -hcs * | sort -hr'
 alias la='echo; ls -lA'
 alias grep='grep --color=auto'
 alias dmesg='dmesg --color'
-alias s='ssh'
 alias ocd='cd -'
 
+# Shorten stuff
+alias s='ssh'
+alias v='vim'
+alias l='ls'
+alias o='xdg-open'
+
 # Actions
-alias redot='source $HOME/.bashrc'
-alias rex='xrdb -merge $XDG_CONFIG_HOME/xorg/xresources'
-alias lastj="sudo journalctl --since=today | tac | sed -n '/-- Reboot --/{n;:r;/-- Reboot --/q;p;n;b r}' | tac"
-alias xloc="DISPLAY=:0"
 alias po="sudo poweroff"
 alias re="sudo reboot"
 
-# Launchers
+# Utils
+alias redot='source $HOME/.bashrc'
+alias rexrdb='xrdb -merge $XDG_CONFIG_HOME/xorg/xresources'
+alias lastj="sudo journalctl -b-1"
 alias valgr='valgrind --db-attach=yes --leak-check=yes --tool=memcheck --num-callers=16 --leak-resolution=high --track-origins=yes'
 alias clock='tty-clock -c -C4 -f"%a %d %b, %Y"'
-alias o='xdg-open'
 
 # Force stuff to obey XDG
 alias tmux='tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf'
@@ -67,7 +70,7 @@ alias Cc="xclip -i -selection PRIMARY"
 ## FUNCTIONS
 
 # Pastebin
-ix() {
+pb() {
   local lang="?"$2
   local out=`curl -nsS -F 'sprunge=<-' http://sprunge.us`
   echo -n $out \
@@ -111,4 +114,8 @@ mpvp() {
   fi
   mpv $args
 } 
+
+calc() {
+  python -c "from math import *; print($@)"
+}
 

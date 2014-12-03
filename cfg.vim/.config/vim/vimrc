@@ -24,6 +24,7 @@ set nocompatible
   Plugin 'gmarik/Vundle.vim'
   Plugin 'tpope/vim-surround'
   Plugin 'Valloric/YouCompleteMe'
+  Plugin 'itchyny/calendar.vim'
   call vundle#end()
 " -- /vundle
 
@@ -99,8 +100,7 @@ set nocompatible
 
 
 " -- plugins
-  let g:SuperTabDefaultCompletionType = "<c-p>"
-  let g:SuperTabContextDefaultCompletionType = "context"
+  let g:calendar_google_calendar = 1
 " -- /plugins
 
 

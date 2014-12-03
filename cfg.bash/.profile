@@ -20,5 +20,5 @@ sed "s|\$HOME|${HOME}|g" $XDG_CONFIG_HOME/user-dirs.tmp > $XDG_CONFIG_HOME/user-
 
 # Start X at login on first TTY provided we're not SSH'd in
 if [[ -z "$SSH_CLIENT" && -z "$TMUX" && -z "$DISPLAY" && "$XDG_VTNR" == 1 ]]; then
-  exec startx $XINITRC
+  exec startx
 fi

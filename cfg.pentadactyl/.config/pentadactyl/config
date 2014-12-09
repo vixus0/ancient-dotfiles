@@ -52,8 +52,8 @@ set! browser.tabs.selectOwnerOnClose=true
 
 
 "safe ssl negotiation
-set! security.ssl.require_safe_negotiation=true
-set! security.ssl.treat_unsafe_negotiation_as_broken=true
+set! security.ssl.require_safe_negotiation=false
+set! security.ssl.treat_unsafe_negotiation_as_broken=false
 set! security.tls.version.min=1
 
 

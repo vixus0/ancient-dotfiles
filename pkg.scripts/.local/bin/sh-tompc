@@ -1,36 +1,51 @@
 #!/bin/bash
 
+shopt -s globstar
+
 # Convert to 16-bit Signed Integer PCM (dither)
 cmd="sox --buffer 65536 --multi-threaded --norm INFILE -b 16 OUTFILE rate 44100 dither -s"
 dext="wav"
 dest="$1"
 tmp="/tmp/sox.${dext}"
 
-for f in `find . -name "*.wav" -o -name "*.ogg" -o -name "*.mp3" | cut -c3-`; do
+for f in **/*.{wav,ogg,mp3}; do
   file="${f##*/}"
   fname="${file%.*}"
   fname="${fname##*__}" # dumb freesound names
+  fname=`echo "$fname" | sed -e "s/[^a-zA-Z0-9#]\+/-/g"` # remove spaces
   fext="${file##*.}"
   fdir="${f%/*}"
+  fdir="${fdir/ /}"
   fpre="${fdir##*/}"
 
-  dst="$dest/$fdir/${fname}.${dext}"
-
-  if [[ -n `soxi $f | grep '16-bit Signed Integer PCM'` ]] || [[ -f $dst ]]; then
-    echo "SKIP $f"
-    continue
+  # Filename must be 16 chars max
+  if [[ ${#fname} -gt 16 ]]; then
+    new="${fname:0:8}${fname: -8}"
+    fname="$new"
   fi
+
+  dst="$dest/$fdir/${fname}.${dext}"
 
   sox="${cmd/INFILE/$f}"
   sox="${sox/OUTFILE/$tmp}"
 
-  $sox
+  if [[ -f $dst ]]; then
+    echo "SKIP $f"
+    continue
+  fi
+
+  if [[ -n `soxi "$f" 2>/dev/null | grep '16-bit Signed Integer PCM'` ]]; then
+    echo "COPY $f $dst"
+    cp "$f" "$tmp"
+  else
+    echo "CONV $f $dst"
+    $sox 2>/dev/null
+  fi
 
   if [[ -f $tmp ]]; then
     mkdir -p "$dest/$fdir"
-    mv $tmp $dst 
-    echo "OK $f $dst"
+    mv "$tmp" "$dst" 
   else
-    echo "ERROR $f"
+    echo " ERR $f"
   fi
 done

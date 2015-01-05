@@ -12,6 +12,8 @@ batt_perc() {
   local cs="`cat /sys/class/power_supply/BAT*/status`" 
   local cp="`cat /sys/class/power_supply/BAT*/capacity 2>/dev/null`" 
 
+  [ -z "$cp" ] && return 1
+
   echo $cp
   return 0
 }

@@ -42,6 +42,6 @@ if [[ -n "$SSH_CLIENT" ]]; then
   PS1="\[\e[0;33m\]\h\[\e[m\] \[\e[1;30m\]\w\[\e[m\] \[\e[0;32m\]·\[\e[m\] "
 else
   # normal prompt
-  PS1="\[\e[1;30m\]\w\[\e[m\] \[\e[0;32m\]·\[\e[m\] "
+  PS1="\[\e[1;30m\]\W\[\e[m\] \[\e[0;32m\]·\[\e[m\] "
 fi
 

@@ -1,0 +1,6 @@
+#!/bin/bash
+
+while sleep 5m; do
+  echo "Wiggling..."
+  xdotool keydown Shift_L keyup Shift_L
+done

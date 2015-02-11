@@ -6,7 +6,6 @@ pb() {
   local lang="?"$2
   local out=`curl -nsS -F 'sprunge=<-' http://sprunge.us`
   echo -n $out \
-    | tee - \
     | xclip -i -selection PRIMARY 2>/dev/null
 }
 

@@ -60,8 +60,8 @@ color21 =	#e0e0e0
 
 [hints]
 font = Fantasque Sans Mono 12
-foreground = #6a9fb5
-background = #000000
+foreground = #ffffff
+background = #ac4142
 padding = 2
 border = #3f3f3f
 border_width = 0.0

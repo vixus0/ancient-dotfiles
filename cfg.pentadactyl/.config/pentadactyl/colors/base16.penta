@@ -4,11 +4,15 @@
 " Maintainer:	Jozsef Bakosi <jbakosi@gmail.com>
 " Last Change:	$Date: 2011/01/04 $
 
-hi StatusLine           color: #e0e0e0 !important; background-color: #101010 !important; font-weight: bold !important; padding: 4px !important;
-hi Normal               color: #ffffff; background: #333333; font-weight: bold !important;
-hi CompItem[selected]   color: #f0e685; background: #6b8e23; 
-hi CompDesc             color: #c6c6c6; width: 50%; font-weight: normal !important;
-hi CompTitle            color: #78cee4 !important; background: #000000 !important;
+hi StatusLineNormal     color: #e0e0e0 !important; background-color: #101010 !important;
+hi StatusLineExtended   color: #90a959 !important; background-color: #101010 !important; 
+hi StatusLineSecure     color: #6a9fb5 !important; background-color: #101010 !important;
+hi StatusLineBroken     color: #ac4142 !important; background-color: #101010 !important;
+hi Normal               color: #e0e0e0; background: #333333; font-weight: normal;
+hi CompItem             color: #f0f0f0 !important;
+hi CompItem[selected]   color: #f0f0f0 !important; background: #aa759f; font-weight: bold !important;
+hi CompDesc             color: #d0d0d0; width: 50%; font-weight: normal !important;
+hi CompTitle            color: #aa759f !important; background: #000000 !important;
 hi GradientLeft         background-color: white;
 hi GradientRight        background-color: black;
 hi Title                color: #78cee4; background: #333333; font-weight: bold;
@@ -30,5 +34,5 @@ hi LineNr               color: #78cee4 !important; background: #333333 !importan
 hi ModeMsg              color: #ffffff !important; background: #333333 !important;
 hi MoreMsg              color: #6b8e23 !important; background: #333333 !important;
 hi Question             color: #6b8e23 !important; background: #333333 !important; font-weight: bold !important;
-hi WarningMsg           color: #ffa0a0 !important; background: #333333 !important;
-hi StatusQuestion       color: #6b8e23 !important; background: inherit !important;
+hi WarningMsg           color: #ac4142 !important; background: #333333 !important;
+hi StatusQuestion       color: #f4bf75 !important; background: inherit !important;

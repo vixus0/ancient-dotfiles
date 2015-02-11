@@ -21,7 +21,10 @@ batt_perc() {
 batt_state() {
   [ -z "`ls /sys/class/power_supply/BAT* 2>/dev/null`" ] && return 1
 
-  cut -c1 /sys/class/power_supply/BAT*/status
+  local s="`cut -c1 /sys/class/power_supply/BAT*/status`"
+
+  [[ "$s" == *U* ]] && return 1
+
   return 0
 }
   

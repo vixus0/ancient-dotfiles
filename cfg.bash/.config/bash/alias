@@ -67,6 +67,7 @@ t() {
 [ -e /usr/bin/yaourt ] && pacman="yaourt" || pacman="sudo pacman"
 
 # Shell commands
+alias q='exit'
 alias ls='echo; ls --group-directories-first --color=always --classify -h'
 alias cp='cp -i'
 alias mv='mv -i'

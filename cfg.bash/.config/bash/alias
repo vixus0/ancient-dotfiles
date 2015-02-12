@@ -74,7 +74,7 @@ alias s='ssh'
 alias v='vim'
 alias l='ls'
 alias o='xdg-open'
-alias t='tmux'
+alias t='tmux -f $XDG_CONFIG_HOME/tmux/local.conf'
 
 # Actions
 alias po="sudo poweroff"

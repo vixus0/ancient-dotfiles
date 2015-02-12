@@ -50,17 +50,6 @@ calc() {
   python -c "from math import *; print($@)"
 }
 
-t() {
-  local lcfg="$XDG_CONFIG_HOME/tmux/local.conf"
-  local rcfg="$XDG_CONFIG_HOME/tmux/remote.conf"
-
-  local cfg="$lcfg"
-
-  [[ -n "$SSH_CLIENT" ]] && cfg="$rcfg"
-
-  tmux -f "$cfg" $@
-}
-
 
 ## ALIASES
 
@@ -85,6 +74,7 @@ alias s='ssh'
 alias v='vim'
 alias l='ls'
 alias o='xdg-open'
+alias t='tmux'
 
 # Actions
 alias po="sudo poweroff"

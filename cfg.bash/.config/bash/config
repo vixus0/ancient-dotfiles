@@ -20,6 +20,11 @@ export HISTCONTROL=ignoreboth
 export HISTIGNORE='history*'
 
 
+# fix ctrl-w
+stty werase undef
+bind '\C-w:unix-filename-rubout'
+
+
 # ls colors
 eval "`TERM=screen-256color dircolors $XDG_CONFIG_HOME/bash/dircolors`"
 

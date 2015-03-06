@@ -33,6 +33,10 @@ eval "`TERM=screen-256color dircolors $XDG_CONFIG_HOME/bash/dircolors`"
 . $XDG_CONFIG_HOME/xorg/base16-def.sh
 
 
+# hr
+. $XDG_CONFIG_HOME/bash/hr
+
+
 # Source VTE functions 
 if [[ $TERM == "xterm-termite" && -f /etc/profile.d/vte.sh ]]; then
   . /etc/profile.d/vte.sh
@@ -41,7 +45,7 @@ fi
 
 # prompt
 # make sure the first prompt won't have a newline, but subsequent ones will
-export PROMPT_COMMAND="export PROMPT_COMMAND='echo;__vte_prompt_command 2>/dev/null'"
+export PROMPT_COMMAND="export PROMPT_COMMAND='hr ─;__vte_prompt_command 2>/dev/null'"
 if [[ -n "$SSH_CLIENT" ]]; then
   # SSH prompt
   PS1="\[\e[0;33m\]\h\[\e[m\] \[\e[1;30m\]\w\[\e[m\] \[\e[0;32m\]·\[\e[m\] "

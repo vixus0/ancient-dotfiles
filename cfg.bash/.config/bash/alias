@@ -68,6 +68,7 @@ alias la='echo; ls -lA'
 alias grep='grep --color=auto'
 alias dmesg='dmesg --color'
 alias ocd='cd -'
+alias g='grep --color=auto -Rni'
 
 # Shorten stuff
 alias s='ssh'

@@ -33,8 +33,9 @@ xmodmap $XORG_DIR/xmodmap &
 # -- autostart
 uim-xim &
 nitrogen --restore &
-redshift -l 56.1107:3.1674 -t 6500:4800 &
 sxhkd &
+redshift -l 56.1107:3.1674 -t 6500:4800 -g 1.6:1.6:1.6 &
+nvidia-settings -l ~/.nvidia-settings-rc &
 
 
 # -- wm

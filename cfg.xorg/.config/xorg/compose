@@ -32,7 +32,7 @@ include "%L"
 <Multi_key> <d> <d> : "°"
 <Multi_key> <t> <m> : "™"
 <Multi_key> <asciitilde> <asciitilde> : "≈"
-<Multi_key> <s> <h> : "♥" # heart
+<Multi_key> <s> <h> : "❤" # heart
 <Multi_key> <s> <s> : "☻" # smile
 <Multi_key> <s> <m> : "♫" # notes
 <Multi_key> <s> <k> : "(づ￣ ³￣)づ" # kiss

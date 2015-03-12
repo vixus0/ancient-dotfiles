@@ -44,7 +44,7 @@ fi
 
 
 # prompt
-# make sure the first prompt won't have a newline, but subsequent ones will
+# make sure the first prompt won't have a separator line, but subsequent ones will
 export PROMPT_COMMAND="export PROMPT_COMMAND='hr ─;__vte_prompt_command 2>/dev/null'"
 if [[ -n "$SSH_CLIENT" ]]; then
   # SSH prompt

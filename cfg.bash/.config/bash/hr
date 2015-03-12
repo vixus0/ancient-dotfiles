@@ -21,12 +21,12 @@
 # IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-COLS="$(tput cols)"
-if (( COLS <= 0 )) ; then
-    COLS="${COLUMNS:-80}"
-fi
-
 hr() {
+    COLS="$(tput cols)"
+    if (( COLS <= 0 )) ; then
+        COLS="${COLUMNS:-80}"
+    fi
+
     local WORD="$1"
     if [[ -n "$WORD" ]] ; then
         local LINE=''

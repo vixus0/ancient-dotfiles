@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+
+if test $# -eq 0; then
+  echo "pac: ins rm info fetch find own files check update list aur"
+  exit
+fi
+
+case "$1" in
+  ins)
+    shift 1
+    sudo pacman -S "$@" ;;
+
+  rm)
+    shift 1
+    sudo pacman -Rnssc "$@" ;;
+
+  info)
+    shift 1
+    pacman -Qi "$@" ;;
+
+  fetch)
+    shift 1
+    pacman -Si "$@" ;;
+
+  find)
+    shift 1
+    pacman -Ss "$@" ;;
+
+  own)
+    shift 1
+    pacman -Qo "$@" ;;
+
+  files)
+    shift 1
+    pacman -Ql "$@" ;;
+
+  check)
+    shift 1
+    pacman -Qs "$@" ;;
+
+  update)
+    sudo pacman -Syyu ;;
+
+  list)
+    pacman -Qqe ;;
+
+  aur)
+    pacman -Qqm ;;
+
+  listv)
+    pacman -Qe ;;
+
+  aurv)
+    pacman -Qm ;;
+esac

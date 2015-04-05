@@ -1,0 +1,119 @@
+#!/usr/bin/env python
+
+from urllib.request import urlopen
+from urllib.parse import urlencode
+from tempfile import mkstemp
+from subprocess import call, Popen, PIPE
+import sys, os, json
+
+url = 'https://aur.archlinux.org/'
+abs_dir = os.path.join(os.getenv('HOME'), 'abs')
+
+if not os.path.exists(abs_dir):
+    os.makedirs(abs_dir)
+
+def make_dir (pkg):
+    os.makedirs(os.path.join(abs_dir, pkg), exist_ok=True)
+
+def find (query):
+    data = urlencode({'type':'search', 'arg':' '.join(query)})
+    r = urlopen('{}rpc.php?{}'.format(url, data))
+    j = json.loads(r.read().decode('utf-8'))
+
+    if j['resultcount'] > 0:
+        for res in j['results']:
+            print('{Name} ({Version}):\n  {Description}\n'.format(**res))
+
+def info (pkg):
+    data = urlencode({'type':'info', 'arg':pkg})
+    r = urlopen('{}rpc.php?{}'.format(url, data))
+    j = json.loads(r.read().decode('utf-8'))
+
+    if j['resultcount'] > 0:
+        return j['results']
+    return None
+
+def outinfo (query):
+    for q in query:
+        i = info(q)
+        if i:
+            for k in sorted(i.keys()):
+                print('{:16}: {}'.format(k,i[k]))
+            print()
+
+def download (query):
+    for q in query:
+        i = info(q)
+        if i:
+            print('Downloading: {}/{}'.format(url, i['URLPath']))
+            r = urlopen('{}/{}'.format(url, i['URLPath']))
+            tar = os.path.basename(i['URLPath'])
+
+            chunk = 16 * 1024
+
+            with open(os.path.join(abs_dir, tar), 'wb') as f:
+                while True:
+                    ch = r.read(chunk)
+                    if not ch:
+                        break
+                    f.write(ch)
+
+            curdir = os.getcwd()
+            os.chdir(abs_dir)
+            call(['tar', 'xf', tar])
+            os.remove(tar)
+            os.chdir(curdir)
+
+def pkgbuild (query):
+    for q in query:
+        i = info(q)
+        if i:
+            path = os.path.dirname(i['URLPath'])
+            print('Downloading: {}/{}/PKGBUILD'.format(url, path))
+            r = urlopen('{}/{}/PKGBUILD'.format(url, path))
+
+            make_dir(i['Name'])
+
+            with open(os.path.join(abs_dir, i['Name'], 'PKGBUILD'), 'wb') as f:
+                f.write(r.read())
+
+def update (query):
+    for q in query:
+        pac = Popen(['pacman', '-Q', '-e', q], stdout=PIPE)
+        out, err = pac.communicate()
+
+        if out:
+            i = info(q)
+            installed_ver = out.split()[1]
+            abs_ver = i['Version']
+            ver = Popen(['vercmp', abs_ver, installed_ver], stdout=PIPE)
+            out, err = ver.communicate()
+            vcmp = int(out)
+
+            if vcmp > 0:
+                print(q)
+
+
+if __name__ == "__main__":
+    cmap = {
+            'find': find,
+            'info': outinfo,
+            'dl': download,
+            'pkg': pkgbuild,
+            'upd': update
+            }
+
+    if len(sys.argv) > 1:
+        arg = sys.argv[1]
+        if arg in cmap:
+            fn = cmap[arg]
+            if len(sys.argv) > 2:
+                q = sys.argv[2:]
+            else:
+                q = [x.strip() for x in sys.stdin.readlines()]
+
+            fn(q)
+        else:
+            print('aur: '+' '.join(cmap.keys()))
+    else:
+        print('aur: '+' '.join(cmap.keys()))

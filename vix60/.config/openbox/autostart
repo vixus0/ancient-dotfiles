@@ -1,0 +1,5 @@
+tint2 &
+volumeicon &
+wicd-gtk -t &
+onboard -t DarkRoom &
+nitrogen --restore  &

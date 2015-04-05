@@ -1,8 +1,0 @@
-#!/bin/bash
-
-# Record screen with byzanz
-herbstclient keybind Super+r emit_hook stop_rec
-echo "Recording in 2 seconds..." | dzen2 -p 2 &
-byzanz-record --delay=2 -x 0 -y 0 -w 1024 -h 768 -e "herbstclient --wait stop_rec" ~/img/rec/`date +"%Y%m%d-%H%M"`.gif
-echo "Recording ended" | dzen2 -p 1 &
-herbstclient keybind Super+r spawn ~/scripts/herbstrec

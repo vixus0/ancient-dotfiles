@@ -1,0 +1,21 @@
+#           | |    | |     |  
+#   ,       | |    | |   __|  
+#  / \_/\/  |/ \   |/_) /  |  
+#   \/  /\_/|   |_/| \_/\_/|_/
+#                             
+
+
+super + shift + r
+  pkill -SIGUSR1 sxhkd
+
+super + {8,9,0}
+  chvol {mute,down,up}
+
+super + Return 
+  termite
+
+super + Escape
+  dmlaunch
+
+super + F5
+  scrot -e 'mv $f ~/shots/'

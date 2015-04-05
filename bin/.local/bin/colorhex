@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+xrdb -query | grep color | sort -n -k1.8 | (
+  count=0
+  while read line; do
+    test $count -gt 0 && tput setaf $count
+    test $count -gt 7 && tput bold
+    echo $line $count | awk '{printf("%2d %s\n", $3, $2)}'
+    count=$(( $count + 1 ))
+  done
+  tput sgr0
+)

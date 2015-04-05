@@ -1,0 +1,70 @@
+#                           o         
+#  _|_  _   ,_    _  _  _     _|_  _  
+#   |  |/  /  |  / |/ |/ |  |  |  |/  
+#   |_/|__/   |_/  |  |  |_/|_/|_/|__/
+#  
+
+
+[options]
+font                = Fantasque Sans Mono 9
+allow_bold          = true
+cursor_blink        = system
+cursor_shape        = ibeam
+
+size_hints          = false
+resize_grip         = false
+audible_bell        = false
+visible_bell        = false
+mouse_autohide      = false
+urgent_on_bell      = true
+
+scroll_on_output    = false
+scroll_on_keystroke = true
+dynamic_title       = true
+clickable_url       = true
+scrollback_lines    = 1000
+search_wrap         = true
+
+browser = firefox
+
+
+[colors]
+foreground      = #d0d0d0
+foreground_bold = #d3d0d8
+background      = #151515
+cursor          = #90a959
+
+color0  = #151515
+color1  = #ac4142
+color2  = #90a959
+color3  = #f4bf75
+color4  = #6a9fb5
+color5  = #aa759f
+color6  = #75b5aa
+color7  = #d0d0d0
+color8  = #505050
+color9  = #ac4142
+color10 =	#90a959
+color11 = #f4bf75
+color12 = #6a9fb5
+color13 = #aa759f
+color14 = #75b5aa
+color15 = #f5f5f5
+color16 = #d28445
+color17 = #8f5536
+color18 = #202020
+color19 = #303030
+color20 =	#b0b0b0
+color21 =	#e0e0e0
+
+
+[hints]
+font = Fantasque Sans Mono 12
+foreground = #ffffff
+background = #ac4142
+padding = 2
+border = #3f3f3f
+border_width = 0.0
+roundness = 1.0
+
+# vim: ft=dosini cms=#%s

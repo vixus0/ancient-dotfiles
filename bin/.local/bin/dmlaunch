@@ -1,0 +1,37 @@
+#!/usr/bin/bash
+
+fn="xft:lemon:size=10"
+n_bg="#151515"
+n_fg="#d0d0d0"
+s_bg="#6a9fb5"
+s_fg="#e0e0e0"
+
+dm() {
+  dmenu \
+    -fn $fn \
+    -nb $n_bg -nf $n_fg -sb $s_bg -sf $s_fg
+}
+
+penta() {
+  xdotool search --name penta \
+    windowactivate --sync \
+    type "$@"
+}
+
+# dmenu fav prog launcher
+outp="$(dmenu_path | dm)"
+pre="${outp:0:1}"
+cmd="${outp:1}"
+
+
+case $pre in
+  "#")
+    ${TERMEMU:-termite} -e "$cmd" &
+    ;;
+  "'")
+    penta "$cmd" &
+    ;;
+  *)
+    $outp
+    ;;
+esac

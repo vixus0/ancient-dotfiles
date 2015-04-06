@@ -8,7 +8,6 @@
 
 XORG_DIR="$XDG_CONFIG_HOME/xorg"
 my_xinit="$XORG_DIR/$(hostname)"
-my_sxhkd="$XDG_CONFIG_HOME/sxhkd/$(hostname)" 
 
 
 # -- include global
@@ -25,15 +24,10 @@ test -f "$my_xinit" && . "$my_xinit"
 
 
 # -- setup
-setxkbmap gb && setxkbmap -option compose:ralt
 xset +fp ~/.fonts/PCF && xset fp rehash &
 xrdb -merge $XORG_DIR/xresources &
-xmodmap $XORG_DIR/xmodmap &
-
-
-# -- hotkeys
-test -f "$my_sxhkd" && sxhkd -c "$my_sxhkd" &
-sxhkd &
+setxkbmap gb && setxkbmap -option compose:ralt
+xmodmap $XORG_DIR/xmodmap
 
 
 # -- special input

@@ -43,7 +43,10 @@ case $cmd in
   aurv)
     pacman -Qm ;;
 
+  cle*)
+    sudo pacman -Scc ;;
+
   *)
-    echo "pac: install rm info fetch find own files check update ls aur lsv aurv"
+    echo "pac: install rm info fetch find own files check update ls aur lsv aurv clean"
     ;;
 esac

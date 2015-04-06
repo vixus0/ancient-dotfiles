@@ -1,55 +1,49 @@
 #!/usr/bin/env bash
 
-if test $# -eq 0; then
-  echo "pac: ins rm info fetch find own files check update list aur"
-  exit
-fi
+cmd=$1
+shift 1
 
-case "$1" in
-  ins)
-    shift 1
+case $cmd in
+  ins*)
     sudo pacman -S "$@" ;;
 
   rm)
-    shift 1
     sudo pacman -Rnssc "$@" ;;
 
-  info)
-    shift 1
+  inf*)
     pacman -Qi "$@" ;;
 
-  fetch)
-    shift 1
+  fet*)
     pacman -Si "$@" ;;
 
-  find)
-    shift 1
+  fin*)
     pacman -Ss "$@" ;;
 
   own)
-    shift 1
     pacman -Qo "$@" ;;
 
-  files)
-    shift 1
+  fil*)
     pacman -Ql "$@" ;;
 
-  check)
-    shift 1
+  che*)
     pacman -Qs "$@" ;;
 
-  update)
+  upd*)
     sudo pacman -Syyu ;;
 
-  list)
+  ls)
     pacman -Qqe ;;
 
   aur)
     pacman -Qqm ;;
 
-  listv)
+  lsv)
     pacman -Qe ;;
 
   aurv)
     pacman -Qm ;;
+
+  *)
+    echo "pac: install rm info fetch find own files check update ls aur lsv aurv"
+    ;;
 esac

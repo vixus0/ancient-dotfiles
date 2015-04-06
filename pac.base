@@ -20,9 +20,6 @@ smbclient
 sshfs
 stow
 sudo
-texlive-bin
-texlive-core
-texlive-science
 tmux
 unison
 unrar

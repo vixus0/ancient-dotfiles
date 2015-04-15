@@ -23,12 +23,7 @@ include "%L"
 <Multi_key> <g> <p>     : "π" 
 <Multi_key> <g> <F>     : "Φ"
 <Multi_key> <g> <O>     : "Ω" U03A9
-
-# superscripts
-
-<Multi_key> <p> <2>         : "²" U00B2
-<Multi_key> <p> <3>         : "³" U00B3
-<Multi_key> <p> <4>         : "⁴" U2074
+<Multi_key> <g> <S>     : "∑"
 
 # various glyphs
 
@@ -43,14 +38,28 @@ include "%L"
 <Multi_key> <s> <r> : "(╯°□°）╯︵ ┻━┻" # rage
 <Multi_key> <s> <l> : "(͡° ͜ʖ ͡°)" # lenny
 <Multi_key> <s> <u> : "¯\_(ツ)_/¯" # shrug
+<Multi_key> <s> <q> : "🞐"
+<Multi_key> <s> <c> : "🞆"
 
 # arrows
 
-<Multi_key> <6> <6>     : "↑" # up arrow
-<Multi_key> <v> <v>     : "↓" # down arrow
+<Multi_key> <a> <u>     : "↑" # up arrow
+<Multi_key> <a> <d>     : "↓" # down arrow
+<Multi_key> <a> <l>     : "←" # left arrow
+<Multi_key> <a> <r>     : "→" # right arrow
+
+<Multi_key> <a> <x> <u> : "⤧"
+<Multi_key> <a> <x> <r> : "⤨"
+<Multi_key> <a> <x> <d> : "⤩"
+<Multi_key> <a> <x> <l> : "⤪"
+
+<Multi_key> <asciicircum> <backslash> : "↖"
+<Multi_key> <slash> <asciicircum>     : "↗"
+<Multi_key> <backslash> <comma>           : "↘"
+<Multi_key> <comma> <slash>               : "↙"
 
 <Multi_key> <l> <r>     : "⇆" # lrarr
-<Multi_key> <r> <l>     : "⇄" # rlarr
+<Multi_key> <u> <d>     : "⇅" # udarr
 
 <Multi_key> <Return> <Return>     : "↵"
 

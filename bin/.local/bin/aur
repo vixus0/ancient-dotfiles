@@ -88,14 +88,17 @@ def update (query):
 
         if out:
             i = info(q)
-            installed_ver = out.split()[1]
-            abs_ver = i['Version']
-            ver = Popen(['vercmp', abs_ver, installed_ver], stdout=PIPE)
-            out, err = ver.communicate()
-            vcmp = int(out)
+            if i:
+                installed_ver = out.split()[1]
+                abs_ver = i['Version']
+                ver = Popen(['vercmp', abs_ver, installed_ver], stdout=PIPE)
+                out, err = ver.communicate()
+                vcmp = int(out)
 
-            if vcmp > 0:
-                print(q)
+                if vcmp > 0:
+                    print(q)
+            else:
+                sys.stderr.write('Package not found in AUR: '+q+'\n')
 
 
 if __name__ == "__main__":

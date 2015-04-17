@@ -8,7 +8,7 @@ case $cmd in
     sudo pacman -S "$@" ;;
 
   rm)
-    sudo pacman -Rnssc "$@" ;;
+    sudo pacman -Rnsc "$@" ;;
 
   inf*)
     pacman -Qi "$@" ;;

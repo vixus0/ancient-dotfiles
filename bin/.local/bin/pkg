@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+cmd=$1
+shift 1
+
+. ./PKGBUILD
+
+case $cmd in
+  dep*)
+    echo ${depends[@]} ;;
+
+  mdep*)
+    echo ${makedepends[@]} ;;
+
+  *)
+    echo "pkg: dep" 
+    ;;
+esac

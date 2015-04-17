@@ -22,7 +22,8 @@ def find (query):
 
     if j['resultcount'] > 0:
         for res in j['results']:
-            print('{Name} ({Version}):\n  {Description}\n'.format(**res))
+            if res['OutOfDate'] == 0:
+                print('{Name} ({Version}):\n  {Description}\n'.format(**res))
 
 def info (pkg):
     data = urlencode({'type':'info', 'arg':pkg})
@@ -37,6 +38,9 @@ def outinfo (query):
     for q in query:
         i = info(q)
         if i:
+            if i['OutOfDate'] > 0:
+                print('** OUT OF DATE **')
+            print('{}/packages/{}'.format(url, i['Name']))
             for k in sorted(i.keys()):
                 print('{:16}: {}'.format(k,i[k]))
             print()

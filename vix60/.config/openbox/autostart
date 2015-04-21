@@ -4,3 +4,4 @@ wicd-gtk -t &
 onboard -t DarkRoom &
 nitrogen --restore  &
 sxhkd &
+CopyAgent &

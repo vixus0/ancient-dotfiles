@@ -51,6 +51,7 @@ calc() {
 ## ALIASES
 
 # Shell commands
+alias su="su --login"
 alias ls='ls --group-directories-first --color=always --classify -h'
 alias less='less -RS'
 alias cp='cp -i'

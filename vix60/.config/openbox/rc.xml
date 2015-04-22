@@ -175,6 +175,7 @@
   </dock>
   <keyboard>
     <chainQuitKey>C-g</chainQuitKey>
+
     <!-- Keybindings for desktop switching -->
     <keybind key="C-A-Left">
       <action name="GoToDesktop">
@@ -224,6 +225,7 @@
         <wrap>no</wrap>
       </action>
     </keybind>
+
     <keybind key="W-1"> <action name="GoToDesktop"> <to>1</to> </action> </keybind>
     <keybind key="W-2"> <action name="GoToDesktop"> <to>2</to> </action> </keybind>
     <keybind key="W-3"> <action name="GoToDesktop"> <to>3</to> </action> </keybind>
@@ -232,9 +234,11 @@
     <keybind key="W-S-2"> <action name="SendToDesktop"> <to>2</to> </action> </keybind>
     <keybind key="W-S-3"> <action name="SendToDesktop"> <to>3</to> </action> </keybind>
     <keybind key="W-S-4"> <action name="SendToDesktop"> <to>4</to> </action> </keybind>
+
     <keybind key="C-A-d">
       <action name="ToggleShowDesktop"/>
     </keybind>
+
     <!-- Keybindings for windows -->
     <keybind key="A-F4">
       <action name="Close"/>
@@ -250,6 +254,7 @@
       </action>
     </keybind>
     <!-- Keybindings for window switching -->
+
     <keybind key="A-Tab">
       <action name="NextWindow">
         <finalactions>
@@ -259,6 +264,7 @@
         </finalactions>
       </action>
     </keybind>
+
     <keybind key="A-S-Tab">
       <action name="PreviousWindow">
         <finalactions>
@@ -268,6 +274,7 @@
         </finalactions>
       </action>
     </keybind>
+
     <keybind key="C-A-Tab">
       <action name="NextWindow">
         <panels>yes</panels>
@@ -279,43 +286,52 @@
         </finalactions>
       </action>
     </keybind>
+
     <!-- Keybindings for window switching with directionally -->
-    <keybind key="W-l">
-      <action name="DirectionalCycleWindows">
-        <direction>right</direction>
-      </action>
-    </keybind>
-    <keybind key="W-h">
-      <action name="DirectionalCycleWindows">
-        <direction>left</direction>
-      </action>
-    </keybind>
-    <keybind key="W-k">
-      <action name="DirectionalCycleWindows">
-        <direction>up</direction>
-      </action>
-    </keybind>
-    <keybind key="W-j">
-      <action name="DirectionalCycleWindows">
-        <direction>down</direction>
-      </action>
-    </keybind>
+    <keybind key="W-l"> <action name="DirectionalCycleWindows"> <direction>right</direction> </action> </keybind>
+    <keybind key="W-h"> <action name="DirectionalCycleWindows"> <direction>left</direction> </action> </keybind>
+    <keybind key="W-k"> <action name="DirectionalCycleWindows"> <direction>up</direction> </action> </keybind>
+    <keybind key="W-j"> <action name="DirectionalCycleWindows"> <direction>down</direction> </action> </keybind>
+
     <!-- Moving and resizing -->
-    <keybind key="W-w"><action name="MoveToEdge"><direction>north</direction></action></keybind>
-    <keybind key="W-s"><action name="MoveToEdge"><direction>south</direction></action></keybind>
-    <keybind key="W-a"><action name="MoveToEdge"><direction>west</direction></action></keybind>
-    <keybind key="W-d"><action name="MoveToEdge"><direction>east</direction></action></keybind>
-    <keybind key="W-S-w"><action name="GrowToEdge"><direction>north</direction></action></keybind>
-    <keybind key="W-S-s"><action name="GrowToEdge"><direction>south</direction></action></keybind>
-    <keybind key="W-S-a"><action name="GrowToEdge"><direction>west</direction></action></keybind>
-    <keybind key="W-S-d"><action name="GrowToEdge"><direction>east</direction></action></keybind>
-    <keybind key="W-C-w"><action name="ShrinkToEdge"><direction>north</direction></action></keybind>
-    <keybind key="W-C-s"><action name="ShrinkToEdge"><direction>south</direction></action></keybind>
-    <keybind key="W-C-a"><action name="ShrinkToEdge"><direction>west</direction></action></keybind>
-    <keybind key="W-C-d"><action name="ShrinkToEdge"><direction>east</direction></action></keybind>
+    <keybind key="W-i"> <action name="MoveToEdge"> <direction>north</direction> </action> </keybind>
+    <keybind key="W-u"> <action name="MoveToEdge"> <direction>south</direction> </action> </keybind>
+    <keybind key="W-y"> <action name="MoveToEdge"> <direction>west</direction> </action> </keybind>
+    <keybind key="W-o"> <action name="MoveToEdge"> <direction>east</direction> </action> </keybind>
+    <keybind key="W-S-i"> <action name="GrowToEdge"> <direction>north</direction> </action> </keybind>
+    <keybind key="W-S-u"> <action name="GrowToEdge"> <direction>south</direction> </action> </keybind>
+    <keybind key="W-S-y"> <action name="GrowToEdge"> <direction>west</direction> </action> </keybind>
+    <keybind key="W-S-o"> <action name="GrowToEdge"> <direction>east</direction> </action> </keybind>
+    <keybind key="W-C-i"> <action name="ShrinkToEdge"> <direction>north</direction> </action> </keybind>
+    <keybind key="W-C-u"> <action name="ShrinkToEdge"> <direction>south</direction> </action> </keybind>
+    <keybind key="W-C-y"> <action name="ShrinkToEdge"> <direction>west</direction> </action> </keybind>
+    <keybind key="W-C-o"> <action name="ShrinkToEdge"> <direction>east</direction> </action> </keybind>
+
+    <!-- Grid -->
+    <keybind key="W-q"> <action name="MoveResizeTo"> <x>0</x>       <y>0</y>      <width>1/3</width> <height>1/3</height> </action> </keybind>
+    <keybind key="W-w"> <action name="MoveResizeTo"> <x>center</x>  <y>0</y>      <width>1/3</width> <height>1/3</height> </action> </keybind>
+    <keybind key="W-e"> <action name="MoveResizeTo"> <x>-0</x>      <y>0</y>      <width>1/3</width> <height>1/3</height> </action> </keybind>
+    <keybind key="W-a"> <action name="MoveResizeTo"> <x>0</x>       <y>center</y> <width>1/3</width> <height>1/3</height> </action> </keybind>
+    <keybind key="W-s"> <action name="MoveResizeTo"> <x>center</x>  <y>center</y> <width>1/3</width> <height>1/3</height> </action> </keybind>
+    <keybind key="W-d"> <action name="MoveResizeTo"> <x>-0</x>      <y>center</y> <width>1/3</width> <height>1/3</height> </action> </keybind>
+    <keybind key="W-z"> <action name="MoveResizeTo"> <x>0</x>       <y>-0</y>     <width>1/3</width> <height>1/3</height> </action> </keybind>
+    <keybind key="W-x"> <action name="MoveResizeTo"> <x>center</x>  <y>-0</y>     <width>1/3</width> <height>1/3</height> </action> </keybind>
+    <keybind key="W-c"> <action name="MoveResizeTo"> <x>-0</x>      <y>-0</y>     <width>1/3</width> <height>1/3</height> </action> </keybind>
+
+    <keybind key="W-S-q"> <action name="MoveResizeTo"> <width>1/3</width> <height>1/3</height> </action> </keybind>
+    <keybind key="W-S-w"> <action name="MoveResizeTo"> <width>2/3</width> <height>1/3</height> </action> </keybind>
+    <keybind key="W-S-e"> <action name="MoveResizeTo"> <width>3/3</width> <height>1/3</height> </action> </keybind>
+    <keybind key="W-S-a"> <action name="MoveResizeTo"> <width>1/3</width> <height>2/3</height> </action> </keybind>
+    <keybind key="W-S-s"> <action name="MoveResizeTo"> <width>2/3</width> <height>2/3</height> </action> </keybind>
+    <keybind key="W-S-d"> <action name="MoveResizeTo"> <width>3/3</width> <height>2/3</height> </action> </keybind>
+    <keybind key="W-S-z"> <action name="MoveResizeTo"> <width>1/3</width> <height>3/3</height> </action> </keybind>
+    <keybind key="W-S-x"> <action name="MoveResizeTo"> <width>2/3</width> <height>3/3</height> </action> </keybind>
+    <keybind key="W-S-c"> <action name="MoveResizeTo"> <width>3/3</width> <height>3/3</height> </action> </keybind>
+
     <keybind key="W-m">
       <action name="ToggleMaximize" />
     </keybind>
+
     <keybind key="W-r">
       <action name="Reconfigure" />
     </keybind>

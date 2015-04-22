@@ -26,18 +26,18 @@ read
 
 
 # Update pacman
-su -c pacman -Syu
+su -c 'pacman -Syu'
 
 
 # Check we have sudo
 if test -z $(which sudo); then
   echo "Need to install and set up sudo first."
-  su -c pacman -S sudo
+  su -c 'pacman -S sudo'
   echo "Press enter to start visudo. Add the following:"
   echo "$(whoami) ALL=(ALL) /usr/bin/pacman"
   echo "$(whoami) ALL=(ALL) NOPASSWD: /usr/bin/poweroff, /usr/bin/reboot, /usr/bin/setkeycodes"
   read
-  su -c visudo
+  su -c 'visudo'
   echo "Great, assuming sudo is properly set up for pacman."
 fi
 

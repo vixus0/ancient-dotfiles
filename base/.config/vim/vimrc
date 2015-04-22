@@ -19,8 +19,8 @@ set nocompatible
 
 " -- vundle
   filetype off
-  set runtimepath+=$XDG_CONFIG_HOME/vim/bundle/Vundle.vim
-  call vundle#begin('~/.config/vim/bundle')
+  set runtimepath+=$XDG_DATA_HOME/vim/bundle/Vundle.vim
+  call vundle#begin('~/.local/share/vim/bundle')
   Plugin 'gmarik/Vundle.vim'
   Plugin 'tpope/vim-surround'
   Plugin 'Valloric/YouCompleteMe'

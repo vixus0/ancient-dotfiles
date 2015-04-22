@@ -88,6 +88,7 @@ set nocompatible
   set backspace+=start,eol,indent
   set omnifunc=syntaxcomplete#Complete
   set cryptmethod=blowfish2
+  set cc=80
 " -- /general
 
 

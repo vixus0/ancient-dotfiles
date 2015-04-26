@@ -332,6 +332,10 @@
       <action name="ToggleMaximize" />
     </keybind>
 
+    <keybind key="W-n">
+      <action name="Iconify" />
+    </keybind>
+
     <keybind key="W-r">
       <action name="Reconfigure" />
     </keybind>

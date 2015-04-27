@@ -1,0 +1,45 @@
+#!/usr/bin/env python3
+
+from html.parser import HTMLParser
+from urllib.request import urlopen
+from urllib.parse import urlencode
+
+def search(query):
+    data = urlencode({'page':1, 'search_query':query})
+    html = urlopen('https://www.youtube.com/results?'+data)
+    return html
+
+class ResultsParser(HTMLParser):
+    def __init__(self):
+        HTMLParser.__init__(self)
+        self.videos = []
+        self._link = False
+
+    def handle_starttag(self, tag, attrs):
+        att = {a[0]:a[1] for a in attrs}
+
+        if tag == 'a' and self._link:
+            self.videos.append({
+                'url': 'https://www.youtube.com'+att['href'],
+                'title': att['title']
+                })
+            self._link = False
+            return
+
+        if tag == 'h3' and 'class' in att:
+            if att['class'] == 'yt-lockup-title':
+                self._link = True
+                return
+
+if __name__ == "__main__":
+    import sys
+
+    if len(sys.argv) > 1:
+        query = ' '.join(sys.argv[1:])
+        html = search(query)
+        resp = html.read().decode('UTF-8')
+        parser = ResultsParser()
+        parser.feed(resp)
+
+        for v in parser.videos:
+            print(v['url'], v['title'])

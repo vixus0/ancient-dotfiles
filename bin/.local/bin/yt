@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+query="$@"
+lim=10
+
+if test -n "$query"; then
+  mpv $(yturls "$query" | dmenu -l $lim | cut -f1 -d' ')
+fi

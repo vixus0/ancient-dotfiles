@@ -19,3 +19,6 @@ super + Escape
 
 super + F5
   scrot -e 'mv $f ~/shots/'
+
+super + Up
+  stylus

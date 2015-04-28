@@ -62,7 +62,7 @@ set nocompatible
 
 
 " -- filetype specific
-  au BufNewFile,BufRead *.tex call WrapOn()
+  au BufNewFile,BufRead *.tex,*.md call WrapOn()
   au BufNewFile,BufRead *.src set filetype=fortran
   au BufNewFile,BufRead *.fcm set filetype=fortran
   au BufNewFile,BufRead *.frag,*.vert,*.fp,*.vp,*.glsl set filetype=glsl

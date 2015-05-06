@@ -47,6 +47,10 @@ calc() {
   python -c "from math import *; print($@)"
 }
 
+o() {
+  xdg-open $@ &
+}
+
 
 ## ALIASES
 
@@ -69,9 +73,9 @@ alias ocd='cd -'
 alias s='ssh'
 alias v='vim'
 alias l='ls'
-alias o='xdg-open'
 alias t='tmux -f $XDG_CONFIG_HOME/tmux/local.conf'
 alias g='grep --color=always -Rni'
+alias e="$EDITOR"
 alias q='exit'
 
 # Actions

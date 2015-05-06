@@ -35,6 +35,7 @@ colorscheme base16
 map -count -modes=n,v J <count>gT
 map -count -modes=n,v K <count>gt
 nmap gk :extdisable Pentadactyl<CR>
+nmap gs :set guioptions!=T<CR>
 nmap U :tabmove -1<CR>
 nmap I :tabmove +1<CR>
 nmap -b h 5h

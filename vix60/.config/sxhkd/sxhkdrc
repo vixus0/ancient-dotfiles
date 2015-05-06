@@ -21,4 +21,4 @@ super + F5
   scrot -e 'mv $f ~/shots/'
 
 super + button3
-  stylus
+  onboard 

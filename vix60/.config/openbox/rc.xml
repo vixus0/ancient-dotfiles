@@ -364,7 +364,6 @@
       <mousebind button="A-Left" action="Drag">
         <action name="Move"/>
       </mousebind>
-      -->
       <mousebind button="A-Right" action="Press">
         <action name="Focus"/>
         <action name="Raise"/>
@@ -408,6 +407,7 @@
           <to>next</to>
         </action>
       </mousebind>
+      -->
     </context>
     <context name="Titlebar">
       <mousebind button="Left" action="Drag">
@@ -796,5 +796,6 @@
 
   # end of the example
 -->
+    <application name="termite"><decor>no</decor></application>
   </applications>
 </openbox_config>

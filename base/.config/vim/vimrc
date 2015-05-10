@@ -89,6 +89,7 @@ set nocompatible
   set omnifunc=syntaxcomplete#Complete
   set cryptmethod=blowfish2
   set cc=80
+  set showcmd
 " -- /general
 
 

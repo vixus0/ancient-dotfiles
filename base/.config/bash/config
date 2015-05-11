@@ -30,7 +30,7 @@ eval "`TERM=screen-256color dircolors $XDG_CONFIG_HOME/bash/dircolors`"
 
 
 # base16
-. $XDG_CONFIG_HOME/xorg/base16-def.sh
+. $XDG_CONFIG_HOME/bash/base16-def.sh
 
 
 # hr

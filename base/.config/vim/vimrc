@@ -108,8 +108,8 @@ set nocompatible
 
 " -- bindings
   map <Space> <leader>
-  map <F3> :w !detex \| wc -w <CR>
-  map <silent> <F4> :set wrap! linebreak! nolist! <CR> 
+  map <leader><Space> :
+  map <leader>wc :w !detex \| wc -w <CR>
   noremap <leader>j <PageDown>
   noremap <leader>k <PageUp>
   noremap <leader>s :w<CR>

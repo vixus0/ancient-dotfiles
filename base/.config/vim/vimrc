@@ -24,7 +24,7 @@ set nocompatible
   Plugin 'gmarik/Vundle.vim'
   Plugin 'tpope/vim-surround'
   Plugin 'Valloric/YouCompleteMe'
-  Plugin 'itchyny/calendar.vim'
+  Plugin 'wlangstroth/vim-racket'
   call vundle#end()
 " -- /vundle
 
@@ -109,9 +109,8 @@ set nocompatible
 " -- bindings
   map <Space> <leader>
   map <leader><Space> :
-  map <leader>wc :w !detex \| wc -w <CR>
+  map <leader>c :w !detex \| wc -w <CR>
   noremap <leader>j <PageDown>
   noremap <leader>k <PageUp>
-  noremap <leader>s :w<CR>
+  noremap <leader>w :w<CR>
 " -- /bindings
-

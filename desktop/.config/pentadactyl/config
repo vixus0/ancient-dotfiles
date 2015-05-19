@@ -13,6 +13,12 @@ set editor='termite -e "vim +<line> <file>"'
 set defsearch=d
 set guioptions=s
 set hlfind
+set titlestring="Mozilla Firefox"
+
+
+"fx settings
+set! browser.frames.enabled=false
+set! browser.tabs.selectOwnerOnClose=true
 
 
 "plugins
@@ -34,8 +40,9 @@ colorscheme base16
 "binds
 map -count -modes=n,v J <count>gT
 map -count -modes=n,v K <count>gt
+nmap gr :set usermode!<CR>
 nmap gk :extdisable Pentadactyl<CR>
-nmap gs :set guioptions!=T<CR>
+nmap gs :set guioptions!=Tr | reload<CR>
 nmap U :tabmove -1<CR>
 nmap I :tabmove +1<CR>
 nmap -b h 5h
@@ -44,17 +51,10 @@ nmap -b k 5k
 nmap -b l 5l
 
 
-"no iframes
-set! browser.frames.enabled=false
-
-
-"tab closing
-set! browser.tabs.selectOwnerOnClose=true
-
 
 "safe ssl negotiation
-set! security.ssl.require_safe_negotiation=false
-set! security.ssl.treat_unsafe_negotiation_as_broken=false
+set! security.ssl.require_safe_negotiation=true
+set! security.ssl.treat_unsafe_negotiation_as_broken=true
 set! security.tls.version.min=1
 
 

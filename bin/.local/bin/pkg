@@ -12,6 +12,9 @@ case $cmd in
   mdep*)
     echo ${makedepends[@]} ;;
 
+  keys*)
+    echo ${validpgpkeys[@]} ;;
+
   *)
     echo "pkg: dep" 
     ;;

@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+# 
+# Associates a file extension with a MimeType
+#
+
+usage="$0 mimetype extension1 [extension2 ...]"
+pkgdir="$HOME/.local/share/mime/packages"
+
+if test $# -lt 1; then
+
+  echo $usage
+  exit 1
+
+else
+
+  mime="$1"
+  file="$pkgdir/${mime//\//-}.xml"
+  icon="${mime##*-}"
+
+  shift 1
+
+  echo '<?xml version="1.0" encoding="UTF-8"?>' > $file
+  echo '<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">' >> $file
+  echo "  <mime-type type=\"$mime\">" >> $file
+  echo '    <comment>Added by mimefile</comment>' >> $file
+        
+  echo "    <icon name=\"$icon\"/>" >> $file
+  echo '    <glob-deleteall/>' >> $file
+
+  for ext in "$@"; do
+  echo "    <glob pattern=\"*.$ext\"/>" >> $file
+  done
+
+  echo '  </mime-type>' >> $file
+  echo '</mime-info>' >> $file
+
+  update-mime-database $HOME/.local/share/mime
+fi

@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+#
+# Edits ~/.config/mimeapps.list to associate the given .desktop files with their
+# MimeTypes.
+#
+
+usage="$0 *.desktop"
+
+if test $# -lt 1; then
+
+  echo $usage
+  exit 1
+
+else
+
+  for f in "$@"; do
+
+    awk '\
+      /^Mime/ {
+        split ($0, a, "="); 
+        split (a[2], m, ";");
+        for (t in m)
+          print m[t];
+      }
+      ' $f | xargs xdg-mime default $(basename $f)
+
+  done
+
+fi

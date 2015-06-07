@@ -305,6 +305,7 @@
     <keybind key="W-S-u"> <action name="GrowToEdge"> <direction>south</direction> </action> </keybind>
     <keybind key="W-S-y"> <action name="GrowToEdge"> <direction>west</direction> </action> </keybind>
     <keybind key="W-S-o"> <action name="GrowToEdge"> <direction>east</direction> </action> </keybind>
+    <keybind key="W-S-p"> <action name="GrowToFill"/> </keybind>
     <keybind key="W-C-i"> <action name="ShrinkToEdge"> <direction>north</direction> </action> </keybind>
     <keybind key="W-C-u"> <action name="ShrinkToEdge"> <direction>south</direction> </action> </keybind>
     <keybind key="W-C-y"> <action name="ShrinkToEdge"> <direction>west</direction> </action> </keybind>

@@ -6,8 +6,7 @@
 
 
 [options]
-#font                = Fantasque Sans Mono 14
-font                = Input Mono 12
+font                = Fantasque Sans Mono 14
 allow_bold          = true
 cursor_blink        = system
 cursor_shape        = ibeam

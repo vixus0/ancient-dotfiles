@@ -13,9 +13,13 @@ dm() {
 }
 
 penta() {
-  xdotool search --name penta \
+  xdotool search --name mozilla \
     windowactivate --sync \
     type "$@"
+}
+
+focus() {
+  xdotool search --name "$@" windowactivate
 }
 
 # dmenu fav prog launcher
@@ -30,6 +34,9 @@ case $pre in
     ;;
   "'")
     penta "$cmd" &
+    ;;
+  ",")
+    focus "$cmd" &
     ;;
   *)
     $outp

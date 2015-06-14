@@ -102,7 +102,7 @@ set nocompatible
 
 
 " -- plugins
-  let g:calendar_google_calendar = 1
+  let g:ycm_autoclose_preview_window_after_completion = 1
 " -- /plugins
 
 

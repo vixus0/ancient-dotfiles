@@ -113,5 +113,11 @@ set nocompatible
   noremap <leader>j <PageDown>
   noremap <leader>k <PageUp>
   noremap <leader>w :w<CR>
+  noremap <leader>W :wa<CR>
+  noremap <leader>q :q!<CR>
+  noremap <leader>Q :qa!<CR>
+  noremap <leader>x :x<CR>
+  noremap <leader>X :xa<CR>
+  noremap <leader>e :new \| r!
   noremap <leader>r :!racket -il xrepl<CR>
 " -- /bindings

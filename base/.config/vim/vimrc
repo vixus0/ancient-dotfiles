@@ -112,6 +112,7 @@ set nocompatible
   map <leader>c :w !detex \| wc -w <CR>
   noremap <leader>j <PageDown>
   noremap <leader>k <PageUp>
+  noremap <leader>n :noh<CR>
   noremap <leader>w :w<CR>
   noremap <leader>W :wa<CR>
   noremap <leader>q :q!<CR>

@@ -12,3 +12,8 @@
 	dt = difftool
 [core]
 	autocrlf = input
+[merge]
+  tool = vimdiff
+  conflictstyle = diff3
+[mergetool]
+  prompt = false

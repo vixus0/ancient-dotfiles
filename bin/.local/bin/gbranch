@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+(git branch 2>/dev/null || echo '* -') | awk '/*/ {print $2}'

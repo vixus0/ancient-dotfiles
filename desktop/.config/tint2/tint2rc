@@ -8,7 +8,7 @@
 # Background definitions
 rounded = 0
 border_width = 0
-background_color = #101010 0
+background_color = #151515 100
 border_color = #FFFFFF 16
 
 rounded = 3
@@ -23,7 +23,7 @@ border_color = #FFFFFF 48
 
 rounded = 3
 border_width = 0
-background_color = #151515 100
+background_color = #080808 100
 border_color = #FFFFFF 16
 
 
@@ -75,7 +75,7 @@ task_font = dejavu sans 7
 task_font_color = #e0e0e0 100
 task_active_font_color = #101010 100
 task_urgent_font_color = #f0f0f0 100
-task_iconified_font_color = #d0d0d0 100
+task_iconified_font_color = #cccccc 100
 font_shadow = 0
 
 

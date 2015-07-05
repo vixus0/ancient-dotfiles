@@ -101,3 +101,7 @@ alias Cse="xclip -o -selection SECONDARY"
 alias Ccl="xclip -o -selection CLIPBOARD"
 alias Cc="xclip -i -selection PRIMARY"
 
+# Virtualenv
+alias ve="virtualenv virt"
+alias va="source virt/bin/activate"
+alias vd="deactivate"

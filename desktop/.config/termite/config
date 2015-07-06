@@ -6,8 +6,8 @@
 
 
 [options]
-font                = Fantasque Sans Mono 14
-allow_bold          = true
+font                = limey
+allow_bold          = false
 cursor_blink        = system
 cursor_shape        = ibeam
 

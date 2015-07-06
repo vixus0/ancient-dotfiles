@@ -1,0 +1,66 @@
+#!/usr/bin/env bash
+
+movecmd="xdotool getactivewindow windowmove"
+sizecmd="xdotool getactivewindow windowsize"
+
+dims=$(xrandr | awk '/*/ {print $1;exit}')
+scrw=${dims%x*} 
+scrh=${dims#*x}
+
+rows=2
+cols=2
+gap=0
+top=0
+
+while getopts ":r:c:g:t:" opt; do
+  case $opt in
+    r) rows=$OPTARG ;;
+    c) cols=$OPTARG ;;
+    g) gap=$OPTARG ;;
+    t) top=$OPTARG ;;
+    \?)
+      echo "Unknown option: -$OPTARG" >&2
+      exit 1
+      ;;
+    \:)
+      echo "Missing argument for -$OPTARG" >&2
+      exit 1
+      ;;
+  esac
+done
+
+shift $((OPTIND-1))
+
+cellw=$(( (scrw - (1+cols)*gap) / cols ))
+cellh=$(( (scrh - top - (1+rows)*gap) / rows ))
+
+move() {
+  local x=$1
+  local y=$2
+  local gx=$(( gap + x * (gap + cellw) ))
+  local gy=$(( top + gap + y * (gap + cellh) ))
+  echo $gx $gy
+}
+
+size() {
+  local w=$1
+  local h=$2
+  test $w -lt 1 && w=1
+  test $h -lt 1 && h=1
+  local gw=$(( w * (gap + cellw) - gap ))
+  local gh=$(( h * (gap + cellh) - gap ))
+  echo $gw $gh
+}
+
+# Do stuff
+case $1 in
+  move)
+    $movecmd $(move $2 $3)
+    ;;
+  size)
+    $sizecmd $(size $2 $3)
+    ;;
+  *)
+    echo "Unknown command: $1" >&2
+    ;;
+esac

@@ -6,7 +6,7 @@
 
 
 [options]
-font                = limey
+font                = Monospace 10
 allow_bold          = false
 cursor_blink        = system
 cursor_shape        = ibeam

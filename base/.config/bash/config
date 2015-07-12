@@ -29,10 +29,6 @@ bind '\C-w:unix-filename-rubout'
 eval "`TERM=screen-256color dircolors $XDG_CONFIG_HOME/bash/dircolors`"
 
 
-# base16
-. $XDG_CONFIG_HOME/bash/base16-def.sh
-
-
 # hr
 . $XDG_CONFIG_HOME/bash/hr
 
@@ -51,6 +47,6 @@ if [[ -n "$SSH_CLIENT" ]]; then
   PS1="\[\e[0;33m\]\h\[\e[m\] \[\e[1;30m\]\w\[\e[m\] \[\e[0;32m\]·\[\e[m\] "
 else
   # normal prompt
-  PS1="\[\e[1;30m\]\W\[\e[m\] \[\e[0;32m\]·\[\e[m\] "
+  PS1="\[\e[1;37m\]\W\[\e[m\] \[\e[0;32m\]·\[\e[m\] "
 fi
 

@@ -29,10 +29,6 @@ bind '\C-w:unix-filename-rubout'
 eval "`TERM=screen-256color dircolors $XDG_CONFIG_HOME/bash/dircolors`"
 
 
-# hr
-. $XDG_CONFIG_HOME/bash/hr
-
-
 # Source VTE functions 
 if [[ $TERM == "xterm-termite" && -f /etc/profile.d/vte.sh ]]; then
   . /etc/profile.d/vte.sh

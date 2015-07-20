@@ -6,13 +6,13 @@ alias g "grep -Rni"
 alias q "exit"
 alias e "$EDITOR"
 alias t "tmux -f $XDG_CONFIG_HOME/tmux/local.conf"
+alias o "xdg-open"
 alias cp "cp -i"
 alias mv "mv -i"
 alias rmr "rm -rfI"
 alias su "su --login"
 alias less "less -RS"
 alias redot "source $XDG_CONFIG_HOME/fish/config.fish"
-alias tf2 "~/git/demopan/demopan.py --tf ~/tf --demos ~/tf/demos"
 
 function fish_prompt
   if set -q VIRTUAL_ENV

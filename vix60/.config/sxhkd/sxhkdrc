@@ -5,7 +5,7 @@
 #                             
 
 
-super + shift + r
+super + shift + p
   pkill -SIGUSR1 sxhkd
 
 super + {8,9,0}
@@ -22,3 +22,12 @@ super + F5
 
 super + button3
   onboard 
+
+super + {_,shift} + {q,w,e,r}
+  wgrid -f $XDG_CONFIG_HOME/wgrid {move,size} {1,2,3,4} 1
+
+super + {_,shift} + {a,s,d,f}
+  wgrid -f $XDG_CONFIG_HOME/wgrid {move,size} {1,2,3,4} 2
+
+super + {_,shift} + {z,x,c,v}
+  wgrid -f $XDG_CONFIG_HOME/wgrid {move,size} {1,2,3,4} 3

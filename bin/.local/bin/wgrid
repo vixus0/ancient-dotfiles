@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
-movecmd="xdotool getactivewindow windowmove"
-sizecmd="xdotool getactivewindow windowsize"
+active="$(xdotool getactivewindow)"
+
+movecmd="xdotool windowmove"
+sizecmd="xdotool windowsize"
 
 dims=$(xrandr | awk '/*/ {print $1;exit}')
 scrw=${dims%x*} 
@@ -11,13 +13,15 @@ rows=2
 cols=2
 gap=0
 top=0
+file=""
 
-while getopts ":r:c:g:t:" opt; do
+while getopts ":r:c:g:t:f:" opt; do
   case $opt in
     r) rows=$OPTARG ;;
     c) cols=$OPTARG ;;
     g) gap=$OPTARG ;;
     t) top=$OPTARG ;;
+    f) file=$OPTARG ;;
     \?)
       echo "Unknown option: -$OPTARG" >&2
       exit 1
@@ -29,16 +33,42 @@ while getopts ":r:c:g:t:" opt; do
   esac
 done
 
+# Read config from file
+test -n "$file" -a -f "$file" && . "$file"
+
 shift $((OPTIND-1))
 
-cellw=$(( (scrw - (1+cols)*gap) / cols ))
-cellh=$(( (scrh - top - (1+rows)*gap) / rows ))
+cellw=$(( ( (scrw - gap) / cols ) - gap ))
+cellh=$(( ( (scrh - top - gap) / rows ) - gap ))
+
+getparent() {
+  local win=$1
+  local parent=$(xwininfo -id $win -children | awk '/Parent window id:/ {print $4}')
+  test -n $parent && echo $parent || echo $win
+}
+
+getgeom() {
+  xdotool getwindowgeometry $1 | awk '/Position/ {split($2, p, ",")} /Geometry/ {split($2, g, "x")} END {print p[1], p[2], g[1], g[2]}'
+}
+
+getgdiff() {
+  # Get window decoration difference
+  local win=$active
+  local par=$(getparent $win)
+  geomc=($(getgeom $win))
+  geomp=($(getgeom $par))
+  echo $(( ${geomp[2]} - ${geomc[2]} )) $(( ${geomp[3]} - ${geomc[3]} ))
+}
+
+calc() {
+  echo "(($@) + 0.5)/1" | bc
+}
 
 move() {
   local x=$1
   local y=$2
-  local gx=$(( gap + x * (gap + cellw) ))
-  local gy=$(( top + gap + y * (gap + cellh) ))
+  local gx=$(( gap + (x - 1) * (gap + cellw) ))
+  local gy=$(( top + gap + (y - 1) * (gap + cellh) ))
   echo $gx $gy
 }
 
@@ -47,18 +77,47 @@ size() {
   local h=$2
   test $w -lt 1 && w=1
   test $h -lt 1 && h=1
-  local gw=$(( w * (gap + cellw) - gap ))
-  local gh=$(( h * (gap + cellh) - gap ))
+  local dg=($(getgdiff))
+  local gw=$(( w * (gap + cellw) - gap - ${dg[0]} ))
+  local gh=$(( h * (gap + cellh) - gap - ${dg[1]} ))
   echo $gw $gh
 }
+
+gridsize() {
+  # Constrain window size to grid
+  local geom=($(getgeom))
+  local w=${geom[2]}
+  local h=${geom[3]}
+  local nw=$(calc $w / $cellw)
+  local nh=$(calc $h / $cellh)
+  size $nw $nh
+}
+
+gridpos() {
+  # Constrain window position to grid
+  local geom=($(getgeom))
+  local x=${geom[0]}
+  local y=${geom[1]}
+  local nx=$(calc $x / $cellw + 1)
+  local ny=$(calc $y / $cellh + 1)
+  move $nx $ny
+}  
 
 # Do stuff
 case $1 in
   move)
-    $movecmd $(move $2 $3)
+    $movecmd $active $(move $2 $3)
+    $sizecmd $active $(gridsize)
     ;;
   size)
-    $sizecmd $(size $2 $3)
+    $sizecmd $active $(size $2 $3)
+    ;;
+  geom)
+    getgeom
+    ;;
+  grid)
+    $movecmd $active $(gridpos)
+    $sizecmd $active $(gridsize)
     ;;
   *)
     echo "Unknown command: $1" >&2

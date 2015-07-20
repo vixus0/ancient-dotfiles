@@ -1,2 +1,3 @@
 remove Lock = Caps_Lock
 keysym Caps_Lock = Escape
+keycode 105 = dead_greek NoSymbol Control_R

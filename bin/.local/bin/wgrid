@@ -5,9 +5,10 @@ active="$(xdotool getactivewindow)"
 movecmd="xdotool windowmove"
 sizecmd="xdotool windowsize"
 
-dims=$(xrandr | awk '/*/ {print $1;exit}')
+dims=$(xrandr | awk '/^Screen 0/ {print $8"x"$10;exit}')
 scrw=${dims%x*} 
 scrh=${dims#*x}
+scrh=${scrh/,/}
 
 rows=2
 cols=2
@@ -40,6 +41,8 @@ shift $((OPTIND-1))
 
 cellw=$(( ( (scrw - gap) / cols ) - gap ))
 cellh=$(( ( (scrh - top - gap) / rows ) - gap ))
+
+echo "a:$active sw:$scrw sh:$scrh cw:$cellw ch:$cellh t:$top g:$gap"
 
 getparent() {
   local win=$1
@@ -85,7 +88,7 @@ size() {
 
 gridsize() {
   # Constrain window size to grid
-  local geom=($(getgeom))
+  local geom=($(getgeom $active))
   local w=${geom[2]}
   local h=${geom[3]}
   local nw=$(calc $w / $cellw)

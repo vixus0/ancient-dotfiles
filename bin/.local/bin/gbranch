@@ -1,3 +1,6 @@
 #!/usr/bin/env bash
 
-(git branch 2>/dev/null || echo '* -') | awk '/*/ {print $2}'
+branch=$( (git branch 2>/dev/null || echo '*') | awk '/*/ {print $2}' )
+dirty=$(git status --porcelain 2>/dev/null | grep "^ M" | wc -l)
+
+test $dirty -gt 0 && echo "${branch}(${dirty})" || echo "$branch"

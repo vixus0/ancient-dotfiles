@@ -28,6 +28,7 @@ border_color = #FFFFFF 16
 
 
 # Panel
+panel_items = LTSBC
 panel_monitor = all
 panel_position = top center horizontal
 panel_size = 0 24

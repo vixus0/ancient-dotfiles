@@ -142,4 +142,6 @@ set nocompatible
   noremap <leader>X :xa<CR>
   noremap <leader>e :new \| r!
   noremap <leader>r :!racket -il xrepl<CR>
+  noremap <leader>t :tabedit 
+  noremap <leader>T :tabfind 
 " -- /bindings

@@ -1,0 +1,41 @@
+#!/usr/bin/env python2
+
+from __future__ import print_function
+import gtk, os
+
+backlight = '/sys/class/backlight/acpi_video0'
+max_bright = int( open(os.path.join(backlight, 'max_brightness')).readline() )
+icon = gtk.status_icon_new_from_icon_name('video-display')
+menu = gtk.Menu()
+
+def set_tooltip():
+    b = open(os.path.join(backlight, 'brightness')).readline().strip()
+    icon.set_tooltip_text("Brightness: "+str(b))
+
+def set_bright(b=max_bright):
+    print('Setting brightness: ', b)
+    b = min(b, max_bright)
+    b = max(1, b)
+
+    try:
+        open(os.path.join(backlight, 'brightness'), 'w').write(str(b))
+    except IOError:
+        print('Could not set brightness.')
+
+    set_tooltip()
+
+def popup(data, btn, time):
+    menu.popup(None, None, None, btn, time)
+
+def make_menu():
+    for i in range(1, max_bright+1):
+        item = gtk.MenuItem(str(i))
+        menu.append(item)
+        item.connect_object('activate', set_bright, i)
+        item.show()
+
+if __name__ == '__main__':
+    make_menu()
+    icon.connect('popup-menu', popup)
+    set_tooltip()
+    gtk.main()

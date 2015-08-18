@@ -3,6 +3,12 @@
 <openbox_menu xmlns="http://openbox.org/3.4/menu">
 
 <menu id="root-menu" label="Openbox 3">
+  <item label="PCManFM">
+    <action name="Execute">
+      <command>pcmanfm</command>
+      <startupnotify><enabled>yes</enabled></startupnotify>
+    </action>
+  </item>
   <item label="Firefox">
     <action name="Execute">
       <command>firefox</command>
@@ -18,12 +24,6 @@
   <item label="MyPaint">
     <action name="Execute">
       <command>mypaint</command>
-      <startupnotify><enabled>yes</enabled></startupnotify>
-    </action>
-  </item>
-  <item label="Write">
-    <action name="Execute">
-      <command>write_stylus</command>
       <startupnotify><enabled>yes</enabled></startupnotify>
     </action>
   </item>

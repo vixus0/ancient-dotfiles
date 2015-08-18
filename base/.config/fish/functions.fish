@@ -20,11 +20,16 @@ end
 
 # Pastebin
 function pb
-  if set -q $1
-    set data $1
+  if test (count $argv) -gt 0
+    set data $argv[1]
   else
     set data -
   end
 
-  curl -sF "c=@$data" -w "%{redirect_url}" https://ptpb.pw -o /dev/stderr | xclip -i -selection CLIPBOARD
+  curl -sF "c=@$data" -w "%{redirect_url}" https://ptpb.pw 
+end
+
+# xdg-open
+function o
+  xdg-open $argv &
 end

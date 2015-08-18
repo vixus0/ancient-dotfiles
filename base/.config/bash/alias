@@ -1,61 +1,7 @@
 #!/bin/bash
 
-## FUNCTIONS
-# Pastebin
-pb() {
-  curl -sF "c=@${1:--}" -w "%{redirect_url}" https://ptpb.pw -o /dev/stderr | xclip -i -selection CLIPBOARD
-}
-
-astart() {
-  [[ -z `pidof $1` ]] && $@
-}
-
-cstart() {
-  while [[ -z `pidof $1` ]]; do
-    sleep .5
-  done
-  astart ${@:2}
-}
-
-man() {
-    env LESS_TERMCAP_mb=$'\E[01;31m' \
-    LESS_TERMCAP_md=$'\E[01;38;5;74m' \
-    LESS_TERMCAP_me=$'\E[0m' \
-    LESS_TERMCAP_se=$'\E[0m' \
-    LESS_TERMCAP_so=$'\E[38;5;246m' \
-    LESS_TERMCAP_ue=$'\E[0m' \
-    LESS_TERMCAP_us=$'\E[04;38;5;146m' \
-    man "$@"
-}
-
-lns() {
-  ln -s `realpath $1` $2
-}
-
-mpvp() {
-  if [[ $1 == "tv" ]]; then
-    url="${2:-`xclip -o -selection clipboard`}"
-    herbstclient reload
-    args="--no-cache --ao=alsa:device=hdmi --title=playontv $url"
-  else
-    args="${1:-`xclip -o -selection clipboard`}"
-  fi
-  mpv $args
-} 
-
-calc() {
-  python -c "from math import *; print($@)"
-}
-
-o() {
-  xdg-open $@ &
-}
-
-
-## ALIASES
-
 # Shell commands
-alias su="su --login"
+alias su='su --login'
 alias ls='ls --group-directories-first --color=always --classify -h'
 alias less='less -RS'
 alias cp='cp -i'
@@ -73,23 +19,24 @@ alias ocd='cd -'
 alias s='ssh'
 alias v='vim'
 alias l='ls'
-alias t='tmux -f $XDG_CONFIG_HOME/tmux/local.conf'
+alias t="tmux -f $XDG_CONFIG_HOME/tmux/local.conf"
 alias g='grep --color=always -Rni'
 alias e="$EDITOR"
 alias q='exit'
+alias ry='rsync -ahv --progress --stats'
 
 # Actions
 alias po="sudo poweroff"
 alias re="sudo reboot"
 
 # Utils
-alias redot='source $HOME/.bashrc'
+alias redot="source $SHELL_CONFIG"
 alias rexrdb='xrdb -merge $XDG_CONFIG_HOME/xorg/xresources'
 alias lastj="sudo journalctl -b-1"
 alias valgr='valgrind --db-attach=yes --leak-check=yes --tool=memcheck --num-callers=16 --leak-resolution=high --track-origins=yes'
 
 # Force stuff to obey XDG
-alias rtorrent="rtorrent -n -o import=${XDG_CONFIG_HOME}/rtorrent/config.rc"
+alias rtorrent="rtorrent -n -o import=$XDG_CONFIG_HOME/rtorrent/config.rc"
 alias weechat="weechat -d $XDG_CONFIG_HOME/weechat"
 alias skype="skype --dbpath=$XDG_CONFIG_HOME/skype"
 alias easystroke="easystroke -c $XDG_CONFIG_HOME/easystroke"

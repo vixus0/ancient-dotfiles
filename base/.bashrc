@@ -13,3 +13,4 @@
 . $XDG_CONFIG_HOME/bash/env
 . $XDG_CONFIG_HOME/bash/config
 . $XDG_CONFIG_HOME/bash/alias
+. $XDG_CONFIG_HOME/bash/functions

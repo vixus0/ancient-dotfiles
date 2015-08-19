@@ -5,3 +5,4 @@ onboard -t DarkRoom &
 nitrogen --restore  &
 sxhkd &
 CopyAgent &
+backlight-icon &

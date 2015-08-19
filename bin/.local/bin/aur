@@ -6,7 +6,7 @@ from tempfile import mkstemp
 from subprocess import call, Popen, PIPE
 import sys, os, json
 
-url = 'https://aur4.archlinux.org/'
+url = 'https://aur.archlinux.org/'
 abs_dir = os.path.join(os.getenv('HOME'), 'abs')
 
 if not os.path.exists(abs_dir):

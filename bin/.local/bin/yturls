@@ -13,23 +13,16 @@ class ResultsParser(HTMLParser):
     def __init__(self):
         HTMLParser.__init__(self)
         self.videos = []
-        self._link = False
 
     def handle_starttag(self, tag, attrs):
-        att = {a[0]:a[1] for a in attrs}
+        att = {a[0]:a[1].strip() for a in attrs if isinstance(a[1], str)}
 
-        if tag == 'a' and self._link:
-            self.videos.append({
-                'url': 'https://www.youtube.com'+att['href'],
-                'title': att['title']
-                })
-            self._link = False
-            return
-
-        if tag == 'h3' and 'class' in att:
-            if att['class'] == 'yt-lockup-title':
-                self._link = True
-                return
+        if tag == 'a' and 'rel' in att:
+            if att['rel'] == 'spf-prefetch':
+                self.videos.append({
+                    'url': 'https://www.youtube.com'+att['href'],
+                    'title': att['title']
+                    })
 
 if __name__ == "__main__":
     import sys

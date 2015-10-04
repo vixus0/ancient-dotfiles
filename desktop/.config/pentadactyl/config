@@ -51,6 +51,10 @@ nmap -b k 5k
 nmap -b l 5l
 
 
+"mse for youtube's html5 in HD
+set! media.mediasource.enabled=true
+set! media.mediasource.webm.enabled=true
+
 
 "safe ssl negotiation
 set! security.ssl.require_safe_negotiation=false

@@ -8,7 +8,7 @@
 # Background definitions
 rounded = 0
 border_width = 0
-background_color = #151515 100
+background_color = #151515 0
 border_color = #FFFFFF 16
 
 rounded = 3

@@ -6,3 +6,4 @@ nitrogen --restore  &
 sxhkd &
 CopyAgent &
 backlight-icon &
+demopan --demos ~/tf/demos &

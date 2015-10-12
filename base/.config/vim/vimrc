@@ -13,6 +13,7 @@ set nocompatible
   set backupdir=$XDG_CACHE_HOME/vim,~/,/tmp
   set viminfo+=n~/.cache/vim/viminfo
   set runtimepath=$XDG_CONFIG_HOME/vim,$VIM,$VIMRUNTIME
+  set path=.,,**
   let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc"
 " -- /env
 "

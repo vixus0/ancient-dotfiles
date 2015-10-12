@@ -24,7 +24,7 @@ set nocompatible
   Plugin 'gmarik/Vundle.vim'
   Plugin 'tpope/vim-surround'
   Plugin 'Valloric/YouCompleteMe'
-  Plugin 'wlangstroth/vim-racket'
+  Plugin 'sjl/gundo.vim'
   call vundle#end()
 " -- /vundle
 
@@ -141,7 +141,9 @@ set nocompatible
   noremap <leader>x :x<CR>
   noremap <leader>X :xa<CR>
   noremap <leader>e :new \| r!
-  noremap <leader>r :!racket -il xrepl<CR>
+  noremap <leader>s :mks $XDG_CACHE_HOME/vim/lastsession<CR>
+  noremap <leader>S :source $XDG_CACHE_HOME/vim/lastsession<CR>
   noremap <leader>t :tabedit 
   noremap <leader>T :tabfind 
+  noremap <leader>u :GundoToggle<CR>
 " -- /bindings

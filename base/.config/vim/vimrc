@@ -131,13 +131,13 @@ set nocompatible
   noremap <leader>j :wincmd j<CR>
   noremap <leader>k :wincmd k<CR>
   noremap <leader>l :wincmd l<CR>
-  noremap <leader>f <PageDown>
-  noremap <leader>b <PageUp>
+  noremap <leader>f $
+  noremap <leader>b ^
   noremap <leader>n :noh<CR>
   noremap <leader>w :w<CR>
   noremap <leader>W :wa<CR>
-  noremap <leader>q :q!<CR>
-  noremap <leader>Q :qa!<CR>
+  noremap <leader>q :q<CR>
+  noremap <leader>Q :qa<CR>
   noremap <leader>x :x<CR>
   noremap <leader>X :xa<CR>
   noremap <leader>e :new \| r!

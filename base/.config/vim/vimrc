@@ -120,7 +120,7 @@ set nocompatible
 " -- gvim
   if has('gui_running')
     set guioptions="aegitc"
-    set guifont=Fantasque\ Sans\ Mono\ 11
+    set guifont=M+\ 2m\ medium\ 14
     colorscheme monokai
     :inoremap <M-l> <Esc>l
     :inoremap <M-j> <Esc>j

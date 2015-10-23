@@ -6,7 +6,7 @@
 
 
 [options]
-font                = Monospace 10
+font                = Monospace 11
 allow_bold          = false
 cursor_blink        = system
 cursor_shape        = ibeam

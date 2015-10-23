@@ -28,6 +28,7 @@ set nocompatible
   Plugin 'sjl/gundo.vim'
   Plugin 'Raimondi/delimitMate'
   Plugin 'godlygeek/tabular'
+  Plugin 'Shutnik/jshint2.vim'
   call vundle#end()
 " -- /vundle
 

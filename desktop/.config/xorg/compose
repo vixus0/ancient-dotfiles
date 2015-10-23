@@ -37,7 +37,7 @@ include "%L"
 <Multi_key> <s> <g> : "(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧" # sparkles/gratz
 <Multi_key> <s> <r> : "(╯°□°）╯︵ ┻━┻" # rage
 <Multi_key> <s> <l> : "(͡° ͜ʖ ͡°)" # lenny
-<Multi_key> <s> <u> : "¯\_(ツ)_/¯" # shrug
+<Multi_key> <s> <u> : "¯\\_(ツ)_/¯" # shrug
 <Multi_key> <s> <q> : "🞐"
 <Multi_key> <s> <c> : "🞆"
 

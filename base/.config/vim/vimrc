@@ -142,7 +142,7 @@ set nocompatible
   noremap <leader>x :x<CR>
   noremap <leader>X :xa<CR>
   noremap <leader>e :new \| r!
-  noremap <leader>s :mks $XDG_CACHE_HOME/vim/lastsession<CR>
+  noremap <leader>s :mks $XDG_CACHE_HOME/vim/lastsession!<CR>
   noremap <leader>S :source $XDG_CACHE_HOME/vim/lastsession<CR>
   noremap <leader>t :tabedit 
   noremap <leader>T :tabfind 

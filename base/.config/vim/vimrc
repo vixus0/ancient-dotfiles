@@ -26,6 +26,8 @@ set nocompatible
   Plugin 'tpope/vim-surround'
   Plugin 'Valloric/YouCompleteMe'
   Plugin 'sjl/gundo.vim'
+  Plugin 'Raimondi/delimitMate'
+  Plugin 'godlygeek/tabular'
   call vundle#end()
 " -- /vundle
 
@@ -34,7 +36,7 @@ set nocompatible
   syntax on
   let base16colorspace=256
   set background=dark
-  colorscheme monokai
+  colorscheme molokai
 " -- /colours
 
 
@@ -142,9 +144,14 @@ set nocompatible
 
 
 " -- bindings
+  imap <C-c> <CR><Esc>O
   map <Space> <leader>
   map <leader><Space> :
-  map <leader>c :w !detex \| wc -w <CR>
+  map <leader>c :w !wc -w <CR>
+  nmap <leader>a= :Tabularize /=<CR>
+  vmap <leader>a= :Tabularize /=<CR>
+  nmap <leader>a: :Tabularize /:\zs<CR>
+  vmap <leader>a: :Tabularize /:\zs<CR>
   noremap <leader>h :wincmd h<CR>
   noremap <leader>j :wincmd j<CR>
   noremap <leader>k :wincmd k<CR>

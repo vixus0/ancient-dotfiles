@@ -18,6 +18,7 @@ alias ocd='cd -'
 # Shorten stuff
 alias s='ssh'
 alias v='vim'
+alias gv='gvim'
 alias l='ls'
 alias t="tmux -f $XDG_CONFIG_HOME/tmux/local.conf"
 alias g='grep --color=always -Rni'

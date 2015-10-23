@@ -4,7 +4,15 @@ from urllib.request import urlopen
 from urllib.parse import urlencode
 from tempfile import mkstemp
 from subprocess import call, Popen, PIPE
+from textwrap import wrap as tw
 import sys, os, json
+
+CB = '\033[94m'
+CG = '\033[92m'
+CR = '\033[91m'
+CE = '\033[0m'
+
+color = lambda c,s: '{}{}{}'.format(c, s, CE)
 
 url = 'https://aur.archlinux.org/'
 abs_dir = os.path.join(os.getenv('HOME'), 'abs')
@@ -22,8 +30,16 @@ def find (query):
 
     if j['resultcount'] > 0:
         for res in j['results']:
-            if res['OutOfDate'] == 0:
-                print('{Name} ({Version}):\n  {Description}\n'.format(**res))
+            if res['OutOfDate']:
+                res['OutOfDate'] = color(CR, 'OUT OF DATE')
+            else:
+                res['OutOfDate'] = ''
+
+            res['Name'] = color(CB, res['Name'])
+            res['Version'] = color(CG, res['Version'])
+            res['Description'] = '\n  '.join(tw(res['Description']))
+
+            print('{Name} {Version} {OutOfDate}\n  {Description}\n'.format(**res))
 
 def info (pkg):
     data = urlencode({'type':'info', 'arg':pkg})

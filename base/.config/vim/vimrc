@@ -62,6 +62,22 @@ set nocompatible
 " -- /latex
 
 
+" -- line numbers
+  function! NumberToggle()
+    if(&relativenumber == 1)
+      set norelativenumber
+      set number
+    else
+      set nonumber
+      set relativenumber
+    endif
+  endfunction
+
+  autocmd InsertEnter * :set norelativenumber | :set number
+  autocmd InsertLeave * :set nonumber | :set relativenumber
+" -- /line numbers
+
+
 " -- filetype specific
   au BufNewFile,BufRead *.tex,*.md call WrapOn()
   au BufNewFile,BufRead *.src set filetype=fortran
@@ -82,7 +98,7 @@ set nocompatible
   set shiftwidth=2
   set laststatus=2
   set nowrap
-  set number
+  set relativenumber
   set modeline
   set cursorline
   set clipboard+=unnamed
@@ -121,6 +137,7 @@ set nocompatible
 
 " -- plugins
   let g:ycm_autoclose_preview_window_after_completion = 1
+  let g:ycm_global_ycm_extra_conf = "~/.config/vim/.ycm_extra_conf.py"
 " -- /plugins
 
 
@@ -144,7 +161,9 @@ set nocompatible
   noremap <leader>e :new \| r!
   noremap <leader>s :mks $XDG_CACHE_HOME/vim/lastsession!<CR>
   noremap <leader>S :source $XDG_CACHE_HOME/vim/lastsession<CR>
+  noremap <leader>R :source $MYVIMRC<CR>
   noremap <leader>t :tabedit 
   noremap <leader>T :tabfind 
   noremap <leader>u :GundoToggle<CR>
+  noremap <leader>1 :call NumberToggle()<CR>
 " -- /bindings

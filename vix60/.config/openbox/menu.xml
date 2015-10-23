@@ -3,9 +3,15 @@
 <openbox_menu xmlns="http://openbox.org/3.4/menu">
 
 <menu id="root-menu" label="Openbox 3">
-  <item label="PCManFM">
+  <item label="Info">
     <action name="Execute">
-      <command>pcmanfm</command>
+      <command>xterm -e "echo $DISPLAY;bash"</command>
+      <startupnotify><enabled>yes</enabled></startupnotify>
+    </action>
+  </item>
+  <item label="Steam">
+    <action name="Execute">
+      <command>steam</command>
       <startupnotify><enabled>yes</enabled></startupnotify>
     </action>
   </item>

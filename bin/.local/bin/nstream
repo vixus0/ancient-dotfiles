@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 
 host="$1"
+disp="${2:-0}"
 ip=$(ip a | awk '/global/ {print $2}' | cut -d'/' -f1)
 res="1024x768"
 
-ssh -f $host "ffmpeg -f x11grab -video_size $res -framerate 25 -i :0.0 -f avi - | nc $ip 1500" &
+ssh -f $host "ffmpeg -f x11grab -video_size $res -framerate 25 -i :${disp}.0 -f avi - | nc $ip 1500" &
 nc -l 1500 | mpv --cache 3000 -

@@ -22,11 +22,13 @@ end
 function pb
   if test (count $argv) -gt 0
     set data $argv[1]
+    set vanity $argv[2]
   else
     set data -
   end
 
-  curl -sF "c=@$data" -w "%{redirect_url}" https://ptpb.pw 
+  printf "Posting file: %s with vanity: %s\n" $data $vanity
+  curl -sF "c=@$data" -w "%{redirect_url}" "https://ptpb.pw/~$vanity"
 end
 
 # xdg-open

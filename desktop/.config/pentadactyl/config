@@ -9,7 +9,7 @@
 
 "settings
 set runtimepath=~/.config/pentadactyl
-set editor='termite -e "vim +<line> <file>"'
+set editor='gvim +<line> <file>'
 set defsearch=d
 set guioptions=s
 set hlfind

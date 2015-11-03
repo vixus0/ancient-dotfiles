@@ -13,10 +13,6 @@ function mpv(s) {
   return io.system(mpv_args+" "+clean(str));
 }
 
-function mpv_hint(e) {
-  return mpv(e.href);
-}
-
 hints.addMode("m", "Open link in mpv", mpv);
 group.commands.add(["mpv"], "Open current URL in mpv",
     function(args) { mpv(buffer.URL); }

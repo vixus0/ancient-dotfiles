@@ -6,7 +6,6 @@
 "  \|                                                \|     
 "  
 
-
 "settings
 set runtimepath=~/.config/pentadactyl
 set editor='gvim +<line> <file>'
@@ -15,27 +14,21 @@ set guioptions=s
 set hlfind
 set titlestring="Mozilla Firefox"
 
-
 "fx settings
 set! browser.frames.enabled=false
 set! browser.tabs.selectOwnerOnClose=true
 
-
 "plugins
-loadplugins '\.(js|penta)$'
-
+loadplugins
 
 "user
 group user
 
-
 "chrome
 source '~/.config/pentadactyl/chrome.css'
 
-
 "colors
 colorscheme base16
-
 
 "binds
 map -count -modes=n,v J <count>gT
@@ -50,19 +43,16 @@ nmap -b j 5j
 nmap -b k 5k
 nmap -b l 5l
 
-
 "mse for youtube's html5 in HD
 set! media.mediasource.enabled=true
 set! media.mediasource.webm.enabled=true
-
 
 "safe ssl negotiation
 set! security.ssl.require_safe_negotiation=false
 set! security.ssl.treat_unsafe_negotiation_as_broken=false
 set! security.tls.version.min=1
 
+"make wikipedia use mobile view
+autocmd PageLoad (fr|en).wikipedia.org urlrewrite "//([a-z]{2})\.w" "//$1.m.w"
 
-"except for shit websites
-"group badssl -description "Websites using outdated software" -locations akamaihd.net
-"set! security.ssl.require_safe_negotiation=false
-"set! security.ssl.treat_unsafe_negotiation_as_broken=false
+" vim: ft=vim

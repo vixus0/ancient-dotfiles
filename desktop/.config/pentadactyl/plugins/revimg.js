@@ -10,7 +10,7 @@ function clean(str) {
 
 function rev(s) {
   var str = String(s);
-  return dactyl.open(url+clean(str), {where:dactyl.NEW_TAB});
+  return dactyl.open(url+str, {where:dactyl.NEW_TAB});
 }
 
 hints.addMode("r", "Search for image", rev);

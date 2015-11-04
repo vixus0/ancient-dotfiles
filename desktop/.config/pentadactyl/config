@@ -53,6 +53,6 @@ set! security.ssl.treat_unsafe_negotiation_as_broken=false
 set! security.tls.version.min=1
 
 "make wikipedia use mobile view
-autocmd PageLoad (fr|en).wikipedia.org urlrewrite "//([a-z]{2})\.w" "//$1.m.w"
+autocmd PageLoad ([a-z]{2}).wikipedia.org urlrewrite "//([a-z]{2})\.w" "//$1.m.w"
 
 " vim: ft=vim

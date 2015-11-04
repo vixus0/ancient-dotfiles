@@ -45,7 +45,7 @@ set nocompatible
   function! WrapOn()
     setlocal cc=-1
     setlocal textwidth=0
-    setlocal wrap linebreak nolist
+    setlocal wrap linebreak nolist spell
     setlocal display+=lastline
     setlocal whichwrap+=<,>,[,]
     setlocal foldlevel=10

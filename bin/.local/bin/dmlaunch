@@ -1,14 +1,12 @@
 #!/usr/bin/bash
 
-fn="xft:lemon:size=10"
 n_bg="#151515"
 n_fg="#d0d0d0"
-s_bg="#6a9fb5"
-s_fg="#e0e0e0"
+s_bg="#a7d32c"
+s_fg="#000000"
 
 dm() {
   dmenu \
-    -fn $fn \
     -nb $n_bg -nf $n_fg -sb $s_bg -sf $s_fg
 }
 

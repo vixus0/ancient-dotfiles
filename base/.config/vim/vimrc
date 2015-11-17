@@ -174,4 +174,5 @@ set nocompatible
   noremap <leader>T :tabfind 
   noremap <leader>u :GundoToggle<CR>
   noremap <leader>1 :call NumberToggle()<CR>
+  noremap <leader>J :JSHint<CR>
 " -- /bindings

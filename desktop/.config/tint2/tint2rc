@@ -11,19 +11,19 @@ border_width = 0
 background_color = #151515 0
 border_color = #FFFFFF 16
 
-rounded = 3
+rounded = 0
 border_width = 0
-background_color = #e0e0e0 80
+background_color = #e0e0e0 100
 border_color = #FFFFFF 48
 
-rounded = 3
+rounded = 0
 border_width = 0
-background_color = #ac4142 80
+background_color = #ac4142 100
 border_color = #FFFFFF 48
 
-rounded = 3
+rounded = 0
 border_width = 0
-background_color = #080808 80
+background_color = #101010 100
 border_color = #FFFFFF 16
 
 

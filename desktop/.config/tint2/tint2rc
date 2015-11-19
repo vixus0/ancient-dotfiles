@@ -11,12 +11,12 @@ border_width = 0
 background_color = #151515 100
 border_color = #FFFFFF 16
 
-rounded = 0
+rounded = 4
 border_width = 0
 background_color = #e0e0e0 100
 border_color = #FFFFFF 48
 
-rounded = 0
+rounded = 3
 border_width = 0
 background_color = #ac4142 100
 border_color = #FFFFFF 48

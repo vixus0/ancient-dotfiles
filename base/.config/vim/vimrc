@@ -107,7 +107,6 @@ set nocompatible
   set clipboard+=unnamed
   set backspace+=start,eol,indent
   set omnifunc=syntaxcomplete#Complete
-  set cryptmethod=blowfish2
   set wildmode=longest,list,full
   set wildmenu
   set cc=80

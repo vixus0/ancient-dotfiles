@@ -46,6 +46,14 @@ nmap -b l 5l
 "mse for youtube's html5 in HD
 set! media.mediasource.enabled=true
 set! media.mediasource.webm.enabled=true
+set! media.mediasource.ignore_codecs=true
+set! media.mediasource.mp4.enabled=true
+set! media.mediasource.mp4.*=true
+set! media.mediasource.mp4.use-blank-decoder=false
+set! media.fragmented-mp4.exposed=true
+set! media.fragmented-mp4.ffmpeg=true
+set! media.fragmented-mp4.gmp=true
+set! media.fragmented-mp4.use-blank-decoder=false
 
 "safe ssl negotiation
 set! security.ssl.require_safe_negotiation=false

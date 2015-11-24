@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+#                _   
+#               | |  
+#    _ _|_   _  | |  
+#  |/ \_|  |/ \_|/ \_
+#  |__/ |_/|__/  \_/ 
+# /|      /|         
+# \|      \|         
+#
+
+url="https://ptpb.pw"
+input="${1:--}"
+vanity=$2
+
+if test "$input" = "!d"; then
+  vanity=${vanity:-"last"}
+  uuid=$(cat ~/.ptpb/$vanity)
+  echo "Deleting $vanity with UUID $uuid"
+  curl -X "DELETE" "$url/$uuid"
+  exit
+fi
+
+
+echo -n "Posting file: $input" >&2
+test -n "$vanity" && echo -n " with vanity $vanity" >&2
+echo >&2
+
+test -n "$vanity" && url="$url/~$vanity"
+
+ curl \
+   "${url}?r=1" \
+   -sF "c=@$input" \
+   -w "%{redirect_url}" \
+   -o /dev/stderr 2>/tmp/ptpb | xclip -i
+
+# Save last UUID or vanity UUID
+mkdir -p ~/.ptpb
+test -z "$vanity" && vanity="last"
+awk '/^uuid/ {print $2}' /tmp/ptpb > ~/.ptpb/$vanity

@@ -1,10 +1,5 @@
 #!/bin/bash
 
-# Pastebin
-pb() {
-  curl -sF "c=@${1:--}" -w "%{redirect_url}" https://ptpb.pw -o /dev/stderr | xclip -i -selection CLIPBOARD
-}
-
 astart() {
   [[ -z `pidof $1` ]] && $@
 }

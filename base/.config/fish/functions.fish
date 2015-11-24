@@ -18,19 +18,6 @@ function line --on-variable _
   echo
 end
 
-# Pastebin
-function pb
-  if test (count $argv) -gt 0
-    set data $argv[1]
-    set vanity $argv[2]
-  else
-    set data -
-  end
-
-  printf "Posting file: %s with vanity: %s\n" $data $vanity
-  curl -sF "c=@$data" -w "%{redirect_url}" "https://ptpb.pw/~$vanity"
-end
-
 # xdg-open
 function o
   xdg-open $argv &

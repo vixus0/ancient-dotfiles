@@ -9,7 +9,7 @@
 font                = Monospace 11
 allow_bold          = false
 cursor_blink        = system
-cursor_shape        = ibeam
+cursor_shape        = underline
 
 size_hints          = false
 resize_grip         = false

@@ -82,5 +82,5 @@ endif
 syntax on
 set background=dark
 colorscheme gruvbox
-let g:gruvbox_contrast_dark = 'hard'
 let &colorcolumn=join(range(81,999),",")
+let g:gruvbox_contrast_dark = 'hard'

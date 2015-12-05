@@ -8,5 +8,8 @@ hi StatusLineExtended   color: #458588 !important; background-color: #1d2021 !im
 hi StatusLineSecure     color: #689d6a !important; background-color: #1d2021 !important;
 hi StatusLineBroken     color: #fb4934 !important; background-color: #1d2021 !important;
 hi Normal               color: #e0e0e0; background: #32302f; font-weight: normal;
-hi CmdLine              padding: 4px !important;
-hi StatusLine           border-top: 4px solid #282828 !important;
+hi CmdLine              padding: 4px 4px 8px 4px !important;
+hi StatusLine           padding: 4px 0 0 0 !important;
+hi CompTitle            color: #83a598 !important; background-color: #1d2021 !important; font-weight: bold !important;
+hi CompTitleSep         background: #928375 !important; border-bottom: #928375 !important; margin: 4px !important;
+hi CompItem[selected]   color: #1d2021 !important; background-color: #ebdbb2 !important;

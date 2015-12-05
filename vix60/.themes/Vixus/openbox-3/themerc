@@ -29,6 +29,7 @@ menu.separator.padding.height: 2
 
 # Active window
 window.active.border.color: #282828
+window.active.client.color: #282828
 
 window.active.title.bg: flat solid
 window.active.title.bg.color: #1d2021
@@ -54,6 +55,7 @@ window.active.button.disabled.image.color: #32302f
 
 # Inactive window
 window.inactive.border.color: #282828
+window.inactive.client.color: #282828
 
 window.inactive.title.bg: flat solid
 window.inactive.title.bg.color: #282828
@@ -101,10 +103,10 @@ menu.title.text.font:shadow=n
 
 
 # Everything else
-border.width: 4
-padding.width: 4
-padding.height: 4
+border.width: 0
+padding.width: 8
+padding.height: 8
 window.handle.width: 0
-window.client.padding.width: 0
-window.client.padding.height: 0
+window.client.padding.width: 4
+window.client.padding.height: 4
 window.label.text.justify: left

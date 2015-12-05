@@ -24,6 +24,10 @@ stty werase undef
 bind '\C-w:unix-filename-rubout'
 
 
+# source 256 palette
+. $GRUVBOX_COLORS
+
+
 # ls colors
 eval "`TERM=screen-256color dircolors $XDG_CONFIG_HOME/bash/dircolors`"
 

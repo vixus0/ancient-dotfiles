@@ -7,170 +7,80 @@
 
 set nocompatible
 
+set directory=$XDG_CACHE_HOME/vim,~/,/tmp
+set backupdir=$XDG_CACHE_HOME/vim,~/,/tmp
+set viminfo+=n~/.cache/vim/viminfo
+set runtimepath=$XDG_CONFIG_HOME/vim,$VIM,$VIMRUNTIME
+set path=.,,**
+let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc"
 
-" -- env
-  set directory=$XDG_CACHE_HOME/vim,~/,/tmp
-  set backupdir=$XDG_CACHE_HOME/vim,~/,/tmp
-  set viminfo+=n~/.cache/vim/viminfo
-  set runtimepath=$XDG_CONFIG_HOME/vim,$VIM,$VIMRUNTIME
-  set path=.,,**
-  let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc"
-" -- /env
-"
+if empty(glob("$XDG_CONFIG_HOME/vim/autoload/plug.vim"))
+  execute "!curl -fLo $XDG_CONFIG_HOME/vim/autoload/plug.vim --create-dirs https://raw.github.com/junegunn/vim-plug/master/plug.vim"
+endif
 
-" -- vundle
-  filetype off
-  set runtimepath+=$XDG_DATA_HOME/vim/bundle/Vundle.vim
-  call vundle#begin('~/.local/share/vim/bundle')
-  Plugin 'gmarik/Vundle.vim'
-  Plugin 'tpope/vim-surround'
-  Plugin 'Valloric/YouCompleteMe'
-  Plugin 'sjl/gundo.vim'
-  Plugin 'Raimondi/delimitMate'
-  Plugin 'godlygeek/tabular'
-  Plugin 'Shutnik/jshint2.vim'
-  call vundle#end()
-" -- /vundle
+call plug#begin("$XDG_DATA_HOME/vim/plugins")
+Plug 'morhetz/gruvbox'
+Plug 'tpope/vim-surround'
+Plug 'Valloric/YouCompleteMe'
+Plug 'sjl/gundo.vim'
+Plug 'Shutnik/jshint2.vim'
+Plug 'jiangmiao/auto-pairs'
+call plug#end()
 
+let g:tex_flavor='latex'
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_global_ycm_extra_conf = "~/.config/vim/.ycm_extra_conf.py"
 
-" -- colours
-  syntax on
-  set background=dark
-  colorscheme molokai
-" -- /colours
+source $XDG_CONFIG_HOME/vim/functions.vim
+source $XDG_CONFIG_HOME/vim/binds.vim
 
+autocmd InsertEnter * :set norelativenumber | :set number
+autocmd InsertLeave * :set nonumber | :set relativenumber
 
-" -- latex
-  function! WrapOn()
-    setlocal cc=-1
-    setlocal textwidth=0
-    setlocal wrap linebreak nolist spell
-    setlocal display+=lastline
-    setlocal whichwrap+=<,>,[,]
-    setlocal foldlevel=10
-    let &showbreak="| "
-    noremap  <buffer> <silent> <Up>   gk
-    noremap  <buffer> <silent> <Down> gj
-    noremap  <buffer> <silent> k      gk
-    noremap  <buffer> <silent> j      gj
-    noremap  <buffer> <silent> <Home> g<Home>
-    noremap  <buffer> <silent> <End>  g<End>
-    inoremap <buffer> <silent> <Up>   <C-o>gk
-    inoremap <buffer> <silent> <Down> <C-o>gj
-    inoremap <buffer> <silent> <Home> <C-o>g<Home>
-    inoremap <buffer> <silent> <End>  <C-o>g<End>
-  endfunction
-  let g:tex_flavor='latex'
-" -- /latex
+au BufNewFile,BufRead *.tex,*.md call WrapOn()
+au BufNewFile,BufRead *.src set filetype=fortran
+au BufNewFile,BufRead *.fcm set filetype=fortran
+au BufNewFile,BufRead *.frag,*.vert,*.fp,*.vp,*.glsl set filetype=glsl
 
+filetype plugin indent on
+set incsearch
+set hlsearch
+set scrolloff=2
+set ignorecase
+set smartcase
+set expandtab
+set tabstop=2
+set shiftwidth=2
+set laststatus=2
+set nowrap
+set relativenumber
+set modeline
+set cursorline
+set clipboard+=unnamed
+set backspace+=start,eol,indent
+set omnifunc=syntaxcomplete#Complete
+set wildmode=longest,list,full
+set wildmenu
+set showcmd
+set timeoutlen=1000
+set ttimeoutlen=0
 
-" -- line numbers
-  function! NumberToggle()
-    if(&relativenumber == 1)
-      set norelativenumber
-      set number
-    else
-      set nonumber
-      set relativenumber
-    endif
-  endfunction
+set foldmethod=indent   "fold based on indent
+set foldnestmax=10      "deepest fold is 10 levels
+set nofoldenable        "dont fold by default
+set foldlevel=1         "this is just what i use
 
-  autocmd InsertEnter * :set norelativenumber | :set number
-  autocmd InsertLeave * :set nonumber | :set relativenumber
-" -- /line numbers
+if has('gui_running')
+  set guioptions="aegitc"
+  set guifont=M+\ 2m\ medium\ 14
+  :inoremap <M-l> <Esc>l
+  :inoremap <M-j> <Esc>j
+  :inoremap <M-k> <Esc>k
+  :inoremap <M-h> <Esc>h
+endif
 
-
-" -- filetype specific
-  au BufNewFile,BufRead *.tex,*.md call WrapOn()
-  au BufNewFile,BufRead *.src set filetype=fortran
-  au BufNewFile,BufRead *.fcm set filetype=fortran
-  au BufNewFile,BufRead *.frag,*.vert,*.fp,*.vp,*.glsl set filetype=glsl
-" -- /filetype specific
-
-
-" -- general
-  filetype plugin indent on
-  set incsearch
-  set hlsearch
-  set scrolloff=2
-  set ignorecase
-  set smartcase
-  set expandtab
-  set tabstop=2
-  set shiftwidth=2
-  set laststatus=2
-  set nowrap
-  set relativenumber
-  set modeline
-  set cursorline
-  set clipboard+=unnamed
-  set backspace+=start,eol,indent
-  set omnifunc=syntaxcomplete#Complete
-  set wildmode=longest,list,full
-  set wildmenu
-  set cc=80
-  set showcmd
-  set timeoutlen=1000
-  set ttimeoutlen=0
-" -- /general
-
-
-" -- gvim
-  if has('gui_running')
-    set guioptions="aegitc"
-    set guifont=M+\ 2m\ medium\ 14
-    colorscheme monokai
-    :inoremap <M-l> <Esc>l
-    :inoremap <M-j> <Esc>j
-    :inoremap <M-k> <Esc>k
-    :inoremap <M-h> <Esc>h
-  endif
-" -- /gvim
-
-
-" -- folding
-  set foldmethod=indent   "fold based on indent
-  set foldnestmax=10      "deepest fold is 10 levels
-  set nofoldenable        "dont fold by default
-  set foldlevel=1         "this is just what i use
-" -- /folding
-
-
-" -- plugins
-  let g:ycm_autoclose_preview_window_after_completion = 1
-  let g:ycm_global_ycm_extra_conf = "~/.config/vim/.ycm_extra_conf.py"
-" -- /plugins
-
-
-" -- bindings
-  imap <C-c> <CR><Esc>O
-  map <Space> <leader>
-  map <leader><Space> :
-  map <leader>c :w !wc -w <CR>
-  nmap <leader>a= :Tabularize /=<CR>
-  vmap <leader>a= :Tabularize /=<CR>
-  nmap <leader>a: :Tabularize /:\zs<CR>
-  vmap <leader>a: :Tabularize /:\zs<CR>
-  noremap <leader>h :wincmd h<CR>
-  noremap <leader>j :wincmd j<CR>
-  noremap <leader>k :wincmd k<CR>
-  noremap <leader>l :wincmd l<CR>
-  noremap <leader>f $
-  noremap <leader>b ^
-  noremap <leader>n :noh<CR>
-  noremap <leader>w :w<CR>
-  noremap <leader>W :wa<CR>
-  noremap <leader>q :q<CR>
-  noremap <leader>Q :qa<CR>
-  noremap <leader>x :x<CR>
-  noremap <leader>X :xa<CR>
-  noremap <leader>e :new \| r!
-  noremap <leader>s :mks $XDG_CACHE_HOME/vim/lastsession!<CR>
-  noremap <leader>S :source $XDG_CACHE_HOME/vim/lastsession<CR>
-  noremap <leader>R :source $MYVIMRC<CR>
-  noremap <leader>t :tabedit 
-  noremap <leader>T :tabfind 
-  noremap <leader>u :GundoToggle<CR>
-  noremap <leader>1 :call NumberToggle()<CR>
-  noremap <leader>J :JSHint<CR>
-" -- /bindings
+syntax on
+set background=dark
+colorscheme gruvbox
+let g:gruvbox_contrast_dark = 'hard'
+let &colorcolumn=join(range(81,999),",")

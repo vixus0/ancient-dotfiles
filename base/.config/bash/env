@@ -41,7 +41,7 @@ export PATH="$HOME"/.local/bin:"$PATH"
 
 # Tell git and others my favourite editor
 export TERMEMU=termite
-export EDITOR=vim
+export EDITOR=nvim
 export BROWSER=firefox
 
 # GPG Agent

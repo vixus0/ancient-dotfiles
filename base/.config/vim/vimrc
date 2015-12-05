@@ -9,10 +9,15 @@ set nocompatible
 
 set directory=$XDG_CACHE_HOME/vim,~/,/tmp
 set backupdir=$XDG_CACHE_HOME/vim,~/,/tmp
-set viminfo+=n~/.cache/vim/viminfo
 set runtimepath=$XDG_CONFIG_HOME/vim,$VIM,$VIMRUNTIME
 set path=.,,**
 let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc"
+
+if has('nvim')
+  set shada+=n~/.cache/vim/shada
+else
+  set viminfo+=n~/.cache/vim/viminfo
+endif
 
 if empty(glob("$XDG_CONFIG_HOME/vim/autoload/plug.vim"))
   execute "!curl -fLo $XDG_CONFIG_HOME/vim/autoload/plug.vim --create-dirs https://raw.github.com/junegunn/vim-plug/master/plug.vim"
@@ -21,15 +26,16 @@ endif
 call plug#begin("$XDG_DATA_HOME/vim/plugins")
 Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-surround'
-Plug 'Valloric/YouCompleteMe'
-Plug 'sjl/gundo.vim'
-Plug 'Shutnik/jshint2.vim'
 Plug 'jiangmiao/auto-pairs'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+Plug 'sjl/gundo.vim', { 'on': 'GundoToggle' }
+Plug 'Shutnik/jshint2.vim', { 'on': 'JSHint' }
 call plug#end()
 
 let g:tex_flavor='latex'
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_global_ycm_extra_conf = "~/.config/vim/.ycm_extra_conf.py"
+let g:gruvbox_contrast_dark = 'hard'
 
 source $XDG_CONFIG_HOME/vim/functions.vim
 source $XDG_CONFIG_HOME/vim/binds.vim
@@ -80,7 +86,6 @@ if has('gui_running')
 endif
 
 syntax on
+let &colorcolumn=join(range(81,999),",")
 set background=dark
 colorscheme gruvbox
-let &colorcolumn=join(range(81,999),",")
-let g:gruvbox_contrast_dark = 'hard'

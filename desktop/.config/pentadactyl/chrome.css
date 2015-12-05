@@ -11,20 +11,26 @@
 
 /* Font */
 #TabsToolbar * {
-  font-family: "Fantasque Sans Mono" !important;
-  font-size: 9pt !important;
+  font-size: 7pt !important;
 }
 
 /* God damn it */
 #TabsToolbar {
   margin: 0 !important;
   padding: 0 !important;
+  padding-bottom: 4px !important;
 }
 
 .tabbrowser-tabs {
+  margin: 0 !important;
   padding: 0 !important;
-  background-color: #303030 !important;
-  color: #e0e0e0 !important;
+  background-color: #1d2021 !important;
+  color: #928374 !important;
+}
+
+.tabbrowser-tabs:before,
+.tabbrowser-tabs:after {
+  display: none !important;
 }
 
 /* Hide the new curved tab edges */
@@ -63,21 +69,29 @@
   padding: 0 !important;
   margin: 0 !important;
   text-align: center !important;
-  max-width: 10px !important;
+  /* max-width: 10px !important; */
   min-width: 0px !important;
 }
 
 .tabbrowser-tab[selected] {
-  color: #6a9fb5 !important;
-  background-color: #6a9fb5 !important;
+  color: #ebdbb2 !important;
+  background-color: #1d2021 !important;
+  font-weight: bold !important;
   /* min-width: 400px !important; */
 }
 
+.tabbrowser-tab .tab-icon-image {
+  display: none;
+}
+
+/*
 .tabbrowser-tab .tab-text {
   display: none !important;
 }
+*/
 
 /* Restore default tab icon image */
+/*
 .tabbrowser-tab .tab-throbber:not([busy="true"]) + .tab-icon-image:not([src]) {
   display: -moz-box !important;
 }
@@ -88,3 +102,4 @@
   list-style-image: url("chrome://global/skin/icons/folder-item.png") !important;
   -moz-image-region: rect(0px,16px,16px,0px) !important;
 }
+*/

@@ -722,6 +722,6 @@
 
   # end of the example
 -->
-    <application name="termite"><decor>no</decor></application>
+    <application name="termite"><decor>yes</decor></application>
   </applications>
 </openbox_config>

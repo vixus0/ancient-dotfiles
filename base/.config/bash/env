@@ -54,6 +54,5 @@ export LD_RUN_PATH="$LD_LIBRARY_PATH":"$HOME/.local/lib"
 # Node
 export NODE_PATH="$HOME/.local/lib/node_modules:$NODE_PATH"
 
-# Neovim
-export NVIM_TUI_ENABLE_TRUE_COLOR=1
+# Gruvbox
 export GRUVBOX_COLORS="$XDG_DATA_HOME/vim/plugins/gruvbox/gruvbox_256palette.sh"

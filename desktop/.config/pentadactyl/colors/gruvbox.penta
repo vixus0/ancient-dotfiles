@@ -1,0 +1,12 @@
+" Pentadactyl color scheme
+" Name: 	Gruvbox
+" Maintainer:	Vixus
+" Last Change:	$Date: 2015/12/05 $
+
+hi StatusLineNormal     color: #a89984 !important; background-color: #1d2021 !important;
+hi StatusLineExtended   color: #458588 !important; background-color: #1d2021 !important; 
+hi StatusLineSecure     color: #689d6a !important; background-color: #1d2021 !important;
+hi StatusLineBroken     color: #fb4934 !important; background-color: #1d2021 !important;
+hi Normal               color: #e0e0e0; background: #32302f; font-weight: normal;
+hi CmdLine              padding: 4px !important;
+hi StatusLine           border-top: 4px solid #282828 !important;

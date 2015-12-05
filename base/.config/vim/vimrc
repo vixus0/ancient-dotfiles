@@ -15,6 +15,8 @@ let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc"
 
 if has('nvim')
   set shada+=n~/.cache/vim/shada
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 else
   set viminfo+=n~/.cache/vim/viminfo
 endif
@@ -35,7 +37,7 @@ call plug#end()
 let g:tex_flavor='latex'
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_global_ycm_extra_conf = "~/.config/vim/.ycm_extra_conf.py"
-let g:gruvbox_contrast_dark = 'hard'
+let g:gruvbox_contrast_dark = 'medium'
 
 source $XDG_CONFIG_HOME/vim/functions.vim
 source $XDG_CONFIG_HOME/vim/binds.vim
@@ -87,5 +89,5 @@ endif
 
 syntax on
 let &colorcolumn=join(range(81,999),",")
-set background=dark
 colorscheme gruvbox
+set background=dark

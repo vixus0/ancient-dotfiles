@@ -52,3 +52,6 @@ alias Cc="xclip -i -selection PRIMARY"
 alias ve="virtualenv virt"
 alias va="source virt/bin/activate"
 alias vd="deactivate"
+
+# Neovim
+alias vim="nvim"

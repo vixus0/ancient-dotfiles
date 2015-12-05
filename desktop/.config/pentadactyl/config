@@ -24,12 +24,6 @@ loadplugins
 "user
 group user
 
-"chrome
-source '~/.config/pentadactyl/chrome.css'
-
-"colors
-colorscheme base16
-
 "binds
 map -count -modes=n,v J <count>gT
 map -count -modes=n,v K <count>gt
@@ -62,5 +56,11 @@ set! security.tls.version.min=1
 
 "make wikipedia use mobile view
 autocmd PageLoadPre ([a-z]{2}).wikipedia.org urlrewrite "//([a-z]{2})\.w" "//$1.m.w"
+
+"chrome
+source '~/.config/pentadactyl/chrome.css'
+
+"colors
+colorscheme gruvbox
 
 " vim: ft=vim

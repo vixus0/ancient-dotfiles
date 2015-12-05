@@ -8,32 +8,32 @@
 # Background definitions
 rounded = 0
 border_width = 0
-background_color = #151515 100
+background_color = #282828 100
 border_color = #FFFFFF 16
 
-rounded = 4
+rounded = 0
 border_width = 0
-background_color = #e0e0e0 100
-border_color = #FFFFFF 48
-
-rounded = 3
-border_width = 0
-background_color = #ac4142 100
+background_color = #32302f 100
 border_color = #FFFFFF 48
 
 rounded = 0
 border_width = 0
-background_color = #151515 100
+background_color = #cc241d 100
+border_color = #FFFFFF 48
+
+rounded = 0
+border_width = 0
+background_color = #1d2021 100
 border_color = #FFFFFF 16
 
 
 # Panel
-panel_items = LTSC
+panel_items = STBC
 panel_monitor = all
 panel_position = top center horizontal
 panel_size = 0 24
 panel_margin = 0 0 
-panel_padding = 4 4 4
+panel_padding = 8 0 8
 panel_dock = 0
 wm_menu = 1
 panel_layer = top
@@ -60,8 +60,8 @@ task_text = 1
 task_centered = 1
 task_maximum_size = 140 24
 task_padding = 4 4
-task_background_id = 4
-task_active_background_id = 2
+task_background_id = 0
+task_active_background_id = 4
 task_urgent_background_id = 3
 task_iconified_background_id = 0
 
@@ -72,30 +72,30 @@ task_urgent_icon_asb = 100 0 0
 task_iconified_icon_asb = 70 0 0
 
 # Fonts
-task_font = dejavu sans 7
-task_font_color = #e0e0e0 100
-task_active_font_color = #101010 100
-task_urgent_font_color = #f0f0f0 100
-task_iconified_font_color = #cccccc 100
+task_font = sans 7
+task_font_color = #a89984 100
+task_active_font_color = #ebdbb2 100
+task_urgent_font_color = #fe8019 100
+task_iconified_font_color = #928374 100
 font_shadow = 0
 
 
 # System Tray
 systray = 1
-systray_padding = 2 2 4
+systray_padding = 0 4 8
 systray_sort = ascending
-systray_background_id = 4
+systray_background_id = 0
 systray_icon_size = 22
-systray_icon_asb = 100 0 0
+systray_icon_asb = 40 -100 20
 
 # Clock
 time1_format = %A %d %b %H:%M
-time1_font = dejavu sans 7
+time1_font = sans 7
 time2_format =
 time2_font = sans 6
-clock_font_color = #e0e0e0 100
+clock_font_color = #a89984 100
 clock_padding = 4 4
-clock_background_id = 4
+clock_background_id = 0
 clock_rclick_command = orage
 
 # Tooltips
@@ -103,7 +103,7 @@ tooltip = 0
 tooltip_padding = 2 2
 tooltip_show_timeout = 0.7
 tooltip_hide_timeout = 0.3
-tooltip_background_id = 1
+tooltip_background_id = 4
 tooltip_font = sans 10
 tooltip_font_color = #000000 80
 
@@ -118,10 +118,10 @@ battery = 1
 battery_low_status = 15
 battery_low_cmd = notify-send "battery low"
 battery_hide = 20
-bat1_font = dejavu sans 5
-bat2_font = dejavu sans 5
-battery_font_color = #FFFFFF 74
-battery_padding = 4 4
-battery_background_id = 4
+bat1_font = sans 7
+bat2_font = sans 0
+battery_font_color = #fbf1c7 100
+battery_padding = 8 4
+battery_background_id = 3
 
 # End of config

@@ -29,6 +29,7 @@ call plug#begin("$XDG_DATA_HOME/vim/plugins")
 Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
+Plug 'bling/vim-airline'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 Plug 'sjl/gundo.vim', { 'on': 'GundoToggle' }
 Plug 'Shutnik/jshint2.vim', { 'on': 'JSHint' }

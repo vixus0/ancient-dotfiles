@@ -1,8 +1,9 @@
 tint2 &
+compton -b &
 volumeicon &
 wicd-gtk -t &
 onboard -t DarkRoom &
-nitrogen --restore  &
+recolour switch 0 &
 sxhkd &
 CopyAgent &
 backlight-icon &

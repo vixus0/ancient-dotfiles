@@ -24,7 +24,7 @@ menu.items.active.text.color: #282828
 menu.separator.color: #32302f
 menu.separator.width: 1
 menu.separator.padding.width: 0
-menu.separator.padding.height: 2
+menu.separator.padding.height: 4
 
 
 # Active window

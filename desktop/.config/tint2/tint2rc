@@ -23,7 +23,7 @@ border_color = #FFFFFF 48
 
 rounded = 0
 border_width = 0
-background_color = #1d2021 100
+background_color = #282828 100
 border_color = #FFFFFF 16
 
 
@@ -61,7 +61,7 @@ task_centered = 1
 task_maximum_size = 0 24
 task_padding = 8 4
 task_background_id = 0
-task_active_background_id = 4
+task_active_background_id = 0
 task_urgent_background_id = 3
 task_iconified_background_id = 0
 
@@ -84,7 +84,7 @@ font_shadow = 0
 systray = 1
 systray_padding = 8 4 8
 systray_sort = ascending
-systray_background_id = 0
+systray_background_id = 4
 systray_icon_size = 22
 systray_icon_asb = 40 -100 20
 
@@ -93,7 +93,7 @@ time1_format = %A %d %b %H:%M
 time1_font = sans 7
 time2_format =
 time2_font = sans 6
-clock_font_color = #a89984 100
+clock_font_color = #8ec07c 100
 clock_padding = 8 4
 clock_background_id = 0
 clock_rclick_command = orage
@@ -120,8 +120,8 @@ battery_low_cmd = notify-send "battery low"
 battery_hide = 20
 bat1_font = sans 7
 bat2_font = sans 0
-battery_font_color = #fbf1c7 100
+battery_font_color = #fb4934 100
 battery_padding = 8 4
-battery_background_id = 3
+battery_background_id = 4
 
 # End of config

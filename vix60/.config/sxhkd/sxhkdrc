@@ -5,11 +5,14 @@
 #                             
 
 
-super + shift + p
+super + shift + Escape
   pkill -SIGUSR1 sxhkd
 
 super + {8,9,0}
   chvol {mute,down,up}
+
+super + {shift,_} + {1,2,3,4}
+  recolour {move,switch} {0,1,2,3}
 
 super + Return 
   termite -e fish

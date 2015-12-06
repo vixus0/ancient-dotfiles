@@ -226,6 +226,7 @@
       </action>
     </keybind>
 
+    <!--
     <keybind key="W-1"> <action name="GoToDesktop"> <to>1</to> </action> </keybind>
     <keybind key="W-2"> <action name="GoToDesktop"> <to>2</to> </action> </keybind>
     <keybind key="W-3"> <action name="GoToDesktop"> <to>3</to> </action> </keybind>
@@ -234,6 +235,7 @@
     <keybind key="W-S-2"> <action name="SendToDesktop"> <to>2</to> </action> </keybind>
     <keybind key="W-S-3"> <action name="SendToDesktop"> <to>3</to> </action> </keybind>
     <keybind key="W-S-4"> <action name="SendToDesktop"> <to>4</to> </action> </keybind>
+    -->
 
     <keybind key="C-A-d">
       <action name="ToggleShowDesktop"/>

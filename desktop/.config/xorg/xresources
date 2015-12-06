@@ -8,13 +8,13 @@ Xcursor.theme: Vanilla-DMZ
 
 
 ! Xft - make external (machine specific) and include
-!Xft.autohint: 0
-!Xft.lcdfilter:  lcddefault
-!Xft.hintstyle:  hintslight
-!Xft.hinting: 1
-!Xft.antialias: 1
-!Xft.dpi: 84
-!Xft.rgba: rgb
+Xft.autohint: 0
+Xft.lcdfilter:  lcddefault
+Xft.hintstyle:  hintslight
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.dpi: 84
+Xft.rgba: rgb
 
 
 ! dmenu

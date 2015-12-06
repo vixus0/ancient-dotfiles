@@ -8,7 +8,7 @@
 # Background definitions
 rounded = 0
 border_width = 0
-background_color = #282828 100
+background_color = #1d2021 100
 border_color = #FFFFFF 16
 
 rounded = 0
@@ -33,7 +33,7 @@ panel_monitor = all
 panel_position = top center horizontal
 panel_size = 0 24
 panel_margin = 0 0 
-panel_padding = 8 0 8
+panel_padding = 0 0 0
 panel_dock = 0
 wm_menu = 1
 panel_layer = top
@@ -58,8 +58,8 @@ urgent_nb_of_blink = 8
 task_icon = 0
 task_text = 1
 task_centered = 1
-task_maximum_size = 140 24
-task_padding = 4 4
+task_maximum_size = 0 24
+task_padding = 8 4
 task_background_id = 0
 task_active_background_id = 4
 task_urgent_background_id = 3
@@ -82,7 +82,7 @@ font_shadow = 0
 
 # System Tray
 systray = 1
-systray_padding = 0 4 8
+systray_padding = 8 4 8
 systray_sort = ascending
 systray_background_id = 0
 systray_icon_size = 22
@@ -94,7 +94,7 @@ time1_font = sans 7
 time2_format =
 time2_font = sans 6
 clock_font_color = #a89984 100
-clock_padding = 4 4
+clock_padding = 8 4
 clock_background_id = 0
 clock_rclick_command = orage
 

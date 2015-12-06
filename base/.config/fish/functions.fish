@@ -13,8 +13,12 @@ function fish_right_prompt
   printf '%s%s %s%s' (set_color yellow) (gbranch) (set_color blue) (date "+%H:%M")
 end
 
-# After every command
-function line --on-variable _
+# Pad out command output
+function pre_cmd --on-event fish_preexec
+  echo
+end
+
+function post_cmd --on-event fish_postexec
   echo
 end
 

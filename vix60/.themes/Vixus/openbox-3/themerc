@@ -5,7 +5,7 @@
 
 # Menu
 menu.border.color: #282828
-menu.border.width: 4
+menu.border.width: 8
 
 menu.title.bg: flat solid
 menu.title.bg.color: #282828
@@ -36,7 +36,7 @@ window.active.title.bg.color: #1d2021
 window.active.title.separator.color: #282828
 
 window.active.label.bg: parentrelative
-window.active.label.text.color: #8ec07c
+window.active.label.text.color: #1d2021
 
 window.active.handle.bg: flat solid
 window.active.handle.bg.color: #1d2021
@@ -62,7 +62,7 @@ window.inactive.title.bg.color: #282828
 window.inactive.title.separator.color: #282828
 
 window.inactive.label.bg: parentrelative
-window.inactive.label.text.color: #928374
+window.inactive.label.text.color: #282828
 
 window.inactive.handle.bg: flat solid
 window.inactive.handle.bg.color: #1d2021
@@ -107,6 +107,6 @@ border.width: 0
 padding.width: 8
 padding.height: 8
 window.handle.width: 0
-window.client.padding.width: 4
-window.client.padding.height: 4
+window.client.padding.width: 0
+window.client.padding.height: 0
 window.label.text.justify: left

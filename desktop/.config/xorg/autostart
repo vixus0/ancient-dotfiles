@@ -23,3 +23,7 @@ xmodmap $XORG_DIR/xmodmap
 
 # -- special input
 uim-xim &
+
+
+# -- lock on suspend
+light-locker --lock-on-suspend &

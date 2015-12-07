@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+exp="$@"
+python -c "from math import *; print( $exp )"

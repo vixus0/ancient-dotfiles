@@ -28,6 +28,7 @@ group user
 map -count -modes=n,v J <count>gT
 map -count -modes=n,v K <count>gt
 nmap gr :set usermode!<CR>
+nmap gj :set showtabline!=always,never<CR>
 nmap gk :extdisable Pentadactyl<CR>
 nmap gs :set guioptions!=Tr | reload<CR>
 nmap U :tabmove -1<CR>

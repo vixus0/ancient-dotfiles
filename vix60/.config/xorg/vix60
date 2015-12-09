@@ -19,4 +19,4 @@ xrandr \
   --output VIRTUAL1 --off 
 
 # DPI
-echo "Xft.dpi: 84" | xrdb -merge
+echo "Xft.dpi: 105.8" | xrdb -merge

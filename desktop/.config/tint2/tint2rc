@@ -13,7 +13,7 @@ border_color = #FFFFFF 16
 
 rounded = 0
 border_width = 0
-background_color = #32302f 100
+background_color = #8ec07c 100
 border_color = #FFFFFF 48
 
 rounded = 0
@@ -95,7 +95,7 @@ time2_format =
 time2_font = sans 6
 clock_font_color = #8ec07c 100
 clock_padding = 8 4
-clock_background_id = 0
+clock_background_id = 4
 clock_rclick_command = orage
 
 # Tooltips
@@ -120,8 +120,8 @@ battery_low_cmd = notify-send "battery low"
 battery_hide = 20
 bat1_font = sans 7
 bat2_font = sans 0
-battery_font_color = #fb4934 100
+battery_font_color = #1d2021 100
 battery_padding = 8 4
-battery_background_id = 4
+battery_background_id = 2
 
 # End of config

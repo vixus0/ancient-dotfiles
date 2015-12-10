@@ -8,10 +8,11 @@ hi StatusLineExtended   color: #458588 !important; background-color: #282828 !im
 hi StatusLineSecure     color: #689d6a !important; background-color: #282828 !important;
 hi StatusLineBroken     color: #fb4934 !important; background-color: #282828 !important;
 hi Normal               color: #e0e0e0; background: #32302f; font-weight: normal;
-hi StatusLine           padding: 8px !important;
+hi StatusLine           padding: 8px !important; font-family: 'Fira Mono', monospace !important; font-size: 10pt !important;
 hi CompTitle            color: #83a598 !important; background-color: #1d2021 !important; font-weight: bold !important;
 hi CompTitleSep         background: #928375 !important; border-bottom: #928375 !important; margin: 4px !important;
 hi CompItem[selected]   color: #1d2021 !important; background-color: #ebdbb2 !important;
 hi InlineHelpLink       color: #fe8019 !important;
 hi Link                 color: #fe8019 !important;
 hi Indicator            color: #928374 !important;
+hi CmdLine              font-family: 'Fira Mono', monospace !important; font-size: 10pt !important;

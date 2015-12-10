@@ -17,6 +17,10 @@ source $XDG_CONFIG_HOME/bash/alias
 # Functions
 source $XDG_CONFIG_HOME/fish/functions.fish
 
+# Keybinds
+bind \e# comment_cmdline
+bind \e] edit_cmdline
+
 # Misc
 eval (dircolors -c)
 eval (python -m virtualfish)

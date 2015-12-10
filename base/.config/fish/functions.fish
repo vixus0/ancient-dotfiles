@@ -26,3 +26,20 @@ end
 function o
   xdg-open $argv &
 end
+
+# edit commandline in editor
+function edit_cmdline
+  set -q EDITOR; or return 1
+  set -l tmpfile (mktemp); or return 1
+  commandline > $tmpfile
+  eval $EDITOR $tmpfile
+  commandline -r -- (cat $tmpfile)
+  rm $tmpfile
+end
+
+# comment commandline
+function comment_cmdline
+  set -l cmd (commandline)
+  commandline \#$cmd
+  commandline -f repaint
+end

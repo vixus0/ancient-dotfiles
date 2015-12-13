@@ -16,14 +16,13 @@ alias ocd='cd -'
 
 # Shorten stuff
 alias s='ssh'
-alias v='vim'
-alias gv='gvim'
 alias l='ls'
 alias t="tmux -f $XDG_CONFIG_HOME/tmux/local.conf"
 alias g='grep --color=always -Rni'
 alias e="$EDITOR"
 alias q='exit'
 alias ry='rsync -ahv --progress --stats'
+alias za='zathura --fork'
 
 # Actions
 alias po="sudo poweroff"

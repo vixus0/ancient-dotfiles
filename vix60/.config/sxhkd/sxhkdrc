@@ -34,3 +34,6 @@ super + {_,shift} + {a,s,d,f}
 
 super + {_,shift} + {z,x,c,v}
   wgrid -f $XDG_CONFIG_HOME/wgrid {move,size} {1,2,3,4} 3
+
+XF86MonBrightness{Up,Down}
+  xbacklight -{inc,dec} 10

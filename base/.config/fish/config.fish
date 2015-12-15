@@ -6,7 +6,6 @@
 #  |/                
 
 # Settings
-set TERM screen-256color
 set SHELL_CONFIG "$XDG_CONFIG_HOME/fish/config.fish"
 set fish_greeting
 set -g fish_color_cwd blue
@@ -22,5 +21,5 @@ bind \e# comment_cmdline
 bind \e] edit_cmdline
 
 # Misc
-eval (dircolors -c)
+eval (env TERM=screen-256color dircolors -c)
 eval (python -m virtualfish)

@@ -92,3 +92,4 @@ syntax on
 let &colorcolumn=join(range(81,999),",")
 colorscheme gruvbox
 set background=dark
+set t_ut=

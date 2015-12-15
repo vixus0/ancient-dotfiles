@@ -25,7 +25,7 @@ bind '\C-w:unix-filename-rubout'
 
 
 # ls colors
-eval "`TERM=screen-256color dircolors $XDG_CONFIG_HOME/bash/dircolors`"
+eval "$(env TERM=screen-256color dircolors -b)"
 
 
 # Source VTE functions 

@@ -44,23 +44,13 @@ cellh=$(( ( (scrh - top - gap) / rows ) - gap ))
 
 echo "a:$active sw:$scrw sh:$scrh cw:$cellw ch:$cellh t:$top g:$gap"
 
-getparent() {
-  local win=$1
-  local parent=$(xwininfo -id $win -children | awk '/Parent window id:/ {print $4}')
-  test -n $parent && echo $parent || echo $win
-}
-
 getgeom() {
   xdotool getwindowgeometry $1 | awk '/Position/ {split($2, p, ",")} /Geometry/ {split($2, g, "x")} END {print p[1], p[2], g[1], g[2]}'
 }
 
 getgdiff() {
-  # Get window decoration difference
-  local win=$active
-  local par=$(getparent $win)
-  geomc=($(getgeom $win))
-  geomp=($(getgeom $par))
-  echo $(( ${geomp[2]} - ${geomc[2]} )) $(( ${geomp[3]} - ${geomc[3]} ))
+  xprop -id $active | grep _NET_FRAME_EXTENTS | cut -d= -f2 |\
+    awk '{print $1+$2, $3+$4}' FS=','
 }
 
 calc() {
@@ -89,10 +79,11 @@ size() {
 gridsize() {
   # Constrain window size to grid
   local geom=($(getgeom $active))
-  local w=${geom[2]}
-  local h=${geom[3]}
-  local nw=$(calc $w / $cellw)
-  local nh=$(calc $h / $cellh)
+  local dg=($(getgdiff))
+  local w=$(( geom[2] + dg[0] ))
+  local h=$(( geom[3] + dg[1] ))
+  local nw=$(calc "$w / $cellw")
+  local nh=$(calc "$h / $cellh")
   size $nw $nh
 }
 

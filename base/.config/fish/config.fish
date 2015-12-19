@@ -17,8 +17,12 @@ source $XDG_CONFIG_HOME/bash/alias
 source $XDG_CONFIG_HOME/fish/functions.fish
 
 # Keybinds
-bind \e# comment_cmdline
-bind \e] edit_cmdline
+function fish_user_key_bindings
+  bind \e\' quote_cmdline
+  bind \e# comment_cmdline
+  bind \e] edit_cmdline
+end
+funcsave fish_user_key_bindings
 
 # Misc
 eval (env TERM=screen-256color dircolors -c)

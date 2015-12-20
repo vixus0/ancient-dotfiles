@@ -37,9 +37,20 @@ function edit_cmdline
   rm $tmpfile
 end
 
-# comment commandline
+# (un)comment commandline
 function comment_cmdline
   set -l cmd (commandline)
-  commandline \#$cmd
+  if test (echo $cmd | cut -c1) = "#"
+    commandline (echo $cmd | cut -c2-)
+  else
+    commandline \#$cmd
+  end
+  commandline -f repaint
+end
+
+# quote commandline
+function quote_cmdline
+  set -l cmd (commandline)
+  commandline \'$cmd\'
   commandline -f repaint
 end

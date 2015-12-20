@@ -35,5 +35,11 @@ super + {_,shift} + {a,s,d,f}
 super + {_,shift} + {z,x,c,v}
   wgrid -f $XDG_CONFIG_HOME/wgrid {move,size} {1,2,3,4} 3
 
+super + g
+  wgrid -f $XDG_CONFIG_HOME/wgrid grid
+
 XF86MonBrightness{Up,Down}
   xbacklight -{inc,dec} 10
+
+super + !button1
+  xdotool getactivewindow windowmove %i %i

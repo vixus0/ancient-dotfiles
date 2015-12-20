@@ -89,13 +89,19 @@ gridsize() {
 
 gridpos() {
   # Constrain window position to grid
-  local geom=($(getgeom))
-  local x=${geom[0]}
-  local y=${geom[1]}
-  local nx=$(calc $x / $cellw + 1)
-  local ny=$(calc $y / $cellh + 1)
+  local geom=($(getgeom $active))
+  local dg=($(getgdiff))
+  local x=${1:-$(( geom[0] - 2*dg[0] ))}
+  local y=${2:-$(( geom[1] - 2*dg[1] ))}
+  local nx=$(calc "$x / $cellw + 1")
+  local ny=$(calc "$y / $cellh + 1")
   move $nx $ny
-}  
+}
+
+gridify() {
+  $movecmd $active $(gridpos)
+  $sizecmd $active $(gridsize)
+}
 
 # Do stuff
 case $1 in
@@ -110,8 +116,11 @@ case $1 in
     getgeom
     ;;
   grid)
-    $movecmd $active $(gridpos)
-    $sizecmd $active $(gridsize)
+    gridify
+    ;;
+  mousemove)
+    pos=$(gridpos $2 $3)
+    $movecmd $active $pos
     ;;
   *)
     echo "Unknown command: $1" >&2

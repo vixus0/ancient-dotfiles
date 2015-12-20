@@ -1,0 +1,24 @@
+#        __   ,_    __, 
+#  /\/  /  \_/  |  /  | 
+#   /\_/\__/    |_/\_/|/
+#                    /| 
+#                    \| 
+#  
+
+cfgd="$XDG_CONFIG_HOME/xorg"
+xres="$cfgd/xresources"
+xmod="$cfgd/xmodmap"
+host="$cfgd/$(hostname)"
+pcf="$HOME/.fonts/PCF"
+
+# -- include machine
+test -f "$host" && . "$my_xinit"
+
+# -- setup
+setxkbmap gb -option compose:ralt &
+xset +fp $pcf && xset fp rehash &
+xrdb -merge $xres &
+xmodmap $XORG_DIR/xmodmap &
+
+# -- special input
+uim-xim &

@@ -2,13 +2,12 @@ dmenu
 firefox
 flashplugin
 gimp
-gksu
 inkscape
-light-locker
 lxappearance
 mpv
 nitrogen
 scrot
+slock
 sxhkd
 sxiv
 termite
@@ -16,6 +15,7 @@ tint2
 uim
 volumeicon
 wicd-gtk
+xautolock
 xclip
 xdotool
 xorg-server

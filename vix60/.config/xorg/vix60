@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 # Window manager
-export WM=openbox-session
+export wm=openbox-session
 
 # Mouse acceleration
 xset m 4 0 &

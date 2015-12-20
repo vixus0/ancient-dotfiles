@@ -10,15 +10,23 @@ xres="$cfgd/xresources"
 xmod="$cfgd/xmodmap"
 host="$cfgd/$(hostname)"
 pcf="$HOME/.fonts/PCF"
+wm="openbox-session"
 
-# -- include machine
-test -f "$host" && . "$my_xinit"
+if test -d /etc/X11/xinit/xinitrc.d; then
+ for f in /etc/X11/xinit/xinitrc.d/?* ; do
+  test -x "$f" && . "$f"
+ done
+ unset f
+fi
 
-# -- setup
-setxkbmap gb -option compose:ralt &
+test -f "$host" && . "$host"
+
+setxkbmap gb -option compose:ralt
+xmodmap $xmod
+
 xset +fp $pcf && xset fp rehash &
 xrdb -merge $xres &
-xmodmap $XORG_DIR/xmodmap &
-
-# -- special input
 uim-xim &
+xautolock -secure -locker slock -corners +-00 -cornerdelay 2 -cornerredelay 5 -time 12 &
+
+exec $wm

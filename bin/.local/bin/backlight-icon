@@ -2,47 +2,64 @@
 
 from __future__ import print_function
 from math import floor
+from argparse import ArgumentParser
 import gtk, os
 
 backlight = '/sys/class/backlight/intel_backlight'
 max_bright = int( open(os.path.join(backlight, 'max_brightness')).readline() )
-icon = gtk.status_icon_new_from_icon_name('video-display')
-menu = gtk.Menu()
 
-def set_tooltip(b=None):
-    if b is None:
-        b = open(os.path.join(backlight, 'brightness')).readline().strip()
-    value = '{:.1f}'.format(float(b) / max_bright)
-    print(b, max_bright, value)
-    icon.set_tooltip_text("Brightness: "+value)
+ap = ArgumentParser()
+ap.add_argument('--set', help='Set brightness. [+-]0.0-1.0')
 
-def set_bright(b):
-    print('Setting brightness: ', b)
+def get_bright():
+    b = open(os.path.join(backlight, 'brightness')).readline().strip()
+    return float(b) / max_bright
 
+def set_bright(b, steps=10, delay=0.1):
     value = int(floor(b * max_bright))
-
-    print('Actual: ', value)
-
     try:
         open(os.path.join(backlight, 'brightness'), 'w').write(str(value))
     except IOError:
         print('Could not set brightness.')
 
-    set_tooltip(value)
+def set_tooltip(icon):
+    icon.set_tooltip_text("Brightness: {:.1f}".format(get_bright()))
 
-def popup(data, btn, time):
+def popup(menu, btn, time):
     menu.popup(None, None, None, btn, time)
 
-def make_menu():
+def make_menu(menu, icon):
     for i in range(1, 11):
         step = 0.1 * i
         item = gtk.MenuItem('{:.1f}'.format(step))
         menu.append(item)
         item.connect_object('activate', set_bright, step)
+        item.connect_object('activate', set_tooltip, icon)
         item.show()
 
+def clamp(x, l, h):
+    return max(min(x,h),l)
+
 if __name__ == '__main__':
-    make_menu()
-    icon.connect('popup-menu', popup)
-    set_tooltip()
-    gtk.main()
+    args = ap.parse_args()
+
+    if args.set:
+        if args.set[0] == '+':
+            v = float(args.set[1:])
+            v = get_bright() + v
+        elif args.set[0] == '-':
+            v = float(args.set[1:])
+            v = get_bright() - v
+        else:
+            v = float(args.set)
+
+        v = clamp(v, 0.1, 1.0)
+        set_bright(v)
+
+    else:
+        icon = gtk.status_icon_new_from_icon_name('video-display')
+        menu = gtk.Menu()
+        make_menu(menu, icon)
+        icon.connect_object('popup-menu', popup, menu)
+        set_tooltip(icon)
+        gtk.main()

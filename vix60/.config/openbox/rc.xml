@@ -40,7 +40,7 @@
   </placement>
   <theme>
     <name>Vixus</name>
-    <titleLayout>NLIC</titleLayout>
+    <titleLayout>LIC</titleLayout>
     <!--
       available characters are NDSLIMC, each can occur at most once.
       N: window icon
@@ -724,6 +724,5 @@
 
   # end of the example
 -->
-    <application name="termite"><decor>yes</decor></application>
   </applications>
 </openbox_config>

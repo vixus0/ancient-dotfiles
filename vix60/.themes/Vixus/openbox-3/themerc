@@ -104,8 +104,8 @@ menu.title.text.font:shadow=n
 
 # Everything else
 border.width: 0
-padding.width: 8
-padding.height: 8
+padding.width: 2
+padding.height: 2
 window.handle.width: 0
 window.client.padding.width: 0
 window.client.padding.height: 0

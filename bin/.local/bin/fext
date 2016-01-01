@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+cmd="find $1 -name \"*.$2\""
+shift 2
+
+for i in $@; do
+  cmd="$cmd -o -name \"*.$i\""
+done
+
+eval $cmd

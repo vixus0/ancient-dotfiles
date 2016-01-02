@@ -6,52 +6,58 @@
                       
 
 # Background definitions
-# Dark gray
+# 1 Dark gray
 rounded = 0
 border_width = 0
 background_color = #1d2021 100
 border_color = #FFFFFF 16
 
-# Gray
+# 2 Gray
 rounded = 0
 border_width = 0
 background_color = #282828 100
 border_color = #FFFFFF 16
 
-# Red
+# 3 Red
 rounded = 0
 border_width = 0
 background_color = #fb4934 100
 border_color = #FFFFFF 48
 
-# Green
+# 4 Green
 rounded = 0
 border_width = 0
 background_color = #b8bb26 100
 border_color = #FFFFFF 48
 
-# Yellow
+# 5 Yellow
 rounded = 0
 border_width = 0
 background_color = #fabd2f 100
 border_color = #FFFFFF 48
 
-# Blue
+# 6 Blue
 rounded = 0
 border_width = 0
 background_color = #83a598 100
 border_color = #FFFFFF 48
 
-# Purple
+# 7 Purple
 rounded = 0
 border_width = 0
 background_color = #b16286 100
 border_color = #FFFFFF 48
 
-# Aqua
+# 8 Aqua
 rounded = 0
 border_width = 0
 background_color = #8ec07c 100
+border_color = #FFFFFF 48
+
+# 9 White
+rounded = 0
+border_width = 0
+background_color = #ebdbb2 100
 border_color = #FFFFFF 48
 
 
@@ -61,7 +67,7 @@ panel_monitor = all
 panel_position = top center horizontal
 panel_size = 0 24
 panel_margin = 0 0 
-panel_padding = 4 4 4
+panel_padding = 0 4 4
 panel_dock = 0
 wm_menu = 1
 panel_layer = top
@@ -77,9 +83,9 @@ strut_policy = follow_size
 
 # Taskbar
 taskbar_mode = single_desktop
-taskbar_padding = 0 0 0
-taskbar_background_id = 2
-taskbar_active_background_id = 2
+taskbar_padding = 0 0 4
+taskbar_background_id = 0
+taskbar_active_background_id = 0
 
 # Tasks
 urgent_nb_of_blink = 8

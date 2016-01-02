@@ -110,9 +110,9 @@ font_shadow = 0
 
 # System Tray
 systray = 1
-systray_padding = 4 2 4
+systray_padding = 4 2 8
 systray_sort = ascending
-systray_background_id = 8
+systray_background_id = 1
 systray_icon_size = 22
 systray_icon_asb = 80 -100 40
 
@@ -123,7 +123,7 @@ time2_format =
 time2_font = sans 6
 clock_font_color = #ebdbb2 100
 clock_padding = 4 2
-clock_background_id = 7
+clock_background_id = 1
 clock_rclick_command = orage
 
 # Tooltips

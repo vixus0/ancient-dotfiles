@@ -1,0 +1,91 @@
+#!/usr/bin/env python
+
+'''
+Convert colours from RGB <-> Hex
+'''
+
+import sys, re
+from argparse import ArgumentParser
+from colorsys import hsv_to_rgb, rgb_to_hsv
+
+def hex2rgb(s):
+    if len(s) % 2 != 0:
+        sys.stderr.write('Invalid hex value: '+s+'\n')
+        sys.exit(1)
+    return tuple([int(s[i:i+2], 16) for i in range(0, len(s), 2)])
+
+def rgb2hex(c):
+    return '#' + ''.join([hex(i)[2:] for i in c])
+
+def normalise(ls):
+    '''Given a list of values, convert everything to float.'''
+    def f(x):
+        try:
+            a = int(x)
+        except ValueError:
+            try:
+                a = int(float(x)*255)
+            except ValueError:
+                sys.stderr.print('Invalid number: '+x+'\n')
+                sys.exit(1)
+        return a
+    return tuple([f(i) for i in ls])
+
+if __name__ == "__main__":
+    ap = ArgumentParser()
+    ap.add_argument('colour', nargs='+', type=str)
+    ap.add_argument('--output', '-o', help='Output format', choices=['rgb', 'hsv', 'hex'])
+
+    args = ap.parse_args()
+
+    if len(args.colour) >= 3:
+        # Raw RGBA
+        rgb = normalise(args.colour[:4])
+    elif len(args.colour) == 1:
+        args.colour = args.colour[0]
+        # Hex or a function
+        if args.colour.startswith('#'):
+            rgb = hex2rgb(args.colour[1:])
+        else:
+            rexps = {
+                    'rgb' : re.compile('rgba?\(([0-9., ]+)\)'),
+                    'hsv' : re.compile('hsva?\(([0-9., ]+)\)')
+                    }
+            match = None
+
+            for k,v in rexps.items():
+                match = v.match(args.colour)
+
+                if match:
+                    inside = match.group(1)
+                    rgb = normalise(inside.split(','))
+                    if k == 'hsv':
+                        rgb = hsv_to_rgb(*clrs)
+                    break
+
+            if match is None:
+                sys.stderr.write('Invalid argument '+args.colour+'\n')
+                sys.exit(1)
+
+    alpha = 1.0
+    fn = args.output
+
+    if len(rgb) == 4:
+        fn += 'a'
+        alpha = rgb[3]/255.0
+
+    if args.output == 'hex':
+        ret = rgb2hex(rgb)
+    elif args.output == 'rgb':
+        if len(rgb) == 4:
+            rgb = rgb[:3] + (alpha,)
+        ret = '{}{}'.format(fn, rgb)
+    elif args.output == 'hsv':
+        hsv = rgb_to_hsv(*rgb[:3])
+        if len(rgb) == 4:
+            hsv += (alpha,)
+        ret = '{}{}'.format(fn, hsv)
+    else:
+        ret = rgb
+
+    print(ret)

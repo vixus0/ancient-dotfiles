@@ -20,3 +20,6 @@ xrandr \
 
 # DPI
 echo "Xft.dpi: 105.8" | xrdb -merge
+
+# Compton
+compton -b &

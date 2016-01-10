@@ -1,5 +1,4 @@
 tint2 &
-compton -b &
 volumeicon &
 wicd-gtk -t &
 onboard -t DarkRoom &

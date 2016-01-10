@@ -1,5 +1,16 @@
+#!/usr/bin/env bash
+
+# WM
 export wm=openbox-session
 
+# DPI
 echo "Xft.dpi: 108.8" | xrdb -merge
+
+# Redshift
 redshift -l 56.1107:3.1674 -t 6500:4800 -g 1.6:1.6:1.6 &
+
+# Reload nvidia settings
 nvidia-settings -l ~/.nvidia-settings-rc &
+
+# Run compton with mumble overlay
+LD_PRELOAD=/usr/lib/mumble/libmumble.so compton -b --backend glx --paint-on-overlay &

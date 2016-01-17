@@ -13,30 +13,47 @@ dm() {
 penta() {
   xdotool search --name mozilla \
     windowactivate --sync \
-    type "$@"
+    type "$@" >/dev/null 2>&1
 }
 
 focus() {
-  xdotool search --name "$@" windowactivate
+  xdotool search --name "$@" windowactivate >/dev/null 2>&1
+}
+
+process() {
+  local arg="$@"
+  local pre="${arg:0:1}"
+  local cmd="${arg:1}"
+
+  case $pre in
+    "#")
+      ${TERMEMU:-termite} -e "$cmd" &
+      ;;
+    "'")
+      penta "$cmd" &
+      ;;
+    ",")
+      focus "$cmd" &
+      ;;
+    *)
+      $arg >/dev/null 2>&1 &
+      ;;
+  esac
+}
+
+clearline() {
+  clear
+  echo -n "> "
 }
 
 # dmenu fav prog launcher
-outp="$(dmenu_path | dm)"
-pre="${outp:0:1}"
-cmd="${outp:1}"
-
-
-case $pre in
-  "#")
-    ${TERMEMU:-termite} -e "$cmd" &
-    ;;
-  "'")
-    penta "$cmd" &
-    ;;
-  ",")
-    focus "$cmd" &
-    ;;
-  *)
-    $outp
-    ;;
-esac
+if test "--interactive" = "$1"; then
+  clearline
+  while read line; do
+    process $line
+    clearline
+  done
+else
+  outp="$(dmenu_path | dm)"
+  process $outp
+fi

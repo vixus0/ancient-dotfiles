@@ -26,4 +26,3 @@ funcsave fish_user_key_bindings
 
 # Misc
 eval (env TERM=screen-256color dircolors -c)
-eval (python -m virtualfish)

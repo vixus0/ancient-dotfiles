@@ -6,7 +6,7 @@
 
 
 [options]
-font                = Fira Mono 8
+font                = Fira Mono 11
 allow_bold          = true
 cursor_blink        = system
 cursor_shape        = underline
@@ -30,8 +30,7 @@ browser = firefox
 # gruvbox dark
 [colors]
 # hard contrast: background = #1d2021
-# normal contrast: background = #282828
-background = rgba(40, 40, 40, 0.93)
+normal contrast: background = #282828
 # soft contrast: background = #32302f
 foreground = #ebdbb2
 foreground_bold = #ebdbb2

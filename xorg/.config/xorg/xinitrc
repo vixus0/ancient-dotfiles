@@ -19,14 +19,10 @@ if test -d /etc/X11/xinit/xinitrc.d; then
  unset f
 fi
 
-test -f "$host" && . "$host"
-
 setxkbmap gb -option compose:ralt
 xmodmap $xmod
-
 xset +fp $pcf && xset fp rehash &
 xrdb -merge $xres &
 uim-xim &
-xautolock -secure -locker slock -corners +-00 -cornerdelay 2 -cornerredelay 5 -time 12 &
-
+test -f "$host" && . "$host"
 exec $wm

@@ -23,6 +23,13 @@ super + F5
 XF86MonBrightness{Up,Down}
   xbacklight -{inc,dec} 10
 
+super + Pause
+  blurlock
+
+super + Home
+  xdotool mousemove 3000 3000
+
+
 #
 # bspwm hotkeys
 #

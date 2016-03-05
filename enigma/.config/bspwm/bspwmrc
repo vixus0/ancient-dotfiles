@@ -19,7 +19,7 @@ bspc config split_ratio         0.52
 bspc config borderless_monocle  true
 bspc config gapless_monocle     true
 bspc config focus_by_distance   true
-bspc config pointer_follows_focus true
+bspc config focus_follows_pointer true
 
 bspc monitor -d 1 2 3 4
 
@@ -33,5 +33,6 @@ then
   compton -b &
   redshift -l 56.1107:3.1674 -t 6500:4800 &
   volumeicon &
+  wicd-gtk --tray &
   touch /tmp/bspwm_started
 fi

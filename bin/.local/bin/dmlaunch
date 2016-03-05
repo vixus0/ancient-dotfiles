@@ -22,18 +22,23 @@ focus() {
 
 process() {
   local arg="$@"
-  local pre="${arg:0:1}"
-  local cmd="${arg:1}"
+  local pre="$1"
+
+  shift 1
+  local cmd="$@"
 
   case $pre in
-    "#")
+    "!t")
       ${TERMEMU:-termite} -e "$cmd" &
       ;;
-    "'")
+    "!f")
       penta "$cmd" &
       ;;
-    ",")
+    "!w")
       focus "$cmd" &
+      ;;
+    "!p")
+      $cmd $(xclip -o) &
       ;;
     *)
       $arg >/dev/null 2>&1 &

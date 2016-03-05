@@ -12,7 +12,7 @@ export XINITRC="$XDG_CONFIG_HOME/xorg/xinitrc"
 export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
 
 # GTK2 (for Compose functions)
-export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc-2.0"
+export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 export GTK_IM_MODULE="uim"
 export  QT_IM_MODULE="uim"
 export    XMODIFIERS="@im=uim"

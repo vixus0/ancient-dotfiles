@@ -27,6 +27,7 @@ bspc monitor -d 1 2 3 4
 if test ! -f /tmp/bspwm_started
 then
   hsetroot -center ~/.wallpaper.png &
+  xss-lock blurlock &
   tint2 &
   sxhkd &
   dunst &

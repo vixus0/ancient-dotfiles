@@ -3,9 +3,10 @@
 export DISPLAY=:0
 
 scr=$(mktemp).png
-args="-e -i $scr"
+args="--nofork --ignore-empty-password --image=$scr"
 blur=100
 
-scrot $scr
-gm mogrify -scale 10% -blur 50 -scale 1000% $scr
+#scrot $scr
+cp ~/.wallpaper.png $scr
+gm mogrify -scale 5% -scale 2000% $scr
 i3lock $args

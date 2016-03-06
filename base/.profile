@@ -19,3 +19,6 @@ fi
 # Start X
 test -f $XINITRC && ln -sf $XINITRC $HOME/.xinitrc
 test -z "${SSH_CONNECTION}${DISPLAY}" -a "$XDG_VTNR" -eq 1 && exec startx
+
+# Import environment variables into systemd
+systemctl --user import-environment

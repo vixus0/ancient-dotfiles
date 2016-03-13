@@ -99,6 +99,9 @@ super + ctrl + {1-9}
 super + {_,shift + }{1-9,0}
 	bspc {desktop -f,window -d} ^{1-9,10}
 
+super + brace{left,right}
+  bspc desktop --flip {horizontal,vertical}
+
 ~button1
 	bspc pointer -g focus
 

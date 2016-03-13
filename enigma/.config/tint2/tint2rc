@@ -1,0 +1,162 @@
+#      o             /  )
+#  _|_     _  _  _|_   / 
+#   |  |  / |/ |  |   /  
+#   |_/|_/  |  |_/|_//___
+#                        
+                      
+
+# Background definitions
+# 1 Dark gray
+rounded = 0
+border_width = 0
+background_color = #1d2021 100
+border_color = #FFFFFF 16
+
+# 2 Gray
+rounded = 0
+border_width = 0
+background_color = #303030 100
+border_color = #FFFFFF 16
+
+# 3 Red
+rounded = 0
+border_width = 0
+background_color = #fb4934 100
+border_color = #FFFFFF 48
+
+# 4 Green
+rounded = 0
+border_width = 0
+background_color = #b8bb26 100
+border_color = #FFFFFF 48
+
+# 5 Yellow
+rounded = 0
+border_width = 0
+background_color = #fabd2f 100
+border_color = #FFFFFF 48
+
+# 6 Blue
+rounded = 0
+border_width = 0
+background_color = #83a598 100
+border_color = #FFFFFF 48
+
+# 7 Purple
+rounded = 0
+border_width = 0
+background_color = #b16286 100
+border_color = #FFFFFF 48
+
+# 8 Aqua
+rounded = 0
+border_width = 0
+background_color = #8ec07c 100
+border_color = #FFFFFF 48
+
+# 9 White
+rounded = 0
+border_width = 0
+background_color = #ebdbb2 100
+border_color = #FFFFFF 48
+
+
+# Panel
+panel_items = CBST
+panel_monitor = all
+panel_position = center left vertical
+panel_size = 0 48
+panel_margin = 0 0 
+panel_padding = 8 8 8
+panel_dock = 0
+wm_menu = 1
+panel_layer = top
+panel_background_id = 0
+
+# Panel Autohide
+autohide = 0
+autohide_show_timeout = 0.0
+autohide_hide_timeout = 1
+autohide_height = 2
+strut_policy = follow_size
+
+
+# Taskbar
+taskbar_mode = multi_desktop
+taskbar_padding = 0 0 0
+taskbar_background_id = 0
+taskbar_active_background_id = 0
+
+# Tasks
+urgent_nb_of_blink = 8
+task_icon = 1
+task_text = 0
+task_centered = 1
+task_maximum_size = 0 48
+task_padding = 8 8
+task_background_id = 0
+task_active_background_id = 0
+task_urgent_background_id = 0
+task_iconified_background_id = 0
+
+# Task Icons
+task_icon_asb = 50 -100 -100
+task_active_icon_asb = 100 -100 0
+task_urgent_icon_asb = 100 10 0
+task_iconified_icon_asb = 30 -100 -100
+
+# Fonts
+task_font = sans 7
+task_font_color = #a89984 100
+task_active_font_color = #ebdbb2 100
+task_urgent_font_color = #f0f0f0 100
+task_iconified_font_color = #928374 100
+font_shadow = 0
+
+
+# System Tray
+systray = 1
+systray_padding = 32 0 8
+systray_sort = ascending
+systray_background_id = 0
+systray_icon_size = 32
+systray_icon_asb = 100 -100 0
+
+# Clock
+time1_format = %H
+time2_format = %M
+time1_font = Fira Mono Bold 11
+time2_font = Fira Mono Bold 11
+clock_font_color = #ebdbb2 100
+clock_padding = 4 0
+clock_background_id = 2
+clock_rclick_command = orage
+clock_tooltip = %A %d %B %Y
+
+# Tooltips
+tooltip = 1
+tooltip_padding = 8 4
+tooltip_show_timeout = 0.1
+tooltip_hide_timeout = 0.3
+tooltip_background_id = 5
+tooltip_font = Fira Mono Bold 14
+tooltip_font_color = #1d2021 100
+
+# Mouse
+mouse_middle = close
+mouse_right = none
+mouse_scroll_up = toggle
+mouse_scroll_down = iconify
+
+# Battery
+battery = 1
+battery_low_status = 15
+battery_low_cmd = notify-send -u critical "BATTERY LOW"
+battery_hide = 20
+bat1_font = Fira Mono Bold 10
+bat2_font = sans 0
+battery_font_color = #fba934 100
+battery_padding = 8 0
+battery_background_id = 2
+
+# End of config

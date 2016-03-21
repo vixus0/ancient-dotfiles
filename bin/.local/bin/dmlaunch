@@ -1,5 +1,7 @@
 #!/usr/bin/bash
 
+prompt="»"
+font="xft:sans:size=16"
 n_bg="#151515"
 n_fg="#d0d0d0"
 s_bg="#a7d32c"
@@ -7,7 +9,8 @@ s_fg="#000000"
 
 dm() {
   dmenu \
-    -nb $n_bg -nf $n_fg -sb $s_bg -sf $s_fg
+    -nb "$n_bg" -nf "$n_fg" -sb "$s_bg" -sf "$s_fg" \
+    -fn "$font" -p "$prompt"
 }
 
 penta() {

@@ -14,11 +14,11 @@ super + {8,9,0}
 super + Return 
   termite -e fish
 
-super + Escape
+super + space
   dmlaunch
 
 super + F5
-  scrot -e 'mv $f ~/shots/'
+  mkdir -p ~/shots/ && scrot -e 'mv $f ~/shots/'
 
 XF86MonBrightness{Up,Down}
   xbacklight -{inc,dec} 10
@@ -34,83 +34,68 @@ super + Home
 # bspwm hotkeys
 #
 
+# quit bspwm
 super + alt + Escape
 	bspc quit && rm -f /tmp/bspwm_started
 
-super + w
-	bspc window -c
+# close/kill window
+super + {_,shift + }w
+	bspc node --{close,kill}
 
-super + t
-	bspc desktop -l next
-
-super + b
-	bspc desktop -B
-
-super + {s,f}
-	bspc window -t {floating,fullscreen}
-
-super + {grave,Tab}
-	bspc {window,desktop} -f last
-
-super + apostrophe
-	bspc window -s last
-
-super + {o,i}
-	bspc control --record-history off; \
-	bspc window {older,newer} -f; \
-	bspc control --record-history on
-
-super + y
-	bspc window -w last.manual
-
+# toggle tiled/monocle layout
 super + m
-	bspc window -s biggest
+	bspc desktop --layout next
+
+# balance split
+super + equal
+	bspc node --balance
+
+# change window state
+super + {t,s,f}
+	bspc node --state {tiled,floating,fullscreen}
+
+# set window layer
+super + {Prior,Next,shift + Prior,shift + Next}
+  bspc node --layer {above,below,normal,normal}
+
+# focus previous window or desktop
+super + {grave,Tab}
+	bspc {node,desktop} --focus last
+
+# swap the previous window with the current one
+super + apostrophe
+	bspc window --swap last
+
+# swap current window with biggest one
+super + g
+	bspc node --swap biggest
 
 super + {_, shift + }r
-  bspc window -R {left,right} 90
+  bspc node --rotate 90
 
 super + {_,shift + }{h,j,k,l}
-	bspc window -{f,s} {left,down,up,right}
-
-super + {_,shift + }c
-	bspc window -f {next,prev}
-
-super + {comma,period}
-	bspc desktop -C {backward,forward}
+	bspc node --{focus,swap} {west,south,north,east}
 
 super + bracket{left,right}
-	bspc desktop -f {prev,next}
+	bspc desktop --focus {prev,next}
 
 super + ctrl + {h,j,k,l}
-	bspc window -p {left,down,up,right}
-
-super + ctrl + {_,shift + }space
-	bspc {window -p cancel,desktop -c}
-
-super + alt + {h,j,k,l}
-	bspc window -e {left -50,down +50,up -50,right +50}
-
-super + alt + shift + {h,j,k,l}
-	bspc window -e {right -50,up +50,down -50,left +50}
+	bspc node --presel-dir ~{west,south,north,east}
 
 super + ctrl + {1-9}
-	bspc window -r 0.{1-9}
+	bspc node --presel-ratio 0.{1-9}
 
 super + {_,shift + }{1-9,0}
-	bspc {desktop -f,window -d} ^{1-9,10}
+	bspc {desktop --focus,node --to-desktop} ^{1-9,10}
 
 super + brace{left,right}
-  bspc desktop --flip {horizontal,vertical}
+  bspc node --flip {horizontal,vertical}
 
 ~button1
 	bspc pointer -g focus
 
 super + button{1-3}
-	bspc pointer -g {move,resize_side,resize_corner}
-
-super + !button{1-3}
-	bspc pointer -t %i %i
+	; bspc pointer -g {move,resize_side,resize_corner}
 
 super + @button{1-3}
 	bspc pointer -u
-

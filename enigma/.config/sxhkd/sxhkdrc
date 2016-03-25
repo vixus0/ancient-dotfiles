@@ -36,23 +36,23 @@ super + Home
 
 # quit bspwm
 super + alt + Escape
-	bspc quit && rm -f /tmp/bspwm_started
+  bspc quit && rm -f /tmp/bspwm_started
 
 # close/kill window
 super + {_,shift + }w
-	bspc node --{close,kill}
+  bspc node --{close,kill}
 
 # toggle tiled/monocle layout
 super + m
-	bspc desktop --layout next
+  bspc desktop --layout next
 
 # balance split
 super + equal
-	bspc node --balance
+  bspc node --balance
 
 # change window state
 super + {t,s,f}
-	bspc node --state {tiled,floating,fullscreen}
+  bspc node --state ~{tiled,floating,fullscreen}
 
 # set window layer
 super + {Prior,Next,shift + Prior,shift + Next}
@@ -60,42 +60,58 @@ super + {Prior,Next,shift + Prior,shift + Next}
 
 # focus previous window or desktop
 super + {grave,Tab}
-	bspc {node,desktop} --focus last
+  bspc {node,desktop} --focus last
 
 # swap the previous window with the current one
 super + apostrophe
-	bspc window --swap last
+  bspc window --swap last
 
 # swap current window with biggest one
 super + g
-	bspc node --swap biggest
+  bspc node --swap biggest
 
+# rotate tree at root node
 super + {_, shift + }r
-  bspc node --rotate 90
+  bspc node '@/' --rotate {90, 270}
 
+# focus or swap window
 super + {_,shift + }{h,j,k,l}
-	bspc node --{focus,swap} {west,south,north,east}
+  bspc node --{focus,swap} {west,south,north,east}
 
+# expand the tiled space in the given direction
+super + alt + {h,j,k,l}
+  bspc node {@west -r -10,@south -r +10,@north -r -10,@east -r +10}
+
+# contract the tiled space in the given direction
+super + alt + shift + {h,j,k,l}
+  bspc node {@east -r -10,@north -r +10,@south -r -10,@west -r +10}
+
+# switch desktop
 super + bracket{left,right}
-	bspc desktop --focus {prev,next}
+  bspc desktop --focus {prev,next}
 
+# choose split direction
 super + ctrl + {h,j,k,l}
-	bspc node --presel-dir ~{west,south,north,east}
+  bspc node --presel-dir ~{west,south,north,east}
 
+# choose split ratio
 super + ctrl + {1-9}
-	bspc node --presel-ratio 0.{1-9}
+  bspc node --presel-ratio 0.{1-9}
 
+# switch desktop or move window to desktop
 super + {_,shift + }{1-9,0}
-	bspc {desktop --focus,node --to-desktop} ^{1-9,10}
+  bspc {desktop --focus,node --to-desktop} ^{1-9,10}
 
+# flip root tree
 super + brace{left,right}
-  bspc node --flip {horizontal,vertical}
+  bspc node '@/' --flip {horizontal,vertical}
 
+# mouse stuff
 ~button1
-	bspc pointer -g focus
+  bspc pointer -g focus
 
 super + button{1-3}
-	; bspc pointer -g {move,resize_side,resize_corner}
+  ; bspc pointer -g {move,resize_side,resize_corner}
 
 super + @button{1-3}
-	bspc pointer -u
+  bspc pointer -u

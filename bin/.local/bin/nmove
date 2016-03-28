@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+set -e
+set -u
+set -o pipefail
+
+n="${1:-1}"
+dst="${2}/"
+
+find . -type f | sort | head -n "$n" | tr '\n' '\0' | xargs -0 -IXX mv "XX" -t "$dst"

@@ -21,7 +21,7 @@ super + F5
   mkdir -p ~/shots/ && scrot -e 'mv $f ~/shots/'
 
 XF86MonBrightness{Up,Down}
-  xbacklight -{inc,dec} 10
+  xbacklight -{inc,dec} 5
 
 super + Pause
   blurlock

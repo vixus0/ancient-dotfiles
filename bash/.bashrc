@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+#
 #  | |   __,   ,  | |    
 #  |/ \_/  |  / \_|/ \   
 #   \_/ \_/|_/ \/ |   |_/
@@ -10,7 +12,7 @@
 
 
 # Bash stuff
-. $XDG_CONFIG_HOME/bash/env
-. $XDG_CONFIG_HOME/bash/config
-. $XDG_CONFIG_HOME/bash/alias
-. $XDG_CONFIG_HOME/bash/functions
+source "$XDG_CONFIG_HOME/bash/env"
+source "$XDG_CONFIG_HOME/bash/config"
+source "$XDG_CONFIG_HOME/bash/alias"
+source "$XDG_CONFIG_HOME/bash/functions"

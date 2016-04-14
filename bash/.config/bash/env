@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # XDG Directories
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -9,6 +9,7 @@ export   XDG_DATA_HOME="$HOME/.local/share"
 export XINITRC="$XDG_CONFIG_HOME/xorg/xinitrc"
 
 # Get vim into .config
+# shellcheck disable=SC2016
 export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
 
 # GTK2 (for Compose functions)
@@ -23,7 +24,6 @@ export HISTFILE="$XDG_CACHE_HOME/bash_history"
 export LESSHISTFILE="$XDG_CACHE_HOME/less_history"
 export GIMP2_DIRECTORY="$XDG_CONFIG_HOME/gimp2"
 export MPV_HOME="$XDG_CONFIG_HOME/mpv"
-export RXVT_SOCKET="$XDG_CACHE_HOME/urxvt-`hostname`"
 export KDEHOME="$XDG_CACHE_HOME/kde"
 export UNISON="$XDG_CONFIG_HOME/unison"
 
@@ -45,11 +45,11 @@ export EDITOR=nvim
 export BROWSER=firefox
 
 # GPG Agent
-export GPG_TTY="`tty`"
+export GPG_TTY="$(tty)"
 
 # Paths
-export LD_LIBRARY_PATH="$LD_LIBRARY_PATH":"$HOME/.local/lib"
-export LD_RUN_PATH="$LD_LIBRARY_PATH":"$HOME/.local/lib"
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$HOME/.local/lib"
+export LD_RUN_PATH="$LD_LIBRARY_PATH:$HOME/.local/lib"
 
 # Node
 export NODE_PATH="$HOME/.local/lib/node_modules:$NODE_PATH"

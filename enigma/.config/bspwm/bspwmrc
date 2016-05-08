@@ -35,5 +35,6 @@ then
   redshift -l 56.1107:3.1674 -t 6500:4800 &
   volumeicon &
   wicd-gtk --tray &
+  xsetroot -cursor_name left_ptr &
   touch /tmp/bspwm_started
 fi

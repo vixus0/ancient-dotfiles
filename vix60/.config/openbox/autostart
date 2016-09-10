@@ -4,6 +4,5 @@ wicd-gtk -t &
 onboard -t DarkRoom &
 recolour switch 0 &
 sxhkd &
-CopyAgent &
 backlight-icon &
 demopan --demos ~/tf/demos &

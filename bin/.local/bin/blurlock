@@ -2,11 +2,12 @@
 
 export DISPLAY=:0
 
-scr=$(mktemp).png
+scr=$(mktemp --tmpdir blXXXXXXXX.png)
 args="--nofork --ignore-empty-password --image=$scr"
 blur=100
+size=$(xrandr | sed "s/.*current \([0-9]\+\) x \([0-9]\+\).*/\1x\2/g;q")
 
 #scrot $scr
 cp ~/.wallpaper.png $scr
-gm mogrify -scale 5% -scale 2000% $scr
+gm mogrify -filter point -scale 10% -colorspace Gray -resize "${size}!" $scr
 i3lock $args

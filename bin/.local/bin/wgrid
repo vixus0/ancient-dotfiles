@@ -14,14 +14,13 @@ rows=2
 cols=2
 gap=0
 top=0
+left=0
+bottom=0
+right=0
 file=""
 
-while getopts ":r:c:g:t:f:" opt; do
+while getopts "f:" opt; do
   case $opt in
-    r) rows=$OPTARG ;;
-    c) cols=$OPTARG ;;
-    g) gap=$OPTARG ;;
-    t) top=$OPTARG ;;
     f) file=$OPTARG ;;
     \?)
       echo "Unknown option: -$OPTARG" >&2
@@ -39,10 +38,10 @@ test -n "$file" -a -f "$file" && . "$file"
 
 shift $((OPTIND-1))
 
-cellw=$(( ( (scrw - gap) / cols ) - gap ))
-cellh=$(( ( (scrh - top - gap) / rows ) - gap ))
+cellw=$(( ( (scrw - left - right - gap) / cols ) - gap ))
+cellh=$(( ( (scrh - top - bottom - gap) / rows ) - gap ))
 
-echo "a:$active sw:$scrw sh:$scrh cw:$cellw ch:$cellh t:$top g:$gap"
+echo "a:$active sw:$scrw sh:$scrh cw:$cellw ch:$cellh t:$top b:$bottom l:$left r:$right g:$gap"
 
 getgeom() {
   xdotool getwindowgeometry $1 | awk '/Position/ {split($2, p, ",")} /Geometry/ {split($2, g, "x")} END {print p[1], p[2], g[1], g[2]}'
@@ -60,7 +59,7 @@ calc() {
 move() {
   local x=$1
   local y=$2
-  local gx=$(( gap + (x - 1) * (gap + cellw) ))
+  local gx=$(( left + gap + (x - 1) * (gap + cellw) ))
   local gy=$(( top + gap + (y - 1) * (gap + cellh) ))
   echo $gx $gy
 }

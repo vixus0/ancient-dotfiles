@@ -41,5 +41,5 @@ super + g
 XF86MonBrightness{Up,Down}
   backlight-icon --set {+,-}0.1
 
-super + !button1
-  xdotool getactivewindow windowmove %i %i
+super + {_,shift} + F3
+  xrandr --output DVI-D-0 --scale {1x1,0.5x0.5}

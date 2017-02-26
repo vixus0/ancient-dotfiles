@@ -19,7 +19,7 @@ if test -d /etc/X11/xinit/xinitrc.d; then
  unset f
 fi
 
-setxkbmap gb -option compose:ralt
+setxkbmap gb #-option compose:ralt
 xmodmap $xmod
 xset +fp $pcf && xset fp rehash &
 xrdb -merge $xres &

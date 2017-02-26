@@ -62,7 +62,7 @@ border_color = #FFFFFF 48
 
 
 # Panel
-panel_items = CSBT
+panel_items = CSBTL
 panel_monitor = all
 panel_position = center left vertical
 panel_size = 0 48
@@ -157,5 +157,12 @@ bat2_font = sans 0
 battery_font_color = #ebdbb2 100
 battery_padding = 8 8
 battery_background_id = 3
+
+# Launcher
+launcher_item_app = /usr/share/applications/dolphin-emu.desktop
+launcher_item_app = /usr/share/applications/PCSX2.desktop
+launcher_item_app = /usr/share/applications/steam.desktop
+launcher_item_app = /usr/share/applications/firefox.desktop
+launcher_item_app = /usr/share/applications/google-chrome.desktop
 
 # End of config

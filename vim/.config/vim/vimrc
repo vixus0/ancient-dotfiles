@@ -15,7 +15,7 @@ let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc"
 
 if has('nvim')
   set shada+=n~/.cache/vim/shada
-  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=0
   let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 else
   set viminfo+=n~/.cache/vim/viminfo
@@ -28,28 +28,41 @@ endif
 call plug#begin("$XDG_DATA_HOME/vim/plugins")
 Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-unimpaired'
 Plug 'jiangmiao/auto-pairs'
-Plug 'bling/vim-airline'
-Plug 'Valloric/YouCompleteMe', { 'do': 'python2 ./install.py' }
+Plug 'itchyny/lightline.vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'vimwiki/vimwiki'
+
+Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
+Plug 'ctrlpvim/ctrlp.vim', { 'on': 'CtrlPMixed' }
+Plug 'tpope/vim-rails', { 'for': ['ruby', 'eruby'] }
+Plug 'python-mode/python-mode', { 'for': 'python' }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 Plug 'sjl/gundo.vim', { 'on': 'GundoToggle' }
-Plug 'Shutnik/jshint2.vim', { 'on': 'JSHint' }
+Plug 'rodjek/vim-puppet', { 'for': 'puppet' }
 call plug#end()
 
 let g:tex_flavor='latex'
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_global_ycm_extra_conf = "~/.config/vim/.ycm_extra_conf.py"
 let g:gruvbox_contrast_dark = 'medium'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
+let g:ctrlp_arg_map = 1
 
 source $XDG_CONFIG_HOME/vim/functions.vim
 source $XDG_CONFIG_HOME/vim/binds.vim
 
-autocmd InsertEnter * :set norelativenumber | :set number
-autocmd InsertLeave * :set nonumber | :set relativenumber
-
-au BufNewFile,BufRead *.tex,*.md call WrapOn()
+au BufNewFile,BufRead *.tex,*.md,*.rst call WrapOn()
 au BufNewFile,BufRead *.src set filetype=fortran
 au BufNewFile,BufRead *.fcm set filetype=fortran
 au BufNewFile,BufRead *.frag,*.vert,*.fp,*.vp,*.glsl set filetype=glsl
+au BufNewFile,BufRead *.pp set filetype=puppet
 
 filetype plugin indent on
 set incsearch
@@ -73,7 +86,8 @@ set wildmenu
 set showcmd
 set timeoutlen=1000
 set ttimeoutlen=0
-set mouse=
+set completeopt=menuone
+set completefunc=youcompleteme#Complete
 
 set foldmethod=indent   "fold based on indent
 set foldnestmax=10      "deepest fold is 10 levels
@@ -90,7 +104,28 @@ if has('gui_running')
 endif
 
 syntax on
-let &colorcolumn=join(range(81,999),",")
 colorscheme gruvbox
 set background=dark
 set t_ut=
+
+" The Silver Searcher
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+endif
+
+" Goyo
+function! s:goyo_enter()
+  set wrap
+  set linebreak
+endfunction
+
+function! s:goyo_leave()
+  set relativenumber
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()

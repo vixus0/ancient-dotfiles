@@ -26,7 +26,7 @@ if empty(glob("$XDG_CONFIG_HOME/vim/autoload/plug.vim"))
 endif
 
 call plug#begin("$XDG_DATA_HOME/vim/plugins")
-Plug 'morhetz/gruvbox'
+Plug 'junegunn/seoul256.vim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
@@ -48,12 +48,8 @@ let g:tex_flavor='latex'
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_global_ycm_extra_conf = "~/.config/vim/.ycm_extra_conf.py"
 let g:gruvbox_contrast_dark = 'medium'
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline_left_sep = ''
-let g:airline_right_sep = ''
 let g:ctrlp_arg_map = 1
+let g:lightline = { 'colorscheme': 'wombat' }
 
 source $XDG_CONFIG_HOME/vim/functions.vim
 source $XDG_CONFIG_HOME/vim/binds.vim
@@ -94,17 +90,9 @@ set foldnestmax=10      "deepest fold is 10 levels
 set nofoldenable        "dont fold by default
 set foldlevel=1         "this is just what i use
 
-if has('gui_running')
-  set guioptions="aegitc"
-  set guifont=M+\ 2m\ medium\ 14
-  :inoremap <M-l> <Esc>l
-  :inoremap <M-j> <Esc>j
-  :inoremap <M-k> <Esc>k
-  :inoremap <M-h> <Esc>h
-endif
-
 syntax on
-colorscheme gruvbox
+let g:seoul256_background = 236
+colorscheme seoul256
 set background=dark
 set t_ut=
 

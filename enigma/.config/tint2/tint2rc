@@ -62,15 +62,15 @@ border_color = #FFFFFF 48
 
 
 # Panel
-panel_items = CBST
+panel_items = CBSTL
 panel_monitor = all
-panel_position = center left vertical
-panel_size = 0 48
-panel_margin = 0 0 
-panel_padding = 8 8 8
+panel_position = center right vertical
+panel_size = 0 32
+panel_margin = 8 0 
+panel_padding = 8 0 8
 panel_dock = 0
 wm_menu = 1
-panel_layer = bottom
+panel_layer = top
 panel_background_id = 0
 
 # Panel Autohide
@@ -158,5 +158,12 @@ bat2_font = sans 0
 battery_font_color = #fba934 100
 battery_padding = 8 0
 battery_background_id = 2
+
+# Launcher
+launcher_padding = 0 0 8
+launcher_background_id = 0
+launcher_icon_size = 40
+launcher_item_app = firefox.desktop
+launcher_item_app = google-chrome.desktop
 
 # End of config

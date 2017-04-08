@@ -6,7 +6,7 @@
 
 
 [options]
-font                = Fira Mono 11
+font                = Fira Mono 12
 allow_bold          = true
 cursor_blink        = system
 cursor_shape        = underline

@@ -5,6 +5,7 @@
                                                   
 ! Cursors
 Xcursor.theme: Vanilla-DMZ
+Xcursor.size: 48
 
 ! Xft - make external (machine specific) and include
 Xft.autohint: 0

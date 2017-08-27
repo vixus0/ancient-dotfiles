@@ -1,7 +1,7 @@
 map <Space> <leader>
 map <leader><Space> :
 map <leader>c :w !wc -w <CR>
-inoremap jk <ESC>
+inoremap kj <ESC>
 noremap <Left> :wincmd h<CR>
 noremap <Down> :wincmd j<CR>
 noremap <Up> :wincmd k<CR>

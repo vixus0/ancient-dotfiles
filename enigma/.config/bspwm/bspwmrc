@@ -3,7 +3,7 @@
 # autostart
 if test ! -f /tmp/bspwm_started
 then
-  hsetroot -fill ~/.wallpaper.png &
+  hsetroot -center ~/.wallpaper.png &
   xss-lock blurlock &
   tint2 &
   sxhkd &
@@ -11,8 +11,10 @@ then
   compton -b &
   redshift -l 56.1107:3.1674 -t 6500:4800 &
   volumeicon &
-  wicd-gtk --tray &
+  connman-ui-gtk &
   xsetroot -cursor_name left_ptr &
+  cbatticon &
+  $HOME/git/lightsOn/lightsOn.sh &
   touch /tmp/bspwm_started
 fi
 
@@ -23,7 +25,7 @@ bspc config normal_border_color  "#282828"
 bspc config border_width        4
 bspc config window_gap          8
 
-bspc config split_ratio         0.52
+bspc config split_ratio         0.5
 bspc config borderless_monocle  true
 bspc config gapless_monocle     true
 bspc config focus_follows_pointer false

@@ -65,9 +65,10 @@ border_color = #FFFFFF 48
 panel_items = CSBTL
 panel_monitor = all
 panel_position = center left vertical
-panel_size = 0 48
+panel_size = 0 64
+panel_shrink = 0
 panel_margin = 0 0 
-panel_padding = 8 0 8
+panel_padding = 16 0 8
 panel_dock = 0
 wm_menu = 1
 panel_layer = top
@@ -76,14 +77,14 @@ panel_background_id = 1
 # Panel Autohide
 autohide = 0
 autohide_show_timeout = 0.0
-autohide_hide_timeout = 1
-autohide_height = 2
+autohide_hide_timeout = 0.5
+autohide_height = 0
 strut_policy = follow_size
 
 
 # Taskbar
 taskbar_mode = single_desktop
-taskbar_padding = 0 0 8
+taskbar_padding = 48 0 16
 taskbar_background_id = 0
 taskbar_active_background_id = 0
 
@@ -92,8 +93,8 @@ urgent_nb_of_blink = 8
 task_icon = 1
 task_text = 0
 task_centered = 1
-task_maximum_size = 48 48
-task_padding = 8 8
+task_maximum_size = 0 48
+task_padding = 0 0
 task_background_id = 0
 task_active_background_id = 2
 task_urgent_background_id = 3
@@ -123,14 +124,13 @@ systray_icon_size = 32
 systray_icon_asb = 80 -100 40
 
 # Clock
-time1_format = %H:%M
-time1_font = Fira Mono Bold 9
-time2_format = %A %d %b
-time2_font = Fira Mono 8
+time1_format = %H:%M 
+time2_format = %A %d %B
+time1_font = Fira Mono Bold 12
+time2_font = Fira Mono Bold 10
 clock_font_color = #ebdbb2 100
-clock_padding = 8 12
+clock_padding = 8 16
 clock_background_id = 2
-clock_rclick_command = orage
 
 # Tooltips
 tooltip = 0
@@ -159,10 +159,7 @@ battery_padding = 8 8
 battery_background_id = 3
 
 # Launcher
-launcher_item_app = /usr/share/applications/dolphin-emu.desktop
-launcher_item_app = /usr/share/applications/PCSX2.desktop
-launcher_item_app = /usr/share/applications/steam.desktop
-launcher_item_app = /usr/share/applications/firefox.desktop
-launcher_item_app = /usr/share/applications/google-chrome.desktop
+launcher_apps_dir = ~/.config/tint2/launchers
+launcher_padding = 0 8 16
 
 # End of config

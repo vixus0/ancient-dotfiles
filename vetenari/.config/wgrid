@@ -1,5 +1,5 @@
 rows=3
 cols=4
-gap=8
+gap=32
 top=0
-left=0
+left=64

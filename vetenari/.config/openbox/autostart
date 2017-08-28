@@ -1,0 +1,4 @@
+hsetroot -fill ~/.wallpaper.png &
+tint2 &
+volumeicon &
+sxhkd &

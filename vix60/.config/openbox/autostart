@@ -1,8 +1,0 @@
-tint2 &
-volumeicon &
-wicd-gtk -t &
-onboard -t DarkRoom &
-recolour switch 0 &
-sxhkd &
-backlight-icon &
-demopan --demos ~/tf/demos &

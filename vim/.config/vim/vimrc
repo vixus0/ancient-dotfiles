@@ -49,10 +49,14 @@ let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_global_ycm_extra_conf = "~/.config/vim/.ycm_extra_conf.py"
 let g:gruvbox_contrast_dark = 'medium'
 let g:ctrlp_arg_map = 1
-let g:lightline = { 'colorscheme': 'wombat' }
 
 source $XDG_CONFIG_HOME/vim/functions.vim
 source $XDG_CONFIG_HOME/vim/binds.vim
+
+syntax on
+colorscheme peachpuff
+set background=dark
+set t_ut=
 
 au BufNewFile,BufRead *.tex,*.md,*.rst call WrapOn()
 au BufNewFile,BufRead *.src set filetype=fortran
@@ -90,11 +94,7 @@ set foldnestmax=10      "deepest fold is 10 levels
 set nofoldenable        "dont fold by default
 set foldlevel=1         "this is just what i use
 
-syntax on
-let g:seoul256_background = 236
-colorscheme seoul256
-set background=dark
-set t_ut=
+hi CursorLine term=bold cterm=bold guibg=Grey40
 
 " The Silver Searcher
 if executable('ag')

@@ -3,7 +3,7 @@
 # autostart
 if test ! -f /tmp/bspwm_started
 then
-  hsetroot -center ~/.wallpaper.png &
+  wal -R &
   xss-lock blurlock &
   tint2 &
   sxhkd &
@@ -19,11 +19,11 @@ then
 fi
 
 # config bspwm
-bspc config focused_border_color "#f0f0f0"
-bspc config normal_border_color  "#282828"
+bspc config focused_border_color "#000000"
+bspc config normal_border_color  "#000000"
 
 bspc config border_width        4
-bspc config window_gap          8
+bspc config window_gap          12
 
 bspc config split_ratio         0.5
 bspc config borderless_monocle  true

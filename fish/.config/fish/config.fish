@@ -5,6 +5,9 @@
 #  |\                
 #  |/                
 
+# Pywal
+wal -rt &
+
 # Settings
 set SHELL_CONFIG "$XDG_CONFIG_HOME/fish/config.fish"
 set fish_greeting

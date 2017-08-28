@@ -1,0 +1,11 @@
+rofi.combi-modi: window,run
+rofi.modi: combi,ssh,paste:~/.config/rofi/paste.sh
+rofi.display-combi: run/switch
+
+rofi.separator-style: none
+rofi.hide-scrollbar: true
+rofi.fullscreen: true
+rofi.padding: 400
+rofi.sidebar-mode: true
+rofi.lines: 0
+rofi.font: Iosevka Term 14

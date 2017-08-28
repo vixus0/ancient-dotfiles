@@ -15,7 +15,7 @@ super + Return
   termite -e fish
 
 super + space
-  dmlaunch
+  rofi -config ~/.config/rofi/rofi.xresources -show combi
 
 super + F5
   mkdir -p ~/shots/ && scrot -e 'mv $f ~/shots/'

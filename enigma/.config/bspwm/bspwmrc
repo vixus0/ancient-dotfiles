@@ -4,7 +4,7 @@
 if test ! -f /tmp/bspwm_started
 then
   wal -R &
-  xss-lock blurlock &
+  xss-lock -- i3lock-extra -m pixelize ~/img/lock-icon.png &
   tint2 &
   sxhkd &
   dunst &

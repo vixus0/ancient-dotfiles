@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-export DISPLAY=:0
-
-clr="d8af5f"
-args="--nofork --ignore-empty-password --color=$clr"
-
-i3lock $args

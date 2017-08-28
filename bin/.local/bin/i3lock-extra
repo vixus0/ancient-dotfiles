@@ -48,10 +48,12 @@ deskshot() {
 
 lock() {
 	>"$cfg_lockfile"
+  killall -SIGUSR1 dunst &
 	i3lock -u -f -n -t -i "$image"
 }
 
 cleanup() {
+  killall -SIGUSR2 dunst &
 	rm -f "$cfg_lockfile";
 }
 

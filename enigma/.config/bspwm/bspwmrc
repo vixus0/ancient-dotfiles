@@ -1,22 +1,23 @@
 #!/bin/bash
 
+restart () {
+  (pkill --full "$1"; "$@" &)
+}
+
 # autostart
-if test ! -f /tmp/bspwm_started
-then
-  wal -R &
-  xss-lock -- i3lock-extra -m pixelize ~/img/lock-icon.png &
-  tint2 &
-  sxhkd &
-  dunst &
-  compton -b &
-  redshift -l 56.1107:3.1674 -t 6500:4800 &
-  volumeicon &
-  connman-ui-gtk &
-  xsetroot -cursor_name left_ptr &
-  cbatticon &
-  $HOME/git/lightsOn/lightsOn.sh &
-  touch /tmp/bspwm_started
-fi
+wal -R &
+xsetroot -cursor_name left_ptr &
+
+restart xss-lock -- i3lock-extra -m pixelize $HOME/img/lock-icon.png
+restart tint2
+restart sxhkd
+restart dunst
+restart compton -b
+restart redshift -l 56.1107:3.1674 -t 6500:4800
+restart volumeicon
+restart connman-ui-gtk
+restart cbatticon
+restart $HOME/git/lightsOn/lightsOn.sh
 
 # config bspwm
 bspc config focused_border_color "#000000"

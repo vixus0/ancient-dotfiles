@@ -36,7 +36,7 @@ super + Home
 
 # quit bspwm
 super + alt + Escape
-  bspc quit && rm -f /tmp/bspwm_started
+  bspc quit
 
 # close/kill window
 super + {_,shift + }w

@@ -15,6 +15,7 @@ usage() {
 		       rnd <dir>          # Use a random image from a dir.
 		       blur [img]         # Take a screenshot, blur it out. If provided, add an image on top.
 		       pixelize [img]     # Same as the abobe, but pixelize the image instead.
+           wall [img]         # Combine current wallpaper (~/.wallpaper.png) with an image.
 		       img <img>          # Use the provided image.
 	EOF
 }
@@ -36,6 +37,7 @@ deskshot() {
 	case "$dist_mode" in
 		blur) scrot -e "convert -gaussian-blur 4x8 \$f ${cfg_tmpdir}/lockbg.png" "${cfg_tmpdir}/lockbg.png";;
 		pixelize) scrot -e "convert \$f -scale 25% -scale 400% ${cfg_tmpdir}/lockbg.png" "${cfg_tmpdir}/lockbg.png";;
+    wall) convert ~/.wallpaper.png -colorspace Gray "${cfg_tmpdir}/lockbg.png"
 	esac
 
 	if (( $# )); then
@@ -88,7 +90,7 @@ main() {
 	fi
 
 	case "${mode:-img}" in
-		blur|pixelize) image=$( deskshot "$mode" "$1" );;
+		blur|pixelize|wall) image=$( deskshot "$mode" "$1" );;
 		rnd) image=$( random "$1" );;
 		img) image="$1";;
 		*) usage; return 1;;

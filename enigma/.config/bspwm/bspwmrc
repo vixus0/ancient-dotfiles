@@ -8,7 +8,7 @@ restart () {
 wal -R &
 xsetroot -cursor_name left_ptr &
 
-restart xss-lock -- i3lock-extra -m pixelize $HOME/img/lock-icon.png
+restart xss-lock -- i3lock-extra -m wall $HOME/img/lock-icon.png
 restart tint2
 restart sxhkd
 restart dunst

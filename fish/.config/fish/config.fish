@@ -6,26 +6,25 @@
 #  |/                
 
 # Pywal
-wal -rt &
+command -s wal; and wal -rt &
 
 # Settings
+set XDG_CONFIG_HOME "$HOME/.config"
+set  XDG_CACHE_HOME "$HOME/.cache"
+set   XDG_DATA_HOME "$HOME/.local/share"
+
 set SHELL_CONFIG "$XDG_CONFIG_HOME/fish/config.fish"
 set fish_greeting
-set -g fish_color_cwd blue
 
 # Aliases
-source $XDG_CONFIG_HOME/bash/alias
+test -f $XDG_CONFIG_HOME/bash/alias; and source $XDG_CONFIG_HOME/bash/alias
+test -f $XDG_CONFIG_HOME/fish/alias.fish; and source $XDG_CONFIG_HOME/fish/alias.fish
 
 # Functions
 source $XDG_CONFIG_HOME/fish/functions.fish
 
 # Keybinds
-function fish_user_key_bindings
-  bind \e\' quote_cmdline
-  bind \e# comment_cmdline
-  bind \e] edit_cmdline
-end
-funcsave fish_user_key_bindings
+fish_vi_mode
 
 # Misc
 eval (env TERM=screen-256color dircolors -c)

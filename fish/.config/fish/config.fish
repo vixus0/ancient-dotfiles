@@ -24,7 +24,7 @@ test -f $XDG_CONFIG_HOME/fish/alias.fish; and source $XDG_CONFIG_HOME/fish/alias
 source $XDG_CONFIG_HOME/fish/functions.fish
 
 # Keybinds
-fish_vi_mode
+fish_vi_key_bindings
 
 # Misc
 eval (env TERM=screen-256color dircolors -c)

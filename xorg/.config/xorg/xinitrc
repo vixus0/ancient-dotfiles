@@ -25,4 +25,3 @@ xset +fp $pcf && xset fp rehash &
 xrdb -merge $xres &
 uim-xim &
 test -f "$host" && . "$host"
-exec $wm

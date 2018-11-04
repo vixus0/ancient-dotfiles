@@ -6,7 +6,7 @@
 #  |/                
 
 # Pywal
-command -s wal; and wal -rt &
+cat ~/.cache/wal/sequences &
 
 # Settings
 set XDG_CONFIG_HOME "$HOME/.config"

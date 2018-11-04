@@ -1,4 +1,6 @@
-hsetroot -fill ~/.wallpaper.png &
+wal -R
 tint2 &
+cadence &
 volumeicon &
 sxhkd &
+x11vnc -forever -display $DISPLAY -noxdamage -ncache 10 -ncache_cr &

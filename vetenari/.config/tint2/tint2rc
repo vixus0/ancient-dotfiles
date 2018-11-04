@@ -62,10 +62,10 @@ border_color = #FFFFFF 48
 
 
 # Panel
-panel_items = CSBTL
+panel_items = LTSC
 panel_monitor = all
-panel_position = center left vertical
-panel_size = 0 64
+panel_position = top center horizontal
+panel_size = 0 48
 panel_shrink = 0
 panel_margin = 0 0 
 panel_padding = 16 0 8
@@ -93,10 +93,10 @@ urgent_nb_of_blink = 8
 task_icon = 1
 task_text = 0
 task_centered = 1
-task_maximum_size = 0 48
-task_padding = 0 0
+task_maximum_size = 48 48
+task_padding = 0 8
 task_background_id = 0
-task_active_background_id = 2
+task_active_background_id = 1
 task_urgent_background_id = 3
 task_iconified_background_id = 0
 
@@ -125,12 +125,12 @@ systray_icon_asb = 80 -100 40
 
 # Clock
 time1_format = %H:%M 
-time2_format = %A %d %B
-time1_font = Fira Mono Bold 12
-time2_font = Fira Mono Bold 10
+time2_format = %a %d %b
+time1_font = Droid Sans Bold 10
+time2_font = Droid Sans 10
 clock_font_color = #ebdbb2 100
-clock_padding = 8 16
-clock_background_id = 2
+clock_padding = 8 8
+clock_background_id = 1
 
 # Tooltips
 tooltip = 0
@@ -147,19 +147,8 @@ mouse_right = none
 mouse_scroll_up = toggle
 mouse_scroll_down = iconify
 
-# Battery
-battery = 1
-battery_low_status = 15
-battery_low_cmd = notify-send "battery low"
-battery_hide = 20
-bat1_font = Fira Mono Bold 9
-bat2_font = sans 0
-battery_font_color = #ebdbb2 100
-battery_padding = 8 8
-battery_background_id = 3
-
 # Launcher
 launcher_apps_dir = ~/.config/tint2/launchers
-launcher_padding = 0 8 16
+launcher_padding = 0 4 16
 
 # End of config
